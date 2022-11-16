@@ -1,0 +1,1 @@
+winget install --id AnyDeskSoftwareGmbH.AnyDesk --accept-source-agreements --force

@@ -1,0 +1,277 @@
+:: Cherry OK Script
+:: by Felix Peer
+:: Script 2
+:: Version 4.1.1
+:: Created and tested for Windows 11 22H2
+
+@echo off
+@title Cherry OK
+
+title Cherry OK - Preparing...
+
+:: CHECK IF ADMIN OK
+set isAdminDir=C:\Windows\CherryTestAdmin
+mkdir %isAdminDir%
+if not exist %isAdminDir% (
+	echo NO ADMIN
+	timeout 1 > nul
+	start CherryOK1.bat
+	exit
+)
+rmdir %isAdminDir%
+
+:: TEST CHERRY OK 1 ::
+if not exist C:\Users\Public\Documents\CherryOK (
+	echo NO CHERRY OK 1
+	timeout 1 > nul
+	start CherryOK1.bat
+	exit
+)
+
+:: CHECK WINDOWS VERSION ::
+echo CHECK WINDOWS VERSION
+WMIC OS Get Name | findstr Microsoft > result.txt
+set /p QUERY=<result.txt
+del result.txt
+for /f "tokens=1 delims=|" %%a in ("%QUERY%") do (
+	set winver=%%a
+)
+echo %winver%
+if NOT "%winver%"=="%winver:10=%" set winversion=10
+if NOT "%winver%"=="%winver:11=%" set winversion=11
+timeout 2 > nul
+cls
+
+:: CHECKING OPTIONAL UPDATES ::
+echo CHECKING OPTIONAL UPDATES
+start ms-settings:windowsupdate-optionalupdates
+timeout 6 > nul
+taskkill /f /im SystemSettings.exe
+cls
+
+:: OPEN DEVICE MANAGER ::
+echo CHECKING DEVICE MANAGER
+devmgmt.msc
+cls
+
+:: CHECK WINDOWS KEY ::
+echo CHECKING WINDOWS KEY
+start ms-settings:activation
+timeout 2 > nul
+cls
+
+:: CHECK WINGET ::
+echo CHECKING FOR WINGET...
+WHERE winget >nul 2>&1
+IF %ERRORLEVEL% NEQ 0 (
+ECHO Winget is not installed! Install all Updates from the Microsoft Store to start the Script!
+pause >nul
+exit
+)
+echo Winget OK
+timeout 2 > nul
+cls
+
+:: CHECKED? ::
+set /p drivers="Drivers and Key ok? [y|n] "
+if not "%drivers%" == "y" (
+	timeout 1 > nul
+	exit
+)
+powershell -window minimized -command ""
+cls
+
+:: CLOSING WINDOWS EXPLORER ::
+echo CLOSING WINDOWS EXPLORER
+taskkill /f /im explorer.exe
+start explorer.exe
+timeout 2 > nul
+cls
+
+:: DELETE MICROSOFT EDGE ::
+echo DELETE MICROSOFT EDGE FROM DESKTOP
+start _media\delEdge.bat
+_media\DesktopRefresh.exe
+timeout 2 > nul
+cls
+
+title Cherry OK - Installing Programs
+
+:: INSTALL MICROSOFT 365 APPS ::
+if not exist "C:\Program Files\Microsoft Office\root\Office16\WINWORD.EXE" (
+	echo INSTALL MICROSOFT 365 APPS
+	start _media\installing_m365.bat
+	REG ADD HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Office\16.0\Teams /v PreventFirstLaunchAfterInstall /t REG_DWORD /d 1 /f
+)	else (
+	echo Microsoft 365 is installed!
+)
+timeout 2 > nul
+cls
+
+:: INSTALL CHERRY HILFE ::
+if not exist "%userprofile%\Desktop\Cherry Hilfe.exe" (
+	echo INSTALL CHERRY HILFE
+	copy "_media\TeamViewerQS.exe" "%userprofile%\Desktop\Cherry Hilfe.exe"
+	timeout 2 > nul
+)	else (
+	echo Cherry Hilfe is installed!
+)
+timeout 2 > nul
+cls
+
+:: INSTALL GOOGLE CHROME ::
+if not exist "C:\Program Files\Google\Chrome\Application\chrome.exe" (
+	echo INSTALL GOOGLE CHROME
+	winget install --id Google.Chrome --accept-source-agreements --force --scope machine
+)	else (
+	echo Google Chrome is installed!
+)
+timeout 2 > nul
+cls
+
+:: INSTALL ACROBAT DC ::
+if not exist "C:\Program Files\Adobe\Acrobat DC\Acrobat\Acrobat.exe" (
+	echo INSTALL ACROBAT DC
+	winget install --id Adobe.Acrobat.Reader.64-bit --accept-source-agreements --force --scope machine
+)	else (
+	echo Adobe Reader is installed!
+)
+timeout 2 > nul
+cls
+
+title Cherry OK - Settings are being configured...
+
+:: SET DEFAULT APPS ::
+echo SET DEFAULT APPS
+_media\SetUserFTA .pdf Acrobat.Document.DC
+_media\SetUserFTA http ChromeHTML
+_media\SetUserFTA https ChromeHTML
+_media\SetUserFTA .htm ChromeHTML
+_media\SetUserFTA .html ChromeHTML
+timeout 2 > nul
+cls
+
+:: SET ENERGY SETTINGS ::
+echo SET ENERGY SETTINGS
+powercfg -change -standby-timeout-ac 0
+timeout 2 > nul
+cls
+
+:: ADD OEM INFORMATIONS ::
+echo ADD OEM INFORMATIONS
+REG ADD HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation /v SupportPhone /t REG_SZ /d "0471 813087" /f
+REG ADD HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation /v SupportURL /t REG_SZ /d "https://www.cherrycomputer.com" /f
+REG ADD HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation /v Manufacturer /t REG_SZ /d "Cherry Computer Gmbh" /f
+timeout 2 > nul
+cls
+
+:: SET DESIGN ::
+echo SET DESIGN
+if "%winversion%"=="10" _media\Windows10.deskthemepack
+if "%winversion%"=="11" _media\Windows11.deskthemepack
+taskkill /im SystemSettings.exe /f > nul
+timeout 2 > nul
+cls
+
+:: HIDE CHAT AND WIDGETS ::
+if "%winversion%"=="11" (
+	echo HIDE CHAT AND WIDGETS
+	REG ADD HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v TaskbarMn /t REG_DWORD /d 0 /f
+	REG ADD HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v TaskbarDA /t REG_DWORD /d 0 /f
+	timeout 2 > nul
+	cls
+)
+
+:: HIDE CORTANA, SET TASKBAR AND HIDE WEATHER ::
+if "%winversion%"=="10" (
+	echo HIDE CORTANA, SET TASKBAR AND HIDE WEATHER
+	REG ADD HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v ShowCortanaButton /t REG_DWORD /d 0 /f
+	REG ADD HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Search /v SearchboxTaskbarMode /t REG_DWORD /d 1 /f
+	REG ADD "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Feeds" /v EnableFeeds /t REG_DWORD /d 0 /f
+	taskkill /f /im explorer.exe
+	start explorer.exe
+	timeout 2 > nul
+	cls
+)
+
+:: TURN OFF WINDOWS WELCOME EXPERIENCE ::
+echo TURN OFF WINDOWS WELCOME EXPERIENCE
+REG ADD HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager /v SubscribedContent-310093Enabled /t REG_DWORD /d 0 /f
+REG ADD HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\UserProfileEngagement /v ScoobeSystemSettingEnabled /t REG_DWORD /d 0 /f
+timeout 2 > nul
+cls
+
+title Cherry OK - Almost here...
+
+:: SET TASKBAR ::
+echo SET TASKBAR
+if exist "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Google Chrome.lnk" copy "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Google Chrome.lnk" "%AppData%\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar"
+if exist "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Google Chrome.lnk" copy "C:\Users\User\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Google Chrome.lnk" "%AppData%\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar"
+copy "%APPDATA%\Microsoft\Windows\Start Menu\Programs\File Explorer.lnk" "%AppData%\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar\Explorer.lnk"
+reg import _media\Taskbar.reg
+taskkill /f /im explorer.exe
+start explorer.exe
+timeout 4 > nul
+cls
+
+:: CLEAR NOTIFICATIONS ::
+echo CLEAR NOTIFICATIONS
+if "%winversion%"=="10" (
+	_media\nircmd sendkeypress lwin+a
+	timeout 1 > nul
+	_media\nircmd cmdwait 1000 sendkeypress leftshift+tab
+	timeout 1 > nul
+	_media\nircmd cmdwait 1000 sendkeypress leftshift+tab
+	timeout 1 > nul
+	_media\nircmd cmdwait 1000 sendkeypress spc
+	timeout 1 > nul
+	_media\nircmd cmdwait 1000 sendkeypress esc
+)
+if "%winversion%"=="11" (
+	_media\nircmd cmdwait 1000 sendkeypress lwin+n
+	timeout 2 > nul
+	_media\nircmd cmdwait 1000 sendkeypress tab 
+	timeout 1 > nul
+	_media\nircmd cmdwait 1000 sendkeypress enter
+	timeout 1 > nul
+	_media\nircmd cmdwait 1000 sendkeypress esc
+)
+timeout 2 > nul
+cls
+
+title Cherry OK - Last Steps
+
+:: OPENING PROGRAMS FOR ACCEPTING EULA ::
+echo OPENING PROGRAMS FOR ACCEPTING EULA
+_media\nircmd.exe sendkeypress rwin+D
+_media\nircmd.exe sendkeypress F5
+timeout 2 > nul
+start Acrobat.exe
+"%userprofile%\Desktop\Cherry Hilfe.exe"
+
+:: ACCEPTING EULA ::
+timeout 10 > nul
+_media\nircmd cmdwait 1000 sendkeypress spc
+_media\nircmd cmdwait 1000 sendkeypress tab
+_media\nircmd cmdwait 1000 sendkeypress tab
+_media\nircmd cmdwait 1000 sendkeypress tab
+_media\nircmd cmdwait 1000 sendkeypress tab
+_media\nircmd cmdwait 1000 sendkeypress tab
+_media\nircmd cmdwait 1000 sendkeypress enter
+timeout 5 > nul
+_media\nircmd cmdwait 1000 sendkeypress enter
+_media\nircmd cmdwait 1000 sendkeypress right
+_media\nircmd cmdwait 1000 sendkeypress enter
+_media\nircmd cmdwait 1000 sendkeypress alt+F4
+:: ENDE BETA ::
+
+timeout 2 > nul
+cls
+
+rmdir C:\Users\Public\Documents\CherryOK
+
+:: CONFIGURE SYSTEM RESTORE ::
+echo CONFIGURING SYSTEM RESTORE
+"_media\powershell.bat"
+
+exit

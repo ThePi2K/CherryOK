@@ -1,0 +1,63 @@
+=================================================
+FastCopy(ver4.2.0) start at 2022/10/21 16:25:00
+<Source>  D:\
+<DestDir> C:\0\
+<Command> Diff (Size/Date)
+-------------------------------------------------
++ C:\0\sources\acmigration.dll   <20220921-084612 537,960>
++ C:\0\sources\acres.dll   <20220921-084612 345,424>
++ C:\0\sources\actionqueue.dll   <20220921-084612 214,376>
++ C:\0\sources\adfscomp.dll   <20220921-084612 71,008>
++ C:\0\sources\admtv3check.dll   <20220921-084612 99,816>
++ C:\0\sources\aeinv.dll   <20220921-084612 947,536>
++ C:\0\sources\alert.gif   <20220921-084612 1,046>
++ C:\0\sources\appcompat.xsl   <20220921-084612 11,673>
++ C:\0\sources\appcompatservicing.dll   <20220921-084612 91,480>
++ C:\0\sources\appcompat_bidi.xsl   <20220921-084612 12,498>
++ C:\0\sources\appcompat_detailed.xsl   <20220921-084612 13,608>
++ C:\0\sources\appcompat_detailed_bidi.xsl   <20220921-084612 13,732>
++ C:\0\sources\appcompat_detailed_bidi_txt.xsl   <20220921-084612 13,371>
++ C:\0\sources\appcompat_detailed_txt.xsl   <20220921-084612 13,326>
++ C:\0\sources\appraiser.dll   <20220921-084612 2,270,576>
++ C:\0\sources\appraiser.sdb   <20220921-084612 2,755,600>
++ C:\0\sources\appraiserdatasha1.cat   <20220921-084612 10,569>
++ C:\0\sources\appraiserres.dll   <20220921-084612 181,592>
++ C:\0\sources\appraisersdblatestoshash.txt   <20220921-084612 90>
++ C:\0\sources\arunimg.dll   <20220921-084612 152,936>
++ C:\0\sources\arunres.dll   <20220921-084612 25,960>
++ C:\0\sources\autorun.dll   <20220921-084612 173,408>
++ C:\0\sources\background_cli.png   <20220921-084614 4,841>
++ C:\0\sources\bcd.dll   <20220921-084614 154,288>
++ C:\0\sources\boot.wim   <20220921-084650 464,452,918>
++ C:\0\sources\bootsvc.dll   <20220921-084652 278,256>
++ C:\0\sources\cdplib.mof   <20220921-084652 1,976>
++ C:\0\sources\cdplibuninstall.mof   <20220921-084652 571>
++ C:\0\sources\clustercompliance.dll   <20220921-084652 42,472>
++ C:\0\sources\cmi2migxml.dll   <20220921-084652 230,744>
++ C:\0\sources\cmisetup.dll   <20220921-084652 173,408>
++ C:\0\sources\compatappraiserresources.dll   <20220921-084654 234,848>
++ C:\0\sources\compatctrl.dll   <20220921-084654 202,088>
++ C:\0\sources\compatresources.dll   <20220921-084654 3,515,744>
++ C:\0\sources\compres.dll   <20220921-084654 50,656>
++ C:\0\sources\cryptosetup.dll   <20220921-084654 46,584>
++ C:\0\sources\csiagent.dll   <20220921-084654 722,280>
++ C:\0\sources\cversion.ini   <20220921-084654 49>
++ C:\0\sources\db_msftproductionwindowssigningca.cer   <20220921-084654 1,499>
++ C:\0\sources\devinv.dll   <20220921-084654 775,512>
++ C:\0\sources\diager.dll   <20220921-084654 95,592>
++ C:\0\sources\diagnostic.dll   <20220921-084654 218,456>
++ C:\0\sources\diagtrack.dll   <20220921-084654 1,365,856>
+ Aborted by User
++ C:\0\sources\diagtrackrunner.exe   <20220921-084654 88,256>
+
+TotalRead  = 520 MiB
+TotalWrite = 458 MiB
+TotalFiles = 44 (0)
+TotalSkip  = 100 MiB
+SkipFiles  = 103 (0)
+TotalTime  = 6.2 sec
+TransRate  = 77.1 MB/s
+FileRate   = 7.06 files/s
+
+Result : (ErrFiles : 1 / ErrDirs : 0) at 2022/10/21 16:25:07
+
