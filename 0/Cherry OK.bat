@@ -1,6 +1,6 @@
 :: Cherry OK Script
 :: by Felix Peer
-:: Version 5.0
+:: Version 5.0.1
 :: Created and tested for Windows 11 22H2
 
 @echo off
@@ -254,7 +254,7 @@ title Cherry OK - Last Steps
 :: OPENING PROGRAMS FOR ACCEPTING EULA ::
 echo ACCEPTING EULA
 timeout 5 > nul
-start Acrobat.exe
+if exist "C:\Program Files\Adobe\Acrobat DC\Acrobat\Acrobat.exe" start Acrobat.exe
 "%userprofile%\Desktop\Cherry Hilfe.exe"
 timeout 5 > nul
 _media\nircmd cmdwait 1000 sendkeypress rwin+D
