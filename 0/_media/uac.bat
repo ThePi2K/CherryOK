@@ -23,10 +23,4 @@ manage-bde -off C:
 timeout 2 > nul
 cls
 
-:: RESYNC TIME ::
-echo RESYNC TIME
-w32tm /resync
-timeout 2 > nul
-cls
-
 exit
