@@ -304,6 +304,9 @@ start _media\uac.bat
 timeout 2 > nul
 cls
 
+:: START UPDATES BEFORE LAUNCHING SETTINGS ::
+wuauclt /detectnow /updatenow
+
 :: WINDOWS UPDATES ::
 echo WINDOWS UPDATES
 start ms-settings:windowsupdate
@@ -313,10 +316,10 @@ cls
 :: MICROSOFT STORE UPDATES ::
 echo MICROSOFT STORE UPDATES
 start ms-windows-store:
-timeout 5 > nul
-_media\nircmd cmdwait 1000 sendkeypress tab tab tab
-_media\nircmd cmdwait 1000 sendkeypress down down down down
-_media\nircmd cmdwait 1000 sendkeypress enter
+timeout 6 > nul
+_media\nircmd cmdwait 1500 sendkeypress tab tab tab
+_media\nircmd cmdwait 1500 sendkeypress down down down down
+_media\nircmd cmdwait 1500 sendkeypress enter
 
 mkdir C:\Users\Public\Documents\CherryOK
 exit
