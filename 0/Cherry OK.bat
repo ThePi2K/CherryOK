@@ -1,6 +1,6 @@
 :: Cherry OK Script
 :: by Felix Peer
-:: Version 5.0.1
+:: Version 5.0.2
 :: Created and tested for Windows 11 22H2
 
 @echo off
@@ -16,7 +16,7 @@ if not exist %isAdminDir% (
 	timeout 1 > nul
 	:: start CherryOK1.bat
 	cls
-	goto OLDSCRIPT
+	goto FIRSTRUN
 	exit
 )
 rmdir %isAdminDir%
@@ -27,7 +27,7 @@ if not exist C:\Users\Public\Documents\CherryOK (
 	timeout 1 > nul
 	:: start CherryOK1.bat
 	cls
-	goto OLDSCRIPT
+	goto FIRSTRUN
 	exit
 )
 
@@ -228,23 +228,16 @@ cls
 echo CLEAR NOTIFICATIONS
 if "%winversion%"=="10" (
 	_media\nircmd sendkeypress lwin+a
-	timeout 1 > nul
-	_media\nircmd cmdwait 1000 sendkeypress leftshift+tab
-	timeout 1 > nul
-	_media\nircmd cmdwait 1000 sendkeypress leftshift+tab
-	timeout 1 > nul
-	_media\nircmd cmdwait 1000 sendkeypress spc
-	timeout 1 > nul
-	_media\nircmd cmdwait 1000 sendkeypress esc
+	_media\nircmd cmdwait 2000 sendkeypress leftshift+tab
+	_media\nircmd cmdwait 1500 sendkeypress leftshift+tab
+	_media\nircmd cmdwait 1500 sendkeypress spc
+	_media\nircmd cmdwait 1500 sendkeypress esc
 )
 if "%winversion%"=="11" (
-	_media\nircmd cmdwait 1000 sendkeypress lwin+n
-	timeout 2 > nul
-	_media\nircmd cmdwait 1000 sendkeypress tab 
-	timeout 1 > nul
-	_media\nircmd cmdwait 1000 sendkeypress enter
-	timeout 1 > nul
-	_media\nircmd cmdwait 1000 sendkeypress esc
+	_media\nircmd sendkeypress lwin+n
+	_media\nircmd cmdwait 2000 sendkeypress tab
+	_media\nircmd cmdwait 1500 sendkeypress enter
+	_media\nircmd cmdwait 1500 sendkeypress esc
 )
 timeout 2 > nul
 cls
@@ -262,30 +255,20 @@ _media\nircmd cmdwait 1000 sendkeypress F5
 timeout 1 > nul
 if exist "C:\Program Files\Adobe\Acrobat DC\Acrobat\Acrobat.exe" (
 	:: ADOBE ::
-	_media\nircmd cmdwait 1000 sendkeypress rwin+4
-	timeout 1 > nul
-	_media\nircmd cmdwait 1000 sendkeypress tab
-	timeout 1 > nul
-	_media\nircmd cmdwait 1000 sendkeypress enter
-	timeout 1 > nul
-	_media\nircmd cmdwait 1000 sendkeypress alt+F4
+	_media\nircmd cmdwait 1500 sendkeypress rwin+4
+	_media\nircmd cmdwait 1500 sendkeypress tab
+	_media\nircmd cmdwait 1500 sendkeypress enter
+	_media\nircmd cmdwait 1500 sendkeypress alt+F4
 )
 :: CHERRY HELP ::
-_media\nircmd cmdwait 1000 sendkeypress rwin+4
-timeout 1 > nul
-_media\nircmd cmdwait 1000 sendkeypress down
-timeout 1 > nul
-_media\nircmd cmdwait 1000 sendkeypress up
-timeout 1 > nul
-_media\nircmd cmdwait 1000 sendkeypress up
-timeout 2 > nul
-_media\nircmd cmdwait 1000 sendkeypress spc
-timeout 1 > nul
-_media\nircmd cmdwait 1000 sendkeypress shift+tab
-timeout 1 > nul
-_media\nircmd cmdwait 1000 sendkeypress enter
-timeout 4 > nul
-_media\nircmd cmdwait 1000 sendkeypress enter
+_media\nircmd cmdwait 1500 sendkeypress rwin+4
+_media\nircmd cmdwait 1500 sendkeypress down
+_media\nircmd cmdwait 1500 sendkeypress up
+_media\nircmd cmdwait 4000 sendkeypress up
+_media\nircmd cmdwait 1500 sendkeypress spc
+_media\nircmd cmdwait 1500 sendkeypress shift+tab
+_media\nircmd cmdwait 5000 sendkeypress enter
+_media\nircmd cmdwait 1500 sendkeypress enter
 
 timeout 2 > nul
 cls
@@ -304,7 +287,7 @@ echo CONFIGURING SYSTEM RESTORE
 
 exit
 
-:OLDSCRIPT
+:FIRSTRUN
 :: STOPPING EXPLORER ::
 taskkill /f /im explorer.exe
 start explorer.exe
@@ -330,6 +313,9 @@ cls
 :: MICROSOFT STORE UPDATES ::
 echo MICROSOFT STORE UPDATES
 start ms-windows-store:
+_media\nircmd cmdwait 1000 sendkeypress tab tab tab
+_media\nircmd cmdwait 1000 sendkeypress down down down down
+_media\nircmd cmdwait 1000 sendkeypress enter
 
 mkdir C:\Users\Public\Documents\CherryOK
 exit
