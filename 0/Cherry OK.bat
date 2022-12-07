@@ -313,7 +313,7 @@ cls
 :: MICROSOFT STORE UPDATES ::
 echo MICROSOFT STORE UPDATES
 start ms-windows-store:
-timeout 2 > nul
+timeout 5 > nul
 _media\nircmd cmdwait 1000 sendkeypress tab tab tab
 _media\nircmd cmdwait 1000 sendkeypress down down down down
 _media\nircmd cmdwait 1000 sendkeypress enter
