@@ -1,6 +1,6 @@
 :: Cherry OK Script
 :: by Felix Peer
-:: Version 5.0.2
+:: Version 5.0.3
 :: Created and tested for Windows 11 22H2
 
 @echo off
@@ -82,13 +82,6 @@ if not "%drivers%" == "y" (
 	exit
 )
 :: powershell -window minimized -command ""
-cls
-
-:: CLOSING WINDOWS EXPLORER ::
-echo CLOSING WINDOWS EXPLORER
-taskkill /f /im explorer.exe
-start explorer.exe
-timeout 2 > nul
 cls
 
 :: DELETE MICROSOFT EDGE ::
