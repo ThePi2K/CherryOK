@@ -14,7 +14,6 @@ mkdir %isAdminDir%
 if not exist %isAdminDir% (
 	echo NO ADMIN
 	timeout 1 > nul
-	:: start CherryOK1.bat
 	cls
 	goto FIRSTRUN
 	exit
@@ -25,7 +24,6 @@ rmdir %isAdminDir%
 if not exist C:\Users\Public\Documents\CherryOK (
 	echo NO CHERRY OK 1
 	timeout 1 > nul
-	:: start CherryOK1.bat
 	cls
 	goto FIRSTRUN
 	exit
@@ -260,8 +258,8 @@ _media\nircmd cmdwait 1500 sendkeypress up
 _media\nircmd cmdwait 4000 sendkeypress up
 _media\nircmd cmdwait 1500 sendkeypress spc
 _media\nircmd cmdwait 1500 sendkeypress shift+tab
-_media\nircmd cmdwait 5000 sendkeypress enter
 _media\nircmd cmdwait 1500 sendkeypress enter
+_media\nircmd cmdwait 5000 sendkeypress enter
 
 timeout 2 > nul
 cls
