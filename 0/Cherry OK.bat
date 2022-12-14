@@ -32,18 +32,18 @@ if not exist C:\Users\Public\Documents\CherryOK (
 )
 
 :: CHECK WINDOWS VERSION ::
-echo CHECK WINDOWS VERSION
+::echo CHECK WINDOWS VERSION
 WMIC OS Get Name | findstr Microsoft > result.txt
 set /p QUERY=<result.txt
 del result.txt
 for /f "tokens=1 delims=|" %%a in ("%QUERY%") do (
 	set winver=%%a
 )
-echo %winver%
+::echo %winver%
 if NOT "%winver%"=="%winver:10=%" set winversion=10
 if NOT "%winver%"=="%winver:11=%" set winversion=11
-timeout 2 > nul
-cls
+::timeout 2 > nul
+::cls
 
 :: CHECKING OPTIONAL UPDATES ::
 echo CHECKING OPTIONAL UPDATES
@@ -60,7 +60,7 @@ cls
 :: CHECK WINDOWS KEY ::
 echo CHECKING WINDOWS KEY
 start ms-settings:activation
-timeout 2 > nul
+timeout 1 > nul
 cls
 
 :: CHECK WINGET ::
@@ -72,7 +72,7 @@ pause >nul
 exit
 )
 echo Winget OK
-timeout 2 > nul
+timeout 1 > nul
 cls
 
 :: CHECKED? ::
@@ -101,7 +101,7 @@ if not exist "C:\Program Files\Microsoft Office\root\Office16\WINWORD.EXE" (
 )	else (
 	echo Microsoft 365 is installed!
 )
-timeout 2 > nul
+timeout 1 > nul
 cls
 
 :: INSTALL CHERRY HILFE ::
@@ -112,7 +112,7 @@ if not exist "%userprofile%\Desktop\Cherry Hilfe.exe" (
 )	else (
 	echo Cherry Hilfe is installed!
 )
-timeout 2 > nul
+timeout 1 > nul
 cls
 
 :: INSTALL GOOGLE CHROME ::
@@ -123,7 +123,7 @@ if not exist "C:\Program Files\Google\Chrome\Application\chrome.exe" (
 	echo Google Chrome is installed!
 )
 if not exist "C:\Program Files\Google\Chrome\Application\chrome.exe" ..\1\ChromeSetup.exe
-timeout 2 > nul
+timeout 1 > nul
 cls
 
 :: INSTALL ACROBAT DC ::
@@ -133,26 +133,26 @@ if not exist "C:\Program Files\Adobe\Acrobat DC\Acrobat\Acrobat.exe" (
 )	else (
 	echo Adobe Reader is installed!
 )
-timeout 2 > nul
+timeout 1 > nul
 cls
 
 title Cherry OK - Settings are being configured...
 
 :: SET DEFAULT APPS ::
-echo SET DEFAULT APPS
+::echo SET DEFAULT APPS
 _media\SetUserFTA .pdf Acrobat.Document.DC
 _media\SetUserFTA http ChromeHTML
 _media\SetUserFTA https ChromeHTML
 _media\SetUserFTA .htm ChromeHTML
 _media\SetUserFTA .html ChromeHTML
-timeout 2 > nul
-cls
+::timeout 2 > nul
+::cls
 
 :: SET ENERGY SETTINGS ::
-echo SET ENERGY SETTINGS
+::echo SET ENERGY SETTINGS
 powercfg -change -standby-timeout-ac 0
-timeout 2 > nul
-cls
+::timeout 2 > nul
+::cls
 
 :: DISABLE PASSWORD EXPIRATION ::
 echo DISABLE PASSWORD EXPIRATION
