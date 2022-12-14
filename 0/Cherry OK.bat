@@ -1,6 +1,6 @@
 :: Cherry OK Script
 :: by Felix Peer
-:: Version 5.0.3
+:: Version 5.1
 :: Created and tested for Windows 11 22H2
 
 @echo off
@@ -285,11 +285,15 @@ exit
 taskkill /f /im explorer.exe
 start explorer.exe
 
-:: CONNECTING TO CHERRY-NET ::
-echo CONNECTING TO CHERRY-NET
-netsh wlan add profile filename=_media\WLAN-Cherry-Net.xml
-timeout 4
-cls
+:: CONNECTING TO CHERRY-NET IF NO INTERNET
+ping -n 1 8.8.8.8 | find "TTL=" >nul
+if errorlevel 1 (
+	:: CONNECTING TO CHERRY-NET ::
+	echo CONNECTING TO CHERRY-NET
+	netsh wlan add profile filename=_media\WLAN-Cherry-Net.xml
+	timeout 4
+	cls
+)
 
 :: SET UAC SETTINGS ::
 echo SET UAC SETTINGS
