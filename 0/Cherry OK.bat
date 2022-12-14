@@ -89,6 +89,9 @@ _media\DesktopRefresh.exe
 timeout 2 > nul
 cls
 
+:: EMPTY RECYCLE BIN ::
+rd /s /q C:\$Recycle.Bin
+
 title Cherry OK - Installing Programs
 
 :: INSTALL MICROSOFT 365 APPS ::
