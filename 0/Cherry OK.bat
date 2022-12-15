@@ -1,6 +1,6 @@
 :: Cherry OK Script
 :: by Felix Peer
-:: Version 5.1
+:: Version 5.1.1
 :: Created and tested for Windows 11 22H2
 
 @echo off
