@@ -6,6 +6,24 @@
 @echo off
 @title Cherry OK
 
+echo Welcome to CHERRY OK
+
+:: CHECK WINDOWS VERSION ::
+::echo CHECK WINDOWS VERSION
+WMIC OS Get Name | findstr Microsoft > result.txt
+set /p QUERY=<result.txt
+del result.txt
+for /f "tokens=1 delims=|" %%a in ("%QUERY%") do (
+	set winver=%%a
+)
+::echo %winver%
+if NOT "%winver%"=="%winver:10=%" set winversion=10
+if NOT "%winver%"=="%winver:11=%" set winversion=11
+::timeout 2 > nul
+::cls
+
+cls
+
 title Cherry OK - Preparing...
 
 :: CHECK IF ADMIN OK
@@ -28,24 +46,6 @@ if not exist C:\Users\Public\Documents\CherryOK (
 	goto FIRSTRUN
 	exit
 )
-
-echo Welcome to CHERRY OK
-
-:: CHECK WINDOWS VERSION ::
-::echo CHECK WINDOWS VERSION
-WMIC OS Get Name | findstr Microsoft > result.txt
-set /p QUERY=<result.txt
-del result.txt
-for /f "tokens=1 delims=|" %%a in ("%QUERY%") do (
-	set winver=%%a
-)
-::echo %winver%
-if NOT "%winver%"=="%winver:10=%" set winversion=10
-if NOT "%winver%"=="%winver:11=%" set winversion=11
-::timeout 2 > nul
-::cls
-
-cls
 
 :: CHECKING OPTIONAL UPDATES ::
 echo CHECKING OPTIONAL UPDATES
@@ -111,14 +111,16 @@ cls
 
 :: INSTALL CHERRY HILFE ::
 if not exist "%userprofile%\Desktop\Cherry Hilfe.exe" (
-	echo INSTALL CHERRY HILFE
+	:: echo INSTALL CHERRY HILFE
 	copy "_media\TeamViewerQS.exe" "%userprofile%\Desktop\Cherry Hilfe.exe"
-	timeout 2 > nul
+	::timeout 2 > nul
 )	else (
 	echo Cherry Hilfe is installed!
+	timeout 1 > nul
+	cls
 )
-timeout 1 > nul
-cls
+:: timeout 1 > nul
+:: cls
 
 :: INSTALL GOOGLE CHROME ::
 if not exist "C:\Program Files\Google\Chrome\Application\chrome.exe" (
@@ -312,9 +314,6 @@ echo SET UAC SETTINGS
 start _media\uac.bat
 timeout 2 > nul
 cls
-
-:: START UPDATES BEFORE LAUNCHING SETTINGS ::
-wuauclt /detectnow /updatenow
 
 :: WINDOWS UPDATES ::
 echo WINDOWS UPDATES
