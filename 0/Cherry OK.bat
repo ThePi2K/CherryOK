@@ -29,15 +29,11 @@ if not exist C:\Users\Public\Documents\CherryOK (
 	exit
 )
 
+powershell.exe -Command "Set-ExecutionPolicy Unrestricted"
+
 :: CHERRY OK ASCII
 echo.
-echo.
-echo "     ____ _                             ___  _  __   "
-echo "    / ___| |__   ___ _ __ _ __ _   _   / _ \| |/ /   "
-echo "   | |   | '_ \ / _ \ '__| '__| | | | | | | | ' /    "
-echo "   | |___| | | |  __/ |  | |  | |_| | | |_| | . \    "
-echo "    \____|_| |_|\___|_|  |_|   \__, |  \___/|_|\_\   "
-echo "                               |___/                 "
+powershell.exe .\_media\echoTitle.ps1
 
 :: CHECK WINDOWS VERSION ::
 ::echo CHECK WINDOWS VERSION
@@ -296,15 +292,15 @@ if not exist "C:\Program Files\Adobe\Acrobat DC\Acrobat\Acrobat.exe" (
 :: CONFIGURE SYSTEM RESTORE ::
 rmdir C:\Users\Public\Documents\CherryOK
 echo CONFIGURING SYSTEM RESTORE
-powershell.exe -Command "Set-ExecutionPolicy Unrestricted"
 powershell.exe .\_media\restore.ps1
-powershell.exe -Command "Set-ExecutionPolicy Restricted"
 timeout 2 > nul
 cls
 
 echo CHERRY OK SUCCEEDED SUCCESSFULLY
 timeout 2 > nul
 cls
+
+powershell.exe -Command "Set-ExecutionPolicy Restricted"
 
 exit
 
