@@ -296,9 +296,25 @@ if not exist "C:\Program Files\Adobe\Acrobat DC\Acrobat\Acrobat.exe" (
 :: CONFIGURE SYSTEM RESTORE ::
 rmdir C:\Users\Public\Documents\CherryOK
 echo CONFIGURING SYSTEM RESTORE
-"_media\powershell.bat"
+powershell.exe -Command "Set-ExecutionPolicy Unrestricted"
+powershell.exe .\_media\restore.ps1
+powershell.exe -Command "Set-ExecutionPolicy Restricted"
+timeout 2 > nul
+cls
+
+echo CHERRY OK SUCCEEDED SUCCESSFULLY
+timeout 2 > nul
+cls
 
 exit
+
+
+
+
+
+
+
+
 
 :FIRSTRUN
 :: STOPPING EXPLORER ::
