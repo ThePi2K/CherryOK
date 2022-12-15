@@ -16,11 +16,4 @@ reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\S
 reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v "EnableLUA" /t reg_dword /d 0 /F >nul
 reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v "PromptOnSecureDesktop" /t reg_dword /d 0 /F >nul
 
-
-:: DISABLE BITLOCKER ENCRYPTION ::
-echo DISABLE BITLOCKER ENCRYPTION
-manage-bde -off C:
-timeout 2 > nul
-cls
-
 exit

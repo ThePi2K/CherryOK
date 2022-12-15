@@ -29,6 +29,8 @@ if not exist C:\Users\Public\Documents\CherryOK (
 	exit
 )
 
+echo Welcome to CHERRY OK
+
 :: CHECK WINDOWS VERSION ::
 ::echo CHECK WINDOWS VERSION
 WMIC OS Get Name | findstr Microsoft > result.txt
@@ -42,6 +44,8 @@ if NOT "%winver%"=="%winver:10=%" set winversion=10
 if NOT "%winver%"=="%winver:11=%" set winversion=11
 ::timeout 2 > nul
 ::cls
+
+cls
 
 :: CHECKING OPTIONAL UPDATES ::
 echo CHECKING OPTIONAL UPDATES
@@ -82,15 +86,15 @@ if not "%drivers%" == "y" (
 :: powershell -window minimized -command ""
 cls
 
+:: EMPTY RECYCLE BIN ::
+rd /s /q C:\$Recycle.Bin
+
 :: DELETE MICROSOFT EDGE ::
 echo DELETE MICROSOFT EDGE FROM DESKTOP
 start _media\delEdge.bat
 _media\DesktopRefresh.exe
-timeout 2 > nul
+timeout 1 > nul
 cls
-
-:: EMPTY RECYCLE BIN ::
-rd /s /q C:\$Recycle.Bin
 
 title Cherry OK - Installing Programs
 
@@ -139,6 +143,12 @@ cls
 
 title Cherry OK - Settings are being configured...
 
+:: DISABLE BITLOCKER ENCRYPTION ::
+echo DISABLE BITLOCKER ENCRYPTION
+manage-bde -off C:
+timeout 1 > nul
+cls
+
 :: SET DEFAULT APPS ::
 ::echo SET DEFAULT APPS
 _media\SetUserFTA .pdf Acrobat.Document.DC
@@ -158,7 +168,7 @@ powercfg -change -standby-timeout-ac 0
 :: DISABLE PASSWORD EXPIRATION ::
 echo DISABLE PASSWORD EXPIRATION
 wmic useraccount where "name='user'" set passwordexpires=False
-timeout 2 > nul
+timeout 1 > nul
 cls
 
 :: ADD OEM INFORMATIONS ::
@@ -166,7 +176,7 @@ echo ADD OEM INFORMATIONS
 REG ADD HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation /v SupportPhone /t REG_SZ /d "0471 813087" /f
 REG ADD HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation /v SupportURL /t REG_SZ /d "https://www.cherrycomputer.com" /f
 REG ADD HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation /v Manufacturer /t REG_SZ /d "Cherry Computer Gmbh" /f
-timeout 2 > nul
+timeout 1 > nul
 cls
 
 :: SET DESIGN ::
@@ -174,7 +184,7 @@ echo SET DESIGN
 if "%winversion%"=="10" _media\Windows10.deskthemepack
 if "%winversion%"=="11" _media\Windows11.deskthemepack
 taskkill /im SystemSettings.exe /f > nul
-timeout 2 > nul
+timeout 1 > nul
 cls
 
 :: HIDE CHAT AND WIDGETS ::
@@ -182,7 +192,7 @@ if "%winversion%"=="11" (
 	echo HIDE CHAT AND WIDGETS
 	REG ADD HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v TaskbarMn /t REG_DWORD /d 0 /f
 	REG ADD HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v TaskbarDA /t REG_DWORD /d 0 /f
-	timeout 2 > nul
+	timeout 1 > nul
 	cls
 )
 
@@ -194,7 +204,7 @@ if "%winversion%"=="10" (
 	REG ADD "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Feeds" /v EnableFeeds /t REG_DWORD /d 0 /f
 	taskkill /f /im explorer.exe
 	start explorer.exe
-	timeout 2 > nul
+	timeout 1 > nul
 	cls
 )
 
@@ -202,7 +212,7 @@ if "%winversion%"=="10" (
 echo TURN OFF WINDOWS WELCOME EXPERIENCE
 REG ADD HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager /v SubscribedContent-310093Enabled /t REG_DWORD /d 0 /f
 REG ADD HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\UserProfileEngagement /v ScoobeSystemSettingEnabled /t REG_DWORD /d 0 /f
-timeout 2 > nul
+timeout 1 > nul
 cls
 
 title Cherry OK - Almost here...
@@ -214,8 +224,9 @@ if exist "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Google Chrome.lnk" cop
 copy "%APPDATA%\Microsoft\Windows\Start Menu\Programs\File Explorer.lnk" "%AppData%\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar\Explorer.lnk"
 reg import _media\Taskbar.reg
 taskkill /f /im explorer.exe
+timeout 1 > nul
 start explorer.exe
-timeout 4 > nul
+timeout 2 > nul
 cls
 
 :: CLEAR NOTIFICATIONS ::
@@ -233,7 +244,7 @@ if "%winversion%"=="11" (
 	_media\nircmd cmdwait 1500 sendkeypress enter
 	_media\nircmd cmdwait 1500 sendkeypress esc
 )
-timeout 2 > nul
+timeout 1 > nul
 cls
 
 title Cherry OK - Last Steps
