@@ -29,7 +29,15 @@ if not exist C:\Users\Public\Documents\CherryOK (
 	exit
 )
 
-echo Welcome to CHERRY OK
+:: CHERRY OK ASCII
+echo.
+echo.
+echo "     ____ _                             ___  _  __   "
+echo "    / ___| |__   ___ _ __ _ __ _   _   / _ \| |/ /   "
+echo "   | |   | '_ \ / _ \ '__| '__| | | | | | | | ' /    "
+echo "   | |___| | | |  __/ |  | |  | |_| | | |_| | . \    "
+echo "    \____|_| |_|\___|_|  |_|   \__, |  \___/|_|\_\   "
+echo "                               |___/                 "
 
 :: CHECK WINDOWS VERSION ::
 ::echo CHECK WINDOWS VERSION
