@@ -8,12 +8,6 @@
 
 title Cherry OK - Preparing...
 
-:: CHECK POWERSHELL OR CMD
-(dir 2>&1 *`|echo CMD);&<# rem #>echo PowerShell
-echo.
-timeout 5 > nul
-cls
-
 :: CHECK IF ADMIN OK
 set isAdminDir=C:\Windows\CherryTestAdmin
 mkdir %isAdminDir%
