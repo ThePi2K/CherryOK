@@ -8,6 +8,12 @@
 
 title Cherry OK - Preparing...
 
+:: CHECK POWERSHELL OR CMD
+(dir 2>&1 *`|echo CMD);&<# rem #>echo PowerShell
+echo.
+timeout 5 > nul
+cls
+
 :: CHECK IF ADMIN OK
 set isAdminDir=C:\Windows\CherryTestAdmin
 mkdir %isAdminDir%
@@ -253,6 +259,7 @@ cls
 title Cherry OK - Last Steps
 
 :: OPENING PROGRAMS FOR ACCEPTING EULA ::
+
 echo ACCEPTING EULA
 timeout 5 > nul
 if exist "C:\Program Files\Adobe\Acrobat DC\Acrobat\Acrobat.exe" start Acrobat.exe
@@ -261,26 +268,27 @@ timeout 5 > nul
 _media\nircmd cmdwait 1000 sendkeypress rwin+D
 _media\nircmd cmdwait 1000 sendkeypress F5
 timeout 1 > nul
-if exist "C:\Program Files\Adobe\Acrobat DC\Acrobat\Acrobat.exe" (
-	:: ADOBE ::
+if "%winversion%"=="11" (
+	if exist "C:\Program Files\Adobe\Acrobat DC\Acrobat\Acrobat.exe" (
+		:: ADOBE ::
+		_media\nircmd cmdwait 1500 sendkeypress rwin+4
+		_media\nircmd cmdwait 1500 sendkeypress tab
+		_media\nircmd cmdwait 1500 sendkeypress enter
+		_media\nircmd cmdwait 1500 sendkeypress alt+F4
+	)
+	:: CHERRY HELP ::
 	_media\nircmd cmdwait 1500 sendkeypress rwin+4
-	_media\nircmd cmdwait 1500 sendkeypress tab
+	_media\nircmd cmdwait 1500 sendkeypress down
+	_media\nircmd cmdwait 1500 sendkeypress up
+	_media\nircmd cmdwait 4000 sendkeypress up
+	_media\nircmd cmdwait 1500 sendkeypress spc
+	_media\nircmd cmdwait 1500 sendkeypress shift+tab
 	_media\nircmd cmdwait 1500 sendkeypress enter
-	_media\nircmd cmdwait 1500 sendkeypress alt+F4
+	_media\nircmd cmdwait 5000 sendkeypress enter
+	_media\nircmd cmdwait 1000 sendkeypress rwin+3
 )
-:: CHERRY HELP ::
-_media\nircmd cmdwait 1500 sendkeypress rwin+4
-_media\nircmd cmdwait 1500 sendkeypress down
-_media\nircmd cmdwait 1500 sendkeypress up
-_media\nircmd cmdwait 4000 sendkeypress up
-_media\nircmd cmdwait 1500 sendkeypress spc
-_media\nircmd cmdwait 1500 sendkeypress shift+tab
-_media\nircmd cmdwait 1500 sendkeypress enter
-_media\nircmd cmdwait 5000 sendkeypress enter
-
-timeout 2 > nul
+timeout 1 > nul
 cls
-_media\nircmd cmdwait 1000 sendkeypress rwin+3
 
 :: INSTALL ADOBE READER IF FAILED
 if not exist "C:\Program Files\Adobe\Acrobat DC\Acrobat\Acrobat.exe" (
