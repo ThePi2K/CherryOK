@@ -32,7 +32,6 @@ if not exist C:\Users\Public\Documents\CherryOK (
 powershell.exe -Command "Set-ExecutionPolicy Unrestricted"
 
 :: CHERRY OK ASCII
-echo.
 powershell.exe .\_media\echoTitle.ps1
 
 :: CHECK WINDOWS VERSION ::
