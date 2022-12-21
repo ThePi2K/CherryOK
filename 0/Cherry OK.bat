@@ -33,6 +33,8 @@ powershell.exe -Command "Set-ExecutionPolicy Unrestricted"
 
 :: CHERRY OK ASCII
 powershell.exe .\_media\echoTitle.ps1
+echo.
+echo Cherry OK - Version 5.1.3
 
 :: CHECK WINDOWS VERSION ::
 ::echo CHECK WINDOWS VERSION
