@@ -1,6 +1,6 @@
 :: Cherry OK Script
 :: by Felix Peer
-:: Version 5.1.1
+:: Version 5.1.3
 :: Created and tested for Windows 11 22H2
 
 @echo off
@@ -20,7 +20,7 @@ if not exist %isAdminDir% (
 )
 rmdir %isAdminDir%
 
-:: TEST CHERRY OK 1 ::
+:: TEST FIRST RUN ::
 if not exist C:\Users\Public\Documents\CherryOK (
 	echo NO CHERRY OK 1
 	timeout 1 > nul
@@ -45,9 +45,7 @@ for /f "tokens=1 delims=|" %%a in ("%QUERY%") do (
 ::echo %winver%
 if NOT "%winver%"=="%winver:10=%" set winversion=10
 if NOT "%winver%"=="%winver:11=%" set winversion=11
-::timeout 2 > nul
-::cls
-
+timeout 4 > nul
 cls
 
 :: CHECKING OPTIONAL UPDATES ::
@@ -169,18 +167,18 @@ powercfg -change -standby-timeout-ac 0
 ::cls
 
 :: DISABLE PASSWORD EXPIRATION ::
-echo DISABLE PASSWORD EXPIRATION
-wmic useraccount where "name='user'" set passwordexpires=False
-timeout 1 > nul
-cls
+::echo DISABLE PASSWORD EXPIRATION
+wmic useraccount where "name='user'" set passwordexpires=False >nul
+::timeout 1 > nul
+::cls
 
 :: ADD OEM INFORMATIONS ::
-echo ADD OEM INFORMATIONS
-REG ADD HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation /v SupportPhone /t REG_SZ /d "0471 813087" /f
-REG ADD HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation /v SupportURL /t REG_SZ /d "https://www.cherrycomputer.com" /f
-REG ADD HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation /v Manufacturer /t REG_SZ /d "Cherry Computer Gmbh" /f
-timeout 1 > nul
-cls
+::echo ADD OEM INFORMATIONS
+REG ADD HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation /v SupportPhone /t REG_SZ /d "0471 813087" /f >nul
+REG ADD HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation /v SupportURL /t REG_SZ /d "https://www.cherrycomputer.com" /f >nul
+REG ADD HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation /v Manufacturer /t REG_SZ /d "Cherry Computer Gmbh" /f >nul
+::timeout 1 > nul
+::cls
 
 :: SET DESIGN ::
 echo SET DESIGN
