@@ -22,8 +22,8 @@ rmdir %isAdminDir%
 
 :: TEST FIRST RUN ::
 if not exist C:\Users\Public\Documents\CherryOK (
-	echo NO CHERRY OK 1
-	timeout 1 > nul
+	echo NO CHERRY OK 1 OR NOT RESTARTED YET
+	timeout 2 > nul
 	cls
 	goto FIRSTRUN
 	exit
@@ -96,6 +96,9 @@ rd /s /q C:\$Recycle.Bin
 echo DELETE MICROSOFT EDGE FROM DESKTOP
 start _media\delEdge.bat
 _media\DesktopRefresh.exe
+_media\nircmd cmdwait 1000 sendkeypress rwin+D
+_media\nircmd cmdwait 1000 sendkeypress F5
+_media\nircmd cmdwait 1000 sendkeypress rwin+3
 timeout 1 > nul
 cls
 
@@ -148,6 +151,8 @@ title Cherry OK - Settings are being configured...
 
 :: DISABLE BITLOCKER ENCRYPTION ::
 echo DISABLE BITLOCKER ENCRYPTION
+manage-bde -status C:
+
 manage-bde -off C:
 timeout 1 > nul
 cls
@@ -255,14 +260,12 @@ title Cherry OK - Last Steps
 :: OPENING PROGRAMS FOR ACCEPTING EULA ::
 
 echo ACCEPTING EULA
-timeout 5 > nul
-if exist "C:\Program Files\Adobe\Acrobat DC\Acrobat\Acrobat.exe" start Acrobat.exe
-"%userprofile%\Desktop\Cherry Hilfe.exe"
-timeout 5 > nul
-_media\nircmd cmdwait 1000 sendkeypress rwin+D
-_media\nircmd cmdwait 1000 sendkeypress F5
-timeout 1 > nul
 if "%winversion%"=="11" (
+	timeout 5 > nul
+	if exist "C:\Program Files\Adobe\Acrobat DC\Acrobat\Acrobat.exe" start Acrobat.exe
+	"%userprofile%\Desktop\Cherry Hilfe.exe"
+	_media\nircmd cmdwait 1000 sendkeypress rwin+D
+	timeout 4 > nul
 	if exist "C:\Program Files\Adobe\Acrobat DC\Acrobat\Acrobat.exe" (
 		:: ADOBE ::
 		_media\nircmd cmdwait 1500 sendkeypress rwin+4
@@ -280,9 +283,9 @@ if "%winversion%"=="11" (
 	_media\nircmd cmdwait 1500 sendkeypress enter
 	_media\nircmd cmdwait 5000 sendkeypress enter
 	_media\nircmd cmdwait 1000 sendkeypress rwin+3
+	timeout 1 > nul
+	cls
 )
-timeout 1 > nul
-cls
 
 :: INSTALL ADOBE READER IF FAILED
 if not exist "C:\Program Files\Adobe\Acrobat DC\Acrobat\Acrobat.exe" (
