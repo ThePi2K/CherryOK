@@ -357,6 +357,7 @@ timeout 6 > nul
 _media\nircmd cmdwait 1500 sendkeypress tab tab tab
 _media\nircmd cmdwait 1500 sendkeypress down down down down
 _media\nircmd cmdwait 1500 sendkeypress enter
+_media\nircmd cmdwait 2500 sendkeypress enter
 
 mkdir C:\Users\Public\Documents\CherryOK
 exit
