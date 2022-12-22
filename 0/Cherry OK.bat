@@ -258,9 +258,8 @@ cls
 title Cherry OK - Last Steps
 
 :: OPENING PROGRAMS FOR ACCEPTING EULA ::
-
-echo ACCEPTING EULA
 if "%winversion%"=="11" (
+	echo ACCEPTING EULA
 	timeout 5 > nul
 	if exist "C:\Program Files\Adobe\Acrobat DC\Acrobat\Acrobat.exe" start Acrobat.exe
 	"%userprofile%\Desktop\Cherry Hilfe.exe"
@@ -283,6 +282,13 @@ if "%winversion%"=="11" (
 	_media\nircmd cmdwait 1500 sendkeypress enter
 	_media\nircmd cmdwait 5000 sendkeypress enter
 	_media\nircmd cmdwait 1000 sendkeypress rwin+3
+	timeout 1 > nul
+	cls
+)
+if "%winversion%"=="10" (
+	echo OPENING PROGRAMS FOR EULA
+	if exist "C:\Program Files\Adobe\Acrobat DC\Acrobat\Acrobat.exe" start Acrobat.exe
+	"%userprofile%\Desktop\Cherry Hilfe.exe"
 	timeout 1 > nul
 	cls
 )
