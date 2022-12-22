@@ -1,6 +1,6 @@
 :: Cherry OK Script
 :: by Felix Peer
-:: Version 5.2.0
+:: Version 5.2.1
 :: Created and tested for Windows 11 22H2
 
 @echo off
@@ -34,7 +34,7 @@ if not exist C:\Users\Public\Documents\CherryOK (
 powershell.exe -Command "Set-ExecutionPolicy Unrestricted"
 powershell.exe .\_media\echoTitle.ps1
 echo.
-echo    Cherry OK - Version 5.2.0
+echo    Cherry OK - Version 5.2.1
 
 :: CHECK WINDOWS VERSION ::
 ::echo CHECK WINDOWS VERSION
