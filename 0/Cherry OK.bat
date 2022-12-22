@@ -356,14 +356,24 @@ start ms-settings:windowsupdate
 timeout 2 > nul
 cls
 
-:: MICROSOFT STORE UPDATES ::
+:: OPEN MICROSOFT STORE ::
 echo MICROSOFT STORE UPDATES
 start ms-windows-store:
-timeout 6 > nul
-_media\nircmd cmdwait 1500 sendkeypress tab tab tab
-_media\nircmd cmdwait 1500 sendkeypress down down down down
-_media\nircmd cmdwait 1500 sendkeypress enter
-_media\nircmd cmdwait 2500 sendkeypress enter
+
+:: START WIN STORE UPDATES
+WMIC OS Get Name | findstr Microsoft > result.txt
+set /p QUERY=<result.txt
+del result.txt
+for /f "tokens=1 delims=|" %%a in ("%QUERY%") do (
+	set winver=%%a
+)
+if NOT "%winver%"=="%winver:11=%" (
+	timeout 6 > nul
+	_media\nircmd cmdwait 1500 sendkeypress tab tab tab
+	_media\nircmd cmdwait 1500 sendkeypress down down down down
+	_media\nircmd cmdwait 1500 sendkeypress enter
+	_media\nircmd cmdwait 2500 sendkeypress enter
+)
 
 mkdir C:\Users\Public\Documents\CherryOK
 exit
