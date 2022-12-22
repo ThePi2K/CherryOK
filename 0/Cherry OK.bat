@@ -5,6 +5,7 @@
 
 @echo off
 @title Cherry OK
+cls
 
 title Cherry OK - Preparing...
 
