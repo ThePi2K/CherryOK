@@ -95,10 +95,6 @@ rd /s /q C:\$Recycle.Bin
 :: DELETE MICROSOFT EDGE ::
 echo DELETE MICROSOFT EDGE FROM DESKTOP
 start _media\delEdge.bat
-_media\DesktopRefresh.exe
-_media\nircmd cmdwait 1000 sendkeypress rwin+D
-_media\nircmd cmdwait 1000 sendkeypress F5
-_media\nircmd cmdwait 1000 sendkeypress rwin+3
 timeout 1 > nul
 cls
 
@@ -252,6 +248,16 @@ if "%winversion%"=="11" (
 	_media\nircmd cmdwait 1500 sendkeypress enter
 	_media\nircmd cmdwait 1500 sendkeypress esc
 )
+timeout 1 > nul
+cls
+
+:: REFRESH DESKTOP ::
+echo Refreshing Desktop...
+timeout 1 > nul
+_media\nircmd cmdwait 1000 sendkeypress rwin+D
+_media\nircmd cmdwait 1000 sendkeypress F5
+timeout 1 > nul
+_media\nircmd cmdwait 1000 sendkeypress rwin+3
 timeout 1 > nul
 cls
 
