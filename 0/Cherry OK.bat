@@ -9,12 +9,6 @@ cls
 
 title Cherry OK - Preparing...
 
-:: CHERRY OK ASCII
-powershell.exe -Command "Set-ExecutionPolicy Unrestricted"
-powershell.exe .\_media\echoTitle.ps1
-echo.
-echo Cherry OK - Version 5.1.3
-
 :: CHECK IF ADMIN OK
 set isAdminDir=C:\Windows\CherryTestAdmin
 mkdir %isAdminDir%
@@ -35,6 +29,12 @@ if not exist C:\Users\Public\Documents\CherryOK (
 	goto FIRSTRUN
 	exit
 )
+
+:: CHERRY OK ASCII
+powershell.exe -Command "Set-ExecutionPolicy Unrestricted"
+powershell.exe .\_media\echoTitle.ps1
+echo.
+echo Cherry OK - Version 5.1.3
 
 :: CHECK WINDOWS VERSION ::
 ::echo CHECK WINDOWS VERSION
