@@ -14,8 +14,6 @@ set isAdminDir=C:\Windows\CherryTestAdmin
 mkdir %isAdminDir%
 if not exist %isAdminDir% (
 	echo NO ADMIN
-	timeout 1 > nul
-	cls
 	goto FIRSTRUN
 	exit
 )
@@ -24,8 +22,6 @@ rmdir %isAdminDir%
 :: TEST FIRST RUN ::
 if not exist C:\Users\Public\Documents\CherryOK (
 	echo NO CHERRY OK 1 OR NOT RESTARTED YET
-	timeout 2 > nul
-	cls
 	goto FIRSTRUN
 	exit
 )
@@ -343,6 +339,8 @@ exit
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :FIRSTRUN
+timeout 2 > nul
+cls
 
 :: CONNECTING TO CHERRY-NET IF NO INTERNET
 echo CHECKING INTERNET...
