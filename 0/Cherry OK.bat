@@ -330,11 +330,9 @@ powershell.exe -Command "Set-ExecutionPolicy Restricted"
 
 exit
 
-
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::                                            FIRST RUN                                            ::
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
 
 :FIRSTRUN
 :: STOPPING EXPLORER ::
@@ -359,6 +357,14 @@ cls
 
 :: START UPDATES BEFORE LAUNCHING SETTINGS ::
 wuauclt /detectnow /updatenow
+
+:: EXIT IF NO INTERNET
+ping -n 1 8.8.8.8 | find "TTL=" >nul
+if errorlevel 1 (
+	echo NO INTERNET; CONNECT TO INTERNET!
+	timeout 5 > nul
+	exit
+)
 
 :: WINDOWS UPDATES ::
 echo WINDOWS UPDATES
