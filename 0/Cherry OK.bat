@@ -1,6 +1,6 @@
 :: Cherry OK Script
 :: by Felix Peer
-:: Version 5.2.2
+:: Version 5.3
 :: Created and tested for Windows 11 22H2
 
 @echo off
@@ -34,7 +34,7 @@ if not exist C:\Users\Public\Documents\CherryOK (
 powershell.exe -Command "Set-ExecutionPolicy Unrestricted"
 powershell.exe .\_media\echoTitle.ps1
 echo.
-echo    Cherry OK - Version 5.2.2
+echo    Cherry OK - Version 5.3
 
 :: CHECK WINDOWS VERSION ::
 ::echo CHECK WINDOWS VERSION
@@ -340,9 +340,6 @@ exit
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :FIRSTRUN
-:: STOPPING EXPLORER ::
-taskkill /f /im explorer.exe
-start explorer.exe
 
 :: CONNECTING TO CHERRY-NET IF NO INTERNET
 echo CHECKING INTERNET...
@@ -378,12 +375,6 @@ wuauclt /detectnow /updatenow
 timeout 2 > nul
 cls
 
-:: WINDOWS UPDATES ::
-echo WINDOWS UPDATES
-start ms-settings:windowsupdate
-timeout 2 > nul
-cls
-
 :: OPEN MICROSOFT STORE ::
 echo MICROSOFT STORE UPDATES
 start ms-windows-store:
@@ -396,14 +387,18 @@ for /f "tokens=1 delims=|" %%a in ("%QUERY%") do (
 	set winver=%%a
 )
 if NOT "%winver%"=="%winver:11=%" (
-	timeout 6 > nul
+	timeout 8 > nul
 	_media\nircmd cmdwait 1500 sendkeypress tab tab tab
 	_media\nircmd cmdwait 1500 sendkeypress down down down down
 	_media\nircmd cmdwait 1500 sendkeypress enter
 	_media\nircmd cmdwait 2500 sendkeypress enter
-	timeout 5 > nul
-	_media\nircmd sendkeypress alt+tab+enter
 )
+
+:: WINDOWS UPDATES ::
+echo WINDOWS UPDATES
+start ms-settings:windowsupdate
+timeout 2 > nul
+cls
 
 mkdir C:\Users\Public\Documents\CherryOK
 exit
