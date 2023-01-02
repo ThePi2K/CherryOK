@@ -340,14 +340,16 @@ taskkill /f /im explorer.exe
 start explorer.exe
 
 :: CONNECTING TO CHERRY-NET IF NO INTERNET
+echo CHECKING INTERNET...
 ping -n 1 8.8.8.8 | find "TTL=" >nul
+cls
 if errorlevel 1 (
 	:: CONNECTING TO CHERRY-NET ::
 	echo CONNECTING TO CHERRY-NET
 	netsh wlan add profile filename=_media\WLAN-Cherry-Net.xml
-	timeout 4
-	cls
-)
+) else INTERNET OK!
+timeout 4 > nul
+cls
 
 :: SET UAC SETTINGS ::
 echo SET UAC SETTINGS
@@ -359,12 +361,17 @@ cls
 wuauclt /detectnow /updatenow
 
 :: EXIT IF NO INTERNET
+echo CHECKING INTERNET...
 ping -n 1 8.8.8.8 | find "TTL=" >nul
+cls
 if errorlevel 1 (
-	echo NO INTERNET; CONNECT TO INTERNET!
+	echo NO INTERNET... CONNECT TO INTERNET!
 	timeout 5 > nul
 	exit
 )
+echo INTERNET OK!
+timeout 2 > nul
+cls
 
 :: WINDOWS UPDATES ::
 echo WINDOWS UPDATES
