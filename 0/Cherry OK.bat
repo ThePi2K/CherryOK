@@ -125,7 +125,11 @@ cls
 :: INSTALL CHERRY HILFE ::
 if not exist "%userprofile%\Desktop\Cherry Hilfe.exe" (
 	echo INSTALL CHERRY HILFE
-	copy "_media\TeamViewerQS.exe" "%userprofile%\Desktop\Cherry Hilfe.exe"
+	if %OSLanguage%==de-DE copy "_media\TeamViewerQS.exe" "%userprofile%\Desktop\Cherry Hilfe.exe" else (
+		if %OSLanguage%==it-IT copy "_media\TeamViewerQS.exe" "%userprofile%\Desktop\Cherry Aiuto.exe" else (
+			copy "_media\TeamViewerQS.exe" "%userprofile%\Desktop\Cherry Help.exe"
+		)
+	)
 	timeout 2 > nul
 )	else (
 	echo Cherry Hilfe is installed!
