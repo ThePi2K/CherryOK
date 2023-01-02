@@ -328,8 +328,10 @@ powershell.exe .\_media\restore.ps1
 timeout 2 > nul
 cls
 
-echo CHERRY OK SUCCEEDED SUCCESSFULLY
-timeout 2 > nul
+powershell.exe .\_media\echoTitle.ps1
+echo.
+echo    CHERRY OK SUCCEEDED SUCCESSFULLY
+timeout 5 > nul
 cls
 
 powershell.exe -Command "Set-ExecutionPolicy Restricted"
