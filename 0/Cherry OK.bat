@@ -47,7 +47,7 @@ for /f "tokens=1 delims=|" %%a in ("%QUERY%") do (
 ::echo %winver%
 if NOT "%winver%"=="%winver:10=%" set winversion=10
 if NOT "%winver%"=="%winver:11=%" set winversion=11
-timeout 4 > nul
+timeout 3 > nul
 cls
 
 :: CHECK LANGUAGE ::
@@ -123,16 +123,13 @@ timeout 1 > nul
 cls
 
 :: INSTALL CHERRY HILFE ::
-if not exist "%userprofile%\Desktop\Cherry Hilfe.exe" (
-	echo INSTALL CHERRY HILFE
-	if %OSLanguage%==de-DE copy "_media\TeamViewerQS.exe" "%userprofile%\Desktop\Cherry Hilfe.exe" else (
-		if %OSLanguage%==it-IT copy "_media\TeamViewerQS.exe" "%userprofile%\Desktop\Cherry Aiuto.exe" else (
-			copy "_media\TeamViewerQS.exe" "%userprofile%\Desktop\Cherry Help.exe"
-		)
-	)
-	timeout 2 > nul
-)	else (
+if exist "%userprofile%\Desktop\Cherry *.exe" (
 	echo Cherry Hilfe is installed!
+) else (
+	echo No Cherry Hilfe
+	if "%OSLanguage%"=="de-DE" copy "_media\TeamViewerQS.exe" "%userprofile%\Desktop\Cherry Hilfe.exe"
+	if "%OSLanguage%"=="it-IT" copy "_media\TeamViewerQS.exe" "%userprofile%\Desktop\Cherry Aiuto.exe"
+	if not exist "%userprofile%\Desktop\Cherry *.exe" copy "_media\TeamViewerQS.exe" "%userprofile%\Desktop\Cherry Help.exe"
 )
 timeout 1 > nul
 cls
@@ -283,7 +280,9 @@ if "%winversion%"=="11" (
 	echo ACCEPTING EULA
 	timeout 5 > nul
 	if exist "C:\Program Files\Adobe\Acrobat DC\Acrobat\Acrobat.exe" start Acrobat.exe
-	"%userprofile%\Desktop\Cherry Hilfe.exe"
+	if exist "%userprofile%\Desktop\Cherry Hilfe.exe" "%userprofile%\Desktop\Cherry Hilfe.exe"
+	if exist "%userprofile%\Desktop\Cherry Aiuto.exe" "%userprofile%\Desktop\Cherry Aiuto.exe"
+	if exist "%userprofile%\Desktop\Cherry Help.exe" "%userprofile%\Desktop\Cherry Help.exe"
 	_media\nircmd cmdwait 1000 sendkeypress rwin+D
 	timeout 4 > nul
 	if exist "C:\Program Files\Adobe\Acrobat DC\Acrobat\Acrobat.exe" (
@@ -309,7 +308,9 @@ if "%winversion%"=="11" (
 if "%winversion%"=="10" (
 	echo OPENING PROGRAMS FOR EULA
 	if exist "C:\Program Files\Adobe\Acrobat DC\Acrobat\Acrobat.exe" start Acrobat.exe
-	"%userprofile%\Desktop\Cherry Hilfe.exe"
+	if exist "%userprofile%\Desktop\Cherry Hilfe.exe" "%userprofile%\Desktop\Cherry Hilfe.exe"
+	if exist "%userprofile%\Desktop\Cherry Aiuto.exe" "%userprofile%\Desktop\Cherry Aiuto.exe"
+	if exist "%userprofile%\Desktop\Cherry Help.exe" "%userprofile%\Desktop\Cherry Help.exe"
 	timeout 1 > nul
 	cls
 )
