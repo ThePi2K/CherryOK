@@ -1,6 +1,6 @@
 :: Cherry OK Script
 :: by Felix Peer
-:: Version 5.2.1
+:: Version 5.2.2
 :: Created and tested for Windows 11 22H2
 
 @echo off
@@ -34,7 +34,7 @@ if not exist C:\Users\Public\Documents\CherryOK (
 powershell.exe -Command "Set-ExecutionPolicy Unrestricted"
 powershell.exe .\_media\echoTitle.ps1
 echo.
-echo    Cherry OK - Version 5.2.1
+echo    Cherry OK - Version 5.2.2
 
 :: CHECK WINDOWS VERSION ::
 ::echo CHECK WINDOWS VERSION
@@ -48,6 +48,16 @@ for /f "tokens=1 delims=|" %%a in ("%QUERY%") do (
 if NOT "%winver%"=="%winver:10=%" set winversion=10
 if NOT "%winver%"=="%winver:11=%" set winversion=11
 timeout 4 > nul
+cls
+
+:: CHECK LANGUAGE ::
+echo CHECK WINDOWS LANGUAGE
+FOR /F "tokens=2 delims==" %%a IN ('wmic os get OSLanguage /Value') DO set OSLangCode=%%a
+if %OSLangCode% == 1031 set OSLanguage=de-DE else set OSLanguage=undefined
+if %OSLangCode% == 1033 set OSLanguage=en-US else set OSLanguage=undefined
+if %OSLangCode% == 1040 set OSLanguage=it-IT else set OSLanguage=undefined
+echo OS Language: %OSLanguage% (Code %OSLangCode%)
+timeout 2 > nul
 cls
 
 :: CHECKING OPTIONAL UPDATES ::
