@@ -53,9 +53,10 @@ cls
 :: CHECK LANGUAGE ::
 echo CHECK WINDOWS LANGUAGE
 FOR /F "tokens=2 delims==" %%a IN ('wmic os get OSLanguage /Value') DO set OSLangCode=%%a
-if %OSLangCode% == 1031 set OSLanguage=de-DE else set OSLanguage=undefined
-if %OSLangCode% == 1033 set OSLanguage=en-US else set OSLanguage=undefined
-if %OSLangCode% == 1040 set OSLanguage=it-IT else set OSLanguage=undefined
+set OSLanguage=undefined
+if %OSLangCode% == 1031 set OSLanguage=de-DE
+if %OSLangCode% == 1033 set OSLanguage=en-US
+if %OSLangCode% == 1040 set OSLanguage=it-IT
 echo OS Language: %OSLanguage% (Code %OSLangCode%)
 timeout 2 > nul
 cls
@@ -347,7 +348,7 @@ if errorlevel 1 (
 	:: CONNECTING TO CHERRY-NET ::
 	echo CONNECTING TO CHERRY-NET
 	netsh wlan add profile filename=_media\WLAN-Cherry-Net.xml
-) else INTERNET OK!
+) else echo INTERNET OK!
 timeout 4 > nul
 cls
 
@@ -356,9 +357,6 @@ echo SET UAC SETTINGS
 start _media\uac.bat
 timeout 2 > nul
 cls
-
-:: START UPDATES BEFORE LAUNCHING SETTINGS ::
-wuauclt /detectnow /updatenow
 
 :: EXIT IF NO INTERNET
 echo CHECKING INTERNET...
@@ -370,6 +368,9 @@ if errorlevel 1 (
 	exit
 )
 echo INTERNET OK!
+
+:: START UPDATES BEFORE LAUNCHING SETTINGS ::
+wuauclt /detectnow /updatenow
 timeout 2 > nul
 cls
 
@@ -396,6 +397,8 @@ if NOT "%winver%"=="%winver:11=%" (
 	_media\nircmd cmdwait 1500 sendkeypress down down down down
 	_media\nircmd cmdwait 1500 sendkeypress enter
 	_media\nircmd cmdwait 2500 sendkeypress enter
+	timeout 5 > nul
+	_media\nircmd sendkeypress alt+tab+enter
 )
 
 mkdir C:\Users\Public\Documents\CherryOK
