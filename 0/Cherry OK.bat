@@ -339,6 +339,7 @@ cls
 
 powershell.exe -Command "Set-ExecutionPolicy Restricted"
 
+shutdown /t 0 /r
 exit
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
