@@ -408,4 +408,8 @@ cls
 
 mkdir C:\Users\Public\Documents\CherryOK
 copy Scripts\start_Updates_And_Store.cmd %USERPROFILE%\Desktop\Updates.cmd
+
+:: TEST ::
+copy "_media\Updates.lnk" "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup"
+
 exit
