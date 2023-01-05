@@ -84,6 +84,7 @@ WHERE winget >nul 2>&1
 IF %ERRORLEVEL% NEQ 0 (
 ECHO Winget is not installed! Install all Updates from the Microsoft Store to start the Script!
 pause >nul
+start ms-windows-store:
 exit
 )
 echo Winget OK
