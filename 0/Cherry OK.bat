@@ -99,6 +99,7 @@ cls
 
 :: REMOVING UPDATE CMD FILE ON DESKTOP
 del %USERPROFILE%\Desktop\Updates.cmd
+cls
 
 :: EMPTY RECYCLE BIN ::
 rd /s /q C:\$Recycle.Bin
