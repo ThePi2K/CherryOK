@@ -1,6 +1,6 @@
 :: Cherry OK Script
 :: by Felix Peer
-:: Version 5.4
+:: Version 5.4.1
 :: Created and tested for Windows 11 22H2
 
 @echo off
@@ -30,7 +30,7 @@ if not exist C:\Users\Public\Documents\CherryOK (
 powershell.exe -Command "Set-ExecutionPolicy Unrestricted"
 powershell.exe .\_media\echoTitle.ps1
 echo.
-echo    Cherry OK - Version 5.4
+echo    Cherry OK - Version 5.4.1
 
 :: CHECK WINDOWS VERSION ::
 ::echo CHECK WINDOWS VERSION
@@ -97,8 +97,9 @@ if not "%drivers%" == "y" (
 :: powershell -window minimized -command ""
 cls
 
-:: REMOVING UPDATE CMD FILE ON DESKTOP
+:: REMOVING UPDATE CMD FILE ON DESKTOP AND IN STARTUP
 del %USERPROFILE%\Desktop\Updates.cmd
+del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\Updates.lnk"
 cls
 
 :: EMPTY RECYCLE BIN ::
@@ -332,6 +333,7 @@ cls
 powershell.exe .\_media\echoTitle.ps1
 echo.
 echo    CHERRY OK SUCCEEDED SUCCESSFULLY
+echo    TESTED & APPROVED
 timeout 5 > nul
 cls
 
@@ -407,9 +409,9 @@ timeout 2 > nul
 cls
 
 mkdir C:\Users\Public\Documents\CherryOK
-copy Scripts\start_Updates_And_Store.cmd %USERPROFILE%\Desktop\Updates.cmd
 
-:: TEST ::
+:: CREATE UPDATE SCRIPT
+copy Scripts\start_Updates_And_Store.cmd %USERPROFILE%\Desktop\Updates.cmd
 copy "_media\Updates.lnk" "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup"
 
 exit
