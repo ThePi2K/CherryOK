@@ -32,6 +32,9 @@ powershell.exe .\_media\echoTitle.ps1
 echo.
 echo    Cherry OK - Version 5.3
 
+:: REMOVING UPDATE CMD
+del %USERPROFILE%\Desktop\Updates.cmd
+
 :: CHECK WINDOWS VERSION ::
 ::echo CHECK WINDOWS VERSION
 WMIC OS Get Name | findstr Microsoft > result.txt
@@ -402,4 +405,5 @@ timeout 2 > nul
 cls
 
 mkdir C:\Users\Public\Documents\CherryOK
+copy Scripts\start_Updates_And_Store.cmd %USERPROFILE%\Desktop\Updates.cmd
 exit
