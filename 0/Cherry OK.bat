@@ -32,9 +32,6 @@ powershell.exe .\_media\echoTitle.ps1
 echo.
 echo    Cherry OK - Version 5.4
 
-:: REMOVING UPDATE CMD
-del %USERPROFILE%\Desktop\Updates.cmd
-
 :: CHECK WINDOWS VERSION ::
 ::echo CHECK WINDOWS VERSION
 WMIC OS Get Name | findstr Microsoft > result.txt
@@ -99,6 +96,9 @@ if not "%drivers%" == "y" (
 )
 :: powershell -window minimized -command ""
 cls
+
+:: REMOVING UPDATE CMD FILE ON DESKTOP
+del %USERPROFILE%\Desktop\Updates.cmd
 
 :: EMPTY RECYCLE BIN ::
 rd /s /q C:\$Recycle.Bin
