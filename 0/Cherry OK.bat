@@ -333,7 +333,7 @@ cls
 powershell.exe .\_media\echoTitle.ps1
 echo.
 echo    CHERRY OK SUCCEEDED SUCCESSFULLY
-echo    TESTED & APPROVED
+echo    TESTED AND APPROVED
 timeout 5 > nul
 cls
 
@@ -377,7 +377,6 @@ if errorlevel 1 (
 	timeout 5 > nul
 	exit
 )
-echo INTERNET OK!
 
 :: START UPDATES BEFORE LAUNCHING SETTINGS ::
 wuauclt /detectnow /updatenow
