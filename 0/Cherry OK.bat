@@ -1,6 +1,6 @@
 :: Cherry OK Script
 :: by Felix Peer
-:: Version 5.4.1
+:: Version 5.4.2b
 :: Created and tested for Windows 11 22H2
 
 @echo off
@@ -30,7 +30,7 @@ if not exist C:\Users\Public\Documents\CherryOK (
 powershell.exe -Command "Set-ExecutionPolicy Unrestricted"
 powershell.exe .\_media\echoTitle.ps1
 echo.
-echo    Cherry OK - Version 5.4.1
+echo    Cherry OK - Version 5.4.2b
 
 :: CHECK WINDOWS VERSION ::
 ::echo CHECK WINDOWS VERSION
@@ -75,6 +75,20 @@ start ms-settings:activation
 timeout 1 > nul
 cls
 
+:: BETA: CHECK WINDOWS KEY ::
+echo BETA: CHECKING WINDOWS KEY
+for /f "tokens=3 delims=: " %%a in (
+    'cscript //nologo "%systemroot%\system32\slmgr.vbs" /dli ^| find "License Status:"' 
+) do set "licenseStatus=%%a"
+if /i "%licenseStatus%"=="Licensed" (
+  echo BETA WINDOWS IS ACTIVATED
+) else (
+  echo BETA WINDOWS IS NOT!!! ACTIVATED!!!!!
+  pause
+)
+timeout 2 > nul
+cls
+
 :: CHECK WINGET ::
 echo CHECKING FOR WINGET...
 WHERE winget >nul 2>&1
@@ -98,8 +112,9 @@ if not "%drivers%" == "y" (
 cls
 
 :: REMOVING UPDATE CMD FILE ON DESKTOP AND IN STARTUP
-del %USERPROFILE%\Desktop\Updates.cmd
-del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\Updates.lnk"
+:: del %USERPROFILE%\Desktop\Updates.cmd
+:: del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\Updates.lnk"
+del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\start_Updates_And_Store.cmd"
 cls
 
 :: EMPTY RECYCLE BIN ::
@@ -411,7 +426,8 @@ cls
 mkdir C:\Users\Public\Documents\CherryOK
 
 :: CREATE UPDATE SCRIPT
-copy Scripts\start_Updates_And_Store.cmd %USERPROFILE%\Desktop\Updates.cmd
-copy "_media\Updates.lnk" "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup"
+::copy Scripts\start_Updates_And_Store.cmd %USERPROFILE%\Desktop\Updates.cmd
+::copy "_media\Updates.lnk" "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup"
+copy Scripts\start_Updates_And_Store.cmd "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup"
 
 exit
