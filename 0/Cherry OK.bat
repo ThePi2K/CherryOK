@@ -5,7 +5,6 @@
 
 @echo off
 @title Cherry OK
-cls
 
 title Cherry OK - Preparing...
 
@@ -27,7 +26,6 @@ if not exist C:\Users\Public\Documents\CherryOK (
 )
 
 :: CHERRY OK ASCII
-powershell.exe -Command "Set-ExecutionPolicy Unrestricted"
 powershell.exe .\_media\echoTitle.ps1
 echo.
 echo    Cherry OK - Version 5.4.2b
