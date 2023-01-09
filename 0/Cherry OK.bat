@@ -1,6 +1,6 @@
 :: Cherry OK Script
 :: by Felix Peer
-:: Version 5.4.3
+:: Version 5.4.4b
 :: Created and tested for Windows 11 22H2
 
 @echo off
@@ -28,7 +28,7 @@ if not exist C:\Users\Public\Documents\CherryOK (
 :: CHERRY OK ASCII
 powershell.exe .\_media\echoTitle.ps1
 echo.
-echo    Cherry OK - Version 5.4.3
+echo    Cherry OK - Version 5.4.4b
 
 :: CHECK WINDOWS VERSION ::
 ::echo CHECK WINDOWS VERSION
@@ -332,7 +332,7 @@ if not exist "C:\Program Files\Adobe\Acrobat DC\Acrobat\Acrobat.exe" (
 rmdir C:\Users\Public\Documents\CherryOK
 echo CONFIGURING SYSTEM RESTORE
 powershell.exe .\_media\restore.ps1
-timeout 2 > nul
+timeout 6 > nul
 cls
 
 powershell.exe .\_media\echoTitle.ps1

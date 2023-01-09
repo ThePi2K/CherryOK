@@ -6,3 +6,5 @@ vssadmin resize shadowstorage /for=C: /on=C: /maxsize=20%
 cls
 echo "CONFIGURING SYSTEM RESTORE"
 Checkpoint-Computer -Description "Cherry OK" -RestorePointType "MODIFY_SETTINGS"
+cls
+Get-ComputerRestorePoint
