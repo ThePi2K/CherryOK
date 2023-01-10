@@ -1,4 +1,3 @@
-cd..
 $ActivationStatus = Get-CimInstance SoftwareLicensingProduct -Filter "Name like 'Windows%'" | Where-Object { $_.PartialProductKey } | Select-Object LicenseStatus       
 
         $LicenseResult = switch($ActivationStatus.LicenseStatus){
