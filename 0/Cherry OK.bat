@@ -31,22 +31,21 @@ echo.
 echo    Cherry OK - Version 5.4.5b
 
 :: CHECK WINDOWS VERSION ::
-::echo CHECK WINDOWS VERSION
 WMIC OS Get Name | findstr Microsoft > result.txt
 set /p QUERY=<result.txt
 del result.txt
 for /f "tokens=1 delims=|" %%a in ("%QUERY%") do (
 	set winver=%%a
 )
-::echo %winver%
 if NOT "%winver%"=="%winver:10=%" set winversion=10
 if NOT "%winver%"=="%winver:11=%" set winversion=11
-timeout 3 > nul
-cls
 
 :: CHECK WINDOWS ACTIVATION ::
-echo CHECKING WINDOWS ACTIVATION...
 powershell -File "_media\checkWindowsActivation.ps1"
+echo CHECKING WINDOWS ACTIVATION...
+timeout 2 > nul
+cls
+echo CHECKING WINDOWS ACTIVATION...
 set /p status=<tmp
 del tmp
 if "%status%"=="Licensed" (
