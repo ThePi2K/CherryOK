@@ -46,7 +46,7 @@ if NOT "%winver%"=="%winver:11=%" set winversion=11
 powershell -File "_media\checkWindowsActivation.ps1"
 cls
 echo CHECKING WINDOWS ACTIVATION...
-timeout 2 > nul
+::timeout 2 > nul
 set /p status=<tmp
 del tmp
 if "%status%"=="Licensed" (
