@@ -265,6 +265,7 @@ cls
 
 :: CLEAR NOTIFICATIONS ::
 echo CLEAR NOTIFICATIONS
+timeout 2 > nul
 if "%winversion%"=="10" (
 	_media\nircmd sendkeypress lwin+a
 	_media\nircmd cmdwait 2000 sendkeypress leftshift+tab
