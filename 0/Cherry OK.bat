@@ -67,11 +67,22 @@ echo CHECKING DEVICE MANAGER
 devmgmt.msc
 cls
 
-:: CHECK WINDOWS KEY ::
-echo CHECKING WINDOWS KEY
-start ms-settings:activation
-timeout 1 > nul
-cls
+:: CHECK WINDOWS ACTIVATION ::
+echo CHECKING WINDOWS ACTIVATION...
+powershell -File "_media\checkWindowsActivation.ps1"
+set /p status=<tmp
+del tmp
+if "%status%"=="Licensed" (
+	echo Windows is activated!
+	timeout 2 > nul
+	cls
+) else (
+	echo Windows is not activated!
+	echo Error: %status%
+	pause>nul
+	start ms-settings:activation
+	exit
+)
 
 :: CHECK WINGET ::
 echo CHECKING FOR WINGET...
