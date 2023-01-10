@@ -8,6 +8,9 @@
 
 title Cherry OK - Preparing...
 
+:: CONNECT TO WIFI
+netsh wlan add profile filename=_media\WLAN-Cherry-Net.xml >nul
+
 :: CHECK IF ADMIN OK
 set isAdminDir=C:\Windows\CherryTestAdmin
 mkdir %isAdminDir%
@@ -366,19 +369,7 @@ exit
 
 
 :FIRSTRUN
-timeout 2 > nul
-cls
-
-:: CONNECTING TO CHERRY-NET IF NO INTERNET
-echo CHECKING INTERNET...
-ping -n 1 8.8.8.8 | find "TTL=" >nul
-cls
-if errorlevel 1 (
-	:: CONNECTING TO CHERRY-NET ::
-	echo CONNECTING TO CHERRY-NET
-	netsh wlan add profile filename=_media\WLAN-Cherry-Net.xml
-) else echo INTERNET OK!
-timeout 4 > nul
+timeout 5 > nul
 cls
 
 :: SET UAC SETTINGS ::
