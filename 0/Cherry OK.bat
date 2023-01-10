@@ -46,7 +46,7 @@ if NOT "%winver%"=="%winver:11=%" set winversion=11
 powershell -File "_media\checkWindowsActivation.ps1"
 cls
 echo CHECKING WINDOWS ACTIVATION...
-timeout 2 > nul
+timeout 1 > nul
 set /p status=<tmp
 del tmp
 if "%status%"=="Licensed" (
@@ -164,9 +164,12 @@ timeout 1 > nul
 cls
 
 :: INSTALL ACROBAT DC ::
+:Adobe
 if not exist "C:\Program Files\Adobe\Acrobat DC\Acrobat\Acrobat.exe" (
 	echo INSTALL ACROBAT DC
 	winget install --id Adobe.Acrobat.Reader.64-bit --accept-source-agreements --force --scope machine
+	echo Second Check...
+	goto Adobe
 )	else (
 	echo Adobe Reader is installed!
 )
