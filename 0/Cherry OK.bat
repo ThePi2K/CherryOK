@@ -1,6 +1,5 @@
 :: Cherry OK Script
 :: by Felix Peer
-:: Version 5.4.5b
 :: Created and tested for Windows 11 22H2
 
 @echo off
@@ -31,7 +30,7 @@ if not exist C:\Users\Public\Documents\CherryOK (
 :: CHERRY OK ASCII
 powershell.exe .\_media\echoTitle.ps1
 echo.
-echo    Cherry OK - Version 5.4.5b
+echo    Cherry OK - Version 5.5.0
 
 :: CHECK WINDOWS VERSION ::
 WMIC OS Get Name | findstr Microsoft > result.txt
@@ -45,10 +44,9 @@ if NOT "%winver%"=="%winver:11=%" set winversion=11
 
 :: CHECK WINDOWS ACTIVATION ::
 powershell -File "_media\checkWindowsActivation.ps1"
-echo CHECKING WINDOWS ACTIVATION...
-timeout 2 > nul
 cls
 echo CHECKING WINDOWS ACTIVATION...
+timeout 2 > nul
 set /p status=<tmp
 del tmp
 if "%status%"=="Licensed" (
@@ -117,8 +115,6 @@ cls
 
 
 :: REMOVING UPDATE CMD FILE ON DESKTOP AND IN STARTUP
-:: del %USERPROFILE%\Desktop\Updates.cmd
-:: del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\Updates.lnk"
 del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\start_Updates_And_Store.cmd"
 cls
 
@@ -417,6 +413,8 @@ echo WINDOWS UPDATES
 start ms-settings:windowsupdate
 timeout 2 > nul
 cls
+
+_media\nircmd sendkeypress lwin+i
 
 mkdir C:\Users\Public\Documents\CherryOK
 
