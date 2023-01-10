@@ -1,6 +1,6 @@
 :: Cherry OK Script
 :: by Felix Peer
-:: Version 5.4.4
+:: Version 5.4.5b
 :: Created and tested for Windows 11 22H2
 
 @echo off
@@ -28,7 +28,7 @@ if not exist C:\Users\Public\Documents\CherryOK (
 :: CHERRY OK ASCII
 powershell.exe .\_media\echoTitle.ps1
 echo.
-echo    Cherry OK - Version 5.4.4
+echo    Cherry OK - Version 5.4.5b
 
 :: CHECK WINDOWS VERSION ::
 ::echo CHECK WINDOWS VERSION
@@ -415,11 +415,11 @@ for /f "tokens=1 delims=|" %%a in ("%QUERY%") do (
 	set winver=%%a
 )
 if NOT "%winver%"=="%winver:11=%" (
-	timeout 8 > nul
-	_media\nircmd cmdwait 1500 sendkeypress tab tab tab
-	_media\nircmd cmdwait 1500 sendkeypress down down down down
+	timeout 9 > nul
+	_media\nircmd cmdwait 500 sendkeypress tab tab tab
+	_media\nircmd cmdwait 500 sendkeypress down down down down
+	_media\nircmd cmdwait 500 sendkeypress enter
 	_media\nircmd cmdwait 1500 sendkeypress enter
-	_media\nircmd cmdwait 2500 sendkeypress enter
 )
 
 :: WINDOWS UPDATES ::
