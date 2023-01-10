@@ -1,6 +1,6 @@
 :: Cherry OK Script
 :: by Felix Peer
-:: Version 5.4.4b
+:: Version 5.4.4
 :: Created and tested for Windows 11 22H2
 
 @echo off
@@ -28,7 +28,7 @@ if not exist C:\Users\Public\Documents\CherryOK (
 :: CHERRY OK ASCII
 powershell.exe .\_media\echoTitle.ps1
 echo.
-echo    Cherry OK - Version 5.4.4b
+echo    Cherry OK - Version 5.4.4
 
 :: CHECK WINDOWS VERSION ::
 ::echo CHECK WINDOWS VERSION
@@ -44,15 +44,34 @@ if NOT "%winver%"=="%winver:11=%" set winversion=11
 timeout 3 > nul
 cls
 
+:: CHECK WINDOWS ACTIVATION ::
+echo CHECKING WINDOWS ACTIVATION...
+powershell -File "_media\checkWindowsActivation.ps1"
+set /p status=<tmp
+del tmp
+if "%status%"=="Licensed" (
+	echo Windows is activated!
+	timeout 2 > nul
+	cls
+) else (
+	echo Windows is not activated!
+	echo Error: %status%
+	echo.
+	echo Press Enter to start the Windows Activation
+	pause>nul
+	start ms-settings:activation
+	exit
+)
+
 :: CHECK LANGUAGE ::
-echo CHECK WINDOWS LANGUAGE
+::echo CHECK WINDOWS LANGUAGE
 FOR /F "tokens=2 delims==" %%a IN ('wmic os get OSLanguage /Value') DO set OSLangCode=%%a
 set OSLanguage=undefined
 if %OSLangCode% == 1031 set OSLanguage=de-DE
 if %OSLangCode% == 1033 set OSLanguage=en-US
 if %OSLangCode% == 1040 set OSLanguage=it-IT
-echo OS Language: %OSLanguage% (Code %OSLangCode%)
-timeout 2 > nul
+::echo OS Language: %OSLanguage% (Code %OSLangCode%)
+::timeout 2 > nul
 cls
 
 :: CHECKING OPTIONAL UPDATES ::
@@ -66,23 +85,6 @@ cls
 echo CHECKING DEVICE MANAGER
 devmgmt.msc
 cls
-
-:: CHECK WINDOWS ACTIVATION ::
-echo CHECKING WINDOWS ACTIVATION...
-powershell -File "_media\checkWindowsActivation.ps1"
-set /p status=<tmp
-del tmp
-if "%status%"=="Licensed" (
-	echo Windows is activated!
-	timeout 2 > nul
-	cls
-) else (
-	echo Windows is not activated!
-	echo Error: %status%
-	pause>nul
-	start ms-settings:activation
-	exit
-)
 
 :: CHECK WINGET ::
 echo CHECKING FOR WINGET...
