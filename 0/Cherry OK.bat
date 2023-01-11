@@ -84,7 +84,7 @@ cls
 :: OPEN DEVICE MANAGER ::
 echo CHECKING DEVICE MANAGER
 devmgmt.msc
-cls
+::cls
 
 ::::::::::::::::::::::::::::::::::::::::::::::  BETA  ::::::::::::::::::::::::::::::::::::::::::::::
 :: BETA: UNKNOWN DRIVERS ::
@@ -100,6 +100,7 @@ IF %ERRORLEVEL% EQU 0 (
 	del tmp
 	ECHO DEVICE MANAGER OK
 )
+timeout 2 > nul
 cls
 ::::::::::::::::::::::::::::::::::::::::::::::  BETA  ::::::::::::::::::::::::::::::::::::::::::::::
 
