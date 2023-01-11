@@ -401,7 +401,7 @@ if errorlevel 1 (
 :: SET UAC SETTINGS AND STARTING UPDATES ::
 echo SET UAC SETTINGS
 _media\admin.bat
-timeout 2 > nul
+timeout 10 > nul
 cls
 
 :: OPEN MICROSOFT STORE ::
@@ -420,7 +420,7 @@ if NOT "%winver%"=="%winver:11=%" (
 	_media\nircmd cmdwait 500 sendkeypress tab tab tab
 	_media\nircmd cmdwait 500 sendkeypress down down down down
 	_media\nircmd cmdwait 500 sendkeypress enter
-	_media\nircmd cmdwait 1500 sendkeypress enter
+	::_media\nircmd cmdwait 1500 sendkeypress enter
 )
 
 :: WINDOWS UPDATES ::
@@ -431,9 +431,9 @@ cls
 
 _media\nircmd sendkeypress lwin+i
 if NOT "%winver%"=="%winver:11=%" (
-	timeout 9 > nul
-	_media\nircmd cmdwait 500 sendkeypress tab tab tab
-	_media\nircmd cmdwait 1500 sendkeypress enter
+	::timeout 9 > nul
+	::_media\nircmd cmdwait 500 sendkeypress tab tab tab
+	::_media\nircmd cmdwait 1500 sendkeypress enter
 )
 
 mkdir C:\Users\Public\Documents\CherryOK
