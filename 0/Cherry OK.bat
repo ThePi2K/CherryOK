@@ -1,9 +1,12 @@
 :: Cherry OK Script
 :: by Felix Peer
 :: Created and tested for Windows 11 22H2
+:: Includes Beta Code for Release 5.5.1
 
 @echo off
 @title Cherry OK
+
+set version=5.5.0
 
 title Cherry OK - Preparing...
 
@@ -30,7 +33,7 @@ if not exist C:\Users\Public\Documents\CherryOK (
 :: CHERRY OK ASCII
 powershell.exe .\_media\echoTitle.ps1
 echo.
-echo    Cherry OK - Version 5.5.0
+echo    Cherry OK - Version %version%
 
 :: CHECK WINDOWS VERSION ::
 WMIC OS Get Name | findstr Microsoft > result.txt
@@ -85,6 +88,15 @@ cls
 echo CHECKING DEVICE MANAGER
 devmgmt.msc
 cls
+
+::::::::::::::::::::::::::::::::::::::::::::::  BETA  ::::::::::::::::::::::::::::::::::::::::::::::
+:: BETA: UNKNOWN DRIVERS ::
+echo BETA FUTURE: CHECKING UNKNOWN DRIVERS...
+timeout 1 > nul
+wmic path win32_pnpentity where ConfigManagerErrorcode!=0 get * /format:list
+timeout 3 > nul
+cls
+::::::::::::::::::::::::::::::::::::::::::::::  BETA  ::::::::::::::::::::::::::::::::::::::::::::::
 
 :: CHECK WINGET ::
 echo CHECKING FOR WINGET...
