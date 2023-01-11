@@ -400,7 +400,7 @@ if errorlevel 1 (
 
 :: SET UAC SETTINGS AND STARTING UPDATES ::
 echo SET UAC SETTINGS
-_media\admin.bat
+start _media\admin.bat
 timeout 10 > nul
 cls
 
