@@ -67,14 +67,11 @@ if "%status%"=="Licensed" (
 )
 
 :: CHECK LANGUAGE ::
-::echo CHECK WINDOWS LANGUAGE
 FOR /F "tokens=2 delims==" %%a IN ('wmic os get OSLanguage /Value') DO set OSLangCode=%%a
 set OSLanguage=undefined
 if %OSLangCode% == 1031 set OSLanguage=de-DE
 if %OSLangCode% == 1033 set OSLanguage=en-US
 if %OSLangCode% == 1040 set OSLanguage=it-IT
-::echo OS Language: %OSLanguage% (Code %OSLangCode%)
-::timeout 2 > nul
 cls
 
 :: CHECKING OPTIONAL UPDATES ::
@@ -91,10 +88,18 @@ cls
 
 ::::::::::::::::::::::::::::::::::::::::::::::  BETA  ::::::::::::::::::::::::::::::::::::::::::::::
 :: BETA: UNKNOWN DRIVERS ::
+wmic path win32_pnpentity where ConfigManagerErrorcode!=0 get * /format:list >tmp
+cls
 echo BETA FUTURE: CHECKING UNKNOWN DRIVERS...
 timeout 1 > nul
-wmic path win32_pnpentity where ConfigManagerErrorcode!=0 get * /format:list
-timeout 3 > nul
+find /c "Status" tmp >nul
+IF %ERRORLEVEL% EQU 0 (
+	del tmp
+	ECHO ERROR IN DEVICE MANAGER
+) else (
+	del tmp
+	ECHO DEVICE MANAGER OK
+)
 cls
 ::::::::::::::::::::::::::::::::::::::::::::::  BETA  ::::::::::::::::::::::::::::::::::::::::::::::
 
