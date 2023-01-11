@@ -1,12 +1,11 @@
 :: Cherry OK Script
 :: by Felix Peer
 :: Created and tested for Windows 11 22H2
-:: Includes Beta Code for Release 5.5.1
 
 @echo off
 @title Cherry OK
 
-set version=5.5.0
+set version=5.5.1
 
 title Cherry OK - Preparing...
 
@@ -17,7 +16,7 @@ netsh wlan add profile filename=_media\WLAN-Cherry-Net.xml >nul
 set isAdminDir=C:\Windows\CherryTestAdmin
 mkdir %isAdminDir%
 if not exist %isAdminDir% (
-	echo NO ADMIN
+	echo NO ADMIN OR NOT RESTARTED YET
 	goto FIRSTRUN
 	exit
 )
@@ -25,7 +24,7 @@ rmdir %isAdminDir%
 
 :: TEST FIRST RUN ::
 if not exist C:\Users\Public\Documents\CherryOK (
-	echo NO CHERRY OK 1 OR NOT RESTARTED YET
+	echo NO CHERRY OK 1
 	goto FIRSTRUN
 	exit
 )
@@ -81,9 +80,8 @@ timeout 6 > nul
 taskkill /f /im SystemSettings.exe
 cls
 
-::::::::::::::::::::::::::::::::::::::::::::::  BETA  ::::::::::::::::::::::::::::::::::::::::::::::
-:: BETA: UNKNOWN DRIVERS ::
-echo BETA FUTURE: CHECKING UNKNOWN DRIVERS...
+:: CHECKING UNKNOWN DRIVERS ::
+echo CHECKING UNKNOWN DRIVERS...
 wmic path win32_pnpentity where ConfigManagerErrorcode!=0 get * /format:list >tmp 2>&1
 timeout 1 > nul
 find /c "Status" tmp >nul
@@ -98,29 +96,29 @@ del tmp
 ECHO DEVICE MANAGER OK
 timeout 2 > nul
 cls
-::::::::::::::::::::::::::::::::::::::::::::::  BETA  ::::::::::::::::::::::::::::::::::::::::::::::
 
+:::::::::::::::::::::::::::::::::::::::  TEMPORÄR NO DO  ::::::::::::::::::::::::::::::::::::::::::::::
 :: OPEN DEVICE MANAGER ::
 echo CHECKING DEVICE MANAGER
 timeout 1 > nul
 devmgmt.msc
 cls
+:::::::::::::::::::::::::::::::::::::::  TEMPORÄR NO DO  ::::::::::::::::::::::::::::::::::::::::::::::
 
 :: CHECK WINGET ::
 echo CHECKING FOR WINGET...
 WHERE winget >nul 2>&1
 IF %ERRORLEVEL% NEQ 0 (
+echo CHECKING FOR WINGET...
+timeout 1 > nul
 ECHO Winget is not installed! Install all Updates from the Microsoft Store to start the Script!
 pause >nul
 start ms-windows-store:
 exit
 )
-echo Winget OK
-timeout 1 > nul
-cls
 
 :: CHECKED? ::
-set /p drivers="Drivers and Key ok? [y|n] "
+set /p drivers="Everything ok? [y|n] "
 if not "%drivers%" == "y" (
 	timeout 1 > nul
 	exit
@@ -437,6 +435,11 @@ timeout 2 > nul
 cls
 
 _media\nircmd sendkeypress lwin+i
+if NOT "%winver%"=="%winver:11=%" (
+	timeout 9 > nul
+	_media\nircmd cmdwait 500 sendkeypress tab tab tab
+	_media\nircmd cmdwait 1500 sendkeypress enter
+)
 
 mkdir C:\Users\Public\Documents\CherryOK
 
