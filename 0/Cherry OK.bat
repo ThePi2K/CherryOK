@@ -88,9 +88,8 @@ devmgmt.msc
 
 ::::::::::::::::::::::::::::::::::::::::::::::  BETA  ::::::::::::::::::::::::::::::::::::::::::::::
 :: BETA: UNKNOWN DRIVERS ::
-wmic path win32_pnpentity where ConfigManagerErrorcode!=0 get * /format:list >tmp
-cls
 echo BETA FUTURE: CHECKING UNKNOWN DRIVERS...
+wmic path win32_pnpentity where ConfigManagerErrorcode!=0 get * /format:list >tmp 2>&1
 timeout 1 > nul
 find /c "Status" tmp >nul
 IF %ERRORLEVEL% EQU 0 (
@@ -100,6 +99,7 @@ IF %ERRORLEVEL% EQU 0 (
 	del tmp
 	ECHO DEVICE MANAGER OK
 )
+
 timeout 2 > nul
 cls
 ::::::::::::::::::::::::::::::::::::::::::::::  BETA  ::::::::::::::::::::::::::::::::::::::::::::::
