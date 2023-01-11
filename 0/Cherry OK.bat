@@ -81,11 +81,6 @@ timeout 6 > nul
 taskkill /f /im SystemSettings.exe
 cls
 
-:: OPEN DEVICE MANAGER ::
-echo CHECKING DEVICE MANAGER
-devmgmt.msc
-::cls
-
 ::::::::::::::::::::::::::::::::::::::::::::::  BETA  ::::::::::::::::::::::::::::::::::::::::::::::
 :: BETA: UNKNOWN DRIVERS ::
 echo BETA FUTURE: CHECKING UNKNOWN DRIVERS...
@@ -95,14 +90,21 @@ find /c "Status" tmp >nul
 IF %ERRORLEVEL% EQU 0 (
 	del tmp
 	ECHO ERROR IN DEVICE MANAGER
-) else (
-	del tmp
-	ECHO DEVICE MANAGER OK
+	timeout 2 > nul
+	devmgmt.msc
+	exit
 )
-
+del tmp
+ECHO DEVICE MANAGER OK
 timeout 2 > nul
 cls
 ::::::::::::::::::::::::::::::::::::::::::::::  BETA  ::::::::::::::::::::::::::::::::::::::::::::::
+
+:: OPEN DEVICE MANAGER ::
+echo CHECKING DEVICE MANAGER
+timeout 1 > nul
+devmgmt.msc
+cls
 
 :: CHECK WINGET ::
 echo CHECKING FOR WINGET...
