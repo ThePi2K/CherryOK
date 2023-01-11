@@ -12,6 +12,16 @@ title Cherry OK - Preparing...
 :: CONNECT TO WIFI
 netsh wlan add profile filename=_media\WLAN-Cherry-Net.xml >nul
 
+:: CHECK WINDOWS VERSION ::
+WMIC OS Get Name | findstr Microsoft > result.txt
+set /p QUERY=<result.txt
+del result.txt
+for /f "tokens=1 delims=|" %%a in ("%QUERY%") do (
+	set winver=%%a
+)
+if NOT "%winver%"=="%winver:10=%" set winversion=10
+if NOT "%winver%"=="%winver:11=%" set winversion=11
+
 :: CHECK IF ADMIN OK
 set isAdminDir=C:\Windows\CherryTestAdmin
 mkdir %isAdminDir%
@@ -33,16 +43,6 @@ if not exist C:\Users\Public\Documents\CherryOK (
 powershell.exe .\_media\echoTitle.ps1
 echo.
 echo    Cherry OK - Version %version%
-
-:: CHECK WINDOWS VERSION ::
-WMIC OS Get Name | findstr Microsoft > result.txt
-set /p QUERY=<result.txt
-del result.txt
-for /f "tokens=1 delims=|" %%a in ("%QUERY%") do (
-	set winver=%%a
-)
-if NOT "%winver%"=="%winver:10=%" set winversion=10
-if NOT "%winver%"=="%winver:11=%" set winversion=11
 
 :: CHECK WINDOWS ACTIVATION ::
 powershell.exe .\_media\checkWindowsActivation.ps1
@@ -399,42 +399,41 @@ if errorlevel 1 (
 )
 
 :: SET UAC SETTINGS AND STARTING UPDATES ::
-echo SET UAC SETTINGS
+echo SET UAC SETTINGS AND STARTING UPDATES
 start _media\admin.bat
 timeout 10 > nul
 cls
 
 :: OPEN MICROSOFT STORE ::
-echo MICROSOFT STORE UPDATES
+::echo MICROSOFT STORE UPDATES
 start ms-windows-store:
+timeout 1 > nul
+start ms-settings:windowsupdate
+_media\nircmd sendkeypress lwin+i
 
 :: START WIN STORE UPDATES
-WMIC OS Get Name | findstr Microsoft > result.txt
-set /p QUERY=<result.txt
-del result.txt
-for /f "tokens=1 delims=|" %%a in ("%QUERY%") do (
-	set winver=%%a
-)
-if NOT "%winver%"=="%winver:11=%" (
-	timeout 9 > nul
-	_media\nircmd cmdwait 500 sendkeypress tab tab tab
-	_media\nircmd cmdwait 500 sendkeypress down down down down
-	_media\nircmd cmdwait 500 sendkeypress enter
-	::_media\nircmd cmdwait 1500 sendkeypress enter
-)
 
-:: WINDOWS UPDATES ::
-echo WINDOWS UPDATES
+::::::::::::::::::: PROBLEM IST HIER
+::if "%winversion%"=="11" (
+::	timeout 9 > nul
+::	_media\nircmd cmdwait 500 sendkeypress tab tab tab
+::	_media\nircmd cmdwait 500 sendkeypress down down down down
+::	_media\nircmd cmdwait 500 sendkeypress enter
+::	::_media\nircmd cmdwait 1500 sendkeypress enter
+::)
+
+:::: WINDOWS UPDATES ::
+::echo WINDOWS UPDATES
 start ms-settings:windowsupdate
-timeout 2 > nul
-cls
+::timeout 2 > nul
+::cls
 
 _media\nircmd sendkeypress lwin+i
-if NOT "%winver%"=="%winver:11=%" (
+::if "%winversion%"=="11" (
 	::timeout 9 > nul
 	::_media\nircmd cmdwait 500 sendkeypress tab tab tab
 	::_media\nircmd cmdwait 1500 sendkeypress enter
-)
+::)
 
 mkdir C:\Users\Public\Documents\CherryOK
 
