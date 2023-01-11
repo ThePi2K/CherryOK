@@ -45,7 +45,7 @@ if NOT "%winver%"=="%winver:10=%" set winversion=10
 if NOT "%winver%"=="%winver:11=%" set winversion=11
 
 :: CHECK WINDOWS ACTIVATION ::
-powershell -File "_media\checkWindowsActivation.ps1"
+powershell.exe .\_media\checkWindowsActivation.ps1
 cls
 echo CHECKING WINDOWS ACTIVATION...
 ::timeout 2 > nul
@@ -388,12 +388,6 @@ exit
 timeout 5 > nul
 cls
 
-:: SET UAC SETTINGS ::
-echo SET UAC SETTINGS
-start _media\uac.bat
-timeout 2 > nul
-cls
-
 :: EXIT IF NO INTERNET
 echo CHECKING INTERNET...
 ping -n 1 8.8.8.8 | find "TTL=" >nul
@@ -404,15 +398,10 @@ if errorlevel 1 (
 	exit
 )
 
-:: START UPDATES BEFORE LAUNCHING SETTINGS ::
-wuauclt /detectnow /updatenow
+:: SET UAC SETTINGS AND STARTING UPDATES ::
+echo SET UAC SETTINGS
+_media\admin.bat
 timeout 2 > nul
-cls
-
-:: START STORE UPDATES ::
-echo STARTING MICROSOFT STORE UPDATES
-powershell -File "_media\Store.ps1"
-timeout 1 > nul
 cls
 
 :: OPEN MICROSOFT STORE ::
