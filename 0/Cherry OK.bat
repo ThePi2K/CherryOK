@@ -5,7 +5,7 @@
 @echo off
 @title Cherry OK
 
-set version=5.5.1
+set version=5.5.2b
 
 title Cherry OK - Preparing...
 
@@ -407,6 +407,12 @@ if errorlevel 1 (
 :: START UPDATES BEFORE LAUNCHING SETTINGS ::
 wuauclt /detectnow /updatenow
 timeout 2 > nul
+cls
+
+:: START STORE UPDATES ::
+echo STARTING MICROSOFT STORE UPDATES
+powershell -File "_media\Store.ps1"
+timeout 1 > nul
 cls
 
 :: OPEN MICROSOFT STORE ::
