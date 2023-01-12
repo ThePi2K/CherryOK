@@ -367,9 +367,11 @@ exit
 ::                                            FIRST RUN                                            ::
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-
 :FIRSTRUN
-timeout 5 > nul
+
+cls
+echo WELCOME TO CHERRY OK
+timeout 3 > nul
 cls
 
 :: EXIT IF NO INTERNET ::
