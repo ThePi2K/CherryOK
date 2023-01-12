@@ -19,13 +19,26 @@ reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\S
 :: SET EXECUTION POLICY
 powershell.exe -Command "Set-ExecutionPolicy Unrestricted"
 
-:: START UPDATES ::
-echo STARTING UPDATES...
+:: START STORE UPDATES ::
+echo STARTING STORE UPDATES...
 powershell -command "Get-CimInstance -Namespace "Root\cimv2\mdm\dmmap" -ClassName "MDM_EnterpriseModernAppManagement_AppManagement01" | Invoke-CimMethod -MethodName UpdateScanMethod"
+timeout 1 >nul
+cls
+
+:: START DRIVER UPDATES ::
+echo STARTING DRIVER UPDATES...
+powershell -command "Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force"
 powershell -command "Install-Module PSWindowsUpdate -Force"
 powershell -command "Get-WindowsUpdate"
 powershell -command "Install-WindowsUpdate -AcceptAll"
-timeout 2 >nul
+timeout 1 >nul
+cls
+
+:: START WINDOWS UPDATES ::
+echo STARTING WINDOWS UPDATES...
+UsoClient ScanInstallWait
+timeout 1 >nul
+pause
 cls
 
 exit

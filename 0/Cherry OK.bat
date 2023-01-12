@@ -5,7 +5,7 @@
 @echo off
 @title Cherry OK
 
-set version=5.5.2b
+set version=5.5.3b
 
 title Cherry OK - Preparing...
 
@@ -22,11 +22,10 @@ for /f "tokens=1 delims=|" %%a in ("%QUERY%") do (
 if NOT "%winver%"=="%winver:10=%" set winversion=10
 if NOT "%winver%"=="%winver:11=%" set winversion=11
 
-:: CHECK IF ADMIN OK
+:: CHECK IF ADMIN OK ::
 set isAdminDir=C:\Windows\CherryTestAdmin
 mkdir %isAdminDir%
 if not exist %isAdminDir% (
-	echo NO ADMIN OR NOT RESTARTED YET
 	goto FIRSTRUN
 	exit
 )
@@ -34,7 +33,6 @@ rmdir %isAdminDir%
 
 :: TEST FIRST RUN ::
 if not exist C:\Users\Public\Documents\CherryOK (
-	echo NO CHERRY OK 1
 	goto FIRSTRUN
 	exit
 )
@@ -48,7 +46,6 @@ echo    Cherry OK - Version %version%
 powershell.exe .\_media\checkWindowsActivation.ps1
 cls
 echo CHECKING WINDOWS ACTIVATION...
-::timeout 2 > nul
 set /p status=<tmp
 del tmp
 if "%status%"=="Licensed" (
@@ -123,7 +120,6 @@ if not "%drivers%" == "y" (
 	timeout 1 > nul
 	exit
 )
-:: powershell -window minimized -command ""
 cls
 
 
@@ -132,7 +128,7 @@ cls
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 
-:: REMOVING UPDATE CMD FILE ON DESKTOP AND IN STARTUP
+:: REMOVING UPDATE CMD FILE ON DESKTOP AND IN STARTUP ::
 del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\start_Updates_And_Store.cmd"
 cls
 
@@ -203,34 +199,22 @@ timeout 1 > nul
 cls
 
 :: SET DEFAULT APPS ::
-::echo SET DEFAULT APPS
 _media\SetUserFTA .pdf Acrobat.Document.DC
 _media\SetUserFTA http ChromeHTML
 _media\SetUserFTA https ChromeHTML
 _media\SetUserFTA .htm ChromeHTML
 _media\SetUserFTA .html ChromeHTML
-::timeout 2 > nul
-::cls
 
 :: SET ENERGY SETTINGS ::
-::echo SET ENERGY SETTINGS
 powercfg -change -standby-timeout-ac 0
-::timeout 2 > nul
-::cls
 
 :: DISABLE PASSWORD EXPIRATION ::
-::echo DISABLE PASSWORD EXPIRATION
 wmic useraccount where "name='user'" set passwordexpires=False >nul
-::timeout 1 > nul
-::cls
 
 :: ADD OEM INFORMATIONS ::
-::echo ADD OEM INFORMATIONS
 REG ADD HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation /v SupportPhone /t REG_SZ /d "0471 813087" /f >nul
 REG ADD HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation /v SupportURL /t REG_SZ /d "https://www.cherrycomputer.com" /f >nul
 REG ADD HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation /v Manufacturer /t REG_SZ /d "Cherry Computer Gmbh" /f >nul
-::timeout 1 > nul
-::cls
 
 :: SET DESIGN ::
 echo SET DESIGN
@@ -353,7 +337,7 @@ if "%winversion%"=="10" (
 	cls
 )
 
-:: INSTALL ADOBE READER IF FAILED
+:: INSTALL ADOBE READER IF FAILED ::
 if not exist "C:\Program Files\Adobe\Acrobat DC\Acrobat\Acrobat.exe" (
       copy ..\1\readerdc64_de_hi_crd_mdr_install.exe ..\1\reader.exe
       ..\1\reader.exe
@@ -388,7 +372,7 @@ exit
 timeout 5 > nul
 cls
 
-:: EXIT IF NO INTERNET
+:: EXIT IF NO INTERNET ::
 echo CHECKING INTERNET...
 ping -n 1 8.8.8.8 | find "TTL=" >nul
 cls
@@ -401,43 +385,9 @@ if errorlevel 1 (
 :: SET UAC SETTINGS AND STARTING UPDATES ::
 echo SET UAC SETTINGS AND STARTING UPDATES
 start _media\admin.bat
-timeout 2 > nul
-cls
 
-:: OPEN MICROSOFT STORE ::
-::echo MICROSOFT STORE UPDATES
-::start ms-windows-store:
-::timeout 1 > nul
-::start ms-settings:windowsupdate
-::_media\nircmd sendkeypress lwin+i
-
-:: START WIN STORE UPDATES
-
-::::::::::::::::::: PROBLEM IST HIER
-::if "%winversion%"=="11" (
-::	timeout 9 > nul
-::	_media\nircmd cmdwait 500 sendkeypress tab tab tab
-::	_media\nircmd cmdwait 500 sendkeypress down down down down
-::	_media\nircmd cmdwait 500 sendkeypress enter
-::	::_media\nircmd cmdwait 1500 sendkeypress enter
-::)
-
-:::: WINDOWS UPDATES ::
-::echo WINDOWS UPDATES
-::start ms-settings:windowsupdate
-::timeout 2 > nul
-::cls
-
-::_media\nircmd sendkeypress lwin+i
-::if "%winversion%"=="11" (
-	::timeout 9 > nul
-	::_media\nircmd cmdwait 500 sendkeypress tab tab tab
-	::_media\nircmd cmdwait 1500 sendkeypress enter
-::)
-
-mkdir C:\Users\Public\Documents\CherryOK
-
-:: CREATE UPDATE SCRIPT
+:: CREATE UPDATE SCRIPT AND FOLDER FOR CHERRY OK ::
 copy Scripts\start_Updates_And_Store.cmd "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup"
+mkdir C:\Users\Public\Documents\CherryOK
 
 exit
