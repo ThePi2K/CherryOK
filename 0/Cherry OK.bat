@@ -70,13 +70,21 @@ if %OSLangCode% == 1033 set OSLanguage=en-US
 if %OSLangCode% == 1040 set OSLanguage=it-IT
 cls
 
-:: CHECKING OPTIONAL UPDATES ::
-echo CHECKING OPTIONAL UPDATES
-powershell -command "Get-WindowsUpdate"
-pause
-start ms-settings:windowsupdate-optionalupdates
-timeout 6 > nul
-taskkill /f /im SystemSettings.exe
+:: CHECKING UPDATES ::
+echo CHECKING UPDATES
+powershell -command "Get-WindowsUpdate" > tmp
+find /c "ComputerName" tmp >nul
+IF %ERRORLEVEL% EQU 0 (
+	del tmp
+	ECHO ATTENTION: UPDATES AVAILABLE!
+	powershell -command "Get-WindowsUpdate"
+	timeout 2 > nul
+	start ms-settings:windowsupdate
+	exit
+)
+del tmp
+ECHO OPTIONAL UPDATES OK
+timeout 2 > nul
 cls
 
 :: CHECKING UNKNOWN DRIVERS ::
