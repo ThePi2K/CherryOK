@@ -295,7 +295,13 @@ if not exist "C:\Program Files\Adobe\Acrobat DC\Acrobat\Acrobat.exe" (
 rmdir C:\Users\Public\Documents\CherryOK
 echo CONFIGURING SYSTEM RESTORE
 powershell.exe .\_media\restore.ps1
-timeout 6 > nul
+find /c "ComputerName" tmp >nul
+IF %ERRORLEVEL% EQU 0 (
+	del tmp
+	ECHO NO RESTORE POINT FOUND!!!
+	pause
+)
+del tmp
 cls
 
 powershell.exe .\_media\echoTitle.ps1

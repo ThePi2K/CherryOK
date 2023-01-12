@@ -7,4 +7,4 @@ cls
 echo "CONFIGURING SYSTEM RESTORE"
 Checkpoint-Computer -Description "Cherry OK" -RestorePointType "MODIFY_SETTINGS"
 cls
-Get-ComputerRestorePoint
+Get-ComputerRestorePoint | Out-File -Encoding "ASCII" tmp
