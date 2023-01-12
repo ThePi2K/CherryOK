@@ -5,7 +5,7 @@
 @echo off
 @title Cherry OK
 
-set version=5.9b
+set version=6.0b
 
 title Cherry OK - Preparing...
 
@@ -105,30 +105,19 @@ timeout 2 > nul
 cls
 
 :: CHECK WINGET ::
-echo CHECKING FOR WINGET...
 WHERE winget >nul 2>&1
 IF %ERRORLEVEL% NEQ 0 (
-echo CHECKING FOR WINGET...
-timeout 1 > nul
-ECHO Winget is not installed! Install all Updates from the Microsoft Store to start the Script!
-pause >nul
-start ms-windows-store:
-exit
+	echo CHECKING FOR WINGET...
+	timeout 1 > nul
+	ECHO Winget is not installed! Install all Updates from the Microsoft Store to start the Script!
+	pause >nul
+	start ms-windows-store:
+	exit
 )
-cls
 
 echo EVERYTHING OK!
 timeout 3 > nul
 cls
-
-:: CHECKED? ::
-::set /p drivers="Everything ok? [y|n] "
-::if not "%drivers%" == "y" (
-::	timeout 1 > nul
-::	exit
-::)
-::cls
-
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::                                         CHERRY OK START                                         ::
