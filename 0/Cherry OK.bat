@@ -5,7 +5,7 @@
 @echo off
 @title Cherry OK
 
-set version=5.8b
+set version=5.9b
 
 title Cherry OK - Preparing...
 
@@ -83,7 +83,7 @@ IF %ERRORLEVEL% EQU 0 (
 	exit
 )
 del tmp
-ECHO OPTIONAL UPDATES OK
+ECHO UPDATES OK
 timeout 2 > nul
 cls
 
