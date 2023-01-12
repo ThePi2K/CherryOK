@@ -401,15 +401,15 @@ if errorlevel 1 (
 :: SET UAC SETTINGS AND STARTING UPDATES ::
 echo SET UAC SETTINGS AND STARTING UPDATES
 start _media\admin.bat
-timeout 10 > nul
+timeout 2 > nul
 cls
 
 :: OPEN MICROSOFT STORE ::
 ::echo MICROSOFT STORE UPDATES
-start ms-windows-store:
-timeout 1 > nul
-start ms-settings:windowsupdate
-_media\nircmd sendkeypress lwin+i
+::start ms-windows-store:
+::timeout 1 > nul
+::start ms-settings:windowsupdate
+::_media\nircmd sendkeypress lwin+i
 
 :: START WIN STORE UPDATES
 
@@ -424,11 +424,11 @@ _media\nircmd sendkeypress lwin+i
 
 :::: WINDOWS UPDATES ::
 ::echo WINDOWS UPDATES
-start ms-settings:windowsupdate
+::start ms-settings:windowsupdate
 ::timeout 2 > nul
 ::cls
 
-_media\nircmd sendkeypress lwin+i
+::_media\nircmd sendkeypress lwin+i
 ::if "%winversion%"=="11" (
 	::timeout 9 > nul
 	::_media\nircmd cmdwait 500 sendkeypress tab tab tab

@@ -20,7 +20,12 @@ reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\S
 powershell.exe -Command "Set-ExecutionPolicy Unrestricted"
 
 :: START UPDATES ::
+echo STARTING UPDATES...
 powershell -command "Get-CimInstance -Namespace "Root\cimv2\mdm\dmmap" -ClassName "MDM_EnterpriseModernAppManagement_AppManagement01" | Invoke-CimMethod -MethodName UpdateScanMethod"
-wuauclt /detectnow /updatenow
+powershell -command "Install-Module PSWindowsUpdate -Force"
+powershell -command "Get-WindowsUpdate"
+powershell -command "Install-WindowsUpdate -AcceptAll"
+timeout 2 >nul
+cls
 
 exit
