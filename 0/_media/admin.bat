@@ -20,7 +20,6 @@ reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\S
 powershell.exe -Command "Set-ExecutionPolicy Unrestricted"
 
 :: START UPDATES ::
-::powershell.exe .\Store.ps1
 powershell -command "Get-CimInstance -Namespace "Root\cimv2\mdm\dmmap" -ClassName "MDM_EnterpriseModernAppManagement_AppManagement01" | Invoke-CimMethod -MethodName UpdateScanMethod"
 wuauclt /detectnow /updatenow
 
