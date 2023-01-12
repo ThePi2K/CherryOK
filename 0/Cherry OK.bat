@@ -73,6 +73,7 @@ cls
 :: CHECKING OPTIONAL UPDATES ::
 echo CHECKING OPTIONAL UPDATES
 powershell -command "Get-WindowsUpdate"
+pause
 start ms-settings:windowsupdate-optionalupdates
 timeout 6 > nul
 taskkill /f /im SystemSettings.exe
