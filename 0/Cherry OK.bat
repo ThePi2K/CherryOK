@@ -115,14 +115,19 @@ pause >nul
 start ms-windows-store:
 exit
 )
+cls
+
+echo EVERYTHING OK!
+timeout 3 > nul
+cls
 
 :: CHECKED? ::
-set /p drivers="Everything ok? [y|n] "
-if not "%drivers%" == "y" (
-	timeout 1 > nul
-	exit
-)
-cls
+::set /p drivers="Everything ok? [y|n] "
+::if not "%drivers%" == "y" (
+::	timeout 1 > nul
+::	exit
+::)
+::cls
 
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
