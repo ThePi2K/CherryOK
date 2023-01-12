@@ -25,13 +25,13 @@ powershell -command "Get-CimInstance -Namespace "Root\cimv2\mdm\dmmap" -ClassNam
 timeout 1 >nul
 cls
 
-:: START DRIVER UPDATES ::
+:: START WINDOWS UPDATES ::
 echo IMPORTING PACKAGES...
 powershell -command "Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force"
 powershell -command "Install-Module PSWindowsUpdate -Force"
 cls
 echo SCANNING AND INSTALLING WINDOWS UPDATES...
-powershell -command "Get-WindowsUpdate"
+::powershell -command "Get-WindowsUpdate"
 powershell -command "Install-WindowsUpdate -ForceDownload -ForceInstall -AcceptAll -AutoReboot"
 timeout 2 >nul
 

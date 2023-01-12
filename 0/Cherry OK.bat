@@ -181,7 +181,7 @@ cls
 :: INSTALL ACROBAT DC ::
 if not exist "C:\Program Files\Adobe\Acrobat DC\Acrobat\Acrobat.exe" (
 	echo INSTALL ACROBAT DC
-	winget install --id Adobe.Acrobat.Reader.64-bit --accept-source-agreements --force --scope machine
+	winget install --id Adobe.Acrobat.Reader.64-bit --accept-package-agreements --accept-source-agreements --force --scope machine
 )	else (
 	echo Adobe Reader is installed!
 )
@@ -268,7 +268,7 @@ cls
 
 :: CLEAR NOTIFICATIONS ::
 echo CLEAR NOTIFICATIONS
-timeout 2 > nul
+timeout 5 > nul
 if "%winversion%"=="10" (
 	_media\nircmd sendkeypress lwin+a
 	_media\nircmd cmdwait 2000 sendkeypress leftshift+tab
@@ -297,6 +297,7 @@ cls
 
 title Cherry OK - Last Steps
 
+if 1==2(
 :: OPENING PROGRAMS FOR ACCEPTING EULA ::
 if "%winversion%"=="11" (
 	echo ACCEPTING EULA
@@ -335,6 +336,7 @@ if "%winversion%"=="10" (
 	if exist "%userprofile%\Desktop\Cherry Help.exe" "%userprofile%\Desktop\Cherry Help.exe"
 	timeout 1 > nul
 	cls
+)
 )
 
 :: INSTALL ADOBE READER IF FAILED ::
