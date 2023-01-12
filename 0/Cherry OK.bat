@@ -5,7 +5,7 @@
 @echo off
 @title Cherry OK
 
-set version=5.5.3b
+set version=5.5.3.1b
 
 title Cherry OK - Preparing...
 

@@ -35,10 +35,10 @@ timeout 1 >nul
 cls
 
 :: START WINDOWS UPDATES ::
-echo STARTING WINDOWS UPDATES...
-UsoClient ScanInstallWait
-timeout 1 >nul
-pause
-cls
+::echo STARTING WINDOWS UPDATES...
+::UsoClient ScanInstallWait
+::timeout 1 >nul
+::pause
+::cls
 
 exit
