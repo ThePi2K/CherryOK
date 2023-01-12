@@ -26,27 +26,15 @@ timeout 1 >nul
 cls
 
 :: START DRIVER UPDATES ::
-echo IMPORTING PACKAGE FOR UPDATES...
+echo IMPORTING PACKAGES...
 powershell -command "Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force"
-cls
-echo INSTALL PACKAGE FOR UPDATES...
 powershell -command "Install-Module PSWindowsUpdate -Force"
 cls
-echo SCANNING FOR WINDOWS UPDATES...
+echo SCANNING AND INSTALLING WINDOWS UPDATES...
 powershell -command "Get-WindowsUpdate"
-cls
-echo STARTING WINDOWS AND DRIVER UPDATES...
 powershell -command "Install-WindowsUpdate -ForceDownload -ForceInstall -AcceptAll -AutoReboot"
-timeout 1 >nul
-cls
+timeout 2 >nul
 
-:: START WINDOWS UPDATES ::
-::echo STARTING WINDOWS UPDATES...
-::UsoClient ScanInstallWait
-::timeout 1 >nul
-::pause
-::cls
-
-shutdown /t 15 /r
+shutdown /t 30 /r
 
 exit
