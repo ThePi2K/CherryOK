@@ -5,7 +5,7 @@
 @echo off
 @title Cherry OK
 
-set version=5.6b
+set version=5.7b
 
 title Cherry OK - Preparing...
 
@@ -268,7 +268,7 @@ cls
 
 :: CLEAR NOTIFICATIONS ::
 echo CLEAR NOTIFICATIONS
-timeout 5 > nul
+timeout 8 > nul
 if "%winversion%"=="10" (
 	_media\nircmd sendkeypress lwin+a
 	_media\nircmd cmdwait 2000 sendkeypress leftshift+tab
@@ -285,59 +285,7 @@ if "%winversion%"=="11" (
 timeout 1 > nul
 cls
 
-:: REFRESH DESKTOP ::
-echo Refreshing Desktop...
-timeout 1 > nul
-_media\nircmd cmdwait 1000 sendkeypress rwin+D
-_media\nircmd cmdwait 1000 sendkeypress F5
-timeout 1 > nul
-_media\nircmd cmdwait 1000 sendkeypress rwin+3
-timeout 1 > nul
-cls
-
 title Cherry OK - Last Steps
-
-if 1==2(
-:: OPENING PROGRAMS FOR ACCEPTING EULA ::
-if "%winversion%"=="11" (
-	echo ACCEPTING EULA
-	timeout 5 > nul
-	if exist "C:\Program Files\Adobe\Acrobat DC\Acrobat\Acrobat.exe" start Acrobat.exe
-	if exist "%userprofile%\Desktop\Cherry Hilfe.exe" "%userprofile%\Desktop\Cherry Hilfe.exe"
-	if exist "%userprofile%\Desktop\Cherry Aiuto.exe" "%userprofile%\Desktop\Cherry Aiuto.exe"
-	if exist "%userprofile%\Desktop\Cherry Help.exe" "%userprofile%\Desktop\Cherry Help.exe"
-	_media\nircmd cmdwait 1000 sendkeypress rwin+D
-	timeout 4 > nul
-	if exist "C:\Program Files\Adobe\Acrobat DC\Acrobat\Acrobat.exe" (
-		:: ADOBE ::
-		_media\nircmd cmdwait 1500 sendkeypress rwin+4
-		_media\nircmd cmdwait 1500 sendkeypress tab
-		_media\nircmd cmdwait 1500 sendkeypress enter
-		_media\nircmd cmdwait 1500 sendkeypress alt+F4
-	)
-	:: CHERRY HELP ::
-	_media\nircmd cmdwait 1500 sendkeypress rwin+4
-	_media\nircmd cmdwait 1500 sendkeypress down
-	_media\nircmd cmdwait 1500 sendkeypress up
-	_media\nircmd cmdwait 4000 sendkeypress up
-	_media\nircmd cmdwait 1500 sendkeypress spc
-	_media\nircmd cmdwait 1500 sendkeypress shift+tab
-	_media\nircmd cmdwait 1500 sendkeypress enter
-	_media\nircmd cmdwait 5000 sendkeypress enter
-	_media\nircmd cmdwait 1000 sendkeypress rwin+3
-	timeout 1 > nul
-	cls
-)
-if "%winversion%"=="10" (
-	echo OPENING PROGRAMS FOR EULA
-	if exist "C:\Program Files\Adobe\Acrobat DC\Acrobat\Acrobat.exe" start Acrobat.exe
-	if exist "%userprofile%\Desktop\Cherry Hilfe.exe" "%userprofile%\Desktop\Cherry Hilfe.exe"
-	if exist "%userprofile%\Desktop\Cherry Aiuto.exe" "%userprofile%\Desktop\Cherry Aiuto.exe"
-	if exist "%userprofile%\Desktop\Cherry Help.exe" "%userprofile%\Desktop\Cherry Help.exe"
-	timeout 1 > nul
-	cls
-)
-)
 
 :: INSTALL ADOBE READER IF FAILED ::
 if not exist "C:\Program Files\Adobe\Acrobat DC\Acrobat\Acrobat.exe" (
@@ -359,9 +307,13 @@ echo    TESTED AND APPROVED
 timeout 5 > nul
 cls
 
+:: REFRESH DESKTOP ::
+_media\nircmd cmdwait 1000 sendkeypress rwin+D
+_media\nircmd cmdwait 1000 sendkeypress F5
+
 powershell.exe -Command "Set-ExecutionPolicy Restricted"
 
-shutdown /t 0 /r
+shutdown /t 30 /r
 exit
 
 
