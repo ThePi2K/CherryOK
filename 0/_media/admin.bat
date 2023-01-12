@@ -29,6 +29,7 @@ cls
 echo IMPORTING PACKAGES...
 powershell -command "Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force"
 powershell -command "Install-Module PSWindowsUpdate -Force"
+powershell -command "Install-Module BurntToast -Force"
 cls
 echo SCANNING AND INSTALLING WINDOWS UPDATES...
 ::powershell -command "Get-WindowsUpdate"

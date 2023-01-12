@@ -268,6 +268,8 @@ cls
 
 :: CLEAR NOTIFICATIONS ::
 echo CLEAR NOTIFICATIONS
+:: Module was installed in admin.cmd
+powershell -command "New-BurntToastNotification -AppLogo _media\CherryOK.png -Text 'Clearing Notifications', '...'"
 timeout 8 > nul
 if "%winversion%"=="10" (
 	_media\nircmd sendkeypress lwin+a
