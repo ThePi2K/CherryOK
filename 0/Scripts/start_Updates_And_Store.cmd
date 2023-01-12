@@ -11,9 +11,3 @@ cls
 echo SCANNING AND INSTALLING WINDOWS UPDATES...
 powershell -command "Get-WindowsUpdate"
 powershell -command "Install-WindowsUpdate -ForceDownload -ForceInstall -AcceptAll -AutoReboot"
-
-:: OPEN MICROSOFT STORE ::
-start ms-windows-store:
-
-:: WINDOWS UPDATES ::
-start ms-settings:windowsupdate

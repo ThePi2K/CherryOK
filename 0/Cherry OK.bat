@@ -5,7 +5,7 @@
 @echo off
 @title Cherry OK
 
-set version=5.7b
+set version=5.8b
 
 title Cherry OK - Preparing...
 
@@ -93,14 +93,6 @@ del tmp
 ECHO DEVICE MANAGER OK
 timeout 2 > nul
 cls
-
-:::::::::::::::::::::::::::::::::::::::  TEMPORÄR NO DO  ::::::::::::::::::::::::::::::::::::::::::::::
-:: OPEN DEVICE MANAGER ::
-echo CHECKING DEVICE MANAGER
-timeout 1 > nul
-devmgmt.msc
-cls
-:::::::::::::::::::::::::::::::::::::::  TEMPORÄR NO DO  ::::::::::::::::::::::::::::::::::::::::::::::
 
 :: CHECK WINGET ::
 echo CHECKING FOR WINGET...
