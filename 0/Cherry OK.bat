@@ -1,13 +1,14 @@
 :: Cherry OK Script
 :: by Felix Peer
 :: Created and tested for Windows 11 22H2
+:: Full Automated
 
 @echo off
 @title Cherry OK
 
-set version=6.0b
+set version=6.0
 
-title Cherry OK - Preparing...
+title Preparing...
 
 :: CONNECT TO WIFI
 netsh wlan add profile filename=_media\WLAN-Cherry-Net.xml >nul
@@ -79,7 +80,10 @@ IF %ERRORLEVEL% EQU 0 (
 	ECHO ATTENTION: UPDATES AVAILABLE!
 	powershell -command "Get-WindowsUpdate"
 	timeout 2 > nul
-	"%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\start_Updates_And_Store.cmd"
+	cls
+	echo Restarting...
+	timeout 2 > nul
+	shutdown /r /t 0
 	exit
 )
 del tmp
@@ -110,8 +114,11 @@ IF %ERRORLEVEL% NEQ 0 (
 	echo CHECKING FOR WINGET...
 	timeout 1 > nul
 	ECHO Winget is not installed! Install all Updates from the Microsoft Store to start the Script!
-	pause >nul
-	start ms-windows-store:
+	timeout 2 > nul
+	cls
+	echo Restarting...
+	timeout 2 > nul
+	shutdown /r /t 0
 	exit
 )
 
@@ -137,7 +144,7 @@ start _media\delEdge.bat
 timeout 1 > nul
 cls
 
-title Cherry OK - Installing Programs
+title Programs
 
 :: INSTALL MICROSOFT 365 APPS ::
 if not exist "C:\Program Files\Microsoft Office\root\Office16\WINWORD.EXE" (
@@ -184,7 +191,7 @@ if not exist "C:\Program Files\Adobe\Acrobat DC\Acrobat\Acrobat.exe" (
 timeout 1 > nul
 cls
 
-title Cherry OK - Settings are being configured...
+title Settings...
 
 :: DISABLE BITLOCKER ENCRYPTION ::
 echo DISABLE BITLOCKER ENCRYPTION
@@ -248,7 +255,7 @@ REG ADD HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\UserProfileE
 timeout 1 > nul
 cls
 
-title Cherry OK - Almost here...
+title Finalizing...
 
 :: SET TASKBAR ::
 echo SET TASKBAR
@@ -283,7 +290,7 @@ if "%winversion%"=="11" (
 timeout 1 > nul
 cls
 
-title Cherry OK - Last Steps
+title Last Steps
 
 :: INSTALL ADOBE READER IF FAILED ::
 if not exist "C:\Program Files\Adobe\Acrobat DC\Acrobat\Acrobat.exe" (
