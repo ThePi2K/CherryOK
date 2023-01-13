@@ -24,7 +24,7 @@ if NOT "%winver%"=="%winver:11=%" set winversion=11
 
 :: CHECK IF ADMIN OK ::
 set isAdminDir=C:\Windows\CherryTestAdmin
-mkdir %isAdminDir%
+mkdir %isAdminDir% > nul
 if not exist %isAdminDir% (
 	goto FIRSTRUN
 	exit
@@ -294,12 +294,15 @@ if not exist "C:\Program Files\Adobe\Acrobat DC\Acrobat\Acrobat.exe" (
 :: CONFIGURE SYSTEM RESTORE ::
 rmdir C:\Users\Public\Documents\CherryOK
 echo CONFIGURING SYSTEM RESTORE
+:RESTORE
 powershell.exe .\_media\restore.ps1
 find /c "Cherry OK" tmp >nul
-IF %ERRORLEVEL% EQU 0 (
+IF %ERRORLEVEL% EQU 1 (
 	del tmp
 	ECHO NO RESTORE POINT FOUND!!!
-	pause
+	timeout 2 > nul
+	sysdm.cpl
+	exit
 )
 del tmp
 cls
