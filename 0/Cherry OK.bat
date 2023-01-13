@@ -357,7 +357,7 @@ echo SET UAC SETTINGS AND STARTING UPDATES
 start _media\admin.bat
 
 :: CREATE UPDATE SCRIPT AND FOLDER FOR CHERRY OK ::
-copy Scripts\start_Updates_And_Store.cmd "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup"
+copy _media\start_Updates_And_Store.cmd "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup"
 mkdir C:\Users\Public\Documents\CherryOK
 
 exit

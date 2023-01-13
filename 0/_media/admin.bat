@@ -36,6 +36,6 @@ echo SCANNING AND INSTALLING WINDOWS UPDATES...
 powershell -command "Install-WindowsUpdate -ForceDownload -ForceInstall -AcceptAll -AutoReboot"
 timeout 2 >nul
 
-shutdown /t 0 /r
+shutdown /t 30 /r
 
 exit
