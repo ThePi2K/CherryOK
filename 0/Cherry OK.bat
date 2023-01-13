@@ -79,7 +79,7 @@ IF %ERRORLEVEL% EQU 0 (
 	ECHO ATTENTION: UPDATES AVAILABLE!
 	powershell -command "Get-WindowsUpdate"
 	timeout 2 > nul
-	start ms-settings:windowsupdate
+	"%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\start_Updates_And_Store.cmd"
 	exit
 )
 del tmp
