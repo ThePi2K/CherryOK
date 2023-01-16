@@ -10,7 +10,7 @@ set version=6.1b
 
 title Preparing...
 
-del "%USERPROFILE%\Desktop\Abort Shutdown.cmd"#
+del "%USERPROFILE%\Desktop\Abort Shutdown.cmd"
 cls
 
 :: CONNECT TO WIFI
@@ -352,7 +352,7 @@ ping -n 1 8.8.8.8 | find "TTL=" >nul
 cls
 if errorlevel 1 (
 	echo NO INTERNET... CONNECT TO INTERNET!
-	timeout 5 > nul
+	pause > nul
 	exit
 )
 
