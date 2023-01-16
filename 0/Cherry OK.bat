@@ -32,6 +32,9 @@ if not exist %isAdminDir% (
 )
 rmdir %isAdminDir%
 
+:: SET EXECUTION POLICY
+powershell.exe -Command "Set-ExecutionPolicy Unrestricted"
+
 :: TEST FIRST RUN ::
 if not exist C:\Users\Public\Documents\CherryOK (
 	goto FIRSTRUN
