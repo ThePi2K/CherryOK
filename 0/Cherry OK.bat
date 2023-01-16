@@ -309,6 +309,7 @@ IF %ERRORLEVEL% EQU 1 (
 	ECHO NO RESTORE POINT FOUND!!!
 	timeout 2 > nul
 	sysdm.cpl
+	powershell.exe -Command "Set-ExecutionPolicy Restricted"
 	exit
 )
 del tmp
