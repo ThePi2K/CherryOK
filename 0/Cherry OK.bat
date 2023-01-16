@@ -220,14 +220,6 @@ REG ADD HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation /v Support
 REG ADD HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation /v SupportURL /t REG_SZ /d "https://www.cherrycomputer.com" /f >nul
 REG ADD HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation /v Manufacturer /t REG_SZ /d "Cherry Computer Gmbh" /f >nul
 
-:: SET DESIGN ::
-echo SET DESIGN
-if "%winversion%"=="10" _media\Windows10.deskthemepack
-if "%winversion%"=="11" _media\Windows11.deskthemepack
-taskkill /im SystemSettings.exe /f > nul
-timeout 1 > nul
-cls
-
 :: HIDE CHAT AND WIDGETS ::
 if "%winversion%"=="11" (
 	echo HIDE CHAT AND WIDGETS
@@ -288,6 +280,14 @@ if "%winversion%"=="11" (
 	_media\nircmd cmdwait 1500 sendkeypress enter
 	_media\nircmd cmdwait 1500 sendkeypress esc
 )
+timeout 1 > nul
+cls
+
+:: SET DESIGN ::
+echo SET DESIGN
+if "%winversion%"=="10" _media\Windows10.deskthemepack
+if "%winversion%"=="11" _media\Windows11.deskthemepack
+taskkill /im SystemSettings.exe /f > nul
 timeout 1 > nul
 cls
 
