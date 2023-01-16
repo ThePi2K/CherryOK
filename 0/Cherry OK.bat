@@ -6,7 +6,7 @@
 @echo off
 @title Cherry OK
 
-set version=6.1.1b
+set version=6.2
 
 title Preparing...
 
@@ -127,10 +127,6 @@ IF %ERRORLEVEL% NEQ 0 (
 	shutdown /r /t 0
 	exit
 )
-
-echo EVERYTHING OK!
-timeout 3 > nul
-cls
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::                                         CHERRY OK START                                         ::
