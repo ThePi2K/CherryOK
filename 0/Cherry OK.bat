@@ -10,7 +10,8 @@ set version=6.1b
 
 title Preparing...
 
-del "%USERPROFILE%\Desktop\Abort Shutdown.cmd"
+del "%USERPROFILE%\Desktop\Abort Shutdown.cmd"#
+cls
 
 :: CONNECT TO WIFI
 netsh wlan add profile filename=_media\WLAN-Cherry-Net.xml >nul
