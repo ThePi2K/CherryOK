@@ -6,7 +6,7 @@
 @echo off
 @title Cherry OK
 
-set version=6.0
+set version=6.1b
 
 title Preparing...
 
