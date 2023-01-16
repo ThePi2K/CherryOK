@@ -7,17 +7,15 @@ powershell -command "Get-CimInstance -Namespace "Root\cimv2\mdm\dmmap" -ClassNam
 timeout 1 >nul
 cls
 
-:: START WINDOWS UPDATES ::
-echo SCANNING AND INSTALLING WINDOWS UPDATES...
-powershell -command "Get-WindowsUpdate"
-powershell -command "Install-WindowsUpdate -ForceDownload -ForceInstall -AcceptAll -AutoReboot"
-
 :: CHECKING UPDATES ::
-echo CHECKING UPDATES
+echo CHECKING WINDOWS UPDATES
 powershell -command "Get-WindowsUpdate" > tmp
 find /c "ComputerName" tmp >nul
 IF %ERRORLEVEL% EQU 0 (
 	del tmp
+	echo INSTALLING WINDOWS UPDATES...
+	powershell -command "Get-WindowsUpdate"
+	powershell -command "Install-WindowsUpdate -ForceDownload -ForceInstall -AcceptAll -AutoReboot"
 	shutdown /r /t 30
 	echo shutdown -a > "%USERPROFILE%\Desktop\Abort Shutdown.cmd"
 	exit
