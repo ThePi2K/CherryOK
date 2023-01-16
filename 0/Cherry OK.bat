@@ -36,7 +36,7 @@ rmdir %isAdminDir%
 powershell.exe -Command "Set-ExecutionPolicy Unrestricted"
 
 :: TEST FIRST RUN ::
-if not exist C:\Users\Public\Documents\CherryOK (
+if not exist "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\start_Updates_And_Store.cmd" (
 	goto FIRSTRUN
 	exit
 )
@@ -134,9 +134,7 @@ cls
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 
-:: REMOVING UPDATE CMD FILE ON DESKTOP AND IN STARTUP ::
-del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\start_Updates_And_Store.cmd"
-cls
+
 
 :: EMPTY RECYCLE BIN ::
 rd /s /q C:\$Recycle.Bin
@@ -301,8 +299,11 @@ if not exist "C:\Program Files\Adobe\Acrobat DC\Acrobat\Acrobat.exe" (
       ..\1\reader.exe
 )
 
+:: REMOVING UPDATE CMD ::
+del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\start_Updates_And_Store.cmd"
+cls
+
 :: CONFIGURE SYSTEM RESTORE ::
-rmdir C:\Users\Public\Documents\CherryOK
 echo CONFIGURING SYSTEM RESTORE
 :RESTORE
 powershell.exe .\_media\restore.ps1
@@ -361,6 +362,5 @@ start _media\admin.bat
 
 :: CREATE UPDATE SCRIPT AND FOLDER FOR CHERRY OK ::
 copy _media\start_Updates_And_Store.cmd "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup"
-mkdir C:\Users\Public\Documents\CherryOK
 
 exit
