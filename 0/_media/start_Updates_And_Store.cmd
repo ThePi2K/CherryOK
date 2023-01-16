@@ -19,6 +19,7 @@ find /c "ComputerName" tmp >nul
 IF %ERRORLEVEL% EQU 0 (
 	del tmp
 	shutdown /r /t 30
+	echo shutdown -a > "%USERPROFILE%\Desktop\Abort Shutdown.cmd"
 	exit
 )
 del tmp

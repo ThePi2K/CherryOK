@@ -37,5 +37,6 @@ powershell -command "Install-WindowsUpdate -ForceDownload -ForceInstall -AcceptA
 timeout 2 >nul
 
 shutdown /t 30 /r
+echo shutdown -a > "%USERPROFILE%\Desktop\Abort Shutdown.cmd"
 
 exit

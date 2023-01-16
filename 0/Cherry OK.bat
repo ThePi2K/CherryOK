@@ -10,6 +10,8 @@ set version=6.1b
 
 title Preparing...
 
+del "%USERPROFILE%\Desktop\Abort Shutdown.cmd"
+
 :: CONNECT TO WIFI
 netsh wlan add profile filename=_media\WLAN-Cherry-Net.xml >nul
 
@@ -132,9 +134,6 @@ cls
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::                                         CHERRY OK START                                         ::
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
-
-
 
 :: EMPTY RECYCLE BIN ::
 rd /s /q C:\$Recycle.Bin
