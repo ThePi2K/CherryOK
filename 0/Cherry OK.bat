@@ -20,6 +20,17 @@ cls
 :: CONNECT TO WIFI
 netsh wlan add profile filename=_media\WLAN-Cherry-Net.xml >nul
 
+:: EXIT IF NO INTERNET ::
+echo CHECKING INTERNET...
+timeout 4 > nul
+ping -n 1 8.8.8.8 | find "TTL=" >nul
+cls
+if errorlevel 1 (
+	echo NO INTERNET... CONNECT TO INTERNET!
+	pause > nul
+	exit
+)
+
 :: CHECK WINDOWS VERSION ::
 WMIC OS Get Name | findstr Microsoft > result.txt
 set /p QUERY=<result.txt
@@ -353,16 +364,6 @@ if not "%cherry_ok_start%" == "y" (
 )
 timeout 2 > nul
 cls
-
-:: EXIT IF NO INTERNET ::
-echo CHECKING INTERNET...
-ping -n 1 8.8.8.8 | find "TTL=" >nul
-cls
-if errorlevel 1 (
-	echo NO INTERNET... CONNECT TO INTERNET!
-	pause > nul
-	exit
-)
 
 :: SET UAC SETTINGS AND STARTING UPDATES ::
 echo SET UAC SETTINGS AND STARTING UPDATES
