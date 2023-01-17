@@ -35,9 +35,11 @@ cls
 echo SCANNING AND INSTALLING WINDOWS UPDATES...
 ::powershell -command "Get-WindowsUpdate"
 powershell -command "Install-WindowsUpdate -ForceDownload -ForceInstall -AcceptAll -AutoReboot"
-timeout 2 >nul
+timeout 5 >nul
 
-shutdown /t 30 /r
+echo RESTARTING COMPUTER...
+timeout 5 >nul
 echo shutdown -a > "%USERPROFILE%\Desktop\Abort Shutdown.cmd"
+shutdown /t 0 /r
 
 exit
