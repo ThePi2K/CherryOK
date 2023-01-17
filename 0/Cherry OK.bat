@@ -328,6 +328,7 @@ _media\nircmd cmdwait 1000 sendkeypress F5
 
 powershell.exe -Command "Set-ExecutionPolicy Restricted"
 
+timeout 5 > nul
 shutdown /t 0 /r
 exit
 
