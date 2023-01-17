@@ -42,12 +42,12 @@ if NOT "%winver%"=="%winver:11=%" set winversion=11
 
 :: CHECK IF ADMIN OK ::
 set isAdminDir=C:\Windows\CherryTestAdmin
-mkdir %isAdminDir% > nul
+mkdir %isAdminDir% >nul 2>&1
 if not exist %isAdminDir% (
 	goto FIRSTRUN
 	exit
 )
-rmdir %isAdminDir%
+rmdir %isAdminDir% >nul 2>&1
 
 :: SET EXECUTION POLICY
 powershell.exe -Command "Set-ExecutionPolicy Unrestricted"
@@ -328,7 +328,6 @@ echo.
 echo    CHERRY OK SUCCEEDED SUCCESSFULLY
 echo    TESTED AND APPROVED
 timeout 5 > nul
-cls
 
 :: REFRESH DESKTOP ::
 _media\nircmd cmdwait 1000 sendkeypress rwin+D
@@ -336,7 +335,7 @@ _media\nircmd cmdwait 1000 sendkeypress F5
 
 powershell.exe -Command "Set-ExecutionPolicy Restricted"
 
-timeout 5 > nul
+timeout 2 > nul
 shutdown /t 0 /r
 exit
 
@@ -350,7 +349,7 @@ exit
 
 cls
 echo WELCOME TO CHERRY OK
-timeout 5 > nul
+timeout 2 > nul
 cls
 
 :: ASKING FOR START ::
