@@ -1,5 +1,5 @@
 @echo off
-@title Starting Updates
+@title Cherry OK - Updates
 
 :: STARTING STORE UPDATES ::
 echo STARTING STORE UPDATES...

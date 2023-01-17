@@ -8,8 +8,6 @@
 
 set version=6.2.1b
 
-title Preparing...
-
 del "%USERPROFILE%\Desktop\Abort Shutdown.cmd"
 cls
 
@@ -141,8 +139,6 @@ start _media\delEdge.bat
 timeout 1 > nul
 cls
 
-title Programs
-
 :: INSTALL MICROSOFT 365 APPS ::
 if not exist "C:\Program Files\Microsoft Office\root\Office16\WINWORD.EXE" (
 	echo INSTALL MICROSOFT 365 APPS
@@ -187,8 +183,6 @@ if not exist "C:\Program Files\Adobe\Acrobat DC\Acrobat\Acrobat.exe" (
 )
 timeout 1 > nul
 cls
-
-title Settings...
 
 :: DISABLE BITLOCKER ENCRYPTION ::
 echo DISABLE BITLOCKER ENCRYPTION
@@ -244,8 +238,6 @@ REG ADD HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\UserProfileE
 timeout 1 > nul
 cls
 
-title Finalizing...
-
 :: SET TASKBAR ::
 echo SET TASKBAR
 if exist "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Google Chrome.lnk" copy "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Google Chrome.lnk" "%AppData%\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar"
@@ -286,8 +278,6 @@ if "%winversion%"=="11" _media\Windows11.deskthemepack
 taskkill /im SystemSettings.exe /f > nul
 timeout 1 > nul
 cls
-
-title Last Steps
 
 :: INSTALL ADOBE READER IF FAILED ::
 if not exist "C:\Program Files\Adobe\Acrobat DC\Acrobat\Acrobat.exe" (
@@ -350,6 +340,7 @@ if not "%cherry_ok_start%" == "y" (
 	timeout 1 > nul
 	exit
 )
+timeout 2 > nul
 cls
 
 :: EXIT IF NO INTERNET ::

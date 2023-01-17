@@ -1,3 +1,6 @@
+@echo off
+@title Microsoft 365
+
 powershell -window minimized -command ""
 winget install --id Microsoft.Office --accept-source-agreements --force
 if not exist "C:\Program Files\Microsoft Office\root\Office16\WINWORD.EXE" (
