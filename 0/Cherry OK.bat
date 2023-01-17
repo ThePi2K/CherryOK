@@ -13,18 +13,18 @@
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 
-del "%USERPROFILE%\Desktop\Abort Shutdown.cmd"
-cls
+del "%USERPROFILE%\Desktop\Abort Shutdown.cmd" >nul 2>&1
 
 :: CONNECT TO WIFI
 netsh wlan add profile filename=_media\WLAN-Cherry-Net.xml >nul
+timeout 1 > nul
 
 :: EXIT IF NO INTERNET ::
-echo CHECKING INTERNET...
-timeout 4 > nul
 ping -n 1 8.8.8.8 | find "TTL=" >nul
-cls
 if errorlevel 1 (
+	echo CHECKING INTERNET...
+	timeout 1 > nul
+	cls
 	echo NO INTERNET... CONNECT TO INTERNET!
 	pause > nul
 	exit
@@ -230,31 +230,20 @@ REG ADD HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation /v Manufac
 
 :: HIDE CHAT AND WIDGETS ::
 if "%winversion%"=="11" (
-	echo HIDE CHAT AND WIDGETS
-	REG ADD HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v TaskbarMn /t REG_DWORD /d 0 /f
-	REG ADD HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v TaskbarDA /t REG_DWORD /d 0 /f
-	timeout 1 > nul
-	cls
+	REG ADD HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v TaskbarMn /t REG_DWORD /d 0 /f >nul
+	REG ADD HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v TaskbarDA /t REG_DWORD /d 0 /f >nul
 )
 
 :: HIDE CORTANA, SET TASKBAR AND HIDE WEATHER ::
 if "%winversion%"=="10" (
-	echo HIDE CORTANA, SET TASKBAR AND HIDE WEATHER
-	REG ADD HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v ShowCortanaButton /t REG_DWORD /d 0 /f
-	REG ADD HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Search /v SearchboxTaskbarMode /t REG_DWORD /d 1 /f
-	REG ADD "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Feeds" /v EnableFeeds /t REG_DWORD /d 0 /f
-	taskkill /f /im explorer.exe
-	start explorer.exe
-	timeout 1 > nul
-	cls
+	REG ADD HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v ShowCortanaButton /t REG_DWORD /d 0 /f >nul
+	REG ADD HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Search /v SearchboxTaskbarMode /t REG_DWORD /d 1 /f >nul
+	REG ADD "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Feeds" /v EnableFeeds /t REG_DWORD /d 0 /f >nul
 )
 
 :: TURN OFF WINDOWS WELCOME EXPERIENCE ::
-echo TURN OFF WINDOWS WELCOME EXPERIENCE
-REG ADD HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager /v SubscribedContent-310093Enabled /t REG_DWORD /d 0 /f
-REG ADD HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\UserProfileEngagement /v ScoobeSystemSettingEnabled /t REG_DWORD /d 0 /f
-timeout 1 > nul
-cls
+REG ADD HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager /v SubscribedContent-310093Enabled /t REG_DWORD /d 0 /f >nul
+REG ADD HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\UserProfileEngagement /v ScoobeSystemSettingEnabled /t REG_DWORD /d 0 /f >nul
 
 :: SET TASKBAR ::
 echo SET TASKBAR
@@ -294,7 +283,7 @@ echo SET DESIGN
 if "%winversion%"=="10" _media\Windows10.deskthemepack
 if "%winversion%"=="11" _media\Windows11.deskthemepack
 taskkill /im SystemSettings.exe /f > nul
-timeout 1 > nul
+timeout 2 > nul
 cls
 
 :: INSTALL ADOBE READER IF FAILED ::
@@ -304,8 +293,7 @@ if not exist "C:\Program Files\Adobe\Acrobat DC\Acrobat\Acrobat.exe" (
 )
 
 :: REMOVING UPDATE CMD ::
-del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\start_Updates_And_Store.cmd"
-cls
+del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\start_Updates_And_Store.cmd" >nul 2>&1
 
 :: CHECKING IF OFFICE IS RUNNING ::
 :CheckOffice
