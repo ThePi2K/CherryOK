@@ -344,6 +344,14 @@ echo WELCOME TO CHERRY OK
 timeout 5 > nul
 cls
 
+:: ASKING FOR START ::
+set /p cherry_ok_start="Ready to perform Cherry OK? [y|n] "
+if not "%cherry_ok_start%" == "y" (
+	timeout 1 > nul
+	exit
+)
+cls
+
 :: EXIT IF NO INTERNET ::
 echo CHECKING INTERNET...
 ping -n 1 8.8.8.8 | find "TTL=" >nul
