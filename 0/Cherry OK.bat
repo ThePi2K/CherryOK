@@ -5,14 +5,13 @@
 
 @echo off
 @title Cherry OK
+@set version=6.2.2
 
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::                                CHECKING UPDATES, ACTIVATION USW.                                ::
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-
-set version=6.2.1b
 
 del "%USERPROFILE%\Desktop\Abort Shutdown.cmd"
 cls
@@ -308,9 +307,19 @@ if not exist "C:\Program Files\Adobe\Acrobat DC\Acrobat\Acrobat.exe" (
 del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\start_Updates_And_Store.cmd"
 cls
 
+:: CHECKING IF OFFICE IS RUNNING ::
+:CheckOffice
+tasklist /fi "ImageName eq setup.exe" /fo csv 2>NUL | find /I "setup.exe">NUL
+if "%ERRORLEVEL%"=="0" (
+	echo Office is running...
+	timeout 5 > nul
+	cls
+	goto CheckOffice
+)
+cls
+
 :: CONFIGURE SYSTEM RESTORE ::
 echo CONFIGURING SYSTEM RESTORE
-:RESTORE
 powershell.exe .\_media\restore.ps1
 find /c "Cherry OK" tmp >nul
 IF %ERRORLEVEL% EQU 1 (
