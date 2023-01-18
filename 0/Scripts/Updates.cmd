@@ -28,3 +28,5 @@ powershell -command "Install-Module PSWindowsUpdate -Force"
 cls
 echo SCANNING AND INSTALLING WINDOWS UPDATES...
 powershell -command "Install-WindowsUpdate -ForceDownload -ForceInstall -AcceptAll"
+
+exit
