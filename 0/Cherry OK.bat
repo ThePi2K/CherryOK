@@ -17,7 +17,7 @@ del "%USERPROFILE%\Desktop\Abort Shutdown.cmd" >nul 2>&1
 
 :: CONNECT TO WIFI
 netsh wlan add profile filename=_media\WLAN-Cherry-Net.xml >nul
-timeout 1 > nul
+timeout 5 > nul
 
 :: EXIT IF NO INTERNET ::
 ping -n 1 8.8.8.8 | find "TTL=" >nul
