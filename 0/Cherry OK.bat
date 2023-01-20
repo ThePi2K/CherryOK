@@ -334,6 +334,12 @@ timeout 5 > nul
 _media\nircmd cmdwait 1000 sendkeypress rwin+D
 _media\nircmd cmdwait 1000 sendkeypress F5
 
+:: DELETE MICROSOFT EDGE ::
+echo DELETE MICROSOFT EDGE FROM DESKTOP
+start _media\delEdge.bat
+timeout 1 > nul
+cls
+
 powershell.exe -Command "Set-ExecutionPolicy Restricted"
 
 timeout 2 > nul
