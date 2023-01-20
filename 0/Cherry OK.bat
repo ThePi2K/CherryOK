@@ -296,11 +296,11 @@ if not exist "C:\Program Files\Adobe\Acrobat DC\Acrobat\Acrobat.exe" (
 :: REMOVING UPDATE CMD ::
 del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\start_Updates_And_Store.cmd" >nul 2>&1
 
-:: CHECKING IF OFFICE IS RUNNING ::
+:: CHECKING IF M365 SETUP IS RUNNING ::
 :CheckOffice
 tasklist /fi "ImageName eq setup.exe" /fo csv 2>NUL | find /I "setup.exe">NUL
 if "%ERRORLEVEL%"=="0" (
-	echo Office is running...
+	echo Microsoft 365 Setup is running...
 	timeout 5 > nul
 	cls
 	goto CheckOffice
