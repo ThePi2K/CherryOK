@@ -17,17 +17,18 @@ del "%USERPROFILE%\Desktop\Abort Shutdown.cmd" >nul 2>&1
 
 :: CONNECT TO WIFI
 netsh wlan add profile filename=_media\WLAN-Cherry-Net.xml >nul
-timeout 5 > nul
 
 :: EXIT IF NO INTERNET ::
 ping -n 1 8.8.8.8 | find "TTL=" >nul
 if errorlevel 1 (
 	echo CHECKING INTERNET...
-	timeout 1 > nul
-	cls
-	echo NO INTERNET... CONNECT TO INTERNET!
-	pause > nul
-	exit
+	timeout 6 > nul
+	ping -n 1 8.8.8.8 | find "TTL=" >nul
+	if errorlevel 1 (
+		echo NO INTERNET... CONNECT TO INTERNET!
+		pause > nul
+		exit
+	)
 )
 
 :: CHECK WINDOWS VERSION ::
