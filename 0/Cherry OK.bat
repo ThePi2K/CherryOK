@@ -152,8 +152,9 @@ IF %ERRORLEVEL% NEQ 0 (
 :: EMPTY RECYCLE BIN ::
 rd /s /q C:\$Recycle.Bin
 
-:: DELETE MICROSOFT EDGE ::
-echo DELETE MICROSOFT EDGE FROM DESKTOP
+:: BLOCK EDGE FROM CREATING SHORTCUTS ::
+echo BLOCK EDGE FROM CREATING SHORTCUTS
+REG ADD HKLM\SOFTWARE\Policies\Microsoft\EdgeUpdate /v CreateDesktopShortcutDefault /t REG_DWORD /d 0 /f >nul
 start _media\delEdge.bat
 timeout 1 > nul
 cls
@@ -162,7 +163,7 @@ cls
 if not exist "C:\Program Files\Microsoft Office\root\Office16\WINWORD.EXE" (
 	echo INSTALL MICROSOFT 365 APPS
 	start _media\installing_m365.bat
-	REG ADD HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Office\16.0\Teams /v PreventFirstLaunchAfterInstall /t REG_DWORD /d 1 /f
+	REG ADD HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Office\16.0\Teams /v PreventFirstLaunchAfterInstall /t REG_DWORD /d 1 /f >nul
 )	else (
 	echo Microsoft 365 is installed!
 )
