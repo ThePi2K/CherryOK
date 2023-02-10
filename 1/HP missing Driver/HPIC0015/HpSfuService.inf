@@ -1,0 +1,151 @@
+;
+; HpSfuService.inf
+;
+
+[Version]
+Signature="$Windows NT$"
+Class=%ClassName%
+ClassGuid={62f9c741-b25a-46ce-b54c-9bccce08b6f2}	; SoftwareDevice
+Provider=%ManufacturerName%
+CatalogFile=HpSfuService.cat
+DriverVer = 02/04/2022, 1.0.2.34502
+PnpLockdown=1
+
+; =================== Device Section ==================================
+
+[ControlFlags]
+ExcludeFromSelect=*
+
+[DestinationDirs]
+DefaultDestDir=10,Firmware ; copy to windows\Firmware
+
+[SourceDisksNames]
+1 = %DiskName%,,,
+
+[SourceDisksFiles]
+HpSfuService64.exe=1
+HpSfuService.exe=1
+
+[SourceDisksFiles.amd64]
+HpFirmwareUpdRec64.exe=1,\amd64
+
+[SourceDisksFiles.x86]
+HpFirmwareUpdRec.exe=1,\x86
+
+; =================== Install Section ==================================
+
+[Manufacturer]
+%ManufacturerName%=Standard,NTamd64,NTx86
+
+[Standard.NTx86]
+; SFU ACPI Device
+%DeviceName%  = SFUService.NTx86, ACPI\HPIC0015
+
+[Standard.NTamd64]
+; SFU ACPI Device
+%DeviceName%  = SFUService.NTamd64, ACPI\HPIC0015
+
+; =================== SFUService Device ==================================
+
+[SFUService_Install]
+DisplayName    = %SFUServiceDisplayName%
+ServiceType    = %SERVICE_SERVICE_TYPE%
+StartType      = %SERVICE_START_TYPE%
+ErrorControl   = %SERVICE_ERROR_NORMAL%
+ServiceBinary  = %10%\Firmware\HpSfuService.exe
+
+[SFUEventLog_Install]
+AddReg         = SFUEventLog_Install_AddReg
+
+[SFUEventLog_Install_AddReg]
+HKR,,EventMessageFile,0x00020000,"%%SystemRoot%%\Firmware\HpSfuService.exe"
+HKR,,TypesSupported,0x00010001,7
+HKLM,%SFUServiceEventSubKey%,EventMessageFile,0x00020000,"%%SystemRoot%%\Firmware\HpSfuService.exe"
+HKLM,%SFUServiceEventSubKey%,TypesSupported,0x00010001,7
+HKLM,%SFUServiceEventSubKey2%,EventMessageFile,0x00020000,"%%SystemRoot%%\Firmware\HpSfuService.exe"
+HKLM,%SFUServiceEventSubKey2%,TypesSupported,0x00010001,7
+HKLM,%SFUServiceEventAppKey%,EventMessageFile,0x00020000,"%%SystemRoot%%\Firmware\HpSfuService.exe"
+HKLM,%SFUServiceEventAppKey%,TypesSupported,0x00010001,7
+
+
+[SFUService.NTamd64]
+CopyFiles      = SFUDriverCopy.NTamd64
+
+[SFUService.NTamd64.Services]
+;; old name=SFU_Service, try to remove just in case old inf was installed
+DeleteService  = SFU_Service,%SPSVCINST_STOPSERVICE%
+DeleteService  = SFUService,%SPSVCINST_STOPSERVICE%
+AddService     = ,%SPSVCINST_ASSOCSERVICE%
+AddService     = SFUService,%SPSVCSINST_STARTSERVICE%,SFUService_Install,SFUEventLog_Install
+
+[SFUDriverCopy.NTamd64]
+HpSfuService.exe,HpSfuService64.exe
+HpFirmwareUpdRec.exe,HpFirmwareUpdRec64.exe
+
+[SFUService.NTx86]
+CopyFiles      = SFUDriverCopy.NTx86
+
+[SFUService.NTx86.Services]
+DeleteService  = SFUService,%SPSVCINST_STOPSERVICE%
+AddService     = ,%SPSVCINST_ASSOCSERVICE%
+AddService     = SFUService,%SPSVCSINST_STARTSERVICE%,SFUService_Install
+
+[SFUDriverCopy.NTx86]
+HpSfuService.exe
+HpFirmwareUpdRec.exe
+
+; =================== Generic ==================================
+
+[Strings]
+ManufacturerName = "HP Inc."
+ClassName        = "SoftwareDevice"
+
+SFUServiceDisplayName = "HP SFU Service"
+DeviceName            = "HP SFU Device"
+
+SFUServiceEventKey     = "System\CurrentControlSet\Services\EventLog\HP SFU Service"
+SFUServiceEventSubKey  = "System\CurrentControlSet\Services\EventLog\HP SFU Service\SFUService"
+SFUServiceEventSubKey2 = "System\CurrentControlSet\Services\EventLog\HP SFU Service\HP SFU Service"
+SFUServiceEventAppKey  = "System\CurrentControlSet\Services\EventLog\Application\SFUService"
+
+SPSVCINST_ASSOCSERVICE  = 0x00000002
+SPSVCINST_STOPSERVICE   = 0x00000200
+SPSVCSINST_STARTSERVICE = 0x00000800
+
+SERVICE_KERNEL_DRIVER       = 0x00000001
+SERVICE_WIN32_OWN_PROCESS   = 0x00000010
+SERVICE_WIN32_SHARE_PROCESS = 0x00000020
+SERVICE_INTERACTIVE_PROCESS = 0x00000100
+
+SERVICE_BOOT_START   = 0x00000000
+SERVICE_SYSTEM_START = 0x00000001
+SERVICE_AUTO_START   = 0x00000002
+SERVICE_DEMAND_START = 0x00000003
+SERVICE_DISABLED     = 0x00000004
+
+; ---------- SERVICE_AUTO_START
+SERVICE_START_TYPE = 0x00000002
+
+; ---------- SERVICE_WIN32_OWN_PROCESS | SERVICE_INTERACTIVE_PROCESS
+SERVICE_SERVICE_TYPE = 0x00000110
+
+SERVICE_ERROR_IGNORE   = 0x00000000
+SERVICE_ERROR_NORMAL   = 0x00000001
+SERVICE_ERROR_SEVERE   = 0x00000002
+SERVICE_ERROR_CRITICAL = 0x00000003
+
+COPYFLG_WARN_IF_SKIP         = 0x00000001
+COPYFLG_NOSKIP               = 0x00000002
+COPYFLG_NOVERSIONCHECK       = 0x00000004
+COPYFLG_FORCE_FILE_IN_USE    = 0x00000008
+COPYFLG_NO_OVERWRITE         = 0x00000010
+COPYFLG_NO_VERSION_DIALOG    = 0x00000020
+COPYFLG_OVERWRITE_OLDER_ONLY = 0x00000040
+COPYFLG_REPLACEONLY          = 0x00000400
+COPYFLG_NODECOMP             = 0x00000800
+COPYFLG_REPLACE_BOOT_FILE    = 0x00001000
+COPYFLG_NOPRUNE              = 0x00002000
+COPYFLG_IN_USE_RENAME        = 0x00004000
+
+; Localizable
+DiskName = "HP Seamless Firmware Update Installation Disk"
