@@ -5,7 +5,7 @@
 
 @echo off
 @title Cherry OK
-@set version=6.2.4
+@set version=6.2.5
 
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -341,10 +341,9 @@ start _media\delEdge.bat
 timeout 1 > nul
 cls
 
+powershell -command "New-BurntToastNotification -AppLogo _media\CherryOK.png -Text 'CHERRY OK', 'Tested & Approved!'"
 powershell.exe -Command "Set-ExecutionPolicy Restricted"
 
-timeout 2 > nul
-shutdown /t 0 /r
 exit
 
 
