@@ -262,7 +262,9 @@ cls
 :: CLEAR NOTIFICATIONS ::
 echo CLEAR NOTIFICATIONS
 :: Module was installed in admin.cmd
-powershell -command "New-BurntToastNotification -AppLogo _media\CherryOK.png -Text 'Clearing Notifications', '...'"
+mkdir C:\Windows\Cherry >nul 2>&1
+copy _media\CherryOK.png C:\Windows\Cherry >nul 2>&1
+powershell -command "New-BurntToastNotification -AppLogo C:\Windows\Cherry\CherryOK.png -Text 'Clearing Notifications', '...'"
 timeout 8 > nul
 if "%winversion%"=="10" (
 	_media\nircmd sendkeypress lwin+a
@@ -341,7 +343,7 @@ start _media\delEdge.bat
 timeout 1 > nul
 cls
 
-powershell -command "New-BurntToastNotification -AppLogo _media\CherryOK.png -Text 'CHERRY OK', 'Tested & Approved!'"
+powershell -command "New-BurntToastNotification -AppLogo C:\Windows\Cherry\CherryOK.png -Text 'CHERRY OK', 'Tested & Approved!'"
 powershell.exe -Command "Set-ExecutionPolicy Restricted"
 
 exit
