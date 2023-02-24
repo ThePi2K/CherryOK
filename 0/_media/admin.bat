@@ -28,6 +28,9 @@ start explorer.exe
 timeout 2 > nul
 cls
 
+:: TURN ON NOTIFICATIONS ::
+REG ADD HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\PushNotifications /v ToastEnabled /t REG_DWORD /d 1 /f >nul
+
 :: STARTING STORE UPDATES ::
 echo STARTING STORE UPDATES...
 powershell -command "Get-CimInstance -Namespace "Root\cimv2\mdm\dmmap" -ClassName "MDM_EnterpriseModernAppManagement_AppManagement01" | Invoke-CimMethod -MethodName UpdateScanMethod"
