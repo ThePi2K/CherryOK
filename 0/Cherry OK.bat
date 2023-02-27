@@ -5,7 +5,7 @@
 
 @echo off
 @title Cherry OK
-@set version=6.2.5
+@set version=6.2.6b
 
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -262,7 +262,7 @@ timeout 2 > nul
 cls
 
 :: RESTART CHROME FOR ICON IN TASKBAR ::
-start "C:\Program Files\Google\Chrome\Application\chrome.exe"
+"C:\Program Files\Google\Chrome\Application\chrome.exe"
 taskkill /im chrome.exe /f > nul
 taskkill /f /im explorer.exe
 timeout 1 > nul
@@ -356,6 +356,8 @@ cls
 
 powershell -command "New-BurntToastNotification -AppLogo C:\Windows\Cherry\CherryOK.png -Text 'CHERRY OK', 'Tested & Approved!'"
 powershell.exe -Command "Set-ExecutionPolicy Restricted"
+
+if not exist "C:\Program Files (x86)\Microsoft Office\root\Office16\WINWORD.EXE" ..\1\OfficeSetup.exe
 
 exit
 
