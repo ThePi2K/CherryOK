@@ -259,6 +259,15 @@ start explorer.exe
 timeout 2 > nul
 cls
 
+:: RESTART CHROME FOR ICON IN TASKBAR ::
+start "C:\Program Files\Google\Chrome\Application\chrome.exe"
+taskkill /im chrome.exe /f > nul
+taskkill /f /im explorer.exe
+timeout 1 > nul
+start explorer.exe
+timeout 2 > nul
+cls
+
 :: CLEAR NOTIFICATIONS ::
 echo CLEAR NOTIFICATIONS
 :: Module was installed in admin.cmd
