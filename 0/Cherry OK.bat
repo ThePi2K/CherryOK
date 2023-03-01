@@ -263,7 +263,7 @@ cls
 
 :: RESTART CHROME FOR ICON IN TASKBAR ::
 "C:\Program Files\Google\Chrome\Application\chrome.exe"
-taskkill /im chrome.exe /f > nul
+_media\nircmd cmdwait 1500 sendkeypress alt+f4
 taskkill /f /im explorer.exe
 timeout 1 > nul
 start explorer.exe
