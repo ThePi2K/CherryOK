@@ -262,8 +262,8 @@ timeout 2 > nul
 cls
 
 :: RESTART CHROME FOR ICON IN TASKBAR ::
-"C:\Program Files\Google\Chrome\Application\chrome.exe"
-_media\nircmd cmdwait 1500 sendkeypress alt+f4
+start _media\openChrome.bat
+_media\nircmd cmdwait 2500 sendkeypress alt+f4
 taskkill /f /im explorer.exe
 timeout 1 > nul
 start explorer.exe
@@ -293,13 +293,23 @@ if "%winversion%"=="11" (
 timeout 1 > nul
 cls
 
-:: SET DESIGN ::
+:: SET DESIGN [BETA] ::
 echo SET DESIGN
-if "%winversion%"=="10" _media\Windows10.deskthemepack
-if "%winversion%"=="11" _media\Windows11.deskthemepack
-taskkill /im SystemSettings.exe /f > nul
+copy "_media\WinDesktop.jpg" "C:\Windows\WinDesktop.jpg"
+reg add "HKEY_CURRENT_USER\Control Panel\Desktop" /v Wallpaper /t REG_SZ /d "C:\Windows\WinDesktop.jpg" /f
+REG ADD HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize /v SystemUsesLightTheme /t REG_DWORD /d 0 /f >nul
+REG ADD HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize /v AppsUseLightTheme /t REG_DWORD /d 0 /f >nul
+RUNDLL32.EXE user32.dll,UpdatePerUserSystemParameters
 timeout 2 > nul
 cls
+
+:: SET DESIGN ::
+::echo SET DESIGN
+::if "%winversion%"=="10" _media\Windows10.deskthemepack
+::if "%winversion%"=="11" _media\Windows11.deskthemepack
+::taskkill /im SystemSettings.exe /f > nul
+::timeout 2 > nul
+::cls
 
 :: INSTALL ADOBE READER IF FAILED ::
 if not exist "C:\Program Files\Adobe\Acrobat DC\Acrobat\Acrobat.exe" (
@@ -356,8 +366,6 @@ cls
 
 powershell -command "New-BurntToastNotification -AppLogo C:\Windows\Cherry\CherryOK.png -Text 'CHERRY OK', 'Tested & Approved!'"
 powershell.exe -Command "Set-ExecutionPolicy Restricted"
-
-if not exist "C:\Program Files (x86)\Microsoft Office\root\Office16\WINWORD.EXE" ..\1\OfficeSetup.exe
 
 exit
 
