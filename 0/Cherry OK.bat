@@ -5,7 +5,7 @@
 
 @echo off
 @title Cherry OK
-@set version=6.3 (Beta)
+@set version=6.3
 
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -253,7 +253,7 @@ if "%winversion%"=="10" (
 REG ADD HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager /v SubscribedContent-310093Enabled /t REG_DWORD /d 0 /f >nul
 REG ADD HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\UserProfileEngagement /v ScoobeSystemSettingEnabled /t REG_DWORD /d 0 /f >nul
 
-:: SET DESIGN [BETA] ::
+:: SET DESIGN ::
 echo SET DESIGN
 copy "_media\WinDesktop.jpg" "C:\Windows\WinDesktop.jpg"
 reg add "HKEY_CURRENT_USER\Control Panel\Desktop" /v Wallpaper /t REG_SZ /d "C:\Windows\WinDesktop.jpg" /f
@@ -263,7 +263,7 @@ RUNDLL32.EXE user32.dll,UpdatePerUserSystemParameters
 timeout 2 > nul
 cls
 
-:: SET DESIGN ::
+:: SET DESIGN [OLD, NOT IMPLEMETED] ::
 ::echo SET DESIGN
 ::if "%winversion%"=="10" _media\Windows10.deskthemepack
 ::if "%winversion%"=="11" _media\Windows11.deskthemepack
