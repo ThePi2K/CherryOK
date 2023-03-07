@@ -20,15 +20,7 @@ reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\S
 :: SET EXECUTION POLICY
 powershell.exe -Command "Set-ExecutionPolicy Unrestricted"
 
-:: EXPLORER NEU STARTEN
-echo RESTARTING EXPLORER...
-taskkill /f /im explorer.exe
-timeout 1 > nul
-start explorer.exe
-timeout 2 > nul
-cls
-
-:: TURN ON NOTIFICATIONS ::
+:: TURN ON NOTIFICATIONS [unklar ob das was bringt...] ::
 REG ADD HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\PushNotifications /v ToastEnabled /t REG_DWORD /d 1 /f >nul
 
 :: IMPORTING PACKAGES ::
@@ -36,10 +28,6 @@ echo IMPORTING PACKAGES...
 powershell -command "Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force"
 powershell -command "Install-Module PSWindowsUpdate -Force"
 powershell -command "Install-Module BurntToast -Force"
-cls
-
-:: CREATE UPDATE SCRIPT AND FOLDER FOR CHERRY OK ::
-copy _media\start_Updates_And_Store.cmd "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup" >nul 2>&1
 cls
 
 :: STARTING STORE UPDATES ::
