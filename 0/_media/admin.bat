@@ -39,7 +39,8 @@ powershell -command "Install-Module BurntToast -Force"
 cls
 
 :: CREATE UPDATE SCRIPT AND FOLDER FOR CHERRY OK ::
-copy _media\start_Updates_And_Store.cmd "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup"
+copy _media\start_Updates_And_Store.cmd "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup" >nul 2>&1
+cls
 
 :: STARTING STORE UPDATES ::
 echo STARTING STORE UPDATES...
