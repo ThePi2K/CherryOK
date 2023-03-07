@@ -193,6 +193,16 @@ cls
 if not exist "C:\Program Files\Google\Chrome\Application\chrome.exe" (
 	echo INSTALL GOOGLE CHROME
 	winget install --id Google.Chrome --accept-source-agreements --force --scope machine
+
+	:: RESTART CHROME FOR ICON IN TASKBAR ::
+	start _media\openChrome.bat
+	_media\nircmd cmdwait 2500 sendkeypress alt+f4
+	taskkill /f /im explorer.exe
+	timeout 1 > nul
+	start explorer.exe
+	timeout 2 > nul
+	cls
+
 )	else (
 	echo Google Chrome is installed!
 )
@@ -283,15 +293,6 @@ start explorer.exe
 timeout 2 > nul
 cls
 
-:: RESTART CHROME FOR ICON IN TASKBAR ::
-start _media\openChrome.bat
-_media\nircmd cmdwait 2500 sendkeypress alt+f4
-taskkill /f /im explorer.exe
-timeout 1 > nul
-start explorer.exe
-timeout 2 > nul
-cls
-
 :: CLEAR NOTIFICATIONS ::
 echo CLEAR NOTIFICATIONS
 :: Module was installed in admin.cmd
@@ -370,6 +371,8 @@ cls
 
 powershell -command "New-BurntToastNotification -AppLogo C:\Windows\Cherry\CherryOK.png -Text 'CHERRY OK', 'Tested & Approved!'"
 powershell.exe -Command "Set-ExecutionPolicy Restricted"
+
+shutdown -r -t 10
 
 exit
 
