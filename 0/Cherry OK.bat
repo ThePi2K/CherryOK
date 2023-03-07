@@ -20,15 +20,20 @@ netsh wlan add profile filename=_media\WLAN-Cherry-Net.xml >nul
 
 :: EXIT IF NO INTERNET ::
 : INTERNET_CHECK
+cls
 echo CHECKING INTERNET...
 timeout 3 > nul
 ping -n 1 8.8.8.8 | find "TTL=" >nul
 if errorlevel 1 (
 	cls
 	echo NO INTERNET... CONNECT TO INTERNET!
-	pause > nul
+	pause
 	goto INTERNET_CHECK
 )
+cls
+echo INTERNET OK!
+timeout 2 > nul
+cls
 
 :: CHECK WINDOWS VERSION ::
 WMIC OS Get Name | findstr Microsoft > result.txt
