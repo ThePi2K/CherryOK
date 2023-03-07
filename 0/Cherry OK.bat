@@ -258,7 +258,7 @@ echo SET DESIGN
 copy "_media\WinDesktop.jpg" "C:\Windows\WinDesktop.jpg"
 reg add "HKEY_CURRENT_USER\Control Panel\Desktop" /v Wallpaper /t REG_SZ /d "C:\Windows\WinDesktop.jpg" /f
 REG ADD HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize /v SystemUsesLightTheme /t REG_DWORD /d 0 /f >nul
-REG ADD HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize /v AppsUseLightTheme /t REG_DWORD /d 0 /f >nul
+REG ADD HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize /v AppsUseLightTheme /t REG_DWORD /d 1 /f >nul
 RUNDLL32.EXE user32.dll,UpdatePerUserSystemParameters
 timeout 2 > nul
 cls
