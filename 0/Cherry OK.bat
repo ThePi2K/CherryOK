@@ -253,6 +253,24 @@ if "%winversion%"=="10" (
 REG ADD HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager /v SubscribedContent-310093Enabled /t REG_DWORD /d 0 /f >nul
 REG ADD HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\UserProfileEngagement /v ScoobeSystemSettingEnabled /t REG_DWORD /d 0 /f >nul
 
+:: SET DESIGN [BETA] ::
+echo SET DESIGN
+copy "_media\WinDesktop.jpg" "C:\Windows\WinDesktop.jpg"
+reg add "HKEY_CURRENT_USER\Control Panel\Desktop" /v Wallpaper /t REG_SZ /d "C:\Windows\WinDesktop.jpg" /f
+REG ADD HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize /v SystemUsesLightTheme /t REG_DWORD /d 0 /f >nul
+REG ADD HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize /v AppsUseLightTheme /t REG_DWORD /d 0 /f >nul
+RUNDLL32.EXE user32.dll,UpdatePerUserSystemParameters
+timeout 2 > nul
+cls
+
+:: SET DESIGN ::
+::echo SET DESIGN
+::if "%winversion%"=="10" _media\Windows10.deskthemepack
+::if "%winversion%"=="11" _media\Windows11.deskthemepack
+::taskkill /im SystemSettings.exe /f > nul
+::timeout 2 > nul
+::cls
+
 :: SET TASKBAR ::
 echo SET TASKBAR
 if exist "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Google Chrome.lnk" copy "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Google Chrome.lnk" "%AppData%\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar"
@@ -296,24 +314,6 @@ if "%winversion%"=="11" (
 )
 timeout 1 > nul
 cls
-
-:: SET DESIGN [BETA] ::
-echo SET DESIGN
-copy "_media\WinDesktop.jpg" "C:\Windows\WinDesktop.jpg"
-reg add "HKEY_CURRENT_USER\Control Panel\Desktop" /v Wallpaper /t REG_SZ /d "C:\Windows\WinDesktop.jpg" /f
-REG ADD HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize /v SystemUsesLightTheme /t REG_DWORD /d 0 /f >nul
-REG ADD HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize /v AppsUseLightTheme /t REG_DWORD /d 0 /f >nul
-RUNDLL32.EXE user32.dll,UpdatePerUserSystemParameters
-timeout 2 > nul
-cls
-
-:: SET DESIGN ::
-::echo SET DESIGN
-::if "%winversion%"=="10" _media\Windows10.deskthemepack
-::if "%winversion%"=="11" _media\Windows11.deskthemepack
-::taskkill /im SystemSettings.exe /f > nul
-::timeout 2 > nul
-::cls
 
 :: INSTALL ADOBE READER IF FAILED ::
 if not exist "C:\Program Files\Adobe\Acrobat DC\Acrobat\Acrobat.exe" (
