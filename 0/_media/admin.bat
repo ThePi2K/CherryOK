@@ -21,7 +21,8 @@ reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\S
 powershell.exe -Command "Set-ExecutionPolicy Unrestricted"
 
 :: TURN ON NOTIFICATIONS [unklar ob das was bringt...] ::
-REG ADD HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\PushNotifications /v ToastEnabled /t REG_DWORD /d 1 /f >nul
+::REG ADD HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\PushNotifications /v ToastEnabled /t REG_DWORD /d 1 /f >nul
+REG ADD HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\PushNotifications /v NoQuietTime /t REG_DWORD /d 0 /f >nul
 
 :: IMPORTING PACKAGES ::
 echo IMPORTING PACKAGES...
