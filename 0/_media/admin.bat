@@ -31,6 +31,16 @@ cls
 :: TURN ON NOTIFICATIONS ::
 REG ADD HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\PushNotifications /v ToastEnabled /t REG_DWORD /d 1 /f >nul
 
+:: IMPORTING PACKAGES ::
+echo IMPORTING PACKAGES...
+powershell -command "Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force"
+powershell -command "Install-Module PSWindowsUpdate -Force"
+powershell -command "Install-Module BurntToast -Force"
+cls
+
+:: CREATE UPDATE SCRIPT AND FOLDER FOR CHERRY OK ::
+copy _media\start_Updates_And_Store.cmd "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup"
+
 :: STARTING STORE UPDATES ::
 echo STARTING STORE UPDATES...
 powershell -command "Get-CimInstance -Namespace "Root\cimv2\mdm\dmmap" -ClassName "MDM_EnterpriseModernAppManagement_AppManagement01" | Invoke-CimMethod -MethodName UpdateScanMethod"
@@ -39,12 +49,7 @@ echo Forcing Updates was successfully!
 timeout 1 >nul
 cls
 
-:: START WINDOWS UPDATES ::
-echo IMPORTING PACKAGES...
-powershell -command "Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force"
-powershell -command "Install-Module PSWindowsUpdate -Force"
-powershell -command "Install-Module BurntToast -Force"
-cls
+:: SCANNING AND INSTALLING WINDOWS UPDATES ::
 echo SCANNING AND INSTALLING WINDOWS UPDATES...
 ::powershell -command "Get-WindowsUpdate"
 powershell -command "Install-WindowsUpdate -ForceDownload -ForceInstall -AcceptAll -AutoReboot"
