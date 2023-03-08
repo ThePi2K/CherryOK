@@ -273,14 +273,6 @@ RUNDLL32.EXE user32.dll,UpdatePerUserSystemParameters
 timeout 2 > nul
 cls
 
-:: SET DESIGN [OLD, NOT IMPLEMETED] ::
-::echo SET DESIGN
-::if "%winversion%"=="10" _media\Windows10.deskthemepack
-::if "%winversion%"=="11" _media\Windows11.deskthemepack
-::taskkill /im SystemSettings.exe /f > nul
-::timeout 2 > nul
-::cls
-
 :: SET TASKBAR ::
 echo SET TASKBAR
 if exist "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Google Chrome.lnk" copy "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Google Chrome.lnk" "%AppData%\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar"
