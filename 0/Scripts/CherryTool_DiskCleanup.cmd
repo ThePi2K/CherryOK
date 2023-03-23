@@ -1,0 +1,1 @@
+start %windir%\system32\cleanmgr.exe
