@@ -193,16 +193,6 @@ cls
 if not exist "C:\Program Files\Google\Chrome\Application\chrome.exe" (
 	echo INSTALL GOOGLE CHROME
 	winget install --id Google.Chrome --accept-source-agreements --force --scope machine
-
-	:: RESTART CHROME FOR ICON IN TASKBAR ::
-	start _media\openChrome.bat
-	_media\nircmd cmdwait 2500 sendkeypress alt+f4
-	taskkill /f /im explorer.exe
-	timeout 1 > nul
-	start explorer.exe
-	timeout 2 > nul
-	cls
-
 )	else (
 	echo Google Chrome is installed!
 )
