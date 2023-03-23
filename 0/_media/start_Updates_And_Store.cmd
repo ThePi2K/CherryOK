@@ -40,5 +40,6 @@ IF EXIST "Cherry OK.cmd" (
 ) else (
 	echo USB is missing...
 	pause
-	exit
+	cls
+	goto openCmd
 )
