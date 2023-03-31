@@ -4,6 +4,7 @@
 set drive=%CD:~0,3%
 
 echo %drive%
+if not exist "C:\Users\FelixPeer\OneDrive - Cherry Computer\Documents\Cherry\Cherry USB\Cherry OK.cmd" exit
 if "%drive%"=="C:\" exit
 
 C:
