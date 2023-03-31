@@ -4,6 +4,7 @@
 set drive=%CD:~0,3%
 
 echo %drive%
+if "%drive%"=="C:\" exit
 
 C:
 
