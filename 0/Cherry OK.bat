@@ -18,7 +18,7 @@ del "%USERPROFILE%\Desktop\Abort Shutdown.cmd" >nul 2>&1
 :: CONNECT TO WIFI
 netsh wlan add profile filename=_media\WLAN-Cherry-Net.xml >nul
 
-:: EXIT IF NO INTERNET ::
+:: INTERNET CHECK ::
 : INTERNET_CHECK
 cls
 echo CHECKING INTERNET...
@@ -117,6 +117,8 @@ timeout 2 > nul
 cls
 
 :: CHECKING UNKNOWN DRIVERS ::
+: DRIVER_CHECK
+cls
 echo CHECKING UNKNOWN DRIVERS...
 wmic path win32_pnpentity where ConfigManagerErrorcode!=0 get * /format:list >tmp 2>&1
 timeout 1 > nul
@@ -126,8 +128,9 @@ IF %ERRORLEVEL% EQU 0 (
 	ECHO ERROR IN DEVICE MANAGER
 	timeout 2 > nul
 	devmgmt.msc
-	exit
+	goto DRIVER_CHECK
 )
+cls
 del tmp
 ECHO DEVICE MANAGER OK
 timeout 2 > nul
