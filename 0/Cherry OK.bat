@@ -1,7 +1,7 @@
 :: Cherry OK Script
 :: by Felix Peer
 :: Created and tested for Windows 11 22H2
-:: Full Automated
+:: Full Automated v6
 
 @echo off
 @title Cherry OK
@@ -57,7 +57,7 @@ rmdir %isAdminDir% >nul 2>&1
 :: SET EXECUTION POLICY
 powershell.exe -Command "Set-ExecutionPolicy Unrestricted"
 
-:: TEST FIRST RUN ::
+:: CHECK FIRST RUN ::
 if not exist "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\start_Updates_And_Store.cmd" (
 	goto FIRSTRUN
 	exit
@@ -67,6 +67,8 @@ if not exist "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\start_Upda
 powershell.exe .\_media\echoTitle.ps1
 echo.
 echo    Cherry OK - Version %version%
+echo    Designed for Windows 11
+if "%winversion%" == "10" echo    Legacy Mode for Windows 10 enabled
 
 :: CHECK WINDOWS ACTIVATION ::
 powershell.exe .\_media\checkWindowsActivation.ps1
