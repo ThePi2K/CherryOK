@@ -25,8 +25,9 @@ cls
 
 :: START WINDOWS UPDATES ::
 echo IMPORTING PACKAGES...
-powershell -command "Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force"
-powershell -command "Install-Module PSWindowsUpdate -Force"
+powershell -command "if (-not (Get-PackageProvider -ListAvailable -Name nuget)) {Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force}"
+powershell -command "if (-not (Get-Module -ListAvailable -Name PSWindowsUpdate)) {Install-Module PSWindowsUpdate -Force}"
+timeout 1 >nul
 cls
 echo SCANNING AND INSTALLING WINDOWS UPDATES...
 powershell -command "Install-WindowsUpdate -ForceDownload -ForceInstall -AcceptAll"
