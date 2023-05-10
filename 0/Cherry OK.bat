@@ -5,7 +5,7 @@
 
 @echo off
 @title Cherry OK
-@set version=6.3.3
+@set version=6.3.2
 
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -187,9 +187,9 @@ if exist "%userprofile%\Desktop\Cherry *.exe" (
 ) else (
 	echo SETTING UP CHERRY HELP...
 	timeout 1 > nul
-	if "%OSLanguage%"=="de-DE" powershell -command "curl https://customdesignservice.teamviewer.com/download/windows/v15/6bgwa4q/TeamViewerQS.exe?sv=2020-04-08&se=2023-05-11T09%3A01%3A49Z&sr=b&sp=r&sig=cIU6W%2Fyx86N1%2FDzoBLOe%2B8G%2FoOPc%2BoSn0jANdG0aw1A%3D -OutFile '%userprofile%\Desktop\Cherry Hilfe.exe'"
-	if "%OSLanguage%"=="it-IT" powershell -command "curl https://customdesignservice.teamviewer.com/download/windows/v15/6bgwa4q/TeamViewerQS.exe?sv=2020-04-08&se=2023-05-11T09%3A01%3A49Z&sr=b&sp=r&sig=cIU6W%2Fyx86N1%2FDzoBLOe%2B8G%2FoOPc%2BoSn0jANdG0aw1A%3D -OutFile '%userprofile%\Desktop\Cherry Aiuto.exe'"
-	if not exist "%userprofile%\Desktop\Cherry *.exe" powershell -command "curl https://customdesignservice.teamviewer.com/download/windows/v15/6bgwa4q/TeamViewerQS.exe?sv=2020-04-08&se=2023-05-11T09%3A01%3A49Z&sr=b&sp=r&sig=cIU6W%2Fyx86N1%2FDzoBLOe%2B8G%2FoOPc%2BoSn0jANdG0aw1A%3D -OutFile '%userprofile%\Desktop\Cherry Help.exe'"
+	if "%OSLanguage%"=="de-DE" powershell -command "curl https://customdesignservice.teamviewer.com/download/windows/v15/6bgwa4q/TeamViewerQS.exe -OutFile '%userprofile%\Desktop\Cherry Hilfe.exe'"
+	if "%OSLanguage%"=="it-IT" powershell -command "curl https://customdesignservice.teamviewer.com/download/windows/v15/6bgwa4q/TeamViewerQS.exe -OutFile '%userprofile%\Desktop\Cherry Aiuto.exe'"
+	if not exist "%userprofile%\Desktop\Cherry *.exe" powershell -command "curl https://customdesignservice.teamviewer.com/download/windows/v15/6bgwa4q/TeamViewerQS.exe -OutFile '%userprofile%\Desktop\Cherry Help.exe'"
 )
 timeout 1 > nul
 cls
