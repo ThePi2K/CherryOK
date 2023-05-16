@@ -218,7 +218,9 @@ cls
 :: DISABLE BITLOCKER ENCRYPTION ::
 echo DISABLE BITLOCKER ENCRYPTION
 manage-bde -status C:
-
+timeout 1 > nul
+cls
+echo DISABLE BITLOCKER ENCRYPTION
 manage-bde -off C:
 timeout 1 > nul
 cls
