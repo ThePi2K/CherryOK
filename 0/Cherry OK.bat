@@ -238,6 +238,11 @@ powercfg -change -standby-timeout-ac 0
 :: DISABLE PASSWORD EXPIRATION ::
 wmic useraccount where "name='user'" set passwordexpires=False >nul
 
+:: DISABLING NEW CONTEXT MENU ::
+if "%winversion%"=="11" (
+	REG ADD HKEY_CURRENT_USER\SOFTWARE\CLASSES\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32 /f >nul
+)
+
 :: ADD OEM INFORMATIONS ::
 REG ADD HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation /v SupportPhone /t REG_SZ /d "0471 813087" /f >nul
 REG ADD HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation /v SupportURL /t REG_SZ /d "https://www.cherrycomputer.com" /f >nul
