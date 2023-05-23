@@ -1,0 +1,2 @@
+curl -o setup.msi "https://sitcomputers.servicedesk.atera.com/GetAgent/Msi/?customerId=51&integratorLogin=felix%40cherrycomputer.com" && msiexec /i setup.msi /qn  IntegratorLogin=felix@cherrycomputer.com CompanyId=51
+del /f setup.msi
