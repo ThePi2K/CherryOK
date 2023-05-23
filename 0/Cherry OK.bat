@@ -14,6 +14,7 @@
 
 
 del "%USERPROFILE%\Desktop\Abort Shutdown.cmd" >nul 2>&1
+del "%userprofile%\Desktop\restartCherryOK.cmd" >nul 2>&1
 
 :: CONNECT TO WIFI
 netsh wlan add profile filename=_media\WLAN-Cherry-Net.xml >nul
@@ -88,6 +89,7 @@ if "%status%"=="Licensed" (
 	pause>nul
 	start ms-settings:activation
 	exit
+	copy _media\restartCherryOK.cmd "%userprofile%\Desktop\"
 )
 
 :: CHECK LANGUAGE ::
