@@ -2,10 +2,11 @@
 :: by Felix Peer
 :: Designed for Windows 11 Moment 2
 :: Full Automated v6
+:: Powered by XIVTech
 
 @echo off
 @title Cherry OK
-@set version=6.4_prerelease
+@set version=6.4
 
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -70,6 +71,7 @@ echo.
 echo    Cherry OK - Version %version%
 echo    Designed for Windows 11 Moment 2
 if "%winversion%" == "10" echo    Legacy Mode for Windows 10 enabled
+echo    Powered by XIVTech
 
 :: CHECK WINDOWS ACTIVATION ::
 powershell.exe .\_media\checkWindowsActivation.ps1
