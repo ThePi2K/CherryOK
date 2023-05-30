@@ -65,7 +65,7 @@ if not exist "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\start_Upda
 )
 
 :: PROGRESS BAR ::
-.\_media\while.ps1
+powershell.exe .\_media\while.ps1 "Starting Cherry OK" 1000
 
 :: CHERRY OK ASCII ::
 powershell.exe .\_media\echoTitle.ps1
