@@ -168,7 +168,9 @@ rd /s /q C:\$Recycle.Bin
 :: BLOCK EDGE FROM CREATING SHORTCUTS ::
 echo BLOCK EDGE FROM CREATING SHORTCUTS
 REG ADD HKLM\SOFTWARE\Policies\Microsoft\EdgeUpdate /v CreateDesktopShortcutDefault /t REG_DWORD /d 0 /f >nul
-start _media\delEdge.bat
+::start _media\delEdge.bat
+del /f "%PUBLIC%\Desktop\Microsoft Edge.lnk"
+del /f "%USERPROFILE%\Desktop\Microsoft Edge.lnk"
 timeout 1 > nul
 cls
 
