@@ -5,7 +5,7 @@
 :: Powered by XIVTech
 
 @echo off
-@title 🍒 Cherry OK
+@title Cherry OK
 @set version=6.4
 
 

@@ -1,5 +1,5 @@
 @echo off
-@title 🍒 Cherry OK
+@title Cherry OK
 
 :: ## Set UAC ##
 set isAdminDir=C:\Windows\CherryTestAdmin
