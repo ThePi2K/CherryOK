@@ -55,7 +55,7 @@ if not exist %isAdminDir% (
 )
 rmdir %isAdminDir% >nul 2>&1
 
-:: SET EXECUTION POLICY
+:: SET EXECUTION POLICY ::
 powershell.exe -Command "Set-ExecutionPolicy Unrestricted"
 
 :: CHECK FIRST RUN ::
@@ -64,7 +64,7 @@ if not exist "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\start_Upda
 	exit
 )
 
-:: CHERRY OK ASCII
+:: CHERRY OK ASCII ::
 powershell.exe .\_media\echoTitle.ps1
 echo.
 echo    Cherry OK - Version %version%
