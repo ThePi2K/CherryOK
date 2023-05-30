@@ -360,6 +360,9 @@ timeout 5 > nul
 _media\nircmd cmdwait 1000 sendkeypress rwin+D
 _media\nircmd cmdwait 1000 sendkeypress F5
 
+:: DELETE POWERSHELL FOLDER IF EXISTS ::
+rd /s /q "%USERPROFILE%\Documents\WindowsPowerShell" >nul 2>&1
+
 :: DELETE MICROSOFT EDGE ::
 echo DELETE MICROSOFT EDGE FROM DESKTOP
 start _media\delEdge.bat
