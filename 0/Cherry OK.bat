@@ -370,12 +370,6 @@ _media\nircmd cmdwait 1000 sendkeypress F5
 :: DELETE POWERSHELL FOLDER IF EXISTS ::
 rd /s /q "%USERPROFILE%\Documents\WindowsPowerShell" >nul 2>&1
 
-:: DELETE MICROSOFT EDGE ::
-echo DELETE MICROSOFT EDGE FROM DESKTOP
-start _media\delEdge.bat
-timeout 1 > nul
-cls
-
 powershell -command "New-BurntToastNotification -AppLogo C:\Windows\Cherry\CherryOK.png -Text 'CHERRY OK', 'Tested & Approved!'"
 powershell.exe -Command "Set-ExecutionPolicy Restricted"
 
