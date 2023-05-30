@@ -64,6 +64,9 @@ if not exist "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\start_Upda
 	exit
 )
 
+:: PROGRESS BAR ::
+.\_media\while.ps1
+
 :: CHERRY OK ASCII ::
 powershell.exe .\_media\echoTitle.ps1
 echo.
