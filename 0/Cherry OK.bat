@@ -1,6 +1,6 @@
 :: Cherry OK Script
 :: by Felix Peer
-:: Created and tested for Windows 11 22H2
+:: Designed for Windows 11 Moment 2 Update
 :: Full Automated v6
 
 @echo off
@@ -71,7 +71,7 @@ powershell.exe .\_media\while.ps1 "Starting Cherry OK" 1000
 powershell.exe .\_media\echoTitle.ps1
 echo.
 echo    Cherry OK - Version %version%
-echo    Designed for Windows 11
+echo    Designed for Windows 11 Moment 2 Update
 if "%winversion%" == "10" echo    Legacy Mode for Windows 10 enabled
 
 :: CHECK WINDOWS ACTIVATION ::
