@@ -167,15 +167,6 @@ REG ADD HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\PushNotifica
 :: EMPTY RECYCLE BIN ::
 rd /s /q C:\$Recycle.Bin
 
-:: BLOCK EDGE FROM CREATING SHORTCUTS ::
-echo BLOCK EDGE FROM CREATING SHORTCUTS
-REG ADD HKLM\SOFTWARE\Policies\Microsoft\EdgeUpdate /v CreateDesktopShortcutDefault /t REG_DWORD /d 0 /f >nul
-::start _media\delEdge.bat
-del /f "%PUBLIC%\Desktop\Microsoft Edge.lnk"
-del /f "%USERPROFILE%\Desktop\Microsoft Edge.lnk"
-timeout 1 > nul
-cls
-
 :: INSTALL MICROSOFT 365 APPS ::
 if not exist "C:\Program Files\Microsoft Office\root\Office16\WINWORD.EXE" (
 	echo INSTALL MICROSOFT 365 APPS
@@ -356,6 +347,14 @@ IF %ERRORLEVEL% EQU 1 (
 echo RESTORE POINT OK
 timeout 2 > nul
 del tmp
+cls
+
+:: REMOVE EDGE LINKS AND BLOCK EDGE FROM CREATING SHORTCUTS ::
+echo BLOCK EDGE FROM CREATING SHORTCUTS
+REG ADD HKLM\SOFTWARE\Policies\Microsoft\EdgeUpdate /v CreateDesktopShortcutDefault /t REG_DWORD /d 0 /f >nul
+del /f "%PUBLIC%\Desktop\Microsoft Edge.lnk" >nul 2>&1
+del /f "%USERPROFILE%\Desktop\Microsoft Edge.lnk" >nul 2>&1
+timeout 1 > nul
 cls
 
 powershell.exe .\_media\echoTitle.ps1
