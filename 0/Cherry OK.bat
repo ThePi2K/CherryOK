@@ -1,6 +1,6 @@
 :: Cherry OK Script
 :: by Felix Peer
-:: Designed for Windows 11 Moment 2 Update
+:: Designed for Windows 11 Moment 2
 :: Full Automated v6
 
 @echo off
@@ -71,7 +71,7 @@ powershell.exe .\_media\while.ps1 "Starting Cherry OK" 1000
 powershell.exe .\_media\echoTitle.ps1
 echo.
 echo    Cherry OK - Version %version%
-echo    Designed for Windows 11 Moment 2 Update
+echo    Designed for Windows 11 Moment 2
 if "%winversion%" == "10" echo    Legacy Mode for Windows 10 enabled
 
 :: CHECK WINDOWS ACTIVATION ::
@@ -258,6 +258,10 @@ if "%winversion%"=="11" (
 	REG ADD HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v TaskbarMn /t REG_DWORD /d 0 /f >nul
 	REG ADD HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v TaskbarDA /t REG_DWORD /d 0 /f >nul
 )
+
+:: SET SEARCH BUTTON ::
+if "%winversion%"=="11" reg add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Search" /v "SearchboxTaskbarMode" /t REG_DWORD /d 1 /f >nul
+
 
 :: HIDE CORTANA, SET TASKBAR AND HIDE WEATHER ::
 if "%winversion%"=="10" (
