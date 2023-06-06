@@ -14,6 +14,7 @@
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 
+
 del "%USERPROFILE%\Desktop\Abort Shutdown.cmd" >nul 2>&1
 del "%userprofile%\Desktop\restartCherryOK.cmd" >nul 2>&1
 
@@ -64,6 +65,13 @@ if not exist "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\start_Upda
 	goto FIRSTRUN
 	exit
 )
+
+
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::                                         CHERRY OK START                                         ::
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+color 0f
 
 :: CHERRY OK ASCII ::
 powershell.exe .\_media\echoTitle.ps1
@@ -155,11 +163,6 @@ IF %ERRORLEVEL% NEQ 0 (
 	shutdown /r /t 0
 	exit
 )
-
-
-:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-::                                         CHERRY OK START                                         ::
-:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :: TURN ON NOTIFICATIONS ::
 REG ADD HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\PushNotifications /v ToastEnabled /t REG_DWORD /d 1 /f >nul
@@ -393,6 +396,8 @@ exit
 
 
 :FIRSTRUN
+
+color 0e
 
 cls
 echo WELCOME TO CHERRY OK
