@@ -1,6 +1,8 @@
 @echo off
 @title Cherry OK
 
+color 09
+
 :: ## Set UAC ##
 set isAdminDir=C:\Windows\CherryTestAdmin
 mkdir %isAdminDir% >nul
@@ -34,6 +36,8 @@ cls
 echo Forcing Updates was successfully!
 timeout 1 >nul
 cls
+
+color 0e
 
 :: SCANNING AND INSTALLING WINDOWS UPDATES ::
 echo SCANNING AND INSTALLING WINDOWS UPDATES...

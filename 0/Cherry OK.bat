@@ -13,7 +13,7 @@
 ::                                CHECKING UPDATES, ACTIVATION USW.                                ::
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-
+color 09
 
 del "%USERPROFILE%\Desktop\Abort Shutdown.cmd" >nul 2>&1
 del "%userprofile%\Desktop\restartCherryOK.cmd" >nul 2>&1
@@ -397,7 +397,7 @@ exit
 
 :FIRSTRUN
 
-color 0e
+color 09
 
 cls
 echo WELCOME TO CHERRY OK

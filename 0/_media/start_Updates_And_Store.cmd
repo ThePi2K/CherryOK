@@ -1,7 +1,7 @@
 @echo off
 @title Cherry OK - Updates
 
-color 09
+color 0e
 
 :: STARTING STORE UPDATES ::
 echo STARTING STORE UPDATES...
