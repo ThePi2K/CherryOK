@@ -1,0 +1,53 @@
+HDDScan 4.1
+Features:
+Automatic Settings Preservation: Should help some drives "to remember" AAM/APM/PM setting after power cycle
+SMART Window will show "Drive State" at the top for easier "health" check 
+Bugfixes:
+Command line "Administrator Permission" bugfix
+
+HDDScan 4.0
+New Look
+Windows 8-10 support
+Auto update feature
+Multiple bugfixes
+
+HDDScan 3.3
+Bugfixes
+Progress bar bugfix
+Sil3512 controller S.M.A.R.T. bugfix
+SAS drives S.M.A.R.T. freeze bugfix
+Surface scan bugfix for drives bigger than 1TB
+Features:
+Prolific 2571 USB chip is now supported
+Some I-O DATA USB boxes are supported
+Some Logitec USB boxes are supported
+Added S.M.A.R.T. support for some SSD drives
+Windows Vista and Windows 7 support
+
+HDDScan 3.2
+Bugfixes:
+Input parameters for tests bugfix
+Now program shows correct LBA block number on a map
+Features:
+Map update can be disabled - it should make test results more precise on PCs w/o powerful video card
+New S.M.A.R.T. attributes support
+Now program uses IE save dialog for saving reports, it should fix the problem with mht files
+In tests reports program adds processed blocks satistics 
+Command line support and command line builder added
+New button - Disable Auto Power Save for some Seagate disks added
+AlphaControls components got updated to version 6.35
+
+HDDScan 3.1
+Bugfixes:
+Oxford USB chip commands bugfix
+IDE drives S.M.A.R.T. and Features forms showing phantom bugfix
+S.M.A.R.T. Worst values showing error bugfix
+Intel AHCI controllers freeze bugfix
+Minor bugfixes
+Features:
+S.M.A.R.T. attributes icons have changed
+Test names in Test manager have changed
+Program startup drive selection
+Skins support added (see documentation)
+Skins available here - http://www.alphaskins.com/asdwnld.php
+Current AlphaControls components version - 5.6

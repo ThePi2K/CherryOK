@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<XML_DIZ_INFO>
+	<MASTER_PAD_VERSION_INFO>
+		<MASTER_PAD_VERSION>3.11</MASTER_PAD_VERSION>
+		<MASTER_PAD_EDITOR>PADGen 3.1.1.47 http://www.padgen.org</MASTER_PAD_EDITOR>
+		<MASTER_PAD_INFO>Portable Application Description, or PAD for short, is a data set that is used by shareware authors to disseminate information to anyone interested in their software products. To find out more go to http://pad.asp-software.org</MASTER_PAD_INFO>
+	</MASTER_PAD_VERSION_INFO>
+	<Company_Info>
+		<Company_Name>HDDScan.com</Company_Name>
+		<Address_1>W Pierce Ave, 1746</Address_1>
+		<Address_2 />
+		<City_Town>Chicago</City_Town>
+		<State_Province>IL</State_Province>
+		<Zip_Postal_Code>60622</Zip_Postal_Code>
+		<Country>USA</Country>
+		<Company_WebSite_URL>http://hddscan.com/</Company_WebSite_URL>
+		<Contact_Info>
+			<Author_First_Name>Artem</Author_First_Name>
+			<Author_Last_Name>Rubtsov</Author_Last_Name>
+			<Author_Email>support@hddscan.com</Author_Email>
+			<Contact_First_Name>Artem</Contact_First_Name>
+			<Contact_Last_Name>Rubtsov</Contact_Last_Name>
+			<Contact_Email>support@hddscan.com</Contact_Email>
+		</Contact_Info>
+		<Support_Info>
+			<Sales_Email />
+			<Support_Email />
+			<General_Email />
+			<Sales_Phone />
+			<Support_Phone />
+			<General_Phone />
+			<Fax_Phone />
+		</Support_Info>
+	</Company_Info>
+	<Program_Info>
+		<Program_Name>HDDScan</Program_Name>
+		<Program_Version>4.0</Program_Version>
+		<Program_Release_Month>11</Program_Release_Month>
+		<Program_Release_Day>30</Program_Release_Day>
+		<Program_Release_Year>2017</Program_Release_Year>
+		<Program_Cost_Dollars>0</Program_Cost_Dollars>
+		<Program_Cost_Other_Code />
+		<Program_Cost_Other />
+		<Program_Type>Freeware</Program_Type>
+		<Program_Release_Status>Minor Update</Program_Release_Status>
+		<Program_Install_Support>No Install Support</Program_Install_Support>
+		<Program_OS_Support>Win7 x32,WinServer,WinVista,WinXP</Program_OS_Support>
+		<Program_Language>English</Program_Language>
+		<Program_Change_Info>New Look, Win8-10 support, bugfixes</Program_Change_Info>
+		<Program_Specific_Category>Utilities</Program_Specific_Category>
+		<Program_Category_Class>System Utilities::System Maintenance</Program_Category_Class>
+		<Program_System_Requirements>Windows XP SP3, Vista, 7-10 or Server; Writable storage device.</Program_System_Requirements>
+		<File_Info>
+			<File_Size_Bytes>7122944</File_Size_Bytes>
+			<File_Size_K>7122</File_Size_K>
+			<File_Size_MB>6.79</File_Size_MB>
+		</File_Info>
+		<Expire_Info>
+			<Has_Expire_Info>N</Has_Expire_Info>
+			<Expire_Count />
+			<Expire_Based_On>Days</Expire_Based_On>
+			<Expire_Other_Info />
+			<Expire_Month />
+			<Expire_Day />
+			<Expire_Year />
+		</Expire_Info>
+	</Program_Info>
+	<Program_Descriptions>
+		<English>
+			<Keywords>hard drive, RAID, Flash, SSD, data recovery, hdd health, hard drive test, HDD, bad sectors, SMART, data rescue, diagnostics, disk, USB box, bad block, SCSI, SAS, temperature, AAM, APM, benchmark, performance, S.M.A.R.T., error, LBA, remap, undelete</Keywords>
+			<Char_Desc_45>Free utility for storage device diagnostics.</Char_Desc_45>
+			<Char_Desc_80>Free utility for hard drive diagnostics with RAID, USB Flash and SSD support.</Char_Desc_80>
+			<Char_Desc_250>Free utility for hard drive diagnostics with RAID, USB Flash and SSD support. HDDScan can test device for errors (bad sectors), show SMART info and change some HDD parameters (AAM, APM). Save your files before having to visit data recovery service!</Char_Desc_250>
+			<Char_Desc_450>HDDScan is a free utility for hard drive diagnostics with RAID, USB Flash and SSD support. The program can test storage device for errors (bad sectors), show SMART info and change some HDD parameters (AAM, APM, etc). This can help you to prevent data loss and backup valuable files before you will have to contact a data recovery service. Software can be used as a HDD temperature monitor and reading/writing benchmark with performance graph.</Char_Desc_450>
+			<Char_Desc_2000>HDDScan is a freeware utility for hard drive diagnostics with RAID arrays, Flash USB and SSD drives support. The program can test storage device for errors (bad sectors and bad blocks), show S.M.A.R.T. attributes and change some HDD parameters such as AAM, APM, etc.
+
+HDDScan can be useful for performing the regular "health test" for your drive and predicting its degradation, so you will be able to prevent data loss and backup your files before you will have to contact a data recovery service.
+
+Software can be used as a hard disk temperature monitor and reading/writing benchmark – performance graph is displayed for every test.
+
+Supported storage devices: 
+
+- IDE (ATA) and SATA HDD
+- SCSI (SAS) HDD
+- External USB drives and all major USB boxes
+- FireWire or IEEE 1394 HDD
+- RAID volumes made of ATA (IDE) / SATA / SCSI HDDs (surface tests only)
+- USB Flash (pen drives) – surface tests only
+- SATA / ATA SSD – solid state drives
+
+Storage device tests: 
+- Verification in linear mode – checks if your drive needs data rescue, has recoverable errors or in its perfect shape
+- Reading in linear mode – simpler, but faster disk check
+- Erasing in linear mode
+- Reading in Butterfly mode (synthetic random read)
+
+S.M.A.R.T.: 
+- Reading and analyzing SMART parameters from ATA/SATA/USB/FireWire HDD
+- Reading and analyzing Log Pages from SCSI HDD
+- SMART tests running on ATA/SATA/USB/FireWire HDD
+- Temperature monitor for ATA/SATA/USB/FireWire/SCSI HDD
+
+Additional features: 
+- Reading and analyzing identity information from ATA/SATA/USB/FireWire/SCSI HDD
+- Changing AAM, APM, PM parameters on ATA/SATA/USB/FireWire HDD
+- SSD SMART and Identity reports
+- Reporting defect information on SCSI HDD
+- Spindle start/stop function on ATA/SATA/USB/FireWire/SCSI HDD
+- Reports can be saved in MHT format or printed
+- Skins support
+- Command line support
+
+For further info see: http://hddscan.com/
+		</English>
+	</Program_Descriptions>
+	<Web_Info>
+		<Application_URLs>
+			<Application_Info_URL>http://hddscan.com/</Application_Info_URL>
+			<Application_Order_URL>http://hddscan.com/</Application_Order_URL>
+			<Application_Screenshot_URL>http://hddscan.com/img/01-hddscan-main-window.jpg</Application_Screenshot_URL>
+			<Application_Icon_URL />
+			<Application_XML_File_URL>http://hddscan.com/hddscan.xml</Application_XML_File_URL>
+		</Application_URLs>
+		<Download_URLs>
+			<Primary_Download_URL>http://hddscan.com/download/HDDScan.zip</Primary_Download_URL>
+			<Secondary_Download_URL />
+			<Additional_Download_URL_1 />
+			<Additional_Download_URL_2 />
+		</Download_URLs>
+	</Web_Info>
+	<Permissions>
+		<Distribution_Permissions />
+		<EULA />
+	</Permissions>
+</XML_DIZ_INFO>

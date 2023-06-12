@@ -1,0 +1,86 @@
+08.06.2023 09:00:38
+08.06.2023 09:00:38
+Initializing the updater.
+
+08.06.2023 09:00:38
+Updating Application Controls
+
+08.06.2023 09:00:38
+Checking for Updates
+
+08.06.2023 09:00:38
+Start processing file names. 
+
+08.06.2023 09:00:38
+Finished processing file names.
+
+08.06.2023 09:00:38
+Start downloading xml remote file.
+
+08.06.2023 09:00:38
+Trying to download: http://hddscan.com/dfgkjdfg435egdvkjdv/update.xmlDestination: C:\Users\FelixPeer\Cherry Computer\Cherry Team Site - Documents\Allgemein\Cherry Apps\other\HDDScan\update.xml
+
+08.06.2023 09:00:38
+Destination: C:\Users\FelixPeer\Cherry Computer\Cherry Team Site - Documents\Allgemein\Cherry Apps\other\HDDScan\update.xml
+
+08.06.2023 09:00:38
+[ 64]:: 301 - 0:100
+301
+Progress: 0:  100
+Status: 301
+
+[ 3]:: https://hddscan.com/dfgkjdfg435egdvkjdv/update.xml - 0:100
+https://hddscan.com/dfgkjdfg435egdvkjdv/update.xml
+Progress: 0:  100
+Status: https://hddscan.com/dfgkjdfg435egdvkjdv/update.xml
+
+BINDSTATUS_REDIRECTING
+[ 13]:: application/xml - 0:100
+application/xml
+Progress: 0:  100
+Status: application/xml
+
+BINDSTATUS_MIMETYPEAVAILABLE
+[ 4]:: https://hddscan.com/dfgkjdfg435egdvkjdv/update.xml - 933:100
+https://hddscan.com/dfgkjdfg435egdvkjdv/update.xml
+Progress: 933:  100
+Status: https://hddscan.com/dfgkjdfg435egdvkjdv/update.xml
+
+BINDSTATUS_BEGINDOWNLOADDATA
+[ 14]:: C:\Users\FelixPeer\AppData\Local\Microsoft\Windows\INetCache\IE\K9SFJ3IJ\update[1].xml - 933:100
+C:\Users\FelixPeer\AppData\Local\Microsoft\Windows\INetCache\IE\K9SFJ3IJ\update[1].xml
+Progress: 933:  100
+Status: C:\Users\FelixPeer\AppData\Local\Microsoft\Windows\INetCache\IE\K9SFJ3IJ\update[1].xml
+
+BINDSTATUS_CACHEFILENAMEAVAILABLE
+[ 6]:: https://hddscan.com/dfgkjdfg435egdvkjdv/update.xml - 933:100
+https://hddscan.com/dfgkjdfg435egdvkjdv/update.xml
+Progress: 933:  100
+Status: https://hddscan.com/dfgkjdfg435egdvkjdv/update.xml
+
+BINDSTATUS_ENDDOWNLOADDATA 
+
+Downloading http://hddscan.com/dfgkjdfg435egdvkjdv/update.xml
+Destination: C:\Users\FelixPeer\Cherry Computer\Cherry Team Site - Documents\Allgemein\Cherry Apps\other\HDDScan\update.xml was successful.
+
+08.06.2023 09:00:38
+An error ocurred while  trying to locate the source folder!
+C:\Users\FelixPeer\Cherry Computer\Cherry Team Site - Documents\Allgemein\Cherry Apps\other\HDDScan\update.xml
+
+08.06.2023 09:00:38
+Updates checking was canceled (An error has been found).
+An error ocurred while trying to locate the web info file.
+
+08.06.2023 09:00:38
+Cleaning unnecessary files. 
+
+08.06.2023 09:00:38
+File deleted: update.xml
+
+08.06.2023 09:00:38
+Updates checking was canceled (An error has been found).
+An error ocurred while  trying to parse the XML file!
+
+08.06.2023 09:00:38
+Cleaning unnecessary files. 
+
