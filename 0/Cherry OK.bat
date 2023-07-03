@@ -6,7 +6,7 @@
 
 @echo off
 @title Cherry OK
-@set version=6.4.1
+@set version=6.4.2
 
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -101,8 +101,8 @@ if "%status%"=="Licensed" (
 	echo Press Enter to start the Windows Activation
 	pause>nul
 	start ms-settings:activation
-	exit
 	copy _media\restartCherryOK.cmd "%userprofile%\Desktop\"
+	exit
 )
 
 :: CHECK LANGUAGE ::
@@ -422,6 +422,7 @@ start _media\admin.bat
 
 :: CREATE UPDATE SCRIPT AND FOLDER FOR CHERRY OK ::
 copy _media\start_Updates_And_Store.cmd "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup" >nul 2>&1
+copy _media\restartCherryOK.cmd "%userprofile%\Desktop\" >nul 2>&1
 cls
 
 exit
