@@ -1,6 +1,6 @@
 :: Cherry OK Script
 :: by Felix Peer
-:: Designed for Windows 11 Moment 2
+:: Designed for Windows 11 (Moment 3 Update)
 :: Full Automated v6
 :: Powered by XIVTech
 
@@ -77,9 +77,12 @@ color 0f
 powershell.exe .\_media\echoTitle.ps1
 echo.
 echo    Cherry OK - Version %version%
-echo    Designed for Windows 11 Moment 2
+echo    Designed for Windows 11 (Moment 3 Update)
 if "%winversion%" == "10" echo    Legacy Mode for Windows 10 enabled
-echo    Powered by XIVTech
+echo.
+echo    Powered by
+echo    XIV TECH
+echo    ... for better networks
 
 :: CHECK WINDOWS ACTIVATION ::
 powershell.exe .\_media\checkWindowsActivation.ps1
