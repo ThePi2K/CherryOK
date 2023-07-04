@@ -4,7 +4,7 @@
 :: Full Automated v6
 :: Powered by XIVTech
 
-::@echo off
+@echo off
 @title Cherry OK
 @set version=6.4.2
 
