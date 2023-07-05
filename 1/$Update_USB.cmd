@@ -10,6 +10,7 @@ if "%drive%"=="C:\" exit
 C:
 
 rd /s /q %drive%HP >nul 2>&1
+rd /s /q %drive%support >nul 2>&1
 rd /s /q %drive%LOST.DIR >nul 2>&1
 del %drive%BOOTEX.LOG >nul 2>&1
 del %drive%Recovery.txt >nul 2>&1
