@@ -119,6 +119,8 @@ find /c "ComputerName" tmp >nul
 IF %ERRORLEVEL% EQU 0 (
 	del tmp
 	ECHO ATTENTION: UPDATES AVAILABLE!
+	timeout 2 > nul
+	cls
 	"%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\start_Updates_And_Store.cmd"
 	exit
 )
