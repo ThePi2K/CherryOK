@@ -1,6 +1,6 @@
 :: Cherry OK Script
 :: by Felix Peer
-:: Designed for Windows 11 (Moment 3 Update)
+:: Designed for Windows 11
 :: Full Automated v6
 :: Powered by XIVTech
 
