@@ -384,8 +384,7 @@ _media\nircmd cmdwait 1000 sendkeypress F5
 :: DELETE POWERSHELL FOLDER IF EXISTS ::
 rd /s /q "%USERPROFILE%\Documents\WindowsPowerShell" >nul 2>&1
 
-powershell -command "New-BurntToastNotification -AppLogo C:\Windows\Cherry\CherryOK.png -Text 'CHERRY OK', 'Tested & Approved!'"
-powershell.exe -Command "Set-ExecutionPolicy Restricted"
+copy _media\Cherry_OK_finished.bat "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup" >nul 2>&1
 
 shutdown -r -t 10
 
