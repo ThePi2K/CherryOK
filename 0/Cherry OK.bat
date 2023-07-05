@@ -16,7 +16,6 @@
 color 09
 
 del "%USERPROFILE%\Desktop\Abort Shutdown.cmd" >nul 2>&1
-del "%userprofile%\Desktop\restartCherryOK.cmd" >nul 2>&1
 
 :: CONNECT TO WIFI
 netsh wlan add profile filename=_media\WLAN-Cherry-Net.xml >nul
@@ -120,12 +119,7 @@ find /c "ComputerName" tmp >nul
 IF %ERRORLEVEL% EQU 0 (
 	del tmp
 	ECHO ATTENTION: UPDATES AVAILABLE!
-	powershell -command "Get-WindowsUpdate"
-	timeout 2 > nul
-	cls
-	echo Restarting...
-	timeout 2 > nul
-	shutdown /r /t 0
+	"%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\start_Updates_And_Store.cmd"
 	exit
 )
 del tmp
@@ -333,8 +327,9 @@ if not exist "C:\Program Files\Adobe\Acrobat DC\Acrobat\Acrobat.exe" (
       ..\1\reader.exe
 )
 
-:: REMOVING UPDATE CMD ::
+:: REMOVING CMD ::
 del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\start_Updates_And_Store.cmd" >nul 2>&1
+del "%userprofile%\Desktop\restartCherryOK.cmd" >nul 2>&1
 
 :: CHECKING IF M365 SETUP IS RUNNING ::
 :CheckOffice
