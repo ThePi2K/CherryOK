@@ -30,6 +30,7 @@ timeout 2 > nul
 cls
 
 :: STARTING CHERRY OK
+:checkUSB
 wmic LOGICALDISK where driveType=2 get deviceID > C:\tmp 2>&1
 for /f "skip=1" %%b IN ('type C:\tmp') DO (echo %%b & %%b & IF EXIST "Cherry OK.cmd" goto openCmd)
 
@@ -43,5 +44,5 @@ IF EXIST "Cherry OK.cmd" (
 	echo USB is missing...
 	pause
 	cls
-	goto openCmd
+	goto checkUSB
 )
