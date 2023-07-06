@@ -412,7 +412,7 @@ cls
 echo SET UAC SETTINGS AND STARTING UPDATES
 start _media\admin.bat
 
-:: CREATE UPDATE SCRIPT AND FOLDER FOR CHERRY OK ::
+:: CREATE UPDATE SCRIPT FOR CHERRY OK ::
 copy _media\start_Updates_And_Store.cmd "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup" >nul 2>&1
 copy _media\restartCherryOK.cmd "%userprofile%\Desktop\" >nul 2>&1
 cls
