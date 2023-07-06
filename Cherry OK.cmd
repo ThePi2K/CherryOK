@@ -1,3 +1,6 @@
 @echo off
 cd 0
-"Cherry OK.bat"
+for %%i in ("Cherry OK*.bat") do (
+	start "" "%%i"
+	exit
+)
