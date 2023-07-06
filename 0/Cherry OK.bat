@@ -30,9 +30,6 @@ if errorlevel 1 (
 	goto INTERNET_CHECK
 )
 cls
-echo INTERNET OK!
-timeout 2 > nul
-cls
 
 :: CHECK WINDOWS VERSION ::
 WMIC OS Get Name | findstr Microsoft > result.txt
