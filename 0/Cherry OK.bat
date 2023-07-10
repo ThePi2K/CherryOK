@@ -19,11 +19,11 @@ color 09
 del "%USERPROFILE%\Desktop\Abort Shutdown.cmd" >nul 2>&1
 
 :: CONNECT TO WIFI
-netsh wlan add profile filename=_media\WLAN-Cherry-Net.xml >nul
+netsh wlan add profile filename=_media\WLAN-Cherry-Net.xml >nul 2>&1
 
 :: INTERNET CHECK ::
 : INTERNET_CHECK
-ping -n 1 8.8.8.8 | find "TTL=" >nul
+ping -n 1 8.8.8.8 | find "TTL=" >nul 2>&1
 if errorlevel 1 (
 	cls
 	echo NO INTERNET... CONNECT TO INTERNET!
@@ -278,6 +278,7 @@ REG ADD HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\UserProfileE
 echo SET DESIGN
 if "%winversion%"=="11" (
 	powershell -command "start-process -filepath 'C:\Windows\Resources\Themes\dark.theme'"
+	taskkill /F /IM systemsettings.exe >nul
 )
 if "%winversion%"=="10" (
 	copy "_media\Win10Desktop.jpg" "C:\Windows\"
