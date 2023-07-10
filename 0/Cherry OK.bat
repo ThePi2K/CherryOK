@@ -5,8 +5,8 @@
 :: Powered by XIVTech
 
 @echo off
-@title Cherry OK
 @set version=6.4.4
+@title Cherry OK %version%
 
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
