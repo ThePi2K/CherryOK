@@ -5,7 +5,7 @@
 :: Powered by XIVTech
 
 @echo off
-@set version=6.4.4b
+@set version=6.4.5 Beta
 @title Cherry OK %version%
 
 
