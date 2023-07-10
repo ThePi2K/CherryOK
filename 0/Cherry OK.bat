@@ -278,7 +278,7 @@ REG ADD HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\UserProfileE
 echo SET DESIGN
 if "%winversion%"=="11" (
 	powershell -command "start-process -filepath 'C:\Windows\Resources\Themes\dark.theme'"
-	taskkill /F /IM systemsettings.exe >nul
+	taskkill /F /IM systemsettings.exe >nul 2>&1
 )
 if "%winversion%"=="10" (
 	copy "_media\Win10Desktop.jpg" "C:\Windows\"
@@ -346,6 +346,14 @@ if "%ERRORLEVEL%"=="0" (
 )
 cls
 
+:: REMOVE EDGE LINKS AND BLOCK EDGE FROM CREATING SHORTCUTS ::
+echo BLOCK EDGE FROM CREATING SHORTCUTS
+REG ADD HKLM\SOFTWARE\Policies\Microsoft\EdgeUpdate /v CreateDesktopShortcutDefault /t REG_DWORD /d 0 /f >nul
+del /f "%PUBLIC%\Desktop\Microsoft Edge.lnk" >nul 2>&1
+del /f "%USERPROFILE%\Desktop\Microsoft Edge.lnk" >nul 2>&1
+timeout 1 > nul
+cls
+
 :: CONFIGURE SYSTEM RESTORE ::
 echo CONFIGURING SYSTEM RESTORE
 powershell.exe .\_media\restore.ps1
@@ -361,14 +369,6 @@ IF %ERRORLEVEL% EQU 1 (
 echo RESTORE POINT OK
 timeout 2 > nul
 del tmp
-cls
-
-:: REMOVE EDGE LINKS AND BLOCK EDGE FROM CREATING SHORTCUTS ::
-echo BLOCK EDGE FROM CREATING SHORTCUTS
-REG ADD HKLM\SOFTWARE\Policies\Microsoft\EdgeUpdate /v CreateDesktopShortcutDefault /t REG_DWORD /d 0 /f >nul
-del /f "%PUBLIC%\Desktop\Microsoft Edge.lnk" >nul 2>&1
-del /f "%USERPROFILE%\Desktop\Microsoft Edge.lnk" >nul 2>&1
-timeout 1 > nul
 cls
 
 powershell.exe .\_media\echoTitle.ps1
