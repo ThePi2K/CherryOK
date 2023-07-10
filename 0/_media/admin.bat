@@ -24,7 +24,7 @@ powershell.exe -Command "Set-ExecutionPolicy Unrestricted"
 
 :: IMPORTING PACKAGES ::
 echo IMPORTING PACKAGES...
-powershell -command "if (-not (Get-PackageProvider -ListAvailable -Name nuget)) { Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force }"
+powershell -command "if (-not (Get-PackageProvider -ListAvailable -Name nuget)) { Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force} | Out-Null"
 powershell -command "if (-not (Get-Module -ListAvailable -Name PSWindowsUpdate)) { Install-Module PSWindowsUpdate -Force }"
 powershell -command "if (-not (Get-Module -ListAvailable -Name BurntToast)) { Install-Module BurntToast -Force }"
 cls
