@@ -404,19 +404,17 @@ exit
 
 color 09
 
-cls
-echo WELCOME TO CHERRY OK
-timeout 2 > nul
-cls
-
-:: ASKING FOR START ::
-set /p cherry_ok_start="Ready to perform Cherry OK? [y|n] "
-if not "%cherry_ok_start%" == "y" (
-	timeout 1 > nul
-	exit
+:: ASK FOR START ::
+echo WELCOME TO CHERRY OK :)
+echo.
+choice /C YN /N /M "Shall we begin? [Y or N]"
+if errorlevel 2 (
+    timeout 1 > nul
+    exit
 )
 timeout 2 > nul
 cls
+
 
 :: SET UAC SETTINGS AND STARTING UPDATES ::
 echo SET UAC SETTINGS AND STARTING UPDATES
