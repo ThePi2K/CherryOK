@@ -280,6 +280,7 @@ if "%winversion%"=="11" (
 	powershell -command "start-process -filepath 'C:\Windows\Resources\Themes\dark.theme'"
 	:: taskkill /F /IM systemsettings.exe >nul 2>&1
 	:: taskkill /F /IM systemsettings.exe
+	powershell -command "get-Process"
 	powershell -command "Stop-Process -Name *settings*"
 	pause
 )
