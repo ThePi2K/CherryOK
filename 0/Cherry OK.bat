@@ -278,7 +278,10 @@ REG ADD HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\UserProfileE
 echo SET DESIGN
 if "%winversion%"=="11" (
 	powershell -command "start-process -filepath 'C:\Windows\Resources\Themes\dark.theme'"
-	taskkill /F /IM systemsettings.exe >nul 2>&1
+	:: taskkill /F /IM systemsettings.exe >nul 2>&1
+	:: taskkill /F /IM systemsettings.exe
+	powershell -command "Stop-Process -Name *settings*"
+	pause
 )
 if "%winversion%"=="10" (
 	copy "_media\Win10Desktop.jpg" "C:\Windows\"
