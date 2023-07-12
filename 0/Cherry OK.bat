@@ -277,9 +277,11 @@ REG ADD HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\UserProfileE
 :: SET DESIGN ::
 echo SET DESIGN
 if "%winversion%"=="11" (
-	powershell -command "start-process -filepath 'C:\Windows\Resources\Themes\dark.theme'"
+	copy C:\Windows\Resources\Themes\dark.theme dark.theme
+	powershell -command "start-process -filepath 'dark.theme'"
+	del "dark.theme" >nul 2>&1
 	:: taskkill /F /IM systemsettings.exe >nul 2>&1
-	:: taskkill /F /IM systemsettings.exe
+	taskkill /F /IM systemsettings.exe
 	powershell -command "get-Process"
 	powershell -command "Stop-Process -Name *settings*"
 	pause
