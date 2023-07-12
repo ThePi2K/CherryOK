@@ -280,7 +280,6 @@ if "%winversion%"=="11" (
 	powershell -command "start-process -filepath 'C:\Windows\Resources\Themes\dark.theme'"
 	timeout 2 > nul
 	taskkill /F /IM systemsettings.exe >nul 2>&1
-	pause
 )
 if "%winversion%"=="10" (
 	copy "_media\Win10Desktop.jpg" "C:\Windows\"
@@ -289,7 +288,7 @@ if "%winversion%"=="10" (
 	REG ADD HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize /v AppsUseLightTheme /t REG_DWORD /d 1 /f >nul
 )
 RUNDLL32.EXE user32.dll,UpdatePerUserSystemParameters
-timeout 2 > nul
+timeout 5 > nul
 cls
 
 :: SET TASKBAR ::
@@ -301,7 +300,7 @@ reg import _media\Taskbar.reg
 taskkill /f /im explorer.exe
 timeout 1 > nul
 start explorer.exe
-timeout 2 > nul
+timeout 5 > nul
 cls
 
 :: CLEAR NOTIFICATIONS ::
