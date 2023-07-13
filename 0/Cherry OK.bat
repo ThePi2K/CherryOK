@@ -161,6 +161,15 @@ IF %ERRORLEVEL% NEQ 0 (
 	exit
 )
 
+:: SYNC TIME ::
+echo TIME SYNCING STARTING...
+net stop w32time > nul
+w32tm /unregister > nul
+w32tm /register > nul
+net start w32time > nul
+w32tm /resync > nul
+cls
+
 :: TURN ON NOTIFICATIONS ::
 REG ADD HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\PushNotifications /v ToastEnabled /t REG_DWORD /d 1 /f >nul
 
