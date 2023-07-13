@@ -230,13 +230,9 @@ timeout 1 > nul
 cls
 
 :: DISABLE BITLOCKER ENCRYPTION ::
-echo DISABLE BITLOCKER ENCRYPTION
-manage-bde -status C:
-timeout 5 > nul
-cls
-echo DISABLE BITLOCKER ENCRYPTION
-manage-bde -off C:
-timeout 5 > nul
+echo DISABLING BITLOCKER ENCRYPTION
+manage-bde -status C: > nul
+manage-bde -off C: > nul
 cls
 
 :: SET DEFAULT APPS ::
