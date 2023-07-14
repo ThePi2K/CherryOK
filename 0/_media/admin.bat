@@ -5,7 +5,7 @@ color 09
 
 :: ## Set UAC ##
 set isAdminDir=C:\Windows\CherryTestAdmin
-mkdir %isAdminDir% >nul
+mkdir %isAdminDir% > nul
 cls
 if not exist %isAdminDir% (
 	set "params=%*"
@@ -24,7 +24,7 @@ powershell.exe -Command "Set-ExecutionPolicy Unrestricted"
 
 :: IMPORTING PACKAGES ::
 echo IMPORTING PACKAGES...
-powershell -command "if (-not (Get-PackageProvider -ListAvailable -Name nuget)) { Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force}"
+powershell -command "if (-not (Get-PackageProvider -ListAvailable -Name nuget)) { Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force}" > nul
 powershell -command "if (-not (Get-Module -ListAvailable -Name PSWindowsUpdate)) { Install-Module PSWindowsUpdate -Force }"
 powershell -command "if (-not (Get-Module -ListAvailable -Name BurntToast)) { Install-Module BurntToast -Force }"
 cls
@@ -43,7 +43,7 @@ color 0e
 echo SCANNING AND INSTALLING WINDOWS UPDATES...
 ::powershell -command "Get-WindowsUpdate"
 powershell -command "Install-WindowsUpdate -ForceDownload -ForceInstall -AcceptAll -AutoReboot"
-timeout 5 >nul
+timeout 5 > nul
 
 :: COMPUTER RESTART ::
 cls
