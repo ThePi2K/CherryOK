@@ -5,7 +5,7 @@
 :: Powered by XIVTech
 
 @echo off
-@set version=6.4.5 Beta
+@set version=6.4.5.9 Prerelease
 @title Cherry OK %version%
 
 
@@ -358,6 +358,13 @@ REG ADD HKLM\SOFTWARE\Policies\Microsoft\EdgeUpdate /v CreateDesktopShortcutDefa
 del /f "%PUBLIC%\Desktop\Microsoft Edge.lnk" >nul 2>&1
 del /f "%USERPROFILE%\Desktop\Microsoft Edge.lnk" >nul 2>&1
 timeout 1 > nul
+cls
+
+
+:: UPGRADING ALL PROGRAMS ::
+echo UPGRADING ALL PROGRAMS
+winget upgrade --all --accept-source-agreements --force
+timeout 2 > nul
 cls
 
 :: CONFIGURE SYSTEM RESTORE ::
