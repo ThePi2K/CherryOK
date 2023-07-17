@@ -29,15 +29,12 @@ powershell -command "if (-not (Get-Module -ListAvailable -Name PSWindowsUpdate))
 powershell -command "if (-not (Get-Module -ListAvailable -Name BurntToast)) { Install-Module BurntToast -Force }"
 cls
 
+color 0e
+
 :: STARTING STORE UPDATES ::
 echo STARTING STORE UPDATES...
 powershell -command "Get-CimInstance -Namespace "Root\cimv2\mdm\dmmap" -ClassName "MDM_EnterpriseModernAppManagement_AppManagement01" | Invoke-CimMethod -MethodName UpdateScanMethod"
 cls
-echo Forcing Updates was successfully!
-timeout 1 >nul
-cls
-
-color 0e
 
 :: SCANNING AND INSTALLING WINDOWS UPDATES ::
 echo SCANNING AND INSTALLING WINDOWS UPDATES...
