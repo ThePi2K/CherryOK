@@ -136,9 +136,9 @@ IF %ERRORLEVEL% EQU 0 (
 	ECHO ERROR IN DEVICE MANAGER
 	timeout 2 > nul
 	devmgmt.msc
+	cls
 	goto DRIVER_CHECK
 )
-cls
 del tmp
 ECHO DEVICE MANAGER OK
 timeout 2 > nul
@@ -309,8 +309,6 @@ cls
 :: CLEAR NOTIFICATIONS ::
 echo CLEAR NOTIFICATIONS
 :: Module was installed in admin.cmd
-mkdir C:\Windows\Cherry >nul 2>&1
-copy _media\CherryOK.png C:\Windows\Cherry >nul 2>&1
 powershell -command "New-BurntToastNotification -AppLogo _media\xivtechicon.png -Text 'CHERRY OK', 'Powered by XIV TECH'"
 timeout 8 > nul
 if "%winversion%"=="10" (
@@ -395,7 +393,7 @@ _media\nircmd cmdwait 1000 sendkeypress F5
 :: DELETE POWERSHELL FOLDER IF EXISTS ::
 rd /s /q "%USERPROFILE%\Documents\WindowsPowerShell" >nul 2>&1
 
-powershell -command "New-BurntToastNotification -AppLogo C:\Windows\Cherry\CherryOK.png -Text 'CHERRY OK', 'Tested & Approved!'"
+powershell -command "New-BurntToastNotification -AppLogo _media\CherryOK.png -Text 'CHERRY OK', 'Tested & Approved!'"
 powershell.exe -Command "Set-ExecutionPolicy Restricted"
 
 shutdown -r -t 10
