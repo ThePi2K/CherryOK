@@ -69,8 +69,6 @@ if not exist "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\start_Upda
 color 0f
 
 :: CHERRY OK ASCII ::
-echo.
-echo.
 powershell.exe .\_media\echoTitle.ps1
 echo.
 echo    Cherry OK - Version %version%
