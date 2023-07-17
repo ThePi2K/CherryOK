@@ -5,7 +5,7 @@
 :: Powered by XIVTech
 
 @echo off
-@set version=6.4.5.9 Prerelease
+@set version=6.4.5.9.1 Beta
 @title Cherry OK %version%
 
 
@@ -163,11 +163,12 @@ IF %ERRORLEVEL% NEQ 0 (
 
 :: SYNC TIME ::
 echo TIME SYNCING STARTING...
-net stop w32time > nul
-w32tm /unregister > nul
-w32tm /register > nul
-net start w32time > nul
-w32tm /resync > nul
+net stop w32time >nul 2>&1
+w32tm /unregister >nul 2>&1
+w32tm /register >nul 2>&1
+net start w32time >nul 2>&1
+w32tm /resync >nul 2>&1
+timeout 1 > nul
 cls
 
 :: TURN ON NOTIFICATIONS ::
