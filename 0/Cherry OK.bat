@@ -384,6 +384,7 @@ powershell.exe .\_media\echoTitle.ps1
 echo.
 echo    CHERRY OK SUCCEEDED SUCCESSFULLY
 echo    TESTED AND APPROVED
+powershell -command "New-BurntToastNotification -AppLogo _media\CherryOK.png -Text 'CHERRY OK', 'Tested & Approved!'"
 timeout 5 > nul
 
 :: REFRESH DESKTOP ::
@@ -392,8 +393,6 @@ _media\nircmd cmdwait 1000 sendkeypress F5
 
 :: DELETE POWERSHELL FOLDER IF EXISTS ::
 rd /s /q "%USERPROFILE%\Documents\WindowsPowerShell" >nul 2>&1
-
-powershell -command "New-BurntToastNotification -AppLogo _media\CherryOK.png -Text 'CHERRY OK', 'Tested & Approved!'"
 powershell.exe -Command "Set-ExecutionPolicy Restricted"
 
 shutdown -r -t 10
