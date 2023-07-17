@@ -77,7 +77,6 @@ if "%winversion%" == "10" echo    Legacy Mode for Windows 10 enabled
 echo.
 echo    Powered by
 echo    XIV TECH
-echo    ... for better networks
 
 :: CHECK WINDOWS ACTIVATION ::
 powershell.exe .\_media\checkWindowsActivation.ps1
@@ -312,7 +311,7 @@ echo CLEAR NOTIFICATIONS
 :: Module was installed in admin.cmd
 mkdir C:\Windows\Cherry >nul 2>&1
 copy _media\CherryOK.png C:\Windows\Cherry >nul 2>&1
-powershell -command "New-BurntToastNotification -AppLogo _media\xivtechicon.png -Text 'Clearing Notifications', 'Cherry OK in progress...'"
+powershell -command "New-BurntToastNotification -AppLogo _media\xivtechicon.png -Text 'CHERRY OK', 'Powered by XIV TECH'"
 timeout 8 > nul
 if "%winversion%"=="10" (
 	_media\nircmd sendkeypress lwin+a
