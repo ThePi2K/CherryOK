@@ -5,7 +5,7 @@
 :: Powered by XIVTech
 
 @echo off
-@set version=6.4.5.9.1 Beta
+@set version=6.4.6 Beta
 @title Cherry OK %version%
 
 
@@ -312,7 +312,7 @@ echo CLEAR NOTIFICATIONS
 :: Module was installed in admin.cmd
 mkdir C:\Windows\Cherry >nul 2>&1
 copy _media\CherryOK.png C:\Windows\Cherry >nul 2>&1
-powershell -command "New-BurntToastNotification -AppLogo C:\Windows\Cherry\CherryOK.png -Text 'Clearing Notifications', '...'"
+powershell -command "New-BurntToastNotification -AppLogo _media\xivtechicon.png -Text 'Clearing Notifications', 'Cherry OK in progress...'"
 timeout 8 > nul
 if "%winversion%"=="10" (
 	_media\nircmd sendkeypress lwin+a
