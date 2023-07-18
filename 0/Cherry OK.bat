@@ -20,6 +20,7 @@ del "%USERPROFILE%\Desktop\Abort Shutdown.cmd" >nul 2>&1
 
 :: CONNECT TO WIFI
 netsh wlan add profile filename=_media\WLAN-Cherry-Net.xml >nul 2>&1
+timeout 2 > nul
 
 :: INTERNET CHECK ::
 : INTERNET_CHECK
@@ -73,7 +74,7 @@ color 0f
 powershell.exe .\_media\echoTitle.ps1
 echo.
 echo    Cherry OK - Version %version%
-echo    Designed for Windows 11 (Moment 3 Update)
+echo    Designed for Windows 11 (22H2)
 if "%winversion%" == "10" echo    Legacy Mode for Windows 10 enabled
 echo.
 echo    Powered by
