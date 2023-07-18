@@ -87,11 +87,11 @@ set /p status=<tmp
 del tmp
 if "%status%"=="Licensed" (
 	echo Windows is activated!
-	timeout 2 > nul
+	timeout 1 > nul
 	cls
 ) else (
 	echo Windows is not activated!
-	echo Error: %status%
+	echo %status%
 	echo.
 	echo Press Enter to start the Windows Activation
 	pause>nul
