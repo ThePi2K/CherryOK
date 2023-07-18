@@ -5,7 +5,7 @@
 :: Powered by XIVTech
 
 @echo off
-@set version=6.4.6.3b
+@set version=6.4.6.2b
 @title Cherry OK %version%
 
 
@@ -81,6 +81,7 @@ echo    Powered by
 echo    XIV TECH
 
 :: CHECK WINDOWS ACTIVATION ::
+::powershell.exe .\_media\checkWindowsActivation.ps1
 powershell -command "$ActivationStatus = Get-CimInstance SoftwareLicensingProduct -Filter 'Name like ''Windows%''' | Where-Object { $_.PartialProductKey } | Select-Object LicenseStatus; $LicenseResult = switch($ActivationStatus.LicenseStatus){0{'Unlicensed'}1{'Licensed'}2{'OOBGrace'}3{'OOTGrace'}4{'NonGenuineGrace'}5{'Not Activated'}6{'ExtendedGrace'}default{'unknown'}}; $LicenseResult | Out-File -Encoding 'ASCII' tmp"
 cls
 echo CHECKING WINDOWS ACTIVATION...
