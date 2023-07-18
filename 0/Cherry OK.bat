@@ -381,11 +381,14 @@ timeout 2 > nul
 del tmp
 cls
 
+
+mkdir C:\Windows\Cherry >nul 2>&1
+copy _media\CherryOK.png C:\Windows\Cherry >nul 2>&1
 powershell.exe .\_media\echoTitle.ps1
 echo.
 echo    CHERRY OK SUCCEEDED SUCCESSFULLY
 echo    TESTED AND APPROVED
-powershell -command "New-BurntToastNotification -AppLogo _media\CherryOK.png -Text 'CHERRY OK', 'Tested & Approved!'"
+powershell -command "New-BurntToastNotification -AppLogo C:\Windows\Cherry\CherryOK.png -Text 'CHERRY OK', 'Tested & Approved!'"
 timeout 5 > nul
 
 :: REFRESH DESKTOP ::
