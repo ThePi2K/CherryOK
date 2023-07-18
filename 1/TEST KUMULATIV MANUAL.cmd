@@ -1,1 +1,0 @@
-wusa.exe windows11.0-kb5028185-x64_c78aa5899ba74efdd0e354dfab80940402b3efa4.msu /quiet /norestart
