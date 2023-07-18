@@ -390,7 +390,6 @@ timeout 5 > nul
 :: REFRESH DESKTOP ::
 _media\nircmd cmdwait 1000 sendkeypress rwin+D
 _media\nircmd cmdwait 1000 sendkeypress F5
-call sendkeys.bat "Administrator: Cherry OK %version%" ""
 
 :: DELETE POWERSHELL FOLDER IF EXISTS ::
 rd /s /q "%USERPROFILE%\Documents\WindowsPowerShell" >nul 2>&1
