@@ -356,7 +356,6 @@ del /f "%USERPROFILE%\Desktop\Microsoft Edge.lnk" >nul 2>&1
 timeout 1 > nul
 cls
 
-
 :: UPGRADING ALL PROGRAMS ::
 echo UPGRADING ALL PROGRAMS
 winget upgrade --all --accept-source-agreements --force
