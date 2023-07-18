@@ -28,6 +28,7 @@ if errorlevel 1 (
 	cls
 	echo NO INTERNET... CONNECT TO INTERNET!
 	pause
+	echo Retrying...
 	goto INTERNET_CHECK
 )
 cls
