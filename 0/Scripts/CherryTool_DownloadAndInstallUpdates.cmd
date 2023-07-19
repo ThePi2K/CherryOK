@@ -15,12 +15,6 @@ rmdir %isAdminDir%
 :: SET EXECUTION POLICY
 powershell.exe -Command "Set-ExecutionPolicy Unrestricted"
 
-:: UPGRADING ALL PROGRAMS ::
-echo UPGRADING ALL PROGRAMS
-winget upgrade --all --accept-source-agreements --force
-timeout 2 > nul
-cls
-
 :: STARTING STORE UPDATES ::
 echo STARTING STORE UPDATES...
 powershell -command "Get-CimInstance -Namespace "Root\cimv2\mdm\dmmap" -ClassName "MDM_EnterpriseModernAppManagement_AppManagement01" | Invoke-CimMethod -MethodName UpdateScanMethod"
