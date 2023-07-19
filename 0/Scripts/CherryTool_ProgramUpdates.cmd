@@ -14,6 +14,6 @@ rmdir %isAdminDir%
 
 :: UPGRADING ALL PROGRAMS ::
 echo UPGRADING ALL PROGRAMS
-winget upgrade --all --accept-source-agreements --force
-timeout 2 > nul
-cls
+winget upgrade --all --accept-source-agreements --force --include-unknown
+timeout 4 > nul
+exit
