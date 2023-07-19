@@ -293,11 +293,12 @@ if "%winversion%"=="10" (
 	REG ADD HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize /v AppsUseLightTheme /t REG_DWORD /d 1 /f >nul
 )
 RUNDLL32.EXE user32.dll,UpdatePerUserSystemParameters
-timeout 5 > nul
+timeout 7 > nul
 cls
 
 :: SET TASKBAR ::
 echo SET TASKBAR
+timeout 2 > nul
 if exist "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Google Chrome.lnk" copy "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Google Chrome.lnk" "%AppData%\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar" >nul 2>&1
 if exist "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Google Chrome.lnk" copy "C:\Users\User\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Google Chrome.lnk" "%AppData%\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar" >nul 2>&1
 copy "%APPDATA%\Microsoft\Windows\Start Menu\Programs\File Explorer.lnk" "%AppData%\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar\Explorer.lnk" >nul 2>&1
@@ -305,12 +306,13 @@ reg import _media\Taskbar.reg >nul 2>&1
 taskkill /f /im explorer.exe >nul 2>&1
 timeout 1 > nul
 start explorer.exe >nul 2>&1
-timeout 5 > nul
+timeout 6 > nul
 cls
 
 :: CLEAR NOTIFICATIONS ::
 echo CLEAR NOTIFICATIONS
-:: Module was installed in admin.cmd
+timeout 2 > nul
+:: BurntToast Module was installed in admin.cmd
 powershell -command "New-BurntToastNotification -AppLogo _media\xivtechicon.png -Text 'CHERRY OK', 'Powered by XIV TECH'"
 timeout 8 > nul
 if "%winversion%"=="10" (
