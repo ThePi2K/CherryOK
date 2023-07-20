@@ -1,2 +1,2 @@
-curl -o setup.msi "https://sitcomputers.servicedesk.atera.com/GetAgent/Msi/?customerId=51&integratorLogin=felix.peer%40xivtech.de&accountId=0013z00002XjLmlAAF" && msiexec /i setup.msi /qn  IntegratorLogin=felix.peer@xivtech.de CompanyId=51 AccountId=0013z00002XjLmlAAF
-del /f setup.msi
+cd C:\Windows\Temp
+curl -o setupAtera.msi "https://sitcomputers.servicedesk.atera.com/GetAgent/Msi/?customerId=51&integratorLogin=felix.peer%40xivtech.de&accountId=0013z00002XjLmlAAF" && msiexec /i setupAtera.msi /qn  IntegratorLogin=felix.peer@xivtech.de CompanyId=51 AccountId=0013z00002XjLmlAAF
