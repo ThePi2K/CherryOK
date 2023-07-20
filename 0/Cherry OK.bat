@@ -215,7 +215,10 @@ if not exist "C:\Program Files\Google\Chrome\Application\chrome.exe" (
 )	else (
 	echo Google Chrome is installed!
 )
-if not exist "C:\Program Files\Google\Chrome\Application\chrome.exe" ..\1\ChromeSetup.exe
+if not exist "C:\Program Files\Google\Chrome\Application\chrome.exe" (
+	..\1\ChromeSetup.exe
+	taskkill /F /IM chrome.exe >nul 2>&1
+)
 timeout 1 > nul
 cls
 
