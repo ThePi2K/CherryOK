@@ -5,7 +5,7 @@
 :: Powered by XIVTech
 
 @echo off
-@set version=6.4.7.2
+@set version=6.5.1 Alpha
 @title Cherry OK %version%
 
 
@@ -15,6 +15,17 @@
 
 
 color 09
+
+:: CHECK IF ADMIN OK ::
+set isAdminDir=C:\Windows\CherryTestAdmin
+mkdir %isAdminDir% >nul 2>&1
+if not exist %isAdminDir% (
+	goto ADMIN
+	exit
+)
+rmdir %isAdminDir% >nul 2>&1
+
+: ADMIN
 
 del "%USERPROFILE%\Desktop\Abort Shutdown.cmd" >nul 2>&1
 
