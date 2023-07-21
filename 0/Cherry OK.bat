@@ -22,6 +22,14 @@ del "%USERPROFILE%\Desktop\Abort Shutdown.cmd" >nul 2>&1
 netsh wlan add profile filename=_media\WLAN-Cherry-Net.xml >nul 2>&1
 timeout 2 > nul
 
+:: RESTARTING EXPLORER FOR BETTER EXPERIENCE ::
+timeout 2 > nul
+taskkill /f /im explorer.exe >nul 2>&1
+timeout 1 > nul
+start explorer.exe >nul 2>&1
+timeout 2 > nul
+cls
+
 :: INTERNET CHECK ::
 : INTERNET_CHECK
 ping -n 1 8.8.8.8 | find "TTL=" >nul 2>&1
@@ -32,15 +40,6 @@ if errorlevel 1 (
 	echo Retrying...
 	goto INTERNET_CHECK
 )
-cls
-
-:: RESTARTING EXPLORER FOR BETTER EXPERIENCE ::
-echo RESTARTING EXPLORER FOR BETTER EXPERIENCE...
-timeout 2 > nul
-taskkill /f /im explorer.exe >nul 2>&1
-timeout 1 > nul
-start explorer.exe >nul 2>&1
-timeout 2 > nul
 cls
 
 :: CHECK WINDOWS VERSION ::
