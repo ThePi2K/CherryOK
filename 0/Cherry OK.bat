@@ -5,7 +5,7 @@
 :: Powered by XIVTech
 
 @echo off
-@set version=6.4.7
+@set version=6.4.7.1
 @title Cherry OK %version%
 
 
@@ -429,6 +429,12 @@ if errorlevel 2 (
 timeout 2 > nul
 cls
 
+:: RESTARTING EXPLORER FOR BETTER EXPERIENCE ::
+taskkill /f /im explorer.exe >nul 2>&1
+timeout 1 > nul
+start explorer.exe >nul 2>&1
+timeout 2 > nul
+cls
 
 :: SET UAC SETTINGS AND STARTING UPDATES ::
 echo SET UAC SETTINGS AND STARTING UPDATES
