@@ -5,7 +5,7 @@
 :: Powered by XIVTech
 
 @echo off
-@set version=6.4.7.1
+@set version=6.4.7.2
 @title Cherry OK %version%
 
 
@@ -364,18 +364,18 @@ if "%ERRORLEVEL%"=="0" (
 )
 cls
 
+:: UPGRADING ALL PROGRAMS ::
+echo UPGRADING ALL PROGRAMS
+winget upgrade --all --accept-source-agreements --force
+timeout 2 > nul
+cls
+
 :: REMOVE EDGE LINKS AND BLOCK EDGE FROM CREATING SHORTCUTS ::
 echo BLOCK EDGE FROM CREATING SHORTCUTS
 REG ADD HKLM\SOFTWARE\Policies\Microsoft\EdgeUpdate /v CreateDesktopShortcutDefault /t REG_DWORD /d 0 /f >nul
 del /f "%PUBLIC%\Desktop\Microsoft Edge.lnk" >nul 2>&1
 del /f "%USERPROFILE%\Desktop\Microsoft Edge.lnk" >nul 2>&1
 timeout 1 > nul
-cls
-
-:: UPGRADING ALL PROGRAMS ::
-echo UPGRADING ALL PROGRAMS
-winget upgrade --all --accept-source-agreements --force
-timeout 2 > nul
 cls
 
 :: CONFIGURE SYSTEM RESTORE ::
