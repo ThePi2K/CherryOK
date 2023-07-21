@@ -5,7 +5,7 @@
 :: Powered by XIVTech
 
 @echo off
-@set version=6.5.1 Alpha
+@set version=6.5.1 Early Alpha
 @title Cherry OK %version%
 
 
@@ -26,6 +26,9 @@ if not exist %isAdminDir% (
 rmdir %isAdminDir% >nul 2>&1
 
 : ADMIN
+
+dir :: schauen ob c: oder stick
+pause
 
 del "%USERPROFILE%\Desktop\Abort Shutdown.cmd" >nul 2>&1
 
