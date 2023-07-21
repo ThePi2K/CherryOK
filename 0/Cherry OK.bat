@@ -34,6 +34,15 @@ if errorlevel 1 (
 )
 cls
 
+:: RESTARTING EXPLORER FOR BETTER EXPERIENCE ::
+echo RESTARTING EXPLORER FOR BETTER EXPERIENCE...
+timeout 2 > nul
+taskkill /f /im explorer.exe >nul 2>&1
+timeout 1 > nul
+start explorer.exe >nul 2>&1
+timeout 2 > nul
+cls
+
 :: CHECK WINDOWS VERSION ::
 WMIC OS Get Name | findstr Microsoft > result.txt
 set /p QUERY=<result.txt
@@ -426,13 +435,6 @@ if errorlevel 2 (
     timeout 1 > nul
     exit
 )
-timeout 2 > nul
-cls
-
-:: RESTARTING EXPLORER FOR BETTER EXPERIENCE ::
-taskkill /f /im explorer.exe >nul 2>&1
-timeout 1 > nul
-start explorer.exe >nul 2>&1
 timeout 2 > nul
 cls
 
