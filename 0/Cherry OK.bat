@@ -27,8 +27,7 @@ rmdir %isAdminDir% >nul 2>&1
 
 : ADMIN
 
-:: schauen ob c: oder stick
-dir
+dir :: schauen ob c: oder stick
 pause
 
 del "%USERPROFILE%\Desktop\Abort Shutdown.cmd" >nul 2>&1
