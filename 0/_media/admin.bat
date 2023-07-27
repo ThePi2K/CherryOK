@@ -3,7 +3,7 @@
 
 color 09
 
-:: ## Set UAC ##
+:: START AS ADMIN ::
 set isAdminDir=C:\Windows\CherryTestAdmin
 mkdir %isAdminDir% > nul
 cls
