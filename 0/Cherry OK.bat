@@ -5,7 +5,7 @@
 :: Powered by XIVTech
 
 @echo off
-@set version=6.5.1 Alpha
+@set version=6.5.2 Alpha
 @title Cherry OK %version%
 
 
@@ -205,6 +205,9 @@ if not exist "C:\Program Files\Microsoft Office\root\Office16\WINWORD.EXE" (
 )
 timeout 1 > nul
 cls
+
+:: GO TO CMD WINDOW ::
+_media\nircmd cmdwait 1500 sendkeypress alt+tab
 
 :: INSTALL CHERRY HILFE ::
 if exist "%userprofile%\Desktop\Cherry *.exe" (
