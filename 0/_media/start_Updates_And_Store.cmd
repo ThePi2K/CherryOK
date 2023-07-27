@@ -40,7 +40,6 @@ IF EXIST "Cherry OK.cmd" (
 	call "Cherry OK.bat"
 ) else (
 	echo USB is missing...
-	DIR
 	pause
 	cls
 	goto checkUSB
