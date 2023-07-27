@@ -5,7 +5,7 @@
 :: Powered by XIVTech
 
 @echo off
-@set version=6.5.3 Alpha
+@set version=6.5.4 Alpha
 @title Cherry OK %version%
 
 
@@ -266,6 +266,9 @@ _media\SetUserFTA http ChromeHTML
 _media\SetUserFTA https ChromeHTML
 _media\SetUserFTA .htm ChromeHTML
 _media\SetUserFTA .html ChromeHTML
+_media\SetUserFTA mailto Outlook.URL.mailto.15
+_media\SetUserFTA webcal Outlook.URL.mailto.15
+_media\SetUserFTA webcals Outlook.URL.mailto.15
 
 :: SET ENERGY SETTINGS ::
 powercfg -change -standby-timeout-ac 0
