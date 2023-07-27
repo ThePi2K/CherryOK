@@ -1,16 +1,6 @@
 @echo off
 @title Cherry OK
 
-:: BETA ::
-cls
-echo :: BETA ::
-echo i will testen, ob i iaz ban stick bin oder nit (also C:)
-echo wenns c: isch muas i oanfoch des löschen, und wenns dr stick 
-echo isch, muas i es restartcherryok kopieren ba den script vorn nuistart
-echo.
-dir
-pause
-
 color 09
 
 :: ## Set UAC ##
