@@ -360,17 +360,6 @@ if not exist "C:\Program Files\Adobe\Acrobat DC\Acrobat\Acrobat.exe" (
 del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\start_Updates_And_Store.cmd" >nul 2>&1
 del "%userprofile%\Desktop\restartCherryOK.cmd" >nul 2>&1
 
-:: CHECKING IF M365 SETUP IS RUNNING ::
-:CheckOffice
-tasklist /fi "ImageName eq setup.exe" /fo csv 2>NUL | find /I "setup.exe">NUL
-if "%ERRORLEVEL%"=="0" (
-	echo Microsoft 365 Setup is running...
-	timeout 5 > nul
-	cls
-	goto CheckOffice
-)
-cls
-
 :: UPGRADING ALL PROGRAMS ::
 echo UPGRADING ALL PROGRAMS
 winget upgrade --all --accept-source-agreements --force
@@ -383,6 +372,17 @@ REG ADD HKLM\SOFTWARE\Policies\Microsoft\EdgeUpdate /v CreateDesktopShortcutDefa
 del /f "%PUBLIC%\Desktop\Microsoft Edge.lnk" >nul 2>&1
 del /f "%USERPROFILE%\Desktop\Microsoft Edge.lnk" >nul 2>&1
 timeout 1 > nul
+cls
+
+:: CHECKING IF M365 SETUP IS RUNNING ::
+:CheckOffice
+tasklist /fi "ImageName eq setup.exe" /fo csv 2>NUL | find /I "setup.exe">NUL
+if "%ERRORLEVEL%"=="0" (
+	echo Microsoft 365 Setup is running...
+	timeout 5 > nul
+	cls
+	goto CheckOffice
+)
 cls
 
 :: CONFIGURE SYSTEM RESTORE ::
