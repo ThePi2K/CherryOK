@@ -1,6 +1,8 @@
 @echo off
 @title Cherry OK
 
+shutdown -a
+
 :: START AS ADMIN ::
 set isAdminDir=C:\Windows\CherryTestAdmin
 mkdir %isAdminDir% > nul
