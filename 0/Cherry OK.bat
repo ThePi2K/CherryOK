@@ -2,10 +2,9 @@
 :: by Felix Peer
 :: Designed for Windows 11
 :: Full Automated v6
-:: Powered by XIVTech
 
 @echo off
-@set version=6.5.4 Alpha
+@set version=6.5.5 Alpha
 @title Cherry OK %version%
 
 
@@ -93,11 +92,8 @@ color 0f
 powershell.exe .\_media\echoTitle.ps1
 echo.
 echo    Cherry OK - Version %version%
-echo    Designed for Windows 11 (22H2)
+echo    Designed for Windows 11
 if "%winversion%" == "10" echo    Legacy Mode for Windows 10 enabled
-echo.
-echo    Powered by
-echo    XIV TECH
 
 :: CHECK WINDOWS ACTIVATION ::
 powershell.exe .\_media\checkWindowsActivation.ps1
@@ -336,7 +332,7 @@ cls
 echo CLEAR NOTIFICATIONS
 timeout 2 > nul
 :: BurntToast Module was installed in admin.cmd
-powershell -command "New-BurntToastNotification -AppLogo _media\xivtechicon.png -Text 'CHERRY OK', 'Powered by XIV TECH'"
+powershell -command "New-BurntToastNotification -AppLogo _media\cherry.jpg -Text 'CHERRY OK', 'in progress...'"
 timeout 8 > nul
 if "%winversion%"=="10" (
 	_media\nircmd sendkeypress lwin+a
