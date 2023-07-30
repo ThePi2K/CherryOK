@@ -3,6 +3,8 @@
 
 color 0e
 
+del "%USERPROFILE%\Desktop\Abort Shutdown.cmd" >nul 2>&1
+
 :: STARTING STORE UPDATES ::
 echo STARTING STORE UPDATES...
 powershell -command "Get-CimInstance -Namespace "Root\cimv2\mdm\dmmap" -ClassName "MDM_EnterpriseModernAppManagement_AppManagement01" | Invoke-CimMethod -MethodName UpdateScanMethod | Out-Null"

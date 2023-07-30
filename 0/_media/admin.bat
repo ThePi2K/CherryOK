@@ -47,6 +47,6 @@ cls
 echo RESTARTING COMPUTER...
 timeout 3 >nul
 echo shutdown -a > "%USERPROFILE%\Desktop\Abort Shutdown.cmd"
-shutdown /t 0 /r
+shutdown /t 30 /r
 
 exit
