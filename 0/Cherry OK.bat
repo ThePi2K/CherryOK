@@ -4,7 +4,7 @@
 :: Full Automated v6
 
 @echo off
-@set version=6.5.6 Beta
+@set version=6.5.6
 @title Cherry OK %version%
 
 
@@ -186,7 +186,7 @@ timeout 1 > nul
 cls
 
 :: TURN ON NOTIFICATIONS ::
-REG ADD HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\PushNotifications /v ToastEnabled /t REG_DWORD /d 1 /f >nul
+:: REG ADD HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\PushNotifications /v ToastEnabled /t REG_DWORD /d 1 /f >nul
 
 :: EMPTY RECYCLE BIN ::
 rd /s /q C:\$Recycle.Bin
