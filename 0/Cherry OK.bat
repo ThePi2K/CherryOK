@@ -195,7 +195,6 @@ rd /s /q C:\$Recycle.Bin
 if not exist "C:\Program Files\Microsoft Office\root\Office16\WINWORD.EXE" (
 	echo INSTALL MICROSOFT 365 APPS
 	start _media\installing_m365.bat
-	REG ADD HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Office\16.0\Teams /v PreventFirstLaunchAfterInstall /t REG_DWORD /d 1 /f >nul
 )	else (
 	echo Microsoft 365 is installed!
 )
@@ -365,6 +364,9 @@ echo UPGRADING ALL PROGRAMS
 winget upgrade --all --accept-source-agreements --force
 timeout 2 > nul
 cls
+
+:: DISABLING TEAMS AUTOSTART
+REG ADD HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Office\16.0\Teams /v PreventFirstLaunchAfterInstall /t REG_DWORD /d 1 /f >nul
 
 :: REMOVE EDGE LINKS AND BLOCK EDGE FROM CREATING SHORTCUTS ::
 echo BLOCK EDGE FROM CREATING SHORTCUTS
