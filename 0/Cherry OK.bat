@@ -4,7 +4,7 @@
 :: Full Automated v6
 
 @echo off
-@set version=6.6
+@set version=7 Beta
 @title Cherry OK %version%
 
 
