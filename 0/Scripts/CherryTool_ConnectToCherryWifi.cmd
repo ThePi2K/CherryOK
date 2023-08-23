@@ -1,0 +1,1 @@
+netsh wlan add profile filename=..\_media\WLAN-Cherry-Net.xml >nul 2>&1
