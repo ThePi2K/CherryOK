@@ -233,7 +233,8 @@ if not exist "C:\Program Files\Google\Chrome\Application\chrome.exe" (
 	echo Google Chrome is installed!
 )
 if not exist "C:\Program Files\Google\Chrome\Application\chrome.exe" (
-	..\1\ChromeSetup.exe
+	if "%OSLanguage%"=="de-DE" \Programme\ChromeSetup_DE.exe
+	if "%OSLanguage%"=="it-IT" \Programme\ChromeSetup_IT.exe
 	taskkill /F /IM chrome.exe >nul 2>&1
 )
 timeout 1 > nul
