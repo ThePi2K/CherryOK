@@ -15,12 +15,12 @@ cls
 :restart
 set /p customerNumber=Enter customer number (5 digits): 
 set /p deviceType=Enter device type: 
-set /p deviceNumber=Enter device number: 
+set /p deviceNumber=Enter device number (2 digits): 
     
 set newname=%customerNumber%-%deviceType%-%deviceNumber%
     
 
-choice /C YN /N /M "Is this correct? %computername% -^> %newname% [Y or N]"
+choice /C YN /N /M "Is this correct? %computername% -> %newname% [Y or N]"
 if errorlevel 2 (
     timeout 1 > nul
     cls
@@ -31,6 +31,7 @@ cls
 
 
 wmic computersystem where name="%computername%" call rename "%newname%"
+cls
 echo Computer renamed to %newname%
 timeout 2 > nul
 
