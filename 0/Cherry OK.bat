@@ -442,6 +442,8 @@ echo WELCOME TO CHERRY OK :)
 echo.
 choice /C YN /N /M "Shall we begin? [Y or N]"
 if errorlevel 2 (
+    cls
+    echo See you next time ;)
     timeout 1 > nul
     exit
 )
