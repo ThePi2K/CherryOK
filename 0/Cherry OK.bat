@@ -94,6 +94,8 @@ echo.
 echo    Cherry OK - Version %version%
 echo    Designed for Windows 11
 if "%winversion%" == "10" echo    Legacy Mode for Windows 10 enabled
+timeout 5 > nul
+cls
 
 :: PERSONAL OR BUSINESS ::
 choice /C YN /N /M "Personal? (N for Business) [Y or N]"
