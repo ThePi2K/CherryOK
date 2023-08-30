@@ -16,8 +16,10 @@ cls
 set /p customerNumber=Enter customer number (5 digits): 
 set /p deviceType=Enter device type: 
 set /p deviceNumber=Enter device number (2 digits): 
-    
-set newname=%customerNumber%-%deviceType%-%deviceNumber%
+
+for /f "usebackq delims=" %%I in (`powershell "\"%deviceType%\".toUpper()"`) do set "deviceType_upper=%%~I"
+
+set newname=%customerNumber%-%deviceType_upper%-%deviceNumber%
     
 
 choice /C YN /N /M "Is this correct? %computername% -> %newname% [Y or N]"
