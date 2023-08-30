@@ -1,0 +1,1 @@
+msiexec /i "\Programme\AteraAgentUnassigned.msi"
