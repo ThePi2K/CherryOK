@@ -21,7 +21,7 @@ for /f "usebackq delims=" %%I in (`powershell "\"%deviceType%\".toUpper()"`) do 
 
 set newname=%customerNumber%-%deviceType_upper%-%deviceNumber%
     
-
+cls
 choice /C YN /N /M "Is this correct? %computername% -> %newname% [Y or N]"
 if errorlevel 2 (
     timeout 1 > nul
