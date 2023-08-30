@@ -98,9 +98,9 @@ timeout 5 > nul
 cls
 
 :: PERSONAL OR BUSINESS ::
-choice /C YN /N /M "Personal? (N for Business) [Y or N]"
+choice /C YN /N /M "Personal? ("N" for Business) [Y or N]"
 if errorlevel 2 (
-
+pause
 
 :: INSTALLING ATERA ::
     start Programme/AteraAgentUnassigned.msi
@@ -112,7 +112,7 @@ choice /C YN /N /M "Do you want to rename the computer? [Y or N]"
 if errorlevel 2 (
     echo Rename operation canceled.
     timeout 1 > nul
-    exit
+    goto skip
 )
 timeout 2 > nul
 cls
@@ -144,6 +144,8 @@ echo Computer renamed to %newname%
 )
 timeout 2 > nul
 cls
+
+:skip
 
 :: CHECK WINDOWS ACTIVATION ::
 powershell.exe .\_media\checkWindowsActivation.ps1
