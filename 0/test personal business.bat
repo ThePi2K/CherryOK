@@ -23,15 +23,17 @@ timeout 2 > nul
 
 if "%customertype%"=="Business" (
 
-:: INSTALLING ATERA ::
+:: INSTALL ATERA ::
 start Programme/AteraAgentUnassigned.msi
-cls
-:: RENAMING PC
+
+:: RENAMING COMPUTER ::
+echo Current name: %computername%
+
 choice /C YN /N /M "Do you want to rename the computer? [Y or N]"
 if errorlevel 2 (
     echo Rename operation canceled.
     timeout 1 > nul
-    goto skip
+    exit
 )
 timeout 2 > nul
 cls
@@ -59,9 +61,12 @@ cls
 wmic computersystem where name="%computername%" call rename "%newname%"
 cls
 echo Computer renamed to %newname%
-
-)
 timeout 2 > nul
-cls
+
+:: END RENAMING COMPUTER ::
 
 )
+
+cls
+echo weiter geahts
+timeout 2 > nul
