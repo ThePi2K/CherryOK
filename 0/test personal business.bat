@@ -19,23 +19,13 @@ goto choice
 
 :end
 echo You have selected "%customertype%".
-rem Add your code based on the selected option here.
+timeout 2 > nul
 
-
-pause
-
-
-
-
-choice /C YN /N /M "Personal? ("N" for Business) [Y or N]"
-if errorlevel 2 (
-pause
+if "%customertype%"=="Business" (
 
 :: INSTALLING ATERA ::
-    start Programme/AteraAgentUnassigned.msi
-    cls
-
-
+start Programme/AteraAgentUnassigned.msi
+cls
 :: RENAMING PC
 choice /C YN /N /M "Do you want to rename the computer? [Y or N]"
 if errorlevel 2 (
@@ -74,4 +64,4 @@ echo Computer renamed to %newname%
 timeout 2 > nul
 cls
 
-:skip
+)
