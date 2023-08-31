@@ -5,6 +5,7 @@ echo 1. Personal
 echo 2. Business
 echo.
 
+:: PERSONAL OR BUSINESS ::
 :choice
 set /p c=Your choice: 
 
@@ -17,8 +18,6 @@ goto choice
 :end
 echo You have selected "%customertype%".
 rem Add your code based on the selected option here.
-
-
 
 
 pause
