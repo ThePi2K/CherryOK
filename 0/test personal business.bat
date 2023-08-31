@@ -1,12 +1,14 @@
 @echo off
+
+:: PERSONAL OR BUSINESS ::
+:choice
+
 cls
 echo Choose an option:
 echo 1. Personal
 echo 2. Business
 echo.
 
-:: PERSONAL OR BUSINESS ::
-:choice
 set /p c=Your choice: 
 
 if "%c%"=="1" set "customertype=Personal" & goto end
