@@ -34,10 +34,10 @@ timeout 2 > nul
 
 :: RESTARTING EXPLORER FOR BETTER EXPERIENCE ::
 timeout 2 > nul
-taskkill /f /im explorer.exe >nul 2>&1
+echo taskkill /f /im explorer.exe >nul 2>&1
 timeout 1 > nul
 start explorer.exe >nul 2>&1
-timeout 2 > nul
+echo timeout 2 > nul
 cls
 
 :: INTERNET CHECK ::
@@ -529,13 +529,19 @@ color 09
 :: ASK FOR START ::
 echo WELCOME TO CHERRY OK :)
 echo.
+echo pause 3
+pause
 choice /C YN /N /M "Shall we begin? [Y or N]"
-if errorlevel 2 (
+if errorlevel 1 (
+    echo You chose to continue.
+    timeout 1 > nul
+) else (
     cls
     echo See you next time ;)
     timeout 1 > nul
     exit
 )
+
 timeout 2 > nul
 cls
 
