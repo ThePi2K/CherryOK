@@ -160,9 +160,10 @@ timeout 2 > nul
 :: END RENAMING COMPUTER ::
 
 :skip
-cls
+echo.
 echo Continuing...
 timeout 2 > nul
+cls
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::                                         CHERRY OK START                                         ::
@@ -531,10 +532,8 @@ echo WELCOME TO CHERRY OK :)
 echo.
 choice /C YN /N /M "Shall we begin? [Y or N]"
 if errorlevel 2 (
-    cls
-    echo See you next time ;)
-    timeout 1 > nul
-    exit
+    echo See you later alligator
+    exit /B
 )
 timeout 2 > nul
 cls
