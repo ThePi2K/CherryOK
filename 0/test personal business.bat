@@ -21,10 +21,11 @@ goto choice
 echo You have selected "%customertype%".
 timeout 2 > nul
 
-if "%customertype%"=="Business" (
+if "%customertype%"=="Personal" goto skip
 
-:: INSTALL ATERA ::
-start Programme/AteraAgentUnassigned.msi
+:: INSTALLING ATERA ::
+:: BETA
+echo start Programme/AteraAgentUnassigned.msi
 
 :: RENAMING COMPUTER ::
 echo Current name: %computername%
@@ -33,7 +34,7 @@ choice /C YN /N /M "Do you want to rename the computer? [Y or N]"
 if errorlevel 2 (
     echo Rename operation canceled.
     timeout 1 > nul
-    exit
+    goto skip
 )
 timeout 2 > nul
 cls
@@ -57,16 +58,15 @@ if errorlevel 2 (
 timeout 2 > nul
 cls
 
-
-wmic computersystem where name="%computername%" call rename "%newname%"
+:: BETA
+echo wmic computersystem where name="%computername%" call rename "%newname%"
 cls
 echo Computer renamed to %newname%
 timeout 2 > nul
 
 :: END RENAMING COMPUTER ::
 
-)
-
+: skip
 cls
 echo weiter geahts
 timeout 2 > nul
