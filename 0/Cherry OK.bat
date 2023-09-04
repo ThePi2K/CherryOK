@@ -291,6 +291,7 @@ cls
 _media\nircmd cmdwait 1500 sendkeypress alt+tab
 
 :: INSTALL CHERRY HILFE ::
+if "%customertype%"=="Business" goto skipcherryhelp
 if exist "%userprofile%\Desktop\Cherry *.exe" (
 	echo Cherry Hilfe exists
 ) else (
@@ -310,6 +311,8 @@ if not exist "%userprofile%\Desktop\Cherry *.exe" (
 )
 timeout 1 > nul
 cls
+
+:skipcherryhelp
 
 :: INSTALL GOOGLE CHROME ::
 if not exist "C:\Program Files\Google\Chrome\Application\chrome.exe" (
