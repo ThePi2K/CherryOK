@@ -49,10 +49,9 @@ for /f "usebackq delims=" %%I in (`powershell "\"%deviceType%\".toUpper()"`) do 
 set newname=%customerNumber%-%deviceType_upper%-%deviceNumber%
 
 cls
-for /f "tokens=2,3 delims=," %%a in (clienti.csv) do (
+for /f "tokens=2,3 delims=," %%a in (_media\clienti.csv) do (
     if "%%a" equ "%customerNumber%" (
         echo Kunde: %%b
-        timeout 1 > nul
     )
 )
 
