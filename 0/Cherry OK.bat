@@ -112,7 +112,7 @@ cls
 if "%customertype%"=="Personal" goto skip
 
 :: INSTALLING ATERA ::
-start Programme/AteraAgentUnassigned.msi
+if not exist "C:\Program Files\ATERA Networks\AteraAgent\AteraAgent.exe" start Programme/AteraAgentUnassigned.msi
 
 :: RENAMING COMPUTER ::
 echo Current name: %computername%
