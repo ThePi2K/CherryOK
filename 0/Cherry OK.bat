@@ -527,19 +527,29 @@ exit
 color 09
 
 :: ASK FOR START ::
+:choicebegin
+cls
 echo WELCOME TO CHERRY OK :)
 echo.
-echo pause 3
-pause
-choice /C YN /N /M "Shall we begin? [Y or N]"
-if errorlevel 1 (
+
+echo Shall we begin?
+echo 1. Yes
+echo 2. No
+echo.
+
+set /p c=Your choice: 
+
+if "%c%"=="1" (
+    cls
     echo You chose to continue.
-    timeout 1 > nul
-) else (
+) else if "%c%"=="2" (
     cls
     echo See you next time ;)
     timeout 1 > nul
     exit
+) else (
+    echo Invalid choice. Please enter 1 or 2.
+    goto choicebegin
 )
 
 timeout 2 > nul
