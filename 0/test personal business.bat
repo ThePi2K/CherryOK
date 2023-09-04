@@ -47,8 +47,15 @@ set /p deviceNumber=Enter device number (2 digits):
 for /f "usebackq delims=" %%I in (`powershell "\"%deviceType%\".toUpper()"`) do set "deviceType_upper=%%~I"
 
 set newname=%customerNumber%-%deviceType_upper%-%deviceNumber%
-    
+
 cls
+for /f "tokens=2,3 delims=," %%a in (clienti.csv) do (
+    if "%%a" equ "%customerNumber%" (
+        echo Kunde: %%b
+        timeout 1 > nul
+    )
+)
+
 choice /C YN /N /M "Is this correct? %computername% -> %newname% [Y or N]"
 if errorlevel 2 (
     timeout 1 > nul
