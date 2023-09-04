@@ -1,1 +1,0 @@
-start Programme/AteraAgentUnassigned.msi
