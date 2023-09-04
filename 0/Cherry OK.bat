@@ -114,6 +114,14 @@ if "%customertype%"=="Personal" goto skip
 :: INSTALLING ATERA ::
 start Programme/AteraAgentUnassigned.msi
 
+
+_media\nircmd cmdwait 1500 sendkeypress alt+tab
+
+_media\nircmd cmdwait 1500 sendkeypress alt+tab
+
+_media\nircmd cmdwait 1500 sendkeypress space
+
+
 :: RENAMING COMPUTER ::
 echo Current name: %computername%
 
