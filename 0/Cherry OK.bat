@@ -179,7 +179,6 @@ echo    Cherry OK - Version %version%
 echo    Designed for Windows 11
 if "%winversion%" == "10" echo    Legacy Mode for Windows 10 enabled
 timeout 5 > nul
-cls
 
 
 :: CHECK WINDOWS ACTIVATION ::
