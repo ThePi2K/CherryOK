@@ -207,6 +207,26 @@ cls
 
 if "%customertype%"=="Personal" goto skip
 
+:restartcustomer
+set /p customerNumber=Enter customer number (5 digits): 
+
+:: CHECKING CUSTOMER NUMBER ::
+cls
+for /f "tokens=2,3 delims=," %%a in (_media\clienti.csv) do (
+    if "%%a" equ "%customerNumber%" (
+        echo Customer: %%b
+    )
+)
+
+choice /C YN /N /M "Is this correct? [Y or N]"
+if errorlevel 2 (
+    timeout 1 > nul
+    cls
+    goto restartcustomer
+)
+timeout 2 > nul
+cls
+
 :: INSTALLING ATERA ::
 if not exist "C:\Program Files\ATERA Networks\AteraAgent\AteraAgent.exe" start Programme/AteraAgentUnassigned.msi
 
@@ -223,21 +243,12 @@ timeout 2 > nul
 cls
 
 :restart
-set /p customerNumber=Enter customer number (5 digits): 
 set /p deviceType=Enter device type: 
 set /p deviceNumber=Enter device number (2 digits): 
 
 for /f "usebackq delims=" %%I in (`powershell "\"%deviceType%\".toUpper()"`) do set "deviceType_upper=%%~I"
 
 set newname=%customerNumber%-%deviceType_upper%-%deviceNumber%
-
-:: CHECKING CUSTOMER NUMBER ::
-cls
-for /f "tokens=2,3 delims=," %%a in (_media\clienti.csv) do (
-    if "%%a" equ "%customerNumber%" (
-        echo Customer: %%b
-    )
-)
 
 choice /C YN /N /M "Is this correct? %computername% -> %newname% [Y or N]"
 if errorlevel 2 (
