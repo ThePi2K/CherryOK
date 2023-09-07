@@ -456,8 +456,9 @@ cls
 
 :: INSTALL ADOBE READER IF FAILED ::
 if not exist "C:\Program Files\Adobe\Acrobat DC\Acrobat\Acrobat.exe" (
-      copy ..\1\readerdc64_de_hi_crd_mdr_install.exe ..\1\reader.exe
-      ..\1\reader.exe
+	if "%OSLanguage%"=="de-DE" copy \Programme\Reader_Install_Setup_DE.exe reader.exe
+	if "%OSLanguage%"=="it-IT" copy \Programme\Reader_Install_Setup_IT.exe reader.exe
+	reader.exe
 )
 
 :: REMOVING CMD ::
