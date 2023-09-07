@@ -81,6 +81,43 @@ if not exist "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\start_Upda
 	exit
 )
 
+:: CHECKING UPDATES ::
+echo CHECKING UPDATES
+powershell -command "Get-WindowsUpdate" > tmp
+find /c "ComputerName" tmp >nul
+IF %ERRORLEVEL% EQU 0 (
+	del tmp
+	ECHO ATTENTION: UPDATES AVAILABLE!
+	timeout 2 > nul
+	cls
+	"%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\start_Updates_And_Store.cmd"
+	exit
+)
+del tmp
+ECHO UPDATES OK
+timeout 2 > nul
+cls
+
+:: CHECKING UNKNOWN DRIVERS ::
+: DRIVER_CHECK
+cls
+echo CHECKING UNKNOWN DRIVERS...
+wmic path win32_pnpentity where ConfigManagerErrorcode!=0 get * /format:list >tmp 2>&1
+timeout 1 > nul
+find /c "Status" tmp >nul
+IF %ERRORLEVEL% EQU 0 (
+	del tmp
+	ECHO ERROR IN DEVICE MANAGER
+	timeout 2 > nul
+	devmgmt.msc
+	cls
+	goto DRIVER_CHECK
+)
+del tmp
+ECHO DEVICE MANAGER OK
+timeout 2 > nul
+cls
+
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::                                         CHERRY OK START                                         ::
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -124,43 +161,6 @@ set OSLanguage=undefined
 if %OSLangCode% == 1031 set OSLanguage=de-DE
 if %OSLangCode% == 1033 set OSLanguage=en-US
 if %OSLangCode% == 1040 set OSLanguage=it-IT
-cls
-
-:: CHECKING UPDATES ::
-echo CHECKING UPDATES
-powershell -command "Get-WindowsUpdate" > tmp
-find /c "ComputerName" tmp >nul
-IF %ERRORLEVEL% EQU 0 (
-	del tmp
-	ECHO ATTENTION: UPDATES AVAILABLE!
-	timeout 2 > nul
-	cls
-	"%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\start_Updates_And_Store.cmd"
-	exit
-)
-del tmp
-ECHO UPDATES OK
-timeout 2 > nul
-cls
-
-:: CHECKING UNKNOWN DRIVERS ::
-: DRIVER_CHECK
-cls
-echo CHECKING UNKNOWN DRIVERS...
-wmic path win32_pnpentity where ConfigManagerErrorcode!=0 get * /format:list >tmp 2>&1
-timeout 1 > nul
-find /c "Status" tmp >nul
-IF %ERRORLEVEL% EQU 0 (
-	del tmp
-	ECHO ERROR IN DEVICE MANAGER
-	timeout 2 > nul
-	devmgmt.msc
-	cls
-	goto DRIVER_CHECK
-)
-del tmp
-ECHO DEVICE MANAGER OK
-timeout 2 > nul
 cls
 
 :: CHECK WINGET ::
