@@ -355,7 +355,7 @@ timeout 1 > nul
 cls
 
 :: DISABLE BITLOCKER ENCRYPTION ::
-echo DISABLING BITLOCKER ENCRYPTION
+echo DISABLING BITLOCKER ENCRYPTION...
 manage-bde -status C: > nul
 manage-bde -off C: > nul
 cls
@@ -389,7 +389,6 @@ if "%winversion%"=="11" (
 
 :: SET SEARCH BUTTON ::
 if "%winversion%"=="11" reg add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Search" /v "SearchboxTaskbarMode" /t REG_DWORD /d 1 /f >nul
-
 
 :: HIDE CORTANA, SET TASKBAR AND HIDE WEATHER ::
 if "%winversion%"=="10" (
@@ -426,15 +425,9 @@ if exist "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Google Chrome.lnk
 if exist "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Google Chrome.lnk" copy "C:\Users\User\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Google Chrome.lnk" "%AppData%\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar" >nul 2>&1
 copy "%APPDATA%\Microsoft\Windows\Start Menu\Programs\File Explorer.lnk" "%AppData%\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar\Explorer.lnk" >nul 2>&1
 reg import _media\Taskbar.reg >nul 2>&1
-taskkill /f /im explorer.exe >nul 2>&1
-timeout 1 > nul
-start explorer.exe >nul 2>&1
-timeout 6 > nul
-cls
 
 :: CLEAR NOTIFICATIONS ::
 echo CLEAR NOTIFICATIONS
-timeout 2 > nul
 :: BurntToast Module was installed in admin.cmd
 powershell -command "New-BurntToastNotification -AppLogo _media\cherry.jpg -Text 'CHERRY OK', 'in progress...'"
 timeout 8 > nul
@@ -451,6 +444,9 @@ if "%winversion%"=="11" (
 	_media\nircmd cmdwait 1500 sendkeypress enter
 	_media\nircmd cmdwait 1500 sendkeypress esc
 )
+taskkill /f /im explorer.exe >nul 2>&1
+timeout 1 > nul
+start explorer.exe >nul 2>&1
 timeout 1 > nul
 cls
 
