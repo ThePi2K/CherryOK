@@ -409,8 +409,6 @@ echo SET DESIGN
 if "%winversion%"=="11" (
 	copy _media\CherryOK7.theme C:\Windows\Cherry
 	powershell -command "start-process -filepath 'C:\Windows\Cherry\CherryOK7.theme'"
-	REG ADD HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize /v SystemUsesLightTheme /t REG_DWORD /d 0 /f >nul
-	REG ADD HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize /v AppsUseLightTheme /t REG_DWORD /d 0 /f >nul
 	timeout 2 > nul
 	taskkill /F /IM systemsettings.exe >nul 2>&1
 )
