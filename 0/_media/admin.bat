@@ -14,6 +14,13 @@ if not exist %isAdminDir% (
 )
 rmdir %isAdminDir%
 
+:: MAKE CMD FILE "STOP CHERRY OK" ::
+echo shutdown -a > "%USERPROFILE%\Desktop\Stop Cherry OK.cmd"
+echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\start_Updates_And_Store.cmd" >> "%USERPROFILE%\Desktop\Stop Cherry OK.cmd"
+echo del "%userprofile%\Desktop\restartCherryOK.cmd" >> "%USERPROFILE%\Desktop\Stop Cherry OK.cmd"
+echo del "%USERPROFILE%\Desktop\Abort Shutdown.cmd" >> "%USERPROFILE%\Desktop\Stop Cherry OK.cmd" 
+echo del "%USERPROFILE%\Desktop\Stop Cherry OK.cmd" >> "%USERPROFILE%\Desktop\Stop Cherry OK.cmd"
+
 :: SET UAC ::
 reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v "ConsentPromptBehaviorAdmin" /t reg_dword /d 0 /F >nul
 reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v "EnableLUA" /t reg_dword /d 0 /F >nul
@@ -47,11 +54,6 @@ cls
 echo RESTARTING COMPUTER...
 timeout 3 >nul
 echo shutdown -a > "%USERPROFILE%\Desktop\Abort Shutdown.cmd"
-echo shutdown -a > "%USERPROFILE%\Desktop\Stop Cherry OK.cmd"
-echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\start_Updates_And_Store.cmd" >> "%USERPROFILE%\Desktop\Stop Cherry OK.cmd"
-echo del "%userprofile%\Desktop\restartCherryOK.cmd" >> "%USERPROFILE%\Desktop\Stop Cherry OK.cmd"
-echo del "%USERPROFILE%\Desktop\Abort Shutdown.cmd" >> "%USERPROFILE%\Desktop\Stop Cherry OK.cmd" 
-echo del "%USERPROFILE%\Desktop\Stop Cherry OK.cmd" >> "%USERPROFILE%\Desktop\Stop Cherry OK.cmd"
 shutdown /t 30 /r
 
 exit
