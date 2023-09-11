@@ -563,6 +563,7 @@ echo Installing Update...
 cd ..\1\
 for %%f in (windows11.0*.msu) do (
     wusa.exe "%%f" /norestart
+	:: später /quiet
 )
 echo Finished!
 timeout 2 > nul
