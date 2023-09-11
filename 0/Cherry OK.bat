@@ -27,6 +27,7 @@ rmdir %isAdminDir% >nul 2>&1
 : ADMIN
 
 del "%USERPROFILE%\Desktop\Abort Shutdown.cmd" >nul 2>&1
+del "%USERPROFILE%\Desktop\Stop Cherry OK.cmd" >nul 2>&1
 
 :: CONNECT TO WIFI
 netsh wlan add profile filename=_media\WLAN-Cherry-Net.xml >nul 2>&1
