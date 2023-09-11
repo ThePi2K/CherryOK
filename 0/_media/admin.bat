@@ -47,8 +47,10 @@ cls
 echo RESTARTING COMPUTER...
 timeout 3 >nul
 echo shutdown -a > "%USERPROFILE%\Desktop\Abort Shutdown.cmd"
-echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\start_Updates_And_Store.cmd" > "%USERPROFILE%\Desktop\Stop Cherry OK.cmd"
+echo shutdown -a > "%USERPROFILE%\Desktop\Stop Cherry OK.cmd"
+echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\start_Updates_And_Store.cmd" >> "%USERPROFILE%\Desktop\Stop Cherry OK.cmd"
 echo del "%userprofile%\Desktop\restartCherryOK.cmd" >> "%USERPROFILE%\Desktop\Stop Cherry OK.cmd"
+echo del "%USERPROFILE%\Desktop\Abort Shutdown.cmd" >> "%USERPROFILE%\Desktop\Stop Cherry OK.cmd" 
 echo del "%USERPROFILE%\Desktop\Stop Cherry OK.cmd" >> "%USERPROFILE%\Desktop\Stop Cherry OK.cmd"
 shutdown /t 30 /r
 
