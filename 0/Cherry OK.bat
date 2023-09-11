@@ -558,6 +558,18 @@ if errorlevel 2 (
 timeout 2 > nul
 cls
 
+:: [BETA] INSTALLING WINDOWS CUMULATIVE UPDATE ::
+echo Installing Update...
+cd ..\1\
+for %%f in (windows11.0*.msu) do (
+    wusa.exe "%%f" /norestart
+)
+echo Finished!
+timeout 2 > nul
+cls
+
+cd ..\0\
+
 :: SET UAC SETTINGS AND STARTING UPDATES ::
 echo SET UAC SETTINGS AND STARTING UPDATES
 start _media\admin.bat
