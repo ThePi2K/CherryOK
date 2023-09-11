@@ -43,6 +43,7 @@ cls
 
 :: INTERNET CHECK ::
 : INTERNET_CHECK
+cls
 echo Checking Internet...
 timeout 1 > nul
 ping -n 1 8.8.8.8 | find "TTL=" >nul 2>&1
