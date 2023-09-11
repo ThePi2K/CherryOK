@@ -216,9 +216,9 @@ if "%c%"=="1" (
 :end
 echo You have selected "%customertype%".
 timeout 2 > nul
-cls
 
 if "%customertype%"=="Personal" goto skip
+cls
 
 :restartcustomer
 set /p customerNumber=Enter customer number (5 digits): 
@@ -280,7 +280,6 @@ timeout 2 > nul
 :: END RENAMING COMPUTER ::
 
 :skip
-echo.
 echo Continuing...
 timeout 2 > nul
 cls
