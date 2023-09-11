@@ -515,6 +515,14 @@ timeout 2 > nul
 del tmp
 cls
 
+:: [BETA] CHERRY OK SIEGEL? ::
+choice /C YN /N /M "Did you put the Cherry Quality seal on it?? [Y or N]"
+if errorlevel 2 (
+    echo ╭∩╮( •̀_•́ )╭∩╮
+    timeout 2 > nul
+)
+timeout 1 > nul
+cls
 
 mkdir C:\Windows\Cherry >nul 2>&1
 copy _media\CherryOK.png C:\Windows\Cherry >nul 2>&1
