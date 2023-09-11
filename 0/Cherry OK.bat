@@ -4,8 +4,9 @@
 :: Full Automated v7
 
 @echo off
-@set version=7.1 Beta
-@title Cherry OK %version%
+set version=7.1 Beta
+title Cherry OK %version%
+chcp 65001 > nul
 
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -516,12 +517,12 @@ del tmp
 cls
 
 :: [BETA] CHERRY OK SIEGEL? ::
-choice /C YN /N /M "Did you put the Cherry Quality seal on it?? [Y or N]"
-if errorlevel 2 (
-    echo ╭∩╮( •̀_•́ )╭∩╮
-    timeout 2 > nul
-)
-timeout 1 > nul
+cls
+echo Did you put the Cherry Quality seal on it?? [Y or N]
+set /p seal=Your choice: 
+if "%seal%"=="N" echo ╭∩╮( •̀_•́ )╭∩╮
+if "%seal%"=="n" echo ╭∩╮( •̀_•́ )╭∩╮
+timeout 3 > nul
 cls
 
 mkdir C:\Windows\Cherry >nul 2>&1
