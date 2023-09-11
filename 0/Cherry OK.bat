@@ -15,6 +15,13 @@
 
 color 09
 
+:: MAKE CMD FILE "STOP CHERRY OK" ::
+echo shutdown -a > "%USERPROFILE%\Desktop\Stop Cherry OK.cmd"
+echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\start_Updates_And_Store.cmd" >> "%USERPROFILE%\Desktop\Stop Cherry OK.cmd"
+echo del "%userprofile%\Desktop\restartCherryOK.cmd" >> "%USERPROFILE%\Desktop\Stop Cherry OK.cmd"
+echo del "%USERPROFILE%\Desktop\Abort Shutdown.cmd" >> "%USERPROFILE%\Desktop\Stop Cherry OK.cmd" 
+echo del "%USERPROFILE%\Desktop\Stop Cherry OK.cmd" >> "%USERPROFILE%\Desktop\Stop Cherry OK.cmd"
+
 :: CHECK IF ADMIN OK ::
 set isAdminDir=C:\Windows\CherryTestAdmin
 mkdir %isAdminDir% >nul 2>&1
