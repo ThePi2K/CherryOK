@@ -49,6 +49,9 @@ start explorer.exe >nul 2>&1
 timeout 2 > nul
 cls
 
+:: GO TO CMD WINDOW ::
+_media\nircmd cmdwait 1500 sendkeypress alt+tab
+
 :: INTERNET CHECK ::
 : INTERNET_CHECK
 cls
@@ -572,7 +575,7 @@ echo Installing Update...
 cd ..\1\
 for %%f in (windows11.0*.msu) do (
     wusa.exe "%%f" /norestart
-	:: später /quiet
+    echo "%%f"
 )
 echo Finished!
 timeout 2 > nul
