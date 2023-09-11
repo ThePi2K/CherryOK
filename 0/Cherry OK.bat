@@ -125,6 +125,7 @@ cls
 
 
 color 0f
+mkdir C:\Windows\Cherry >nul 2>&1
 
 :: CHERRY OK ASCII ::
 powershell.exe .\_media\echoTitle.ps1
@@ -405,7 +406,8 @@ REG ADD HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\UserProfileE
 :: SET DESIGN ::
 echo SET DESIGN
 if "%winversion%"=="11" (
-	powershell -command "start-process -filepath 'C:\Windows\Resources\Themes\dark.theme'"
+	copy _media\CherryOK7.theme C:\Windows\Cherry
+	powershell -command "start-process -filepath 'C:\Windows\Cherry\CherryOK7.theme'"
 	timeout 2 > nul
 	taskkill /F /IM systemsettings.exe >nul 2>&1
 )
@@ -507,8 +509,6 @@ timeout 2 > nul
 del tmp
 cls
 
-
-mkdir C:\Windows\Cherry >nul 2>&1
 copy _media\CherryOK.png C:\Windows\Cherry >nul 2>&1
 powershell.exe .\_media\echoTitle.ps1
 echo.
