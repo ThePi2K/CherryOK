@@ -198,7 +198,7 @@ IF %ERRORLEVEL% NEQ 0 (
 :choice
 cls
 echo Choose an option:
-echo 1. Personal
+echo 1. Personal or no specific customer
 echo 2. Business
 echo.
 
