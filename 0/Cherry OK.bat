@@ -4,7 +4,7 @@
 :: Full Automated v7
 
 @echo off
-set version=7.1 Beta
+set version=7.1
 title Cherry OK %version%
 chcp 65001 > nul
 
