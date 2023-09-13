@@ -4,7 +4,7 @@
 :: Full Automated v7
 
 @echo off
-set version=7.1
+set version=7.1.1
 title Cherry OK %version%
 chcp 65001 > nul
 
@@ -512,7 +512,7 @@ timeout 2 > nul
 del tmp
 cls
 
-:: [BETA] CHERRY OK SIEGEL? ::
+:: CHERRY OK SIEGEL? ::
 cls
 echo Did you put the Cherry Quality seal on it?? [Y or N]
 set /p seal=Your choice: 

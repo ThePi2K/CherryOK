@@ -36,11 +36,6 @@ echo STARTING STORE UPDATES...
 powershell -command "Get-CimInstance -Namespace "Root\cimv2\mdm\dmmap" -ClassName "MDM_EnterpriseModernAppManagement_AppManagement01" | Invoke-CimMethod -MethodName UpdateScanMethod"
 cls
 
-:: [BETA] WHERE AM I? ::
-dir
-pause
-cls
-
 :: SCANNING AND INSTALLING WINDOWS UPDATES ::
 echo SCANNING AND INSTALLING WINDOWS UPDATES...
 ::powershell -command "Get-WindowsUpdate"
