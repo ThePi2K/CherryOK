@@ -187,6 +187,8 @@ IF %ERRORLEVEL% NEQ 0 (
 ::                                   PERSONAL OR BUSINESS CHOICE                                   ::
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
+color CF
+
 :: PERSONAL OR BUSINESS ::
 :choice
 cls
@@ -207,6 +209,7 @@ if "%c%"=="1" (
 )
 
 :end
+color 0f
 echo You have selected "%customertype%".
 timeout 2 > nul
 
@@ -214,6 +217,7 @@ if "%customertype%"=="Personal" goto skip
 cls
 
 :restartcustomer
+color CF
 set /p customerNumber=Enter customer number (5 digits): 
 
 :: CHECKING CUSTOMER NUMBER ::
@@ -233,12 +237,15 @@ if errorlevel 2 (
 timeout 2 > nul
 cls
 
+color 0f
+
 :: INSTALLING ATERA ::
 if not exist "C:\Program Files\ATERA Networks\AteraAgent\AteraAgent.exe" start Programme/AteraAgentUnassigned.msi
 
 :: RENAMING COMPUTER ::
 echo Current name: %computername%
 
+color CF
 choice /C YN /N /M "Do you want to rename the computer? [Y or N]"
 if errorlevel 2 (
     echo Rename operation canceled.
@@ -273,6 +280,7 @@ timeout 2 > nul
 :: END RENAMING COMPUTER ::
 
 :skip
+color 0f
 echo Continuing...
 timeout 2 > nul
 cls
@@ -512,6 +520,9 @@ timeout 2 > nul
 del tmp
 cls
 
+
+color CF
+
 :: CHERRY OK SIEGEL? ::
 cls
 echo Did you put the Cherry Quality seal on it?? [Y or N]
@@ -520,6 +531,7 @@ if "%seal%"=="N" echo ╭∩╮( •̀_•́ )╭∩╮
 if "%seal%"=="n" echo ╭∩╮( •̀_•́ )╭∩╮
 timeout 3 > nul
 cls
+color 0F
 
 mkdir C:\Windows\Cherry >nul 2>&1
 copy _media\CherryOK.png C:\Windows\Cherry >nul 2>&1
@@ -550,7 +562,7 @@ exit
 
 :FIRSTRUN
 
-color 09
+color CF
 
 :: ASK FOR START ::
 echo WELCOME TO CHERRY OK :)
@@ -562,6 +574,8 @@ if errorlevel 2 (
 )
 timeout 2 > nul
 cls
+
+color 09
 
 cd ..\0\
 
