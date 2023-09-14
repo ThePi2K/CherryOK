@@ -28,7 +28,6 @@ rmdir %isAdminDir% >nul 2>&1
 : ADMIN
 
 del "%USERPROFILE%\Desktop\Abort Shutdown.cmd" >nul 2>&1
-del "%USERPROFILE%\Desktop\Stop Cherry OK.cmd" >nul 2>&1
 
 :: CONNECT TO WIFI
 netsh wlan add profile filename=_media\WLAN-Cherry-Net.xml >nul 2>&1
@@ -471,10 +470,6 @@ if not exist "C:\Program Files\Adobe\Acrobat DC\Acrobat\Acrobat.exe" (
 	reader.exe
 )
 
-:: REMOVING CMD ::
-del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\start_Updates_And_Store.cmd" >nul 2>&1
-del "%userprofile%\Desktop\restartCherryOK.cmd" >nul 2>&1
-
 :: UPGRADING ALL PROGRAMS ::
 echo UPGRADING ALL PROGRAMS
 winget upgrade --all --accept-source-agreements --force
@@ -502,6 +497,11 @@ if "%ERRORLEVEL%"=="0" (
 	goto CheckOffice
 )
 cls
+
+:: REMOVING CMD ::
+del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\start_Updates_And_Store.cmd" >nul 2>&1
+del "%userprofile%\Desktop\restartCherryOK.cmd" >nul 2>&1
+del "%USERPROFILE%\Desktop\Stop Cherry OK.cmd" >nul 2>&1
 
 :: CONFIGURE SYSTEM RESTORE ::
 echo CONFIGURING SYSTEM RESTORE
