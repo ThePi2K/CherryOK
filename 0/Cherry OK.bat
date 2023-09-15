@@ -1,10 +1,10 @@
 :: Cherry OK Script
 :: by Felix Peer
 :: Designed for Windows 11
-:: Full Automated v7
+:: Semi Automated v7
 
 @echo off
-set version=7.1.2 Beta
+set version=7.1.2
 title Cherry OK %version%
 chcp 65001 > nul
 
