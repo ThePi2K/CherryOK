@@ -236,15 +236,12 @@ if errorlevel 2 (
 timeout 2 > nul
 cls
 
-
 :: INSTALLING ATERA ::
-color CF
-choice /C YN /N /M "Do you want to install Atera? [Y or N]"
-if errorlevel 1 (
-    if not exist "C:\Program Files\ATERA Networks\AteraAgent\AteraAgent.exe" start Programme/AteraAgent.msi
-)
+if not exist "C:\Program Files\ATERA Networks\AteraAgent\AteraAgent.exe" start Programme/AteraAgent.msi
 timeout 2 > nul
 cls
+
+color CF
 
 :: RENAMING COMPUTER ::
 echo Current name: %computername%
