@@ -1,0 +1,2 @@
+start RevoUninstaller\RevoUninstaller.exe
+exit
