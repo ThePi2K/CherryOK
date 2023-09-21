@@ -36,6 +36,12 @@ echo STARTING STORE UPDATES...
 powershell -command "Get-CimInstance -Namespace "Root\cimv2\mdm\dmmap" -ClassName "MDM_EnterpriseModernAppManagement_AppManagement01" | Invoke-CimMethod -MethodName UpdateScanMethod"
 cls
 
+:: INSTALLING 128 GB UPDATE ::
+echo INSTALLING 128 GB UPDATE
+powershell -command "Install-WindowsUpdate -KBArticleID KB5030219 -ForceDownload -ForceInstall -IgnoreReboot -AcceptAll"
+:: 2023-09
+cls
+
 :: SCANNING AND INSTALLING WINDOWS UPDATES ::
 echo SCANNING AND INSTALLING WINDOWS UPDATES...
 ::powershell -command "Get-WindowsUpdate"
