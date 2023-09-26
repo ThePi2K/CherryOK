@@ -1,3 +1,6 @@
+# set title
+$host.ui.RawUI.WindowTitle = "Cherry OK v8"
+
 echo "Welcome to the new Cherry OK"
 
 
