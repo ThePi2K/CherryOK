@@ -4,7 +4,7 @@
 :: Semi Automated v7
 
 @echo off
-set version=7.1.3
+set version=7.1.3.1
 title Cherry OK %version%
 chcp 65001 > nul
 
@@ -221,7 +221,7 @@ set /p customerNumber=Enter customer number (5 digits):
 
 :: CHECKING CUSTOMER NUMBER ::
 cls
-for /f "tokens=2,3 delims=," %%a in (_media\clienti.csv) do (
+for /f "tokens=2,3 delims=," %%a in (_media\Clienti.csv) do (
     if "%%a" equ "%customerNumber%" (
         echo Customer: %%b
     )
