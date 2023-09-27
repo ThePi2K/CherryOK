@@ -18,4 +18,3 @@ del %drive%Recovery.txt >nul 2>&1
 copy "C:\Users\FelixPeer\OneDrive - Cherry Computer\Documents\Cherry\Cherry USB\Cherry OK.cmd" "%drive%"
 robocopy "C:\Users\FelixPeer\OneDrive - Cherry Computer\Documents\Cherry\Cherry USB\0" "%drive%0" /MIR
 robocopy "C:\Users\FelixPeer\OneDrive - Cherry Computer\Documents\Cherry\Cherry USB\1" "%drive%1" /MIR
-rd /s /q %drive%0/Beta-Features >nul 2&1
