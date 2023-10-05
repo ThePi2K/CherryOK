@@ -6,6 +6,7 @@
 @echo off
 set version=7.1.5
 title Cherry OK %version%
+powershell.exe -Command "$host.ui.RawUI.WindowTitle = 'Cherry OK %version%'"
 chcp 65001 > nul
 
 
@@ -183,7 +184,7 @@ IF %ERRORLEVEL% NEQ 0 (
 )
 
 :: SET TITLE WITH EMOJI ::
-title 🍒 %version%
+powershell.exe -Command "$host.ui.RawUI.WindowTitle = '🍒 Cherry OK %version%'"
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::                                   PERSONAL OR BUSINESS CHOICE                                   ::
