@@ -39,10 +39,10 @@ cls
 :: INSTALLING 128 GB UPDATE ::
 echo INSTALLING 128 GB UPDATE
 if "%winversion%" == "10" echo KB5030300
-if "%winversion%" == "10" powershell -command "Install-WindowsUpdate -KBArticleID KB5030300 -AcceptAll"
+if "%winversion%" == "10" powershell -command "Get-WindowsUpdate -Install -KBArticleID 'KB5030300'"
 if "%winversion%" == "11" echo KB5030310
-if "%winversion%" == "11" powershell -command "Install-WindowsUpdate -KBArticleID KB5030310 -AcceptAll"
-:: last upd 26.09.23
+if "%winversion%" == "11" powershell -command "Get-WindowsUpdate -Install -KBArticleID 'KB5030310'"
+:: last upd 05.10.23
 cls
 
 :: SCANNING AND INSTALLING WINDOWS UPDATES ::
