@@ -4,7 +4,7 @@
 :: Semi Automated v7
 
 @echo off
-set version=7.1.4
+set version=7.1.5
 title Cherry OK %version%
 chcp 65001 > nul
 
@@ -181,6 +181,9 @@ IF %ERRORLEVEL% NEQ 0 (
 	shutdown /r /t 0
 	exit
 )
+
+:: SET TITLE WITH EMOJI ::
+title 🍒 %version%
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::                                   PERSONAL OR BUSINESS CHOICE                                   ::
