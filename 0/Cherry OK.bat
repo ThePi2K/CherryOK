@@ -4,7 +4,7 @@
 :: Semi Automated v7
 
 @echo off
-set version=7.1.5
+set version=7.2
 title Cherry OK %version%
 powershell.exe -Command "$host.ui.RawUI.WindowTitle = 'Cherry OK %version%'"
 chcp 65001 > nul
