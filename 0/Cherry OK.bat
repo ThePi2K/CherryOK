@@ -532,8 +532,10 @@ color CF
 cls
 echo Did you put the Cherry Quality seal on it?? [Y or N]
 set /p seal=Your choice: 
-if "%seal%"=="N" echo ╭∩╮( •̀_•́ )╭∩╮
-if "%seal%"=="n" echo ╭∩╮( •̀_•́ )╭∩╮
+::if "%seal%"=="N" echo ╭∩╮( •̀_•́ )╭∩╮
+::if "%seal%"=="n" echo ╭∩╮( •̀_•́ )╭∩╮
+if "%seal%"=="N" echo 🖕😡🖕
+if "%seal%"=="n" echo 🖕😡🖕
 timeout 3 > nul
 cls
 color 0F
