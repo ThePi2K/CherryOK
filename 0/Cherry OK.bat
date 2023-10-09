@@ -303,6 +303,20 @@ w32tm /resync >nul 2>&1
 timeout 1 > nul
 cls
 
+:: [BETA] INSTALLING WINDOWS CUMULATIVE UPDATE ::
+echo Installing Update...
+cd _media\
+cd %winversion%\
+for %%f in (windows*.msu) do (
+    wusa.exe "%~dp0/%%f" /norestart
+)
+echo Finished!
+cd ..
+cd ..
+timeout 2 > nul
+cls
+
+
 :: TURN ON NOTIFICATIONS ::
 :: REG ADD HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\PushNotifications /v ToastEnabled /t REG_DWORD /d 1 /f >nul
 
