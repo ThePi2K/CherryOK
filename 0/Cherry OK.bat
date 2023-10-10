@@ -303,12 +303,13 @@ w32tm /resync >nul 2>&1
 timeout 1 > nul
 cls
 
-:: [BETA] INSTALLING WINDOWS CUMULATIVE UPDATE ::
+:: INSTALLING WINDOWS CUMULATIVE UPDATE ::
 if "%winversion%"=="11" (
-	echo Installing 128 GB Update...
+	echo Installing Windows Cumulative Update...
+	echo It may take up to 10 minutes.
 	cd _media\
 	for %%f in (windows*.msu) do (
-		wusa.exe "%~dp0_media\%%f" /norestart
+		wusa.exe "%~dp0_media\%%f" /quiet /norestart
 	)
 	echo Finished!
 	cd ..
