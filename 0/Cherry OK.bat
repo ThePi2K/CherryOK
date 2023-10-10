@@ -80,6 +80,7 @@ rmdir %isAdminDir% >nul 2>&1
 
 :: SET EXECUTION POLICY ::
 powershell.exe -Command "Set-ExecutionPolicy Unrestricted"
+powershell.exe -Command "$host.ui.RawUI.WindowTitle = 'Cherry OK %version%'"
 
 :: CHECK FIRST RUN ::
 if not exist "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\start_Updates_And_Store.cmd" (
@@ -90,6 +91,7 @@ if not exist "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\start_Upda
 :: CHECKING UPDATES ::
 echo CHECKING UPDATES
 powershell -command "Get-WindowsUpdate" > tmp
+powershell.exe -Command "$host.ui.RawUI.WindowTitle = 'Cherry OK %version%'"
 find /c "ComputerName" tmp >nul
 IF %ERRORLEVEL% EQU 0 (
 	del tmp
@@ -133,6 +135,7 @@ color 0f
 
 :: CHERRY OK ASCII ::
 powershell.exe .\_media\echoTitle.ps1
+powershell.exe -Command "$host.ui.RawUI.WindowTitle = '🍒 Cherry OK %version%'"
 echo.
 echo    Cherry OK - Version %version%
 echo    Designed for Windows 11
@@ -142,6 +145,7 @@ timeout 5 > nul
 
 :: CHECK WINDOWS ACTIVATION ::
 powershell.exe .\_media\checkWindowsActivation.ps1
+powershell.exe -Command "$host.ui.RawUI.WindowTitle = '🍒 Cherry OK %version%'"
 cls
 echo CHECKING WINDOWS ACTIVATION...
 set /p status=<tmp
@@ -182,9 +186,6 @@ IF %ERRORLEVEL% NEQ 0 (
 	shutdown /r /t 0
 	exit
 )
-
-:: SET TITLE WITH EMOJI ::
-powershell.exe -Command "$host.ui.RawUI.WindowTitle = '🍒 Cherry OK %version%'"
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::                                   PERSONAL OR BUSINESS CHOICE                                   ::
@@ -347,6 +348,7 @@ if exist "%userprofile%\Desktop\Cherry *.exe" (
 	if "%OSLanguage%"=="it-IT" powershell -command "curl https://customdesignservice.teamviewer.com/download/windows/v15/6bgwa4q/TeamViewerQS.exe -OutFile '%userprofile%\Desktop\Cherry Aiuto.exe'"
 	if not exist "%userprofile%\Desktop\Cherry *.exe" powershell -command "curl https://customdesignservice.teamviewer.com/download/windows/v15/6bgwa4q/TeamViewerQS.exe -OutFile '%userprofile%\Desktop\Cherry Help.exe'"
 )
+powershell.exe -Command "$host.ui.RawUI.WindowTitle = '🍒 Cherry OK %version%'"
 
 if not exist "%userprofile%\Desktop\Cherry *.exe" (
 	cls
@@ -448,6 +450,7 @@ if "%winversion%"=="10" (
 RUNDLL32.EXE user32.dll,UpdatePerUserSystemParameters
 timeout 7 > nul
 cls
+powershell.exe -Command "$host.ui.RawUI.WindowTitle = '🍒 Cherry OK %version%'"
 
 :: SET TASKBAR ::
 echo SET TASKBAR
@@ -462,6 +465,7 @@ cls
 echo CLEAR NOTIFICATIONS
 :: BurntToast Module was installed in admin.cmd
 powershell -command "New-BurntToastNotification -AppLogo _media\cherry.jpg -Text 'CHERRY OK', 'in progress...'"
+powershell.exe -Command "$host.ui.RawUI.WindowTitle = '🍒 Cherry OK %version%'"
 timeout 8 > nul
 if "%winversion%"=="10" (
 	_media\nircmd sendkeypress lwin+a
@@ -525,6 +529,7 @@ del "%USERPROFILE%\Desktop\Stop Cherry OK.cmd" >nul 2>&1
 :: CONFIGURE SYSTEM RESTORE ::
 echo CONFIGURING SYSTEM RESTORE
 powershell.exe .\_media\restore.ps1
+powershell.exe -Command "$host.ui.RawUI.WindowTitle = '🍒 Cherry OK %version%'"
 find /c "Cherry OK" tmp >nul
 IF %ERRORLEVEL% EQU 1 (
 	del tmp
@@ -534,6 +539,7 @@ IF %ERRORLEVEL% EQU 1 (
 	powershell.exe -Command "Set-ExecutionPolicy Restricted"
 	exit
 )
+powershell.exe -Command "$host.ui.RawUI.WindowTitle = '🍒 Cherry OK %version%'"
 echo RESTORE POINT OK
 timeout 2 > nul
 del tmp
@@ -557,10 +563,12 @@ color 0F
 mkdir C:\Windows\Cherry >nul 2>&1
 copy _media\CherryOK.png C:\Windows\Cherry >nul 2>&1
 powershell.exe .\_media\echoTitle.ps1
+powershell.exe -Command "$host.ui.RawUI.WindowTitle = '🍒 Cherry OK %version%'"
 echo.
 echo    CHERRY OK SUCCEEDED SUCCESSFULLY
 echo    TESTED AND APPROVED
 powershell -command "New-BurntToastNotification -AppLogo C:\Windows\Cherry\CherryOK.png -Text 'CHERRY OK', 'Tested & Approved!'"
+powershell.exe -Command "$host.ui.RawUI.WindowTitle = '🍒 Cherry OK %version%'"
 timeout 5 > nul
 
 :: REFRESH DESKTOP ::
@@ -570,6 +578,7 @@ _media\nircmd cmdwait 1000 sendkeypress F5
 :: DELETE POWERSHELL FOLDER IF EXISTS ::
 rd /s /q "%USERPROFILE%\Documents\WindowsPowerShell" >nul 2>&1
 powershell.exe -Command "Set-ExecutionPolicy Restricted"
+powershell.exe -Command "$host.ui.RawUI.WindowTitle = '🍒 Cherry OK %version%'"
 
 shutdown -r -t 10
 
@@ -584,6 +593,7 @@ exit
 :FIRSTRUN
 
 color CF
+powershell.exe -Command "$host.ui.RawUI.WindowTitle = 'Cherry OK %version%'"
 
 :: ASK FOR START ::
 echo WELCOME TO CHERRY OK :)
