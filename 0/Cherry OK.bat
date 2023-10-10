@@ -554,11 +554,13 @@ echo Did you put the Cherry Quality seal on it?? [Y or N]
 set /p seal=Your choice: 
 ::if "%seal%"=="N" echo ╭∩╮( •̀_•́ )╭∩╮
 ::if "%seal%"=="n" echo ╭∩╮( •̀_•́ )╭∩╮
-if "%seal%"=="N" echo 🖕😡🖕
-if "%seal%"=="n" echo 🖕😡🖕
+::if "%seal%"=="N" echo 🖕😡🖕
+::if "%seal%"=="n" echo 🖕😡🖕
+color 0F
+powershell.exe .\_media\echoMiddlefingerASCII.ps1
+powershell.exe -Command "$host.ui.RawUI.WindowTitle = '🍒 Cherry OK %version%'"
 timeout 3 > nul
 cls
-color 0F
 
 mkdir C:\Windows\Cherry >nul 2>&1
 copy _media\CherryOK.png C:\Windows\Cherry >nul 2>&1
