@@ -1,6 +1,6 @@
 @echo off
-title Cherry OK: Updates
-powershell.exe -Command "$host.ui.RawUI.WindowTitle = 'Cherry OK: Updates"
+title Cherry OK - Updates
+powershell.exe -Command "$host.ui.RawUI.WindowTitle = 'Cherry OK - Updates"
 
 color 0e
 
