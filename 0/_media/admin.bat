@@ -1,5 +1,6 @@
 @echo off
-@title Cherry OK
+title Cherry OK %version%
+powershell.exe -Command "$host.ui.RawUI.WindowTitle = 'Cherry OK %version%'"
 
 color 09
 
