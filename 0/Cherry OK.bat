@@ -5,8 +5,8 @@
 
 @echo off
 set version=7.2
-title 🍒 Cherry OK %version%
-powershell.exe -Command "$host.ui.RawUI.WindowTitle = '🍒 Cherry OK %version%'"
+title Cherry OK %version%
+powershell.exe -Command "$host.ui.RawUI.WindowTitle = 'Cherry OK %version%'"
 chcp 65001 > nul
 
 
