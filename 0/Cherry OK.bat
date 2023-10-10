@@ -308,7 +308,7 @@ if "%winversion%"=="11" (
 	echo Installing 128 GB Update...
 	cd _media\
 	for %%f in (windows*.msu) do (
-		wusa.exe "%~dp0/%%f" /norestart
+		wusa.exe "%~dp0_media\%%f" /norestart
 	)
 	echo Finished!
 	cd ..
