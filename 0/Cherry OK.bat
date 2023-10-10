@@ -79,8 +79,7 @@ if not exist %isAdminDir% (
 rmdir %isAdminDir% >nul 2>&1
 
 :: SET EXECUTION POLICY ::
-powershell.exe -Command "Set-ExecutionPolicy Unrestricted"
-powershell.exe -Command "$host.ui.RawUI.WindowTitle = 'Cherry OK %version%'"
+powershell.exe -Command "$host.ui.RawUI.WindowTitle = 'Cherry OK %version%'; Set-ExecutionPolicy Unrestricted"
 
 :: CHECK FIRST RUN ::
 if not exist "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\start_Updates_And_Store.cmd" (
@@ -90,8 +89,7 @@ if not exist "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\start_Upda
 
 :: CHECKING UPDATES ::
 echo CHECKING UPDATES
-powershell -command "Get-WindowsUpdate" > tmp
-powershell.exe -Command "$host.ui.RawUI.WindowTitle = 'Cherry OK %version%'"
+powershell.exe -Command "$host.ui.RawUI.WindowTitle = 'Cherry OK %version%'; Get-WindowsUpdate" > tmp
 find /c "ComputerName" tmp >nul
 IF %ERRORLEVEL% EQU 0 (
 	del tmp
@@ -344,11 +342,10 @@ if exist "%userprofile%\Desktop\Cherry *.exe" (
 ) else (
 	echo SETTING UP CHERRY HELP...
 	timeout 1 > nul
-	if "%OSLanguage%"=="de-DE" powershell -command "curl https://customdesignservice.teamviewer.com/download/windows/v15/6bgwa4q/TeamViewerQS.exe -OutFile '%userprofile%\Desktop\Cherry Hilfe.exe'"
-	if "%OSLanguage%"=="it-IT" powershell -command "curl https://customdesignservice.teamviewer.com/download/windows/v15/6bgwa4q/TeamViewerQS.exe -OutFile '%userprofile%\Desktop\Cherry Aiuto.exe'"
+	if "%OSLanguage%"=="de-DE" powershell.exe -Command "$host.ui.RawUI.WindowTitle = '🍒 Cherry OK %version%'; curl https://customdesignservice.teamviewer.com/download/windows/v15/6bgwa4q/TeamViewerQS.exe -OutFile '%userprofile%\Desktop\Cherry Hilfe.exe'"
+	if "%OSLanguage%"=="it-IT" powershell.exe -Command "$host.ui.RawUI.WindowTitle = '🍒 Cherry OK %version%'; curl https://customdesignservice.teamviewer.com/download/windows/v15/6bgwa4q/TeamViewerQS.exe -OutFile '%userprofile%\Desktop\Cherry Aiuto.exe'"
 	if not exist "%userprofile%\Desktop\Cherry *.exe" powershell -command "curl https://customdesignservice.teamviewer.com/download/windows/v15/6bgwa4q/TeamViewerQS.exe -OutFile '%userprofile%\Desktop\Cherry Help.exe'"
 )
-powershell.exe -Command "$host.ui.RawUI.WindowTitle = '🍒 Cherry OK %version%'"
 
 if not exist "%userprofile%\Desktop\Cherry *.exe" (
 	cls
@@ -437,7 +434,7 @@ REG ADD HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\UserProfileE
 :: SET DESIGN ::
 echo SET DESIGN
 if "%winversion%"=="11" (
-	powershell -command "start-process -filepath 'C:\Windows\Resources\Themes\dark.theme'"
+	powershell.exe -Command "$host.ui.RawUI.WindowTitle = '🍒 Cherry OK %version%'; start-process -filepath 'C:\Windows\Resources\Themes\dark.theme'"
 	timeout 2 > nul
 	taskkill /F /IM systemsettings.exe >nul 2>&1
 )
@@ -450,7 +447,6 @@ if "%winversion%"=="10" (
 RUNDLL32.EXE user32.dll,UpdatePerUserSystemParameters
 timeout 7 > nul
 cls
-powershell.exe -Command "$host.ui.RawUI.WindowTitle = '🍒 Cherry OK %version%'"
 
 :: SET TASKBAR ::
 echo SET TASKBAR
@@ -464,8 +460,7 @@ cls
 :: CLEAR NOTIFICATIONS ::
 echo CLEAR NOTIFICATIONS
 :: BurntToast Module was installed in admin.cmd
-powershell -command "New-BurntToastNotification -AppLogo _media\cherry.jpg -Text 'CHERRY OK', 'in progress...'"
-powershell.exe -Command "$host.ui.RawUI.WindowTitle = '🍒 Cherry OK %version%'"
+powershell.exe -Command "$host.ui.RawUI.WindowTitle = '🍒 Cherry OK %version%'; New-BurntToastNotification -AppLogo _media\cherry.jpg -Text 'CHERRY OK', 'in progress...'"
 timeout 8 > nul
 if "%winversion%"=="10" (
 	_media\nircmd sendkeypress lwin+a
@@ -536,10 +531,9 @@ IF %ERRORLEVEL% EQU 1 (
 	ECHO NO RESTORE POINT FOUND!!!
 	timeout 2 > nul
 	sysdm.cpl
-	powershell.exe -Command "Set-ExecutionPolicy Restricted"
+	powershell.exe -Command "$host.ui.RawUI.WindowTitle = '🍒 Cherry OK %version%'; Set-ExecutionPolicy Restricted"
 	exit
 )
-powershell.exe -Command "$host.ui.RawUI.WindowTitle = '🍒 Cherry OK %version%'"
 echo RESTORE POINT OK
 timeout 2 > nul
 del tmp
@@ -569,8 +563,7 @@ powershell.exe -Command "$host.ui.RawUI.WindowTitle = '🍒 Cherry OK %version%'
 echo.
 echo    CHERRY OK SUCCEEDED SUCCESSFULLY
 echo    TESTED AND APPROVED
-powershell -command "New-BurntToastNotification -AppLogo C:\Windows\Cherry\CherryOK.png -Text 'CHERRY OK', 'Tested & Approved!'"
-powershell.exe -Command "$host.ui.RawUI.WindowTitle = '🍒 Cherry OK %version%'"
+powershell.exe -Command "$host.ui.RawUI.WindowTitle = '🍒 Cherry OK %version%'; New-BurntToastNotification -AppLogo C:\Windows\Cherry\CherryOK.png -Text 'CHERRY OK', 'Tested & Approved!'"
 timeout 5 > nul
 
 :: REFRESH DESKTOP ::
@@ -579,8 +572,7 @@ _media\nircmd cmdwait 1000 sendkeypress F5
 
 :: DELETE POWERSHELL FOLDER IF EXISTS ::
 rd /s /q "%USERPROFILE%\Documents\WindowsPowerShell" >nul 2>&1
-powershell.exe -Command "Set-ExecutionPolicy Restricted"
-powershell.exe -Command "$host.ui.RawUI.WindowTitle = '🍒 Cherry OK %version%'"
+powershell.exe -Command "$host.ui.RawUI.WindowTitle = '🍒 Cherry OK %version%'; Set-ExecutionPolicy Restricted"
 
 shutdown -r -t 10
 
