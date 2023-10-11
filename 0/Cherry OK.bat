@@ -343,16 +343,17 @@ cls
 _media\nircmd cmdwait 1500 sendkeypress alt+tab
 
 :: INSTALL CHERRY HILFE ::
+del /f "%userprofile%\Desktop\Cherry Hilfe.exe" >nul 2>&1
+del /f "%userprofile%\Desktop\Cherry Aiuto.exe" >nul 2>&1
+del /f "%userprofile%\Desktop\Cherry Help.exe" >nul 2>&1
 if "%customertype%"=="Business" goto skipcherryhelp
-if exist "%userprofile%\Desktop\Cherry *.exe" (
-	echo Cherry Hilfe exists
-) else (
-	echo SETTING UP CHERRY HELP...
-	timeout 1 > nul
-	if "%OSLanguage%"=="de-DE" powershell -command "curl https://customdesignservice.teamviewer.com/download/windows/v15/6bgwa4q/TeamViewerQS.exe -OutFile '%userprofile%\Desktop\Cherry Hilfe.exe'"
-	if "%OSLanguage%"=="it-IT" powershell -command "curl https://customdesignservice.teamviewer.com/download/windows/v15/6bgwa4q/TeamViewerQS.exe -OutFile '%userprofile%\Desktop\Cherry Aiuto.exe'"
-	if not exist "%userprofile%\Desktop\Cherry *.exe" powershell -command "curl https://customdesignservice.teamviewer.com/download/windows/v15/6bgwa4q/TeamViewerQS.exe -OutFile '%userprofile%\Desktop\Cherry Help.exe'"
-)
+
+echo SETTING UP CHERRY HELP...
+timeout 1 > nul
+if "%OSLanguage%"=="de-DE" powershell -command "curl https://customdesignservice.teamviewer.com/download/windows/v15/6bgwa4q/TeamViewerQS.exe -OutFile '%userprofile%\Desktop\Cherry Hilfe.exe'"
+if "%OSLanguage%"=="it-IT" powershell -command "curl https://customdesignservice.teamviewer.com/download/windows/v15/6bgwa4q/TeamViewerQS.exe -OutFile '%userprofile%\Desktop\Cherry Aiuto.exe'"
+if not exist "%userprofile%\Desktop\Cherry *.exe" powershell -command "curl https://customdesignservice.teamviewer.com/download/windows/v15/6bgwa4q/TeamViewerQS.exe -OutFile '%userprofile%\Desktop\Cherry Help.exe'"
+
 powershell.exe -Command "$host.ui.RawUI.WindowTitle = '🍒 Cherry OK %version%'"
 
 if not exist "%userprofile%\Desktop\Cherry *.exe" (
