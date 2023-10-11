@@ -571,6 +571,9 @@ timeout 2 > nul
 del tmp
 cls
 
+:: GO TO CMD WINDOW ::
+_media\nircmd cmdwait 1500 sendkeypress alt+tab
+
 color CF
 
 :: CHERRY OK SIEGEL? ::
