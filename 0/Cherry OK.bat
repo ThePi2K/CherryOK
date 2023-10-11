@@ -562,7 +562,7 @@ set /p seal=Your choice:
 ::if "%seal%"=="N" echo 🖕😡🖕
 ::if "%seal%"=="n" echo 🖕😡🖕
 color 0F
-powershell.exe .\_media\echoMiddlefingerASCII.ps1
+if "%seal%"=="N" || "%seal%"=="n" powershell.exe .\_media\echoMiddlefingerASCII.ps1
 powershell.exe -Command "$host.ui.RawUI.WindowTitle = '🍒 Cherry OK %version%'"
 timeout 3 > nul
 cls
