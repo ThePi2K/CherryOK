@@ -526,6 +526,26 @@ if "%ERRORLEVEL%"=="0" (
 )
 cls
 
+:: SETTING MICROSOFT 365 SHORTCUTS ::
+if "%customertype%"=="Business" (
+	echo SETTING MICROSOFT 365 SHORTCUTS
+	copy "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Word.lnk" "%AppData%\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar"
+	copy "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Excel.lnk" "%AppData%\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar"
+	copy "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\PowerPoint.lnk" "%AppData%\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar"
+	copy "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Outlook.lnk" "%AppData%\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar"
+	copy "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Google Chrome.lnk" "%AppData%\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar"
+	copy "%APPDATA%\Microsoft\Windows\Start Menu\Programs\File Explorer.lnk" "%AppData%\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar\Explorer.lnk"
+	copy "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Word.lnk" "%USERPROFILE%\..\Public\Desktop\"
+	copy "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Excel.lnk" "%USERPROFILE%\..\Public\Desktop\"
+	copy "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\PowerPoint.lnk" "%USERPROFILE%\..\Public\Desktop\"
+	copy "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Outlook.lnk" "%USERPROFILE%\..\Public\Desktop\"
+	reg import ..\_media\TaskbarM365.reg
+	taskkill /f /im explorer.exe
+	start explorer.exe
+	timeout 2 > nul
+	cls
+)
+
 :: REMOVING CMD ::
 del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\start_Updates_And_Store.cmd" >nul 2>&1
 del "%userprofile%\Desktop\restartCherryOK.cmd" >nul 2>&1
@@ -549,7 +569,6 @@ echo RESTORE POINT OK
 timeout 2 > nul
 del tmp
 cls
-
 
 color CF
 
@@ -579,8 +598,11 @@ powershell.exe -Command "$host.ui.RawUI.WindowTitle = '🍒 Cherry OK %version%'
 timeout 5 > nul
 
 :: REFRESH DESKTOP ::
+echo REFRESHING DESKTOP...
+timeout 2 > nul
 _media\nircmd cmdwait 1000 sendkeypress rwin+D
 _media\nircmd cmdwait 1000 sendkeypress F5
+
 
 :: DELETE POWERSHELL FOLDER IF EXISTS ::
 rd /s /q "%USERPROFILE%\Documents\WindowsPowerShell" >nul 2>&1
