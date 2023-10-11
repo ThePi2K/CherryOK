@@ -458,15 +458,6 @@ timeout 7 > nul
 cls
 powershell.exe -Command "$host.ui.RawUI.WindowTitle = '🍒 Cherry OK %version%'"
 
-:: SET TASKBAR ::
-echo SET TASKBAR
-if exist "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Google Chrome.lnk" copy "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Google Chrome.lnk" "%AppData%\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar" >nul 2>&1
-if exist "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Google Chrome.lnk" copy "C:\Users\User\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Google Chrome.lnk" "%AppData%\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar" >nul 2>&1
-copy "%APPDATA%\Microsoft\Windows\Start Menu\Programs\File Explorer.lnk" "%AppData%\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar\Explorer.lnk" >nul 2>&1
-reg import _media\Taskbar.reg >nul 2>&1
-timeout 2 > nul
-cls
-
 :: CLEAR NOTIFICATIONS ::
 echo CLEAR NOTIFICATIONS
 :: BurntToast Module was installed in admin.cmd
@@ -540,12 +531,21 @@ if "%customertype%"=="Business" (
 	copy "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Excel.lnk" "%USERPROFILE%\..\Public\Desktop\"
 	copy "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\PowerPoint.lnk" "%USERPROFILE%\..\Public\Desktop\"
 	copy "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Outlook.lnk" "%USERPROFILE%\..\Public\Desktop\"
-	reg import ..\_media\TaskbarM365.reg
 	taskkill /f /im explorer.exe
 	start explorer.exe
 	timeout 2 > nul
 	cls
 )
+
+:: SET TASKBAR ::
+echo SET TASKBAR
+if exist "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Google Chrome.lnk" copy "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Google Chrome.lnk" "%AppData%\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar" >nul 2>&1
+if exist "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Google Chrome.lnk" copy "C:\Users\User\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Google Chrome.lnk" "%AppData%\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar" >nul 2>&1
+copy "%APPDATA%\Microsoft\Windows\Start Menu\Programs\File Explorer.lnk" "%AppData%\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar\Explorer.lnk" >nul 2>&1
+if "%customertype%"=="Personal" reg import _media\Taskbar.reg >nul 2>&1
+if "%customertype%"=="Business" reg import _media\TaskbarM365.reg >nul 2>&1
+timeout 2 > nul
+cls
 
 :: REMOVING CMD ::
 del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\start_Updates_And_Store.cmd" >nul 2>&1
