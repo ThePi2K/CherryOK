@@ -579,6 +579,7 @@ echo Did you put the Cherry Quality seal on it?? [Y or N]
 set /p seal=Your choice: 
 color 0F
 if "%seal%"=="N" || "%seal%"=="n" powershell.exe .\_media\echoMiddlefingerASCII.ps1
+if /I "%seal%"=="N" powershell.exe .\_media\echoMiddlefingerASCII.ps1
 powershell.exe -Command "$host.ui.RawUI.WindowTitle = '🍒 Cherry OK %version%'"
 timeout 3 > nul
 cls
