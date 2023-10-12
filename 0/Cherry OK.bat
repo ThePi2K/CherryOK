@@ -586,8 +586,9 @@ timeout 5 > nul
 cls
 
 :: REFRESH DESKTOP ::
-_media\nircmd cmdwait 1000 sendkeypress rwin+D
-_media\nircmd cmdwait 1000 sendkeypress F5
+_media\nircmd cmdwait 1500 sendkeypress alt+tab
+_media\nircmd cmdwait 1500 sendkeypress rwin+D
+_media\nircmd cmdwait 1500 sendkeypress F5
 
 :: DELETE POWERSHELL FOLDER IF EXISTS ::
 rd /s /q "%USERPROFILE%\Documents\WindowsPowerShell" >nul 2>&1
