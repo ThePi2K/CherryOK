@@ -1,9 +1,3 @@
-:: Cherry OK Script
-:: by Felix Peer
-:: Designed for Windows 11
-:: Semi Automated v7
-
-@echo off
 setlocal enabledelayedexpansion
 
 set /p customerNumber=Enter customer number (5 digits): 
