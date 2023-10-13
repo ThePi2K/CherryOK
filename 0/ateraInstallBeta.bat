@@ -24,7 +24,14 @@ for /f "tokens=2,3,4 delims=," %%a in (_media\atera.csv) do (
         echo Kundennr.: %%a
         echo Atera ID: %%b
         echo curl: %%c
+
+        set ateraid=%%b
+        set curl=%%c
     )
 )
+
+echo Atera ID: %ateraid%
+echo curl: %curl%
+
 pause
 cls
