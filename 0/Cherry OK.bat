@@ -222,7 +222,7 @@ set /p customerNumber=Enter customer number (5 digits):
 
 :: CHECKING CUSTOMER NUMBER ::
 cls
-for /f "tokens=2,3 delims=," %%a in (_media\Clienti.csv) do (
+for /f "tokens=2,3 delims=," %%a in (_media\clienti.csv) do (
     if "%%a" equ "%customerNumber%" (
         echo Customer: %%b
     )
@@ -235,6 +235,21 @@ if errorlevel 2 (
     goto restartcustomer
 )
 timeout 2 > nul
+cls
+
+:: CUSTOMER NUMBER -> MONITORING CHECK :: [BETA]
+echo BETA ATERA CHECK!!
+for /f "tokens=2,3,4 delims=," %%a in (_media\monitoring.csv) do (
+    if "%%a" equ "%customerNumber%" (
+        set "kundenummer=%%a"
+        set "ateraid=%%b"
+        set "installcurl=%%c"
+        echo Kundennummer: !kundenummer!
+        echo Ateraid: !ateraid!
+        echo InstallCurl: !installcurl!
+        pause
+    )
+)
 cls
 
 :: INSTALLING ATERA ::
