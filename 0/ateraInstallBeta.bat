@@ -5,6 +5,8 @@
 
 @echo off
 
+set test=echo hoi
+
 set /p customerNumber=Enter customer number (5 digits): 
 
 :: CHECKING CUSTOMER NUMBER ::
@@ -28,12 +30,17 @@ for /f "tokens=2,3,4 delims=," %%a in (_media\atera.csv) do (
 )
 pause
 cls
-if "%customerFound%" equ "0" (
+if not "%customerFound%" equ "1" (
     echo No matching customer found.
 ) else (
     echo Atera ID: %ateraid%
     echo curl: %curl%
 )
+
+pause
+cls
+
+call %test%
 
 pause
 cls
