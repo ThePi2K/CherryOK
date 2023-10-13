@@ -14,10 +14,6 @@ for /f "tokens=2,3 delims=," %%a in (_media\clienti.csv) do (
         echo Customer: %%b
     )
 )
-timeout /t 2
-
-::start _media\atera.csv
-::pause
 
 for /f "tokens=2,3,4 delims=," %%a in (_media\atera.csv) do (
     if "%%a" equ "%customerNumber%" (
@@ -27,11 +23,17 @@ for /f "tokens=2,3,4 delims=," %%a in (_media\atera.csv) do (
 
         set ateraid=%%b
         set curl=%%c
+        set customerFound=1
     )
 )
-
-echo Atera ID: %ateraid%
-echo curl: %curl%
+pause
+cls
+if "%customerFound%" equ "0" (
+    echo No matching customer found.
+) else (
+    echo Atera ID: %ateraid%
+    echo curl: %curl%
+)
 
 pause
 cls
