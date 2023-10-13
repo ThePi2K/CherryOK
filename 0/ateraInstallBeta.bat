@@ -33,6 +33,6 @@ if not exist "C:\Program Files\ATERA Networks\AteraAgent\AteraAgent.exe" (
     if not "%customerFound%" equ "1" (
         start Programme/AteraAgent.msi
     ) else (
-        call %curl%
+        call "%curl%"
     )
 )
