@@ -30,6 +30,29 @@ if not exist "C:\Program Files\ATERA Networks\AteraAgent\AteraAgent.exe" (
     ) else (
         echo !curl!   REM Hier verwenden wir "!" anstelle von "%", um die doppelten Anführungszeichen zu bewahren
         pause
+	
+
+
+
+
+echo modification
+
+rem Entferne das erste Zeichen
+set "curl=!curl:~1!"
+
+rem Finde die Länge der Zeichenkette
+for /f %%A in ('cmd /v:on /c "echo(!curl!^|find /c /v """') do set "length=%%A"
+
+rem Entferne das letzte Zeichen
+set "curl=!curl:~0,%length%!"
+
+echo Bereinigte Variable: !curl!
+
+
+pause
+
+
+
         call !curl!  REM Hier verwenden wir "!" anstelle von "%", um die doppelten Anführungszeichen zu bewahren
     )
 )
