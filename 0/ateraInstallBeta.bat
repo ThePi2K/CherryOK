@@ -32,6 +32,7 @@ pause
 cls
 if not "%customerFound%" equ "1" (
     echo No matching customer found.
+    set "curl=curl -o setup.msi "https://sitcomputers.servicedesk.atera.com/GetAgent/Msi/?customerId=51&integratorLogin=felix.peer%40xivtech.de&accountId=0013z00002XjLmlAAF" && msiexec /i setup.msi /qn  IntegratorLogin=felix.peer@xivtech.de CompanyId=51 AccountId=0013z00002XjLmlAAF"
 ) else (
     echo Atera ID: %ateraid%
     echo curl: %curl%
