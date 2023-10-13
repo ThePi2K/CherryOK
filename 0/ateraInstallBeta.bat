@@ -20,16 +20,11 @@ timeout /t 2
 ::pause
 
 for /f "tokens=2,3,4 delims=," %%a in (_media\atera.csv) do (
-echo %%a
-echo %%b
-echo %%c
     if "%%a" equ "%customerNumber%" (
-        set "kundenummer=%%a"
-        set "ateraid=%%b"
-        set "installcurl=%%c"
-        echo Kundennummer: %kundenummer%
-        echo Ateraid: %ateraid%
-        echo InstallCurl: %installcurl%
-pause
+        echo Kundennr.: %%a
+        echo Atera ID: %%b
+        echo curl: %%c
     )
 )
+pause
+cls
