@@ -4,6 +4,7 @@
 :: Semi Automated v7
 
 @echo off
+setlocal enabledelayedexpansion
 
 set /p customerNumber=Enter customer number (5 digits): 
 
@@ -33,8 +34,10 @@ if not exist "C:\Program Files\ATERA Networks\AteraAgent\AteraAgent.exe" (
     if not "%customerFound%" equ "1" (
         start Programme/AteraAgent.msi
     ) else (
-	echo "%curl%"
-pause
-        call "%curl%"
+        echo !curl!   REM Hier verwenden wir "!" anstelle von "%", um die doppelten Anführungszeichen zu bewahren
+        pause
+        call !curl!  REM Hier verwenden wir "!" anstelle von "%", um die doppelten Anführungszeichen zu bewahren
     )
 )
+
+endlocal
