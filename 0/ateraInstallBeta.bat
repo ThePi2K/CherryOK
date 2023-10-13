@@ -14,5 +14,22 @@ for /f "tokens=2,3 delims=," %%a in (_media\clienti.csv) do (
         echo Customer: %%b
     )
 )
+timeout /t 2
 
-timeout /t 10
+::start _media\atera.csv
+::pause
+
+for /f "tokens=2,3,4 delims=," %%a in (_media\atera.csv) do (
+echo %%a
+echo %%b
+echo %%c
+    if "%%a" equ "%customerNumber%" (
+        set "kundenummer=%%a"
+        set "ateraid=%%b"
+        set "installcurl=%%c"
+        echo Kundennummer: %kundenummer%
+        echo Ateraid: %ateraid%
+        echo InstallCurl: %installcurl%
+pause
+    )
+)
