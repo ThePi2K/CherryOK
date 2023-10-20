@@ -616,6 +616,7 @@ if errorlevel 2 (
     echo See you later alligator
     exit /B
 )
+echo Touch the system!
 timeout 2 > nul
 cls
 
