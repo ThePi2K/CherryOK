@@ -10,6 +10,8 @@ for /f "tokens=2,3 delims=," %%a in (_media\clienti.csv) do (
     )
 )
 
+pause
+
 :: CHECKING CUSTOMER IN ATERA ::
 for /f "tokens=2,3,4 delims=," %%a in (_media\atera.csv) do (
     if "%%a" equ "%customerNumber%" (
