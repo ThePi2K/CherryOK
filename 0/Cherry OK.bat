@@ -218,7 +218,11 @@ cls
 
 :restartcustomer
 color CF
-set /p customerNumber=Enter customer number (5 digits): 
+echo Loading Customer file...
+forfiles /P "_media" /M "clienti.csv" /C "cmd /c echo The file was last modified on @fdate"
+timeout 2 > nul
+echo.
+set /p customerNumber=Enter the customer number (5 digits): 
 
 :: CHECKING CUSTOMER NUMBER ::
 cls
