@@ -6,6 +6,9 @@ setlocal enabledelayedexpansion
 set "inputFile=atera.csv"
 set "outputFile=atera_fixed.csv"
 
+REM Remove old file if existing
+del %outputFile% /f > nul
+
 REM Create a new file
 type nul > %outputFile%
 
@@ -24,11 +27,10 @@ for /f "delims=" %%a in (%inputFile%) do (
 
     REM If it's the first line, just write it to the new file
     if !counter! equ 1 (
-        echo !line! >> %outputfile%
-        goto :nextline
+        echo !line! >> %outputFile%
+        goto nextline
     )
 
-    
     REM Remove the first and last quote in the last column
     for /f "tokens=1-4 delims=," %%i in ("!line!") do (
         set "part1=%%i"
