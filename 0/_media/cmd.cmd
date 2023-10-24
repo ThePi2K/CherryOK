@@ -24,7 +24,7 @@ for /f "delims=" %%a in (%inputFile%) do (
         set "part4=%%l"
         
         REM Remove the first quote
-        set "part4=!part4:\"=!"
+        set "part4=!part4:~1!"
         
         REM Remove the last quote
         set "part4=!part4:~0,-1!"
