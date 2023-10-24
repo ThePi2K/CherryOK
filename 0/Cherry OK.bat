@@ -411,7 +411,7 @@ _media\SetUserFTA webcals Outlook.URL.mailto.15
 powercfg -change -standby-timeout-ac 0
 
 :: DISABLE PASSWORD EXPIRATION ::
-wmic useraccount where "name='user'" set passwordexpires=False >nul
+wmic useraccount where "name='%username%'" set passwordexpires=False >nul
 
 :: ADD OEM INFORMATIONS ::
 REG ADD HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation /v SupportPhone /t REG_SZ /d "0471 813087" /f >nul
