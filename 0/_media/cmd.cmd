@@ -9,12 +9,25 @@ set "outputFile=atera_fixed.csv"
 REM Create a new file
 type nul > %outputFile%
 
+REM Initialize a line counter
+set /a "counter=0"
+
 REM Read the file line by line
 for /f "delims=" %%a in (%inputFile%) do (
     set "line=%%a"
+
+    REM Increase the counter
+    set /a "counter+=1"
     
     REM Replace semicolons with commas
     set "line=!line:;=,!"
+
+    REM If it's the first line, just write it to the new file
+    if !counter! equ 1 (
+        echo !line! >> %outputfile%
+        goto :nextline
+    )
+
     
     REM Remove the first and last quote in the last column
     for /f "tokens=1-4 delims=," %%i in ("!line!") do (
@@ -32,6 +45,8 @@ for /f "delims=" %%a in (%inputFile%) do (
         REM Combine the parts and write to the new file
         echo !part1!,!part2!,!part3!,!part4! >> %outputFile%
     )
+
+    :nextline
 )
 
 endlocal
