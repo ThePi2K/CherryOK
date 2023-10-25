@@ -4,7 +4,8 @@
 :: Semi Automated v7
 
 @echo off
-set version=7.2.1
+set version=7.3
+set windowsosversion=Moment 4 Update - Version 23H2
 title Cherry OK
 chcp 65001 > nul
 
@@ -136,6 +137,7 @@ powershell.exe .\_media\echoTitle.ps1
 echo.
 echo    Cherry OK - Version %version%
 echo    Designed for Windows 11
+if "%winversion%" == "11" echo    %windowsosversion%
 if "%winversion%" == "10" echo    Legacy Mode for Windows 10 enabled
 timeout 5 > nul
 
@@ -441,19 +443,13 @@ REG ADD HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\UserProfileE
 
 :: SET DESIGN ::
 echo SET DESIGN
-if "%winversion%"=="11" (
-	powershell -command "start-process -filepath 'C:\Windows\Resources\Themes\dark.theme'"
-	timeout 2 > nul
-	taskkill /F /IM systemsettings.exe >nul 2>&1
-)
-if "%winversion%"=="10" (
-	copy "_media\Win10Desktop.jpg" "C:\Windows\"
-	reg add "HKEY_CURRENT_USER\Control Panel\Desktop" /v Wallpaper /t REG_SZ /d "C:\Windows\Win%winversion%Desktop.jpg" /f
-	REG ADD HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize /v SystemUsesLightTheme /t REG_DWORD /d 0 /f >nul
-	REG ADD HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize /v AppsUseLightTheme /t REG_DWORD /d 1 /f >nul
-)
+copy "_media\Win%winversion%Desktop.jpg" "C:\Windows\"
+reg add "HKEY_CURRENT_USER\Control Panel\Desktop" /v Wallpaper /t REG_SZ /d "C:\Windows\Win%winversion%Desktop.jpg" /f
+REG ADD HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize /v SystemUsesLightTheme /t REG_DWORD /d 0 /f >nul
+if "%winversion%"=="10" REG ADD HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize /v AppsUseLightTheme /t REG_DWORD /d 1 /f >nul
+if "%winversion%"=="11" REG ADD HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize /v AppsUseLightTheme /t REG_DWORD /d 0 /f >nul
 RUNDLL32.EXE user32.dll,UpdatePerUserSystemParameters
-timeout 7 > nul
+timeout 5 > nul
 cls
 
 :: CLEAR NOTIFICATIONS ::
