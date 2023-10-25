@@ -24,6 +24,7 @@ for /f "usebackq tokens=1-4 delims=;" %%a in ("%inputFile%") do (
         set "header=true"
     ) else (
         set "col4=!col4:~1,-1!"
+        set "col4=!col4:""="!"
         echo !col1!,!col2!,!col3!,!col4! >> %outputFile%
     )
 )
