@@ -29,5 +29,4 @@ for /f "usebackq tokens=1-4 delims=;" %%a in ("%inputFile%") do (
 )
 
 echo Die Datei %outputFile% wurde erfolgreich erstellt.
-
-pause
+timeout /t 3
