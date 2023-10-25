@@ -51,9 +51,12 @@ if not exist "C:\Program Files\ATERA Networks\AteraAgent\AteraAgent.exe" (
     ) else (
         echo Installing Atera Agent for %customerName%...
         timeout /t 3 > nul
-        call !curl!
+        echo !curl! > installAtera%customerNumber%.cmd
+        echo exit >> installAtera%customerNumber%.cmd
+        installAtera%customerNumber%.cmd
+        del installAtera%customerNumber%.cmd /f > nul
 	)
-)
+) else echo Atera is already installed!
 
 echo HIER IST FERTIG...
 pause > nul
