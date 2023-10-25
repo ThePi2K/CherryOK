@@ -13,22 +13,15 @@ for /f "tokens=2,3 delims=," %%a in (_media\clienti.csv) do (
     )
 )
 
-
-
 :: CHECKING CUSTOMER IN ATERA ::
 set customerFound=0
 for /f "tokens=2,3,4 delims=," %%a in (_media\atera_modified.csv) do (
     if "%%a" equ "%customerNumber%" (
-        echo Kundennr.: %%a
-        echo Atera ID: %%b
-        echo curl: %%c
-
         set curl=%%c
         set customerFound=1
     )
 )
 
-pause
 
 :: INSTALLING ATERA ::
 if not exist "C:\Program Files\ATERA Networks\AteraAgent\AteraAgent.exe" (
@@ -38,7 +31,7 @@ if not exist "C:\Program Files\ATERA Networks\AteraAgent\AteraAgent.exe" (
         timeout /t 3 > nul
         echo start Programme/AteraAgent.msi
     ) else (
-        echo Installing assigned Atera Agent...
+        echo Installing Atera Agent for %customerName%...
         timeout /t 3 > nul
         echo call !curl!
 	)
