@@ -9,9 +9,9 @@ cls
 for /f "tokens=2,3 delims=," %%a in (_media\clienti.csv) do (
     if "%%a" equ "%customerNumber%" (
         set customerName=%%b
-        echo Customer: %customerName%
     )
 )
+echo Customer: %customerName%
 
 :: CHECKING CUSTOMER IN ATERA ::
 set customerFound=0

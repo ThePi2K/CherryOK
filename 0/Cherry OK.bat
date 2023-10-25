@@ -229,9 +229,9 @@ cls
 for /f "tokens=2,3 delims=," %%a in (_media\clienti.csv) do (
     if "%%a" equ "%customerNumber%" (
         set customerName=%%b
-        echo Customer: %customerName%
     )
 )
+echo Customer: %customerName%
 
 choice /C YN /N /M "Is this correct? [Y or N]"
 if errorlevel 2 (
