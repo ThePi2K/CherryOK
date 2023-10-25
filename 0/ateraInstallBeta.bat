@@ -16,7 +16,7 @@ for /f "tokens=2,3 delims=," %%a in (_media\clienti.csv) do (
 
 
 :: CHECKING CUSTOMER IN ATERA ::
-for /f "tokens=2,3,4 delims=," %%a in (_media\atera.csv) do (
+for /f "tokens=2,3,4 delims=," %%a in (_media\atera_modified.csv) do (
     if "%%a" equ "%customerNumber%" (
         echo Kundennr.: %%a
         echo Atera ID: %%b
@@ -27,17 +27,22 @@ for /f "tokens=2,3,4 delims=," %%a in (_media\atera.csv) do (
     )
 )
 
-echo HIER IST FERTIG...
-pause > nul
-exit
-
+pause
 
 :: INSTALLING ATERA ::
 if not exist "C:\Program Files\ATERA Networks\AteraAgent\AteraAgent.exe" (
+    echo Atera does not exist [only Beta]
     if not "%customerFound%" equ "1" (
-        start Programme/AteraAgent.msi
+        echo Installing unassigned Atera Agent...
+        timeout /t 3 > nul
+        echo start Programme/AteraAgent.msi
     ) else (
-        echo !curl!   REM Hier verwenden wir "!" anstelle von "%", um die doppelten Anführungszeichen zu bewahren
-        pause
+        echo Installing assigned Atera Agent...
+        timeout /t 3 > nul
+        echo call !curl!
 	)
 )
+
+echo HIER IST FERTIG...
+pause > nul
+exit
