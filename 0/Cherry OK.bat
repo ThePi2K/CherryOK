@@ -228,7 +228,8 @@ set /p customerNumber=Enter the customer number (5 digits):
 cls
 for /f "tokens=2,3 delims=," %%a in (_media\clienti.csv) do (
     if "%%a" equ "%customerNumber%" (
-        echo Customer: %%b
+        set customerName=%%b
+        echo Customer: %customerName%
     )
 )
 

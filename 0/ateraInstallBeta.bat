@@ -6,16 +6,17 @@ set customerNumber=00069
 
 :: CHECKING CUSTOMER NUMBER ::
 cls
-set customerFound=0
 for /f "tokens=2,3 delims=," %%a in (_media\clienti.csv) do (
     if "%%a" equ "%customerNumber%" (
-        echo Customer: %%b
+        set customerName=%%b
+        echo Customer: %customerName%
     )
 )
 
 
 
 :: CHECKING CUSTOMER IN ATERA ::
+set customerFound=0
 for /f "tokens=2,3,4 delims=," %%a in (_media\atera_modified.csv) do (
     if "%%a" equ "%customerNumber%" (
         echo Kundennr.: %%a
