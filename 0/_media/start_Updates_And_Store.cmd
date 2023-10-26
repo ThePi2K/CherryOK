@@ -13,14 +13,11 @@ if not exist %counterFile% (
 for /f %%A in (%counterFile%) do set "counter=%%A"
 set /a "counter+=1"
 echo !counter! > %counterFile%
-echo Counter: !counter!
-timeout 2 > nul
-cls
 
-:: IF COUNTER OVER 15 STOP ::
-if !counter! gtr 15 (
-    echo Counter is over 15!
-    pause
+:: IF COUNTER OVER 15 START UPDATES AND SET COUNTER TO 10 ::
+if !counter! gtr 10 (
+    echo !counter! > 7
+    start ms-settings:windowsupdate
     exit /b
 )
 
