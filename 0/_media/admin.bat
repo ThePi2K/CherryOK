@@ -15,6 +15,9 @@ if not exist %isAdminDir% (
 )
 rmdir %isAdminDir%
 
+:: Create Cherry Folder in Windows ::
+mkdir C:\Windows\Cherry >nul 2>&1
+
 :: SET UAC ::
 reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v "ConsentPromptBehaviorAdmin" /t reg_dword /d 0 /F >nul
 reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v "EnableLUA" /t reg_dword /d 0 /F >nul

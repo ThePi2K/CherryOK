@@ -576,7 +576,6 @@ if /I "%seal%"=="N" powershell.exe .\_media\echoMiddlefingerASCII.ps1
 timeout 3 > nul
 cls
 
-mkdir C:\Windows\Cherry >nul 2>&1
 copy _media\CherryOK.png C:\Windows\Cherry >nul 2>&1
 powershell.exe .\_media\echoTitle.ps1
 echo.
