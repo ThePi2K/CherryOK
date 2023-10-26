@@ -1,6 +1,7 @@
 @echo off
 setlocal enabledelayedexpansion
 powershell.exe -Command "$host.ui.RawUI.WindowTitle = 'Cherry OK - Updates'"
+del "%USERPROFILE%\Desktop\Abort Shutdown.cmd" >nul 2>&1
 
 color 0e
 
@@ -16,7 +17,12 @@ echo Counter: !counter!
 timeout 2 > nul
 cls
 
-del "%USERPROFILE%\Desktop\Abort Shutdown.cmd" >nul 2>&1
+:: IF COUNTER OVER 15 STOP ::
+if !counter! gtr 15 (
+    echo Counter is over 15!
+    pause
+    exit /b
+)
 
 :: STARTING STORE UPDATES ::
 echo STARTING STORE UPDATES...
