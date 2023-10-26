@@ -4,7 +4,7 @@
 :: Semi Automated v7
 
 @echo off
-set version=7.3
+set version=7.3 Beta
 set windowsosversion=Moment 4 Update - Version 23H2
 title Cherry OK
 chcp 65001 > nul
