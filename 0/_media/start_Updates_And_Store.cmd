@@ -1,7 +1,20 @@
 @echo off
+setlocal enabledelayedexpansion
 powershell.exe -Command "$host.ui.RawUI.WindowTitle = 'Cherry OK - Updates'"
 
 color 0e
+
+:: COUNTER ::
+set "counterFile=C:\Windows\Cherry\counter.txt"
+if not exist %counterFile% (
+    echo 0 > %counterFile%
+)
+for /f %%A in (%counterFile%) do set "counter=%%A"
+set /a "counter+=1"
+echo !counter! > %counterFile%
+echo Counter: !counter!
+timeout 2 > nul
+cls
 
 del "%USERPROFILE%\Desktop\Abort Shutdown.cmd" >nul 2>&1
 
