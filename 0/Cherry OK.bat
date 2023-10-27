@@ -608,7 +608,7 @@ cls
 
 :: REFRESH DESKTOP ::
 _media\nircmd cmdwait 1500 sendkeypress alt+tab
-_media\nircmd cmdwait 1500 sendkeypress rwin+D
+_media\nircmd cmdwait 1500 sendkeypress rwin+M
 _media\nircmd cmdwait 1500 sendkeypress F5
 
 :: DELETE POWERSHELL FOLDER IF EXISTS ::
