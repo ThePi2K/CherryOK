@@ -13,11 +13,11 @@ if not exist %counterFile% (
 for /f %%A in (%counterFile%) do set "counter=%%A"
 set /a "counter+=1"
 echo !counter! > %counterFile%
-set maxLoop=10
+set maxLoop=5
 
-:: IF COUNTER OVER MAX LOOP START UPDATES AND SET COUNTER TO 7 ::
+:: IF COUNTER OVER maxLoop ::
 if !counter! gtr %maxLoop% (
-    echo 7 > %counterFile%
+    del "%counterFile%" >nul 2>&1
     echo The Computer was restarted over %maxLoop% times!
     echo Starting Windows Updates...
     timeout 10 > nul

@@ -544,10 +544,11 @@ start explorer.exe >nul 2>&1
 timeout 5 > nul
 cls
 
-:: REMOVING CMD ::
+:: REMOVING CMD AND COUNTER FILE ::
 del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\start_Updates_And_Store.cmd" >nul 2>&1
 del "%userprofile%\Desktop\restartCherryOK.cmd" >nul 2>&1
 del "%USERPROFILE%\Desktop\Stop Cherry OK.cmd" >nul 2>&1
+del "%counterFile%" >nul 2>&1
 
 :: CONFIGURE SYSTEM RESTORE ::
 echo CONFIGURING SYSTEM RESTORE
