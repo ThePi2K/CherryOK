@@ -328,28 +328,6 @@ w32tm /resync >nul 2>&1
 timeout 1 > nul
 cls
 
-:: 
-:: I LOSS DES IM SCRIPT DRIN FÜR VIELLEICHT 
-:: ZUKÜNFTIGE EINSATZMÖGLICHKEITEN
-:: 
-:: 
-:: :: INSTALLING WINDOWS CUMULATIVE UPDATE ::
-:: if "%winversion%"=="11" (
-:: 	echo Installing Windows Cumulative Update...
-:: 	echo It may take up to 10 minutes.
-:: 	cd _media\
-:: 	for %%f in (windows*.msu) do (
-:: 		wusa.exe "%~dp0_media\%%f" /quiet /norestart
-:: 	)
-:: 	echo Finished!
-:: 	cd ..
-:: 	timeout 2 > nul
-:: 	cls
-:: )
-
-:: TURN ON NOTIFICATIONS ::
-:: REG ADD HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\PushNotifications /v ToastEnabled /t REG_DWORD /d 1 /f >nul
-
 :: EMPTY RECYCLE BIN ::
 rd /s /q C:\$Recycle.Bin
 
