@@ -8,6 +8,7 @@ set version=7.3 Beta
 set windowsosversion=Moment 4 Update - Version 23H2
 title Cherry OK
 chcp 65001 > nul
+setlocal enabledelayedexpansion
 
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -189,7 +190,6 @@ IF %ERRORLEVEL% NEQ 0 (
 ::                                   PERSONAL OR BUSINESS CHOICE                                   ::
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-setlocal enabledelayedexpansion
 color CF
 
 :: PERSONAL OR BUSINESS ::
@@ -312,8 +312,6 @@ color 0f
 echo Continuing...
 timeout 2 > nul
 cls
-
-endlocal
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::                                            CONTINUING                                           ::
