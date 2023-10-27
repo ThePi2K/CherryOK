@@ -7,8 +7,7 @@ echo Loading Customer file...
 forfiles /P "_media" /M "clienti.csv" /C "cmd /c echo The file was last modified on @fdate"
 timeout 2 > nul
 echo.
-::set /p customerNumber=Enter the customer number (5 digits): 
-set customerNumber=00069
+set /p customerNumber=Enter the customer number (5 digits): 
 
 :: CHECKING CUSTOMER NUMBER ::
 cls
@@ -19,13 +18,14 @@ for /f "tokens=2,3 delims=," %%a in (_media\clienti.csv) do (
 )
 echo Customer: %customerName%
 
-
-
-pause
-
-
-
-
+choice /C YN /N /M "Is this correct? [Y or N]"
+if errorlevel 2 (
+    timeout 1 > nul
+    cls
+    goto restartcustomer
+)
+timeout 2 > nul
+cls
 
 :: CHECKING CUSTOMER IN ATERA ::
 set customerFound=0
@@ -35,7 +35,6 @@ for /f "tokens=2,3,4 delims=," %%a in (_media\atera_modified.csv) do (
         set customerFound=1
     )
 )
-
 
 :: INSTALLING ATERA ::
 if not exist "C:\Program Files\ATERA Networks\AteraAgent\AteraAgent.exe" (
