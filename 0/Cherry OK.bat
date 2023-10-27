@@ -529,7 +529,7 @@ if "%customertype%"=="Business" (
 	cls
 )
 
-:: SET TASKBAR ::
+:: SET TASKBAR AND RESTARTING EXPLORER ::
 echo SET TASKBAR
 if exist "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Google Chrome.lnk" copy "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Google Chrome.lnk" "%AppData%\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar" >nul 2>&1
 if exist "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Google Chrome.lnk" copy "C:\Users\User\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Google Chrome.lnk" "%AppData%\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar" >nul 2>&1
@@ -537,6 +537,10 @@ copy "%APPDATA%\Microsoft\Windows\Start Menu\Programs\File Explorer.lnk" "%AppDa
 if "%customertype%"=="Personal" reg import _media\Taskbar.reg >nul 2>&1
 if "%customertype%"=="Business" reg import _media\TaskbarM365.reg >nul 2>&1
 timeout 2 > nul
+taskkill /f /im explorer.exe >nul 2>&1
+timeout 1 > nul
+start explorer.exe >nul 2>&1
+timeout 5 > nul
 cls
 
 :: REMOVING CMD ::
