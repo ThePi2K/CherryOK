@@ -267,6 +267,8 @@ if not exist "C:\Program Files\ATERA Networks\AteraAgent\AteraAgent.exe" (
         )
 	)
 ) else echo Atera is already installed!
+timeout 2 > nul
+cls
 
 color CF
 
