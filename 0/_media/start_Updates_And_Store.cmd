@@ -13,7 +13,7 @@ if not exist %counterFile% (
 for /f %%A in (%counterFile%) do set "counter=%%A"
 set /a "counter+=1"
 echo !counter! > %counterFile%
-set maxLoop=5
+set maxLoop=10
 
 :: IF COUNTER OVER maxLoop ::
 if !counter! gtr %maxLoop% (
