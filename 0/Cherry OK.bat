@@ -221,7 +221,8 @@ cls
 
 color CF
 echo Loading Customer file...
-forfiles /P "_media" /M "clienti.csv" /C "cmd /c echo The file was last modified on @fdate"
+for %%A in (_media\clienti.csv) do set "lastdate=%%~tA"
+echo The file was last modified on %lastdate%
 echo.
 :restartcustomer
 set /p customerNumber=Enter the customer number (5 digits): 
