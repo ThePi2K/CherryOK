@@ -4,8 +4,7 @@
 :: Semi Automated v7
 
 @echo off
-set version=7.3 Beta
-set windowsosversion=Moment 4 Update - Version 23H2
+set version=7.3.0
 title Cherry OK
 chcp 65001 > nul
 setlocal enabledelayedexpansion
@@ -138,7 +137,6 @@ powershell.exe .\_media\echoTitle.ps1
 echo.
 echo    Cherry OK - Version %version%
 echo    Designed for Windows 11
-if "%winversion%" == "11" echo    %windowsosversion%
 if "%winversion%" == "10" echo    Legacy Mode for Windows 10 enabled
 timeout 5 > nul
 
