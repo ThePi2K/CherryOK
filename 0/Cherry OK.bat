@@ -329,7 +329,7 @@ timeout 1 > nul
 cls
 
 :: EMPTY RECYCLE BIN ::
-rd /s /q C:\$Recycle.Bin
+rd /s /q C:\$Recycle.Bin >nul 2>&1
 
 :: INSTALL MICROSOFT 365 APPS ::
 if not exist "C:\Program Files\Microsoft Office\root\Office16\WINWORD.EXE" (
@@ -502,8 +502,8 @@ cls
 :: REMOVING EDGE AND CHROME DATA ::
 echo REMOVING EDGE AND CHROME DATA
 timeout 3 > nul
-rd /f "%LOCALAPPDATA%\Microsoft\Edge\User Data" >nul 2>&1
-rd /f "%LOCALAPPDATA%\Google\Chrome\User Data" >nul 2>&1
+rd /s /q "%LOCALAPPDATA%\Microsoft\Edge\User Data" >nul 2>&1
+rd /s /q "%LOCALAPPDATA%\Google\Chrome\User Data" >nul 2>&1
 cls
 
 :: CHECKING IF M365 SETUP IS RUNNING ::
