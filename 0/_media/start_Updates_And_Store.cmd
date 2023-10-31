@@ -14,6 +14,10 @@ for /f %%A in (%counterFile%) do set "counter=%%A"
 set /a "counter+=1"
 echo !counter! > %counterFile%
 set maxLoop=10
+echo Count: !counter!
+echo.
+timeout 2 > nul
+cls
 
 :: IF COUNTER OVER maxLoop ::
 if !counter! gtr %maxLoop% (
