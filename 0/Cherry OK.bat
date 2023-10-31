@@ -552,7 +552,7 @@ cls
 del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\start_Updates_And_Store.cmd" >nul 2>&1
 del "%userprofile%\Desktop\restartCherryOK.cmd" >nul 2>&1
 del "%USERPROFILE%\Desktop\Stop Cherry OK.cmd" >nul 2>&1
-del "%counterFile%" >nul 2>&1
+del "C:\Windows\Cherry\counter.txt" >nul 2>&1
 
 :: CONFIGURE SYSTEM RESTORE ::
 echo CONFIGURING SYSTEM RESTORE
