@@ -43,7 +43,6 @@ cls
 :: SCANNING AND INSTALLING WINDOWS UPDATES ::
 echo SCANNING AND INSTALLING WINDOWS UPDATES...
 powershell -command "Install-WindowsUpdate -ForceDownload -ForceInstall -AcceptAll -AutoReboot"
-timeout 5 > nul
 
 :: COMPUTER RESTART ::
 cls
