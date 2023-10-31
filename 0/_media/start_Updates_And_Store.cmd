@@ -13,7 +13,7 @@ if not exist %counterFile% (
 for /f %%A in (%counterFile%) do set "counter=%%A"
 set /a "counter+=1"
 echo !counter! > %counterFile%
-set maxLoop=10
+set maxLoop=7
 echo Count: !counter!
 echo.
 timeout 2 > nul
