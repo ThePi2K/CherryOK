@@ -57,7 +57,7 @@ cls
 set "cherryDrive="
 for /f "skip=1" %%b IN ('wmic LOGICALDISK where driveType^=2 get deviceID') DO (
     set "usbDrive=%%b"
-    if exist "%%b\Cherry OK.bat" (
+    if exist "%%b\Cherry OK.cmd" (
         set "cherryDrive=%%b"
         goto :foundCherry
     )
@@ -66,7 +66,7 @@ for /f "skip=1" %%b IN ('wmic LOGICALDISK where driveType^=2 get deviceID') DO (
 if defined cherryDrive (
     cd %cherryDrive%
     cls
-    call "Cherry OK.bat"
+    call "Cherry OK.cmd"
 ) else (
     echo Cherry OK was not found...
     pause
