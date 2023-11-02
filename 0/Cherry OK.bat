@@ -1,10 +1,10 @@
 :: Cherry OK Script
 :: by Felix Peer
-:: Designed for Windows 11
+:: Designed for Windows 11 23H2
 :: Semi Automated v7
 
 @echo off
-set version=7.3.0
+set version=7.3.1
 title Cherry OK
 chcp 65001 > nul
 setlocal enabledelayedexpansion
