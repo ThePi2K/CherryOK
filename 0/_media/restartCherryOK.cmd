@@ -26,10 +26,12 @@ for /f "skip=1" %%b IN ('wmic LOGICALDISK where driveType^=2 get deviceID') DO (
 )
 :foundCherry
 if defined cherryDrive (
-    cd %cherryDrive%\0\
+    %cherryDrive%
+    cd 0
     cls
     call "Cherry OK.bat"
 ) else (
+    cls
     echo Cherry OK was not found...
     pause
     cls
