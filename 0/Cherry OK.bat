@@ -31,8 +31,7 @@ rmdir %isAdminDir% >nul 2>&1
 del "%USERPROFILE%\Desktop\Abort Shutdown.cmd" >nul 2>&1
 
 :: CONNECT TO WIFI
-netsh wlan add profile filename=_media\WLAN-Cherry-Net.xml >nul 2>&1
-timeout 2 > nul
+netsh wlan add profile filename=_media\WLAN-Cherry-Net.xml >nul 2>&1s
 
 :: RESTARTING EXPLORER FOR BETTER EXPERIENCE ::
 timeout 2 > nul
@@ -139,7 +138,6 @@ echo    Cherry OK - Version %version%
 echo    Designed for Windows 11 23H2
 if "%winversion%" == "10" echo    Legacy Mode for Windows 10 enabled
 timeout 5 > nul
-
 
 :: CHECK WINDOWS ACTIVATION ::
 powershell.exe .\_media\checkWindowsActivation.ps1
