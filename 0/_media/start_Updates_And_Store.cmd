@@ -54,19 +54,22 @@ cls
 
 :: STARTING CHERRY OK
 :checkUSB
-wmic LOGICALDISK where driveType=2 get deviceID > C:\tmp 2>&1
-for /f "skip=1" %%b IN ('type C:\tmp') DO (echo %%b & %%b)
-
-:openCmd
-del C:\tmp >nul 2>&1
-cd \
-IF EXIST "Cherry OK.cmd" (
-	cd 0
-	cls
-	call "Cherry OK.bat"
+set "cherryDrive="
+for /f "skip=1" %%b IN ('wmic LOGICALDISK where driveType^=2 get deviceID') DO (
+    set "usbDrive=%%b"
+    if exist "%%b\Cherry OK.bat" (
+        set "cherryDrive=%%b"
+        goto :foundCherry
+    )
+)
+:foundCherry
+if defined cherryDrive (
+    cd %cherryDrive%
+    cls
+    call "Cherry OK.bat"
 ) else (
-	echo USB is missing or Updates available...
-	pause
-	cls
-	goto checkUSB
+    echo Cherry OK was not found...
+    pause
+    cls
+    goto checkUSB
 )
