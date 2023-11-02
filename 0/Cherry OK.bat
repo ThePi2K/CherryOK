@@ -496,11 +496,11 @@ del /f "%USERPROFILE%\Desktop\Microsoft Edge.lnk" >nul 2>&1
 timeout 1 > nul
 cls
 
-:: REMOVING EDGE AND CHROME DATA ::
-echo REMOVING EDGE AND CHROME DATA
-timeout 3 > nul
+:: REMOVING EDGE DATA ::
+echo REMOVING EDGE DATA
+timeout 5 > nul
 rd /s /q "%LOCALAPPDATA%\Microsoft\Edge\User Data" >nul 2>&1
-rd /s /q "%LOCALAPPDATA%\Google\Chrome\User Data" >nul 2>&1
+:: rd /s /q "%LOCALAPPDATA%\Google\Chrome\User Data" >nul 2>&1
 cls
 
 :: CHECKING IF M365 SETUP IS RUNNING ::
