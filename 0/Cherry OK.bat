@@ -516,21 +516,10 @@ cls
 
 :: SETTING MICROSOFT 365 SHORTCUTS ::
 if "%customertype%"=="Business" (
-	echo SETTING MICROSOFT 365 SHORTCUTS
-	copy "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Word.lnk" "%AppData%\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar"
-	copy "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Excel.lnk" "%AppData%\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar"
-	copy "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\PowerPoint.lnk" "%AppData%\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar"
-	copy "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Outlook.lnk" "%AppData%\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar"
-	copy "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Google Chrome.lnk" "%AppData%\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar"
-	copy "%APPDATA%\Microsoft\Windows\Start Menu\Programs\File Explorer.lnk" "%AppData%\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar\Explorer.lnk"
-	copy "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Word.lnk" "%USERPROFILE%\..\Public\Desktop\"
-	copy "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Excel.lnk" "%USERPROFILE%\..\Public\Desktop\"
-	copy "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\PowerPoint.lnk" "%USERPROFILE%\..\Public\Desktop\"
-	copy "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Outlook.lnk" "%USERPROFILE%\..\Public\Desktop\"
-	taskkill /f /im explorer.exe
-	start explorer.exe
-	timeout 2 > nul
-	cls
+	copy "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Word.lnk" "%AppData%\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar" >nul 2>&1
+	copy "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Excel.lnk" "%AppData%\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar" >nul 2>&1
+	copy "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\PowerPoint.lnk" "%AppData%\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar" >nul 2>&1
+	copy "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Outlook.lnk" "%AppData%\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar" >nul 2>&1
 )
 
 :: SET TASKBAR AND RESTARTING EXPLORER ::
