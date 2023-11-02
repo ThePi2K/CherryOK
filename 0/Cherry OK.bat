@@ -298,6 +298,7 @@ timeout 2 > nul
 cls
 
 wmic computersystem where name="%computername%" call rename "%newname%"
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Splashtop Inc.\Splashtop Remote Server" /v CloudComputerName /t REG_SZ /d "%newname%" /f >nul
 cls
 echo Computer renamed to %newname%
 timeout 2 > nul
