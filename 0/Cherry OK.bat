@@ -136,7 +136,7 @@ title 🍒 Cherry OK
 powershell.exe .\_media\echoTitle.ps1
 echo.
 echo    Cherry OK - Version %version%
-echo    Designed for Windows 11
+echo    Designed for Windows 11 23H2
 if "%winversion%" == "10" echo    Legacy Mode for Windows 10 enabled
 timeout 5 > nul
 
