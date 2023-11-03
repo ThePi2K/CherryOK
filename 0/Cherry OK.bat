@@ -349,9 +349,10 @@ if "%customertype%"=="Business" goto skipcherryhelp
 
 echo SETTING UP CHERRY HELP...
 timeout 1 > nul
-if "%OSLanguage%"=="de-DE" powershell -command "curl https://customdesignservice.teamviewer.com/download/windows/v15/6bgwa4q/TeamViewerQS.exe -OutFile '%userprofile%\Desktop\Cherry Hilfe.exe'"
-if "%OSLanguage%"=="it-IT" powershell -command "curl https://customdesignservice.teamviewer.com/download/windows/v15/6bgwa4q/TeamViewerQS.exe -OutFile '%userprofile%\Desktop\Cherry Aiuto.exe'"
-if not exist "%userprofile%\Desktop\Cherry *.exe" powershell -command "curl https://customdesignservice.teamviewer.com/download/windows/v15/6bgwa4q/TeamViewerQS.exe -OutFile '%userprofile%\Desktop\Cherry Help.exe'"
+curl https://customdesignservice.teamviewer.com/download/windows/v15/6bgwa4q/TeamViewerQS.exe -o C:\TeamViewerQS.exe
+if "%OSLanguage%"=="de-DE" move C:\TeamViewerQS.exe "%userprofile%\Desktop\Cherry Hilfe.exe" >nul 2>&1
+if "%OSLanguage%"=="it-IT" move C:\TeamViewerQS.exe "%userprofile%\Desktop\Cherry Aiuto.exe" >nul 2>&1
+if not exist "%userprofile%\Desktop\Cherry *.exe" move C:\TeamViewerQS.exe "%userprofile%\Desktop\Cherry Help.exe" >nul 2>&1
 
 if not exist "%userprofile%\Desktop\Cherry *.exe" (
 	cls
