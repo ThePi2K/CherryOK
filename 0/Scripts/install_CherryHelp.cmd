@@ -2,6 +2,17 @@
 
 @echo off
 
+:: CHECK ADMIN
+set isAdminDir=C:\Windows\CherryTestAdmin
+mkdir %isAdminDir% >nul
+cls
+if not exist %isAdminDir% (
+	set "params=%*"
+	cd /d "%~dp0" && ( if exist "%temp%\getadmin.vbs" del "%temp%\getadmin.vbs" ) && fsutil dirty query %systemdrive% 1>nul 2>nul || (  echo Set UAC = CreateObject^("Shell.Application"^) : UAC.ShellExecute "cmd.exe", "/k cd ""%~sdp0"" && %~s0 %params%", "", "runas", 1 >> "%temp%\getadmin.vbs" && "%temp%\getadmin.vbs" && exit )
+	exit
+)
+rmdir %isAdminDir%
+
 :: CHECK LANGUAGE ::
 FOR /F "tokens=2 delims==" %%a IN ('wmic os get OSLanguage /Value') DO set OSLangCode=%%a
 set OSLanguage=undefined
@@ -24,7 +35,9 @@ if not exist "%userprofile%\Desktop\Cherry *.exe" move C:\TeamViewerQS.exe "%use
 if not exist "%userprofile%\Desktop\Cherry *.exe" (
 	cls
 	echo RETRY...
-	if "%OSLanguage%"=="de-DE" copy "_media\TeamViewerQS.exe" "%userprofile%\Desktop\Cherry Hilfe.exe"
-	if "%OSLanguage%"=="it-IT" copy "_media\TeamViewerQS.exe" "%userprofile%\Desktop\Cherry Aiuto.exe"
-	if not exist "%userprofile%\Desktop\Cherry *.exe" copy "_media\TeamViewerQS.exe" "%userprofile%\Desktop\Cherry Help.exe"
+	if "%OSLanguage%"=="de-DE" copy "..\_media\TeamViewerQS.exe" "%userprofile%\Desktop\Cherry Hilfe.exe"
+	if "%OSLanguage%"=="it-IT" copy "..\_media\TeamViewerQS.exe" "%userprofile%\Desktop\Cherry Aiuto.exe"
+	if not exist "%userprofile%\Desktop\Cherry *.exe" copy "..\_media\TeamViewerQS.exe" "%userprofile%\Desktop\Cherry Help.exe"
 )
+
+exit
