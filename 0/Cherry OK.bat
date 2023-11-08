@@ -4,7 +4,7 @@
 :: Semi Automated v7
 
 @echo off
-set version=7.3.2.1
+set version=7.4b1
 title Cherry OK
 chcp 65001 > nul
 setlocal enabledelayedexpansion
