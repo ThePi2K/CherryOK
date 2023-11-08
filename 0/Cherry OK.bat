@@ -513,6 +513,9 @@ if "%ERRORLEVEL%"=="0" (
 )
 cls
 
+:: SET COLOR MODE FOR MICROSOFT 365 APPS ::
+REG ADD HKCU\Software\Microsoft\Office\16.0\Common /v "UI Theme" /t REG_DWORD /d 7 /f >nul
+
 :: SETTING MICROSOFT 365 SHORTCUTS ::
 if "%customertype%"=="Business" (
 	copy "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Word.lnk" "%AppData%\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar" >nul 2>&1
