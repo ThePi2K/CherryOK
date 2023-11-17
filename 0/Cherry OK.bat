@@ -515,7 +515,7 @@ if "%ERRORLEVEL%"=="0" (
 cls
 
 :: SET COLOR MODE FOR MICROSOFT 365 APPS ::
-REG ADD HKCU\Software\Microsoft\Office\16.0\Common /v "UI Theme" /t REG_DWORD /d 7 /f >nul
+powershell.exe .\_media\restore.ps1
 
 :: SETTING MICROSOFT 365 SHORTCUTS ::
 if "%customertype%"=="Business" (
