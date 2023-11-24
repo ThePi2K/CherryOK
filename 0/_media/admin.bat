@@ -26,9 +26,6 @@ reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\S
 :: SET EXECUTION POLICY
 powershell.exe -Command "Set-ExecutionPolicy Unrestricted"
 
-:: SET TERMINAL AS DEFAULT COMMAND PROMPT ::
-reg import terminal_default.reg >nul 2>&1
-
 :: IMPORTING PACKAGES ::
 echo IMPORTING PACKAGES...
 powershell -command "if (-not (Get-PackageProvider -ListAvailable -Name nuget)) { Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force}" > nul
