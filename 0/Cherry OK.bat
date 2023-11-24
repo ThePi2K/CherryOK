@@ -637,6 +637,7 @@ echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\start_Updates_
 echo del "%userprofile%\Desktop\restartCherryOK.cmd" >> "%USERPROFILE%\Desktop\Stop Cherry OK.cmd"
 echo del "%USERPROFILE%\Desktop\Abort Shutdown.cmd" >> "%USERPROFILE%\Desktop\Stop Cherry OK.cmd" 
 echo del "%USERPROFILE%\Desktop\Stop Cherry OK.cmd" >> "%USERPROFILE%\Desktop\Stop Cherry OK.cmd"
+echo del "C:\Windows\Cherry\counter.txt" >> "%USERPROFILE%\Desktop\Stop Cherry OK.cmd"
 cls
 
 exit
