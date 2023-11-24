@@ -27,9 +27,8 @@ reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\S
 powershell.exe -Command "Set-ExecutionPolicy Unrestricted"
 
 :: SET TERMINAL AS DEFAULT COMMAND PROMPT ::
-reg add HKCU\Console\%%Startup /f >nul
-reg add HKCU\Console\%%Startup /v DelegationConsole /t REG_SZ /d "{2EACA947-7F5F-4CFA-BA87-8F7FBEEFBE69}" /f >nul
-reg add HKCU\Console\%%Startup /v DelegationTerminal /t REG_SZ /d "{E12CFF52-A866-4C77-9A90-F570A7AA2C6B}" /f >nul
+reg add "HKEY_CURRENT_USER\Console\%%Startup" /v "DelegationConsole" /t REG_SZ /d "{2EACA947-7F5F-4CFA-BA87-8F7FBEEFBE69}" /F >nul
+reg add "HKEY_CURRENT_USER\Console\%%Startup" /v "DelegationTerminal" /t REG_SZ /d "{E12CFF52-A866-4C77-9A90-F570A7AA2C6B}" /F >nul
 
 :: IMPORTING PACKAGES ::
 echo IMPORTING PACKAGES...
