@@ -515,7 +515,7 @@ if "%ERRORLEVEL%"=="0" (
 cls
 
 :: SET COLOR MODE FOR MICROSOFT 365 APPS ::
-powershell.exe .\_media\restore.ps1
+powershell.exe .\_media\SetOfficeTheme.ps1
 
 :: SETTING MICROSOFT 365 SHORTCUTS ::
 if "%customertype%"=="Business" (
