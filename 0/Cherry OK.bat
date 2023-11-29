@@ -514,19 +514,6 @@ if "%ERRORLEVEL%"=="0" (
 )
 cls
 
-:: SET COLOR MODE FOR MICROSOFT 365 APPS ::
-:: powershell.exe .\_media\SetOfficeTheme.ps1
-reg add HKCU\Software\Microsoft\Office\16.0\Common /v "UI Theme" /t REG_DWORD /d 7 /f >nul
-for /d %%A in (HKCU\Software\Microsoft\Office\16.0\Common\Roaming\Identities\*) do (
-    for /d %%B in ("%%A\Settings\1186\{00000000-0000-0000-0000-000000000000}") do (
-        reg query "%%B" /v Data >nul 2>&1
-        if %errorlevel% equ 0 (
-            reg add "%%B" /v Data /t REG_BINARY /d 07070707 /f >nul
-        )
-    )
-)
-
-
 :: SETTING MICROSOFT 365 SHORTCUTS ::
 if "%customertype%"=="Business" (
 	copy "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Word.lnk" "%AppData%\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar" >nul 2>&1
