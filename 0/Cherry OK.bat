@@ -422,6 +422,9 @@ REG ADD HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation /v Manufac
 :: DISABLING "Automatically save my restartable apps and restart them when I sign back in" ::
 if "%winversion%"=="11" REG ADD "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" /v RestartApps /t REG_DWORD /d 0 /f >nul
 
+:: DISABLING EDGE BAR ::
+if "%winversion%"=="10" reg add "HKLM\SOFTWARE\Policies\Microsoft\Edge" /v WebWidgetAllowed /t REG_DWORD /d 0 /f >nul 2>&1
+
 :: SET TASKBAR ::
 if "%winversion%"=="10" (
 	REG ADD HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v ShowCortanaButton /t REG_DWORD /d 0 /f >nul
