@@ -1,6 +1,5 @@
 @echo off
 setlocal enabledelayedexpansion
-powershell.exe -Command "$host.ui.RawUI.WindowTitle = 'Cherry OK - Updates'"
 del "%USERPROFILE%\Desktop\Abort Shutdown.cmd" >nul 2>&1
 
 color 0e
@@ -14,10 +13,9 @@ for /f %%A in (%counterFile%) do set "counter=%%A"
 set /a "counter+=1"
 echo !counter! > %counterFile%
 set maxLoop=7
-echo Count: !counter!
-echo.
-timeout 2 > nul
-cls
+
+:: SET TITLE ::
+powershell.exe -Command "$host.ui.RawUI.WindowTitle = 'Updates !counter!'"
 
 :: IF COUNTER OVER maxLoop ::
 if !counter! gtr %maxLoop% (
