@@ -187,6 +187,7 @@ IF %ERRORLEVEL% NEQ 0 (
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 color CF
+powershell -c echo `a
 
 :: PERSONAL OR BUSINESS ::
 :choice
@@ -216,6 +217,7 @@ if "%customertype%"=="Personal" goto skip
 cls
 
 color CF
+powershell -c echo `a
 echo Loading Customer file...
 for %%A in (_media\clienti.csv) do set "lastdate=%%~tA"
 echo The file was last modified on %lastdate%
@@ -267,6 +269,7 @@ timeout 2 > nul
 cls
 
 color CF
+powershell -c echo `a
 
 :: RENAMING COMPUTER ::
 echo Current name: %computername%
@@ -566,6 +569,7 @@ cls
 _media\nircmd cmdwait 1500 sendkeypress alt+tab
 
 color CF
+powershell -c echo `a
 
 :: CHERRY OK SIEGEL? ::
 cls
@@ -606,6 +610,7 @@ exit
 :FIRSTRUN
 
 color CF
+powershell -c echo `a
 
 :: ASK FOR START ::
 echo WELCOME TO CHERRY OK :)
