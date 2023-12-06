@@ -130,6 +130,9 @@ cls
 
 color 0f
 
+_media\setvol.exe unmute
+_media\setvol.exe 80
+
 :: CHERRY OK ASCII ::
 title 🍒 Cherry OK
 powershell.exe .\_media\echoTitle.ps1
