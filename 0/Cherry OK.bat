@@ -472,10 +472,6 @@ if "%winversion%"=="11" (
 	_media\nircmd cmdwait 1500 sendkeypress enter
 	_media\nircmd cmdwait 1500 sendkeypress esc
 )
-taskkill /f /im explorer.exe >nul 2>&1
-timeout 1 > nul
-start explorer.exe >nul 2>&1
-timeout 1 > nul
 cls
 
 :: INSTALL ADOBE READER IF FAILED ::
