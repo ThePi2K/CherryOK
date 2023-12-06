@@ -503,14 +503,14 @@ cls
 
 :: REMOVING EDGE AND CHROME DATA ::
 :: just moving the folders to User Data.old, to restore: move it back
-echo REMOVING EDGE AND CHROME DATA
-timeout 1 > nul
+:: echo REMOVING EDGE AND CHROME DATA
+:: timeout 1 > nul
 :: rd /s /q "%LOCALAPPDATA%\Microsoft\Edge\User Data" >nul 2>&1
 :: rd /s /q "%LOCALAPPDATA%\Google\Chrome\User Data" >nul 2>&1
-robocopy "%LOCALAPPDATA%\Microsoft\Edge\User Data" "%LOCALAPPDATA%\Microsoft\Edge\User Data.old" /MOVE
-robocopy "%LOCALAPPDATA%\Google\Chrome\User Data" "%LOCALAPPDATA%\Google\Chrome\User Data.old" /MOVE
-timeout 1 > nul
-cls
+:: robocopy "%LOCALAPPDATA%\Microsoft\Edge\User Data" "%LOCALAPPDATA%\Microsoft\Edge\User Data.old" /MOVE
+:: robocopy "%LOCALAPPDATA%\Google\Chrome\User Data" "%LOCALAPPDATA%\Google\Chrome\User Data.old" /MOVE
+:: timeout 1 > nul
+:: cls
 
 :: CHECKING IF M365 SETUP IS RUNNING ::
 :CheckOffice
