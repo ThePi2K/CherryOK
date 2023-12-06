@@ -27,6 +27,11 @@ if !counter! gtr %maxLoop% (
     exit /b
 )
 
+:: STARTING STORE UPDATES ::
+echo STARTING STORE UPDATES...
+powershell -command "Get-CimInstance -Namespace "Root\cimv2\mdm\dmmap" -ClassName "MDM_EnterpriseModernAppManagement_AppManagement01" | Invoke-CimMethod -MethodName UpdateScanMethod | Out-Null"
+cls
+
 :: CHECKING UPDATES ::
 echo CHECKING WINDOWS UPDATES
 powershell -command "Get-WindowsUpdate" > tmp
