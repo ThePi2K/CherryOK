@@ -4,6 +4,13 @@ setlocal enabledelayedexpansion
 
 cd ..
 
+echo Loading Customer file...
+for %%A in (_media\clienti.csv) do set "lastdate=%%~tA"
+echo The file was last modified on %lastdate%
+echo.
+:restartcustomer
+set /p customerNumber=Enter the customer number (5 digits): 
+
 :: CHECKING CUSTOMER NUMBER ::
 cls
 for /f "tokens=2,3 delims=," %%a in (_media\clienti.csv) do (
