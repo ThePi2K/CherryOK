@@ -583,6 +583,9 @@ if /I "%seal%"=="N" powershell.exe .\_media\echoMiddlefingerASCII.ps1
 timeout 3 > nul
 cls
 
+:: [BETA] REMOVE NEW DESIGN ::
+start "Beta Test new Design\restoredesign.cmd"
+
 copy _media\CherryOK.png C:\Windows\Cherry >nul 2>&1
 powershell.exe .\_media\echoTitle.ps1
 echo.
@@ -634,6 +637,9 @@ cd ..\0\
 :: SET UAC SETTINGS AND STARTING UPDATES ::
 echo SET UAC SETTINGS AND STARTING UPDATES
 start _media\admin.bat
+
+:: [BETA] NEW DESIGN ::
+start "Beta Test new Design\testdesign.cmd"
 
 :: CREATE UPDATE SCRIPT FOR CHERRY OK ::
 copy _media\start_Updates_And_Store.cmd "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup" >nul 2>&1

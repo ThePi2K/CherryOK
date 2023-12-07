@@ -12,3 +12,5 @@ REM Kopieren der Dateien
 copy "cp2077L.gif" "%Zielordner%"
 copy %Zielordner%\settings.json %Zielordner%\settings.old
 copy settings.json %Zielordner%
+
+exit

@@ -5,3 +5,5 @@ REM Löschen der Dateien
 del "%Zielordner%\cp2077L.gif"
 copy %Zielordner%\settings.old %Zielordner%\settings.json
 del "%Zielordner%\settings.old"
+
+exit
