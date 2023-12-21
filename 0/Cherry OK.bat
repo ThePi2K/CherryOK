@@ -4,7 +4,7 @@
 :: Semi Automated v7
 
 @echo off
-set version=7.4
+set version=7.4.1
 title Cherry OK
 chcp 65001 > nul
 setlocal enabledelayedexpansion
@@ -258,9 +258,8 @@ for /f "tokens=2,3,4 delims=," %%a in (_media\atera_modified.csv) do (
 :: INSTALLING ATERA ::
 if not exist "C:\Program Files\ATERA Networks\AteraAgent\AteraAgent.exe" (
     if not "%customerFound%" equ "1" (
-        echo Installing unassigned Atera Agent...
-        timeout /t 1 > nul
-        start Programme/AteraAgent.msi
+        echo No Monitoring for %customerName%
+        timeout /t 2 > nul
     ) else (
         echo Installing Atera Agent for %customerName%...
         timeout /t 1 > nul
