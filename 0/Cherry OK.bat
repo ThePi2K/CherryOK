@@ -494,6 +494,11 @@ if not exist "C:\Program Files\Adobe\Acrobat DC\Acrobat\Acrobat.exe" (
 	reader.exe
 )
 
+:: STARTING STORE UPDATES ::
+echo STARTING STORE UPDATES...
+powershell -command "Get-CimInstance -Namespace "Root\cimv2\mdm\dmmap" -ClassName "MDM_EnterpriseModernAppManagement_AppManagement01" | Invoke-CimMethod -MethodName UpdateScanMethod | Out-Null"
+cls
+
 :: UPGRADING ALL PROGRAMS ::
 echo UPGRADING ALL PROGRAMS
 winget upgrade --all --accept-source-agreements --force
