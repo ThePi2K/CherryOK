@@ -86,6 +86,12 @@ if not exist "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\start_Upda
 	exit
 )
 
+:: SKIP UPDATES ::
+if exist C:\Windows\Cherry\SkipUpdates.txt (
+	echo SKIPPING UPDATES
+	goto skipwinupd
+)
+
 :: CHECKING UPDATES ::
 echo CHECKING UPDATES
 powershell -command "Get-WindowsUpdate" > tmp
@@ -100,6 +106,7 @@ IF %ERRORLEVEL% EQU 0 (
 )
 del tmp
 ECHO UPDATES OK
+:skipwinupd
 timeout 2 > nul
 cls
 
@@ -563,6 +570,7 @@ cls
 :: REMOVING CMD AND COUNTER FILE ::
 del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\start_Updates_And_Store.cmd" >nul 2>&1
 del "%userprofile%\Desktop\restartCherryOK.cmd" >nul 2>&1
+del "%userprofile%\Desktop\skipWinUpdates.cmd" >nul 2>&1
 del "%USERPROFILE%\Desktop\Stop Cherry OK.cmd" >nul 2>&1
 del "C:\Windows\Cherry\counter.txt" >nul 2>&1
 
@@ -653,6 +661,7 @@ start _media\admin.bat
 :: CREATE UPDATE SCRIPT FOR CHERRY OK ::
 copy _media\start_Updates_And_Store.cmd "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup" >nul 2>&1
 copy _media\restartCherryOK.cmd "%userprofile%\Desktop\" >nul 2>&1
+copy _media\skipWinUpdates.cmd "%userprofile%\Desktop\" >nul 2>&1
 
 :: MAKE CMD FILE "STOP CHERRY OK" ::
 echo shutdown -a > "%USERPROFILE%\Desktop\Stop Cherry OK.cmd"
