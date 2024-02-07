@@ -4,6 +4,12 @@ del "%USERPROFILE%\Desktop\Abort Shutdown.cmd" >nul 2>&1
 
 color 0e
 
+:: SKIP UPDATES ::
+if exist C:\Windows\Cherry\SkipUpdates.txt (
+	echo SKIPPING UPDATES
+	goto skipwinupd
+)
+
 :: COUNTER ::
 set "counterFile=C:\Windows\Cherry\counter.txt"
 if not exist %counterFile% (
@@ -49,6 +55,8 @@ del tmp
 ECHO UPDATES OK
 timeout 2 > nul
 cls
+
+:skipwinupd
 
 :: STARTING CHERRY OK
 :checkUSB
