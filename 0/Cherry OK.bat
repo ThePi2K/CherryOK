@@ -578,6 +578,7 @@ del "%userprofile%\Desktop\restartCherryOK.cmd" >nul 2>&1
 del "%userprofile%\Desktop\skipWinUpdates.cmd" >nul 2>&1
 del "%USERPROFILE%\Desktop\Stop Cherry OK.cmd" >nul 2>&1
 del "C:\Windows\Cherry\counter.txt" >nul 2>&1
+del "C:\Windows\Cherry\SkipUpdates.txt" >nul 2>&1
 
 :: CONFIGURE SYSTEM RESTORE ::
 echo CONFIGURING SYSTEM RESTORE
