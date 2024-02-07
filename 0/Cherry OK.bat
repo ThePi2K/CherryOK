@@ -351,7 +351,7 @@ _media\nircmd cmdwait 1500 sendkeypress alt+tab
 del /f "%userprofile%\Desktop\Cherry Hilfe.exe" >nul 2>&1
 del /f "%userprofile%\Desktop\Cherry Aiuto.exe" >nul 2>&1
 del /f "%userprofile%\Desktop\Cherry Help.exe" >nul 2>&1
-:: if "%customertype%"=="Business" goto skipcherryhelp
+not "%customerFound%" equ "1" goto skipcherryhelp
 
 echo SETTING UP CHERRY HELP...
 timeout 1 > nul
@@ -381,7 +381,7 @@ if not exist "%userprofile%\Desktop\Cherry *.exe" (
 timeout 1 > nul
 cls
 
-:: :skipcherryhelp
+:skipcherryhelp
 
 :: INSTALL GOOGLE CHROME ::
 if not exist "C:\Program Files\Google\Chrome\Application\chrome.exe" (
