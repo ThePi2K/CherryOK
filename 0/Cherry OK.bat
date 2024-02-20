@@ -183,9 +183,10 @@ WHERE winget >nul 2>&1
 IF %ERRORLEVEL% NEQ 0 (
 	echo CHECKING FOR WINGET...
 	timeout 1 > nul
-	ECHO Winget is not installed! Install all Updates from the Microsoft Store to start the Script!
-	timeout 2 > nul
+	echo Winget is not installed! Starting Store Updates...
+	powershell -command "Get-CimInstance -Namespace "Root\cimv2\mdm\dmmap" -ClassName "MDM_EnterpriseModernAppManagement_AppManagement01" | Invoke-CimMethod -MethodName 	UpdateScanMethod | Out-Null"
 	cls
+
 	echo Restarting...
 	timeout 2 > nul
 	shutdown /r /t 0
@@ -313,7 +314,7 @@ wmic computersystem where name="%computername%" call rename "%newname%"
 reg add "HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Splashtop Inc.\Splashtop Remote Server" /v CloudComputerName /t REG_SZ /d "%newname%" /f >nul
 reg add "HKEY_LOCAL_MACHINE\SOFTWARE\ATERA Networks\AlphaAgent" /v ServerName /t REG_SZ /d "%newname%" /f >nul
 cls
-echo Computer renamed to %newname%
+echo The %deviceType_upper% will be renamed to %newname% on the next reboot
 timeout 2 > nul
 
 :: END RENAMING COMPUTER ::
