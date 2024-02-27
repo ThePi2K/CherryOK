@@ -688,10 +688,10 @@ echo shutdown -a > "%USERPROFILE%\Desktop\Stop Cherry OK.cmd"
 echo del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\start_Updates_And_Store.cmd" >> "%USERPROFILE%\Desktop\Stop Cherry OK.cmd"
 echo del "%userprofile%\Desktop\restartCherryOK.cmd" >> "%USERPROFILE%\Desktop\Stop Cherry OK.cmd"
 echo del "%userprofile%\Desktop\skipWinUpdates.cmd" >> "%USERPROFILE%\Desktop\Stop Cherry OK.cmd"
-echo del "%USERPROFILE%\Desktop\Abort Shutdown.cmd" >> "%USERPROFILE%\Desktop\Stop Cherry OK.cmd" 
-echo del "%USERPROFILE%\Desktop\Stop Cherry OK.cmd" >> "%USERPROFILE%\Desktop\Stop Cherry OK.cmd"
+echo del "%USERPROFILE%\Desktop\Abort Shutdown.cmd" >> "%USERPROFILE%\Desktop\Stop Cherry OK.cmd"
 echo del "C:\Windows\Cherry\counter.txt" >> "%USERPROFILE%\Desktop\Stop Cherry OK.cmd"
 echo del "C:\Windows\Cherry\SkipUpdates.txt" >> "%USERPROFILE%\Desktop\Stop Cherry OK.cmd"
+echo del "%USERPROFILE%\Desktop\Stop Cherry OK.cmd" >> "%USERPROFILE%\Desktop\Stop Cherry OK.cmd"
 cls
 
 exit
