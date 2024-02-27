@@ -363,32 +363,32 @@ cls
 _media\nircmd cmdwait 1500 sendkeypress alt+tab
 
 :: INSTALL CHERRY HILFE ::
-del /f "%userprofile%\Desktop\Cherry Hilfe.exe" >nul 2>&1
-del /f "%userprofile%\Desktop\Cherry Aiuto.exe" >nul 2>&1
-del /f "%userprofile%\Desktop\Cherry Help.exe" >nul 2>&1
+del /f "%PUBLIC%\Desktop\Cherry Hilfe.exe" >nul 2>&1
+del /f "%PUBLIC%\Desktop\Cherry Aiuto.exe" >nul 2>&1
+del /f "%PUBLIC%\Desktop\Cherry Help.exe" >nul 2>&1
 if "%customerFound%" equ "1" goto skipcherryhelp
 
 echo SETTING UP CHERRY HELP...
 timeout 1 > nul
 curl https://customdesignservice.teamviewer.com/download/windows/v15/6bgwa4q/TeamViewerQS.exe -o C:\TeamViewerQS.exe
-if "%OSLanguage%"=="de-DE" move C:\TeamViewerQS.exe "%userprofile%\Desktop\Cherry Hilfe.exe" >nul 2>&1
-if "%OSLanguage%"=="it-IT" move C:\TeamViewerQS.exe "%userprofile%\Desktop\Cherry Aiuto.exe" >nul 2>&1
-if not exist "%userprofile%\Desktop\Cherry *.exe" move C:\TeamViewerQS.exe "%userprofile%\Desktop\Cherry Help.exe" >nul 2>&1
+if "%OSLanguage%"=="de-DE" move C:\TeamViewerQS.exe "%PUBLIC%\Desktop\Cherry Hilfe.exe" >nul 2>&1
+if "%OSLanguage%"=="it-IT" move C:\TeamViewerQS.exe "%PUBLIC%\Desktop\Cherry Aiuto.exe" >nul 2>&1
+if not exist "%PUBLIC%\Desktop\Cherry *.exe" move C:\TeamViewerQS.exe "%PUBLIC%\Desktop\Cherry Help.exe" >nul 2>&1
 
-if not exist "%userprofile%\Desktop\Cherry *.exe" (
+if not exist "%PUBLIC%\Desktop\Cherry *.exe" (
 	cls
 	echo RETRY...
-	if "%OSLanguage%"=="de-DE" copy "_media\TeamViewerQS.exe" "%userprofile%\Desktop\Cherry Hilfe.exe"
-	if "%OSLanguage%"=="it-IT" copy "_media\TeamViewerQS.exe" "%userprofile%\Desktop\Cherry Aiuto.exe"
-	if not exist "%userprofile%\Desktop\Cherry *.exe" copy "_media\TeamViewerQS.exe" "%userprofile%\Desktop\Cherry Help.exe"
+	if "%OSLanguage%"=="de-DE" copy "_media\TeamViewerQS.exe" "%PUBLIC%\Desktop\Cherry Hilfe.exe"
+	if "%OSLanguage%"=="it-IT" copy "_media\TeamViewerQS.exe" "%PUBLIC%\Desktop\Cherry Aiuto.exe"
+	if not exist "%PUBLIC%\Desktop\Cherry *.exe" copy "_media\TeamViewerQS.exe" "%PUBLIC%\Desktop\Cherry Help.exe"
 ) else (
-    for %%F in ("%userprofile%\Desktop\Cherry *.exe") do (
+    for %%F in ("%PUBLIC%\Desktop\Cherry *.exe") do (
         if %%~zF LSS 1024 (
 	    cls
 	    echo RETRY...
-	    if "%OSLanguage%"=="de-DE" copy "_media\TeamViewerQS.exe" "%userprofile%\Desktop\Cherry Hilfe.exe"
-	    if "%OSLanguage%"=="it-IT" copy "_media\TeamViewerQS.exe" "%userprofile%\Desktop\Cherry Aiuto.exe"
-	    if not exist "%userprofile%\Desktop\Cherry *.exe" copy "_media\TeamViewerQS.exe" "%userprofile%\Desktop\Cherry Help.exe"
+	    if "%OSLanguage%"=="de-DE" copy "_media\TeamViewerQS.exe" "%PUBLIC%\Desktop\Cherry Hilfe.exe"
+	    if "%OSLanguage%"=="it-IT" copy "_media\TeamViewerQS.exe" "%PUBLIC%\Desktop\Cherry Aiuto.exe"
+	    if not exist "%PUBLIC%\Desktop\Cherry *.exe" copy "_media\TeamViewerQS.exe" "%PUBLIC%\Desktop\Cherry Help.exe"
         )
     )
 )
