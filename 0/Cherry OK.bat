@@ -413,11 +413,11 @@ if not exist "C:\Program Files\Google\Chrome\Application\chrome.exe" (
 )
 if not exist "C:\Program Files\Google\Chrome\Application\chrome.exe" (
 	if "%OSLanguage%"=="de-DE" (
-		\Programme\ChromeSetup_DE.exe
+		Programme\ChromeSetup_DE.exe
 	) else if "%OSLanguage%"=="it-IT" (
-		\Programme\ChromeSetup_IT.exe
+		Programme\ChromeSetup_IT.exe
 	) else (
-		\Programme\ChromeSetup_EN.exe
+		Programme\ChromeSetup_EN.exe
 	)
 taskkill /F /IM chrome.exe >nul 2>&1
 )
