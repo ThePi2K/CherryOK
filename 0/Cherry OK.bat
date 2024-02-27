@@ -137,8 +137,15 @@ cls
 
 color 0f
 
-_media\setvol.exe unmute
-_media\setvol.exe 80
+:: SETVOL ::
+_media\setvol.exe devices > tmp
+find /c "unknown" tmp >nul
+IF NOT %ERRORLEVEL% EQU 0 (
+	_media\setvol.exe unmute
+	_media\setvol.exe 80
+)
+del tmp
+cls
 
 :: CHERRY OK ASCII ::
 title 🍒 Cherry OK
