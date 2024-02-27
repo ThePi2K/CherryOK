@@ -391,6 +391,12 @@ cls
 
 :skipcherryhelp
 
+:: INSTALL NEARBY SHARE ::
+echo INSTALLING GOOGLE NEARBY SHARE (new!)
+winget install --id Google.NearbyShare --accept-package-agreements --accept-source-agreements --force
+timeout 1 > nul
+cls
+
 :: INSTALL GOOGLE CHROME ::
 if not exist "C:\Program Files\Google\Chrome\Application\chrome.exe" (
 	echo INSTALL GOOGLE CHROME
