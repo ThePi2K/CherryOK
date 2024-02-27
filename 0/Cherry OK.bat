@@ -391,8 +391,8 @@ cls
 
 :skipcherryhelp
 
-:: INSTALL NEARBY SHARE ::
-echo INSTALLING GOOGLE NEARBY SHARE (new!)
+:: INSTALL QUICK SHARE ::
+echo INSTALLING QUICK SHARE
 winget install --id Google.NearbyShare --accept-package-agreements --accept-source-agreements --force
 timeout 1 > nul
 cls
