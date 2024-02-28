@@ -404,6 +404,7 @@ cls
 echo INSTALLING QUICK SHARE
 winget install --id Google.NearbyShare --accept-package-agreements --accept-source-agreements
 timeout 1 > nul
+taskkill /F /IM nearby_share.exe >nul 2>&1
 cls
 
 :: INSTALL GOOGLE CHROME ::
