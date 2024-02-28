@@ -585,6 +585,9 @@ start explorer.exe >nul 2>&1
 timeout 5 > nul
 cls
 
+:: ADDING REGISTRY WITH CHERRY OK VERSION NUMBER TO IDENTIFY ::
+reg add "HKLM\SOFTWARE\CherryComputer" /v CherryOKVersion /t REG_SZ /d %version% /f >nul
+
 :: REMOVING CMD AND COUNTER FILE ::
 del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\start_Updates_And_Store.cmd" >nul 2>&1
 del "%userprofile%\Desktop\restartCherryOK.cmd" >nul 2>&1
