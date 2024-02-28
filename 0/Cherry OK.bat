@@ -235,11 +235,10 @@ if "%customertype%"=="Personal" goto skip
 cls
 
 color CF
-powershell -c echo `a
 echo Loading Customer file...
 for %%A in (_media\clienti.csv) do set "lastdate=%%~tA"
 echo The file was last modified on %lastdate%
-echo.
+powershell -c echo `a
 :restartcustomer
 set /p customerNumber=Enter the customer number (5 digits): 
 
