@@ -365,6 +365,9 @@ _media\nircmd cmdwait 1500 sendkeypress alt+tab
 del /f "%PUBLIC%\Desktop\Cherry Hilfe.exe" >nul 2>&1
 del /f "%PUBLIC%\Desktop\Cherry Aiuto.exe" >nul 2>&1
 del /f "%PUBLIC%\Desktop\Cherry Help.exe" >nul 2>&1
+del /f "%USERPROFILE%\Desktop\Cherry Hilfe.exe" >nul 2>&1
+del /f "%USERPROFILE%\Desktop\Cherry Aiuto.exe" >nul 2>&1
+del /f "%USERPROFILE%\Desktop\Cherry Help.exe" >nul 2>&1
 if "%customerFound%" equ "1" goto skipcherryhelp
 
 echo SETTING UP CHERRY HELP...
