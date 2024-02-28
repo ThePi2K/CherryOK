@@ -399,7 +399,7 @@ cls
 
 :: INSTALL QUICK SHARE ::
 echo INSTALLING QUICK SHARE
-winget install --id Google.NearbyShare --accept-package-agreements --accept-source-agreements --force
+winget install --id Google.NearbyShare --accept-package-agreements --accept-source-agreements
 timeout 1 > nul
 cls
 
