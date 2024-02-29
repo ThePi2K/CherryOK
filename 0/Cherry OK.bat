@@ -4,7 +4,7 @@
 :: Semi Automated v7
 
 @echo off
-set version=7.5
+set version=7.5.1b
 title Cherry OK
 chcp 65001 > nul
 setlocal enabledelayedexpansion
@@ -589,8 +589,12 @@ start explorer.exe >nul 2>&1
 timeout 5 > nul
 cls
 
-:: ADDING REGISTRY WITH CHERRY OK VERSION NUMBER TO IDENTIFY ::
+:: ADDING REGISTRY WITH CHERRY OK INFORMATIONS TO IDENTIFY ::
 reg add "HKLM\SOFTWARE\CherryComputer" /v CherryOKVersion /t REG_SZ /d %version% /f >nul
+reg add "HKLM\SOFTWARE\CherryComputer" /v CherryOKDate /t REG_SZ /d %date% /f >nul
+reg add "HKLM\SOFTWARE\CherryComputer" /v CustomerType /t REG_SZ /d %customertype% /f >nul
+if "%customertype%"=="Business" reg add "HKLM\SOFTWARE\CherryComputer" /v CustomerName /t REG_SZ /d !customerName! /f >nul
+if "%customertype%"=="Business" reg add "HKLM\SOFTWARE\CherryComputer" /v customerNumber /t REG_SZ /d %customerNumber% /f >nul
 
 :: REMOVING CMD AND COUNTER FILE ::
 del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\start_Updates_And_Store.cmd" >nul 2>&1
