@@ -272,10 +272,10 @@ for /f "tokens=2,3,4 delims=," %%a in (_media\atera_modified.csv) do (
 :: INSTALLING ATERA ::
 if not exist "C:\Program Files\ATERA Networks\AteraAgent\AteraAgent.exe" (
     if not "%customerFound%" equ "1" (
-        echo No Monitoring for %customerName%
+        echo No Monitoring for !customerName!
         timeout /t 2 > nul
     ) else (
-        echo Installing Atera Agent for %customerName%...
+        echo Installing Atera Agent for !customerName!...
         timeout /t 1 > nul
         cmd /c "!curl!" && del setup.msi
         )
