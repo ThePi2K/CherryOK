@@ -16,4 +16,4 @@ rmdir %isAdminDir%
 echo true > C:\Windows\Cherry\SkipUpdates.txt
 
 echo Start "restartCherryOK.cmd" to restart the Cherry OK process
-pause > nul
+timeout /t 5
