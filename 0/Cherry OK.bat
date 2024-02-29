@@ -595,7 +595,7 @@ reg add "HKLM\SOFTWARE\CherryComputer" /v CherryOKDate /t REG_SZ /d %date% /f >n
 reg add "HKLM\SOFTWARE\CherryComputer" /v CustomerType /t REG_SZ /d %customertype% /f >nul
 reg delete "HKLM\SOFTWARE\CherryComputer" /v CustomerName /f >nul 2>&1
 reg delete "HKLM\SOFTWARE\CherryComputer" /v customerNumber /f >nul 2>&1
-if "%customertype%"=="Business" reg add "HKLM\SOFTWARE\CherryComputer" /v CustomerName /t REG_SZ /d !customerName! /f >nul
+if "%customertype%"=="Business" reg add "HKLM\SOFTWARE\CherryComputer" /v CustomerName /t REG_SZ /d "%customerName%" /f >nul
 if "%customertype%"=="Business" reg add "HKLM\SOFTWARE\CherryComputer" /v customerNumber /t REG_SZ /d %customerNumber% /f >nul
 
 :: REMOVING CMD AND COUNTER FILE ::
