@@ -154,6 +154,29 @@ echo.
 echo    Cherry OK - Version %version%
 echo    Designed for Windows 11 23H2
 if "%winversion%" == "10" echo    Legacy Mode for Windows 10 enabled
+
+:: QUERY TO CHECK OLD CHERRY OK VERSIONS ::
+REG QUERY HKLM\SOFTWARE\CherryComputer /v CherryOKVersion >nul 2>&1
+if %errorlevel% equ 0 (
+        for /f "tokens=2*" %%A in ('reg query "HKLM\SOFTWARE\CherryComputer" /v "CustomerNumber" ^| findstr /i "CustomerNumber"') do (
+            set "REGCustomerNumber=%%B"
+        )
+        for /f "tokens=2*" %%A in ('reg query "HKLM\SOFTWARE\CherryComputer" /v "CustomerName" ^| findstr /i "CustomerName"') do (
+            set "REGCustomerName=%%B"
+        )
+        for /f "tokens=2*" %%A in ('reg query "HKLM\SOFTWARE\CherryComputer" /v "CherryOKDate" ^| findstr /i "CherryOKDate"') do (
+            set "REGCherryOKDate=%%B"
+        )
+        for /f "tokens=2*" %%A in ('reg query "HKLM\SOFTWARE\CherryComputer" /v "CherryOKVersion" ^| findstr /i "CherryOKVersion"') do (
+            set "REGCherryOKVersion=%%B"
+        )
+        for /f "tokens=2*" %%A in ('reg query "HKLM\SOFTWARE\CherryComputer" /v "CustomerType" ^| findstr /i "CustomerType"') do (
+            set "REGCustomerType=%%B"
+        )
+	echo.
+	echo This computer has already been set up on !REGCherryOKDate!, with Cherry OK Version !REGCherryOKVersion!
+	if !REGCustomerType!==Business echo Customer: !REGCustomerNumber! - !REGCustomerName!
+)
 timeout 5 > nul
 
 :: CHECK WINDOWS ACTIVATION ::
