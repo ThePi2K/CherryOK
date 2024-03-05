@@ -423,9 +423,16 @@ cls
 
 :skipcherryhelp
 
-:: INSTALL QUICK SHARE ::
-echo INSTALLING QUICK SHARE
-winget install --id Google.NearbyShare --accept-package-agreements --accept-source-agreements
+:: INSTALL QUICK SHARE BY GOOGLE ::
+if not exist "C:\Program Files\Google\NearbyShare\nearby_share.exe" (
+	echo INSTALLING QUICK SHARE BY GOOGLE
+	winget install --id Google.NearbyShare --accept-package-agreements --accept-source-agreements --force
+)	else (
+	echo Quick Share by Google is installed!
+)
+if not exist "C:\Program Files\Google\NearbyShare\nearby_share.exe" (
+	Programme\QuickShareByGoogle.exe
+)
 timeout 1 > nul
 taskkill /F /IM nearby_share.exe >nul 2>&1
 cls
