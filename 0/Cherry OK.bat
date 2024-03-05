@@ -454,7 +454,7 @@ if not exist "C:\Program Files\Google\Chrome\Application\chrome.exe" (
 	) else (
 		Programme\ChromeSetup_EN.exe
 	)
-taskkill /F /IM chrome.exe >nul 2>&1
+	taskkill /F /IM chrome.exe >nul 2>&1
 )
 timeout 1 > nul
 cls
