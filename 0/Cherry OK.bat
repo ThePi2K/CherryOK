@@ -158,15 +158,6 @@ if "%winversion%" == "10" echo    Legacy Mode for Windows 10 enabled
 :: QUERY TO CHECK OLD CHERRY OK VERSIONS ::
 REG QUERY HKLM\SOFTWARE\CherryComputer /v CherryOKVersion >nul 2>&1
 if %errorlevel% equ 0 (
-	REG QUERY HKLM\SOFTWARE\CherryComputer /v CustomerNumber >nul 2>&1
-	if %errorlevel% equ 0 (
-       		for /f "tokens=2*" %%A in ('reg query "HKLM\SOFTWARE\CherryComputer" /v "CustomerNumber" ^| findstr /i "CustomerNumber"') do (
-	            set "REGCustomerNumber=%%B"
-	        )
-	        for /f "tokens=2*" %%A in ('reg query "HKLM\SOFTWARE\CherryComputer" /v "CustomerName" ^| findstr /i "CustomerName"') do (
-	            set "REGCustomerName=%%B"
-        	)
-	)
         for /f "tokens=2*" %%A in ('reg query "HKLM\SOFTWARE\CherryComputer" /v "CherryOKDate" ^| findstr /i "CherryOKDate"') do (
             set "REGCherryOKDate=%%B"
         )
@@ -176,6 +167,14 @@ if %errorlevel% equ 0 (
         for /f "tokens=2*" %%A in ('reg query "HKLM\SOFTWARE\CherryComputer" /v "CustomerType" ^| findstr /i "CustomerType"') do (
             set "REGCustomerType=%%B"
         )
+	if !REGCustomerType!==Business (
+       		for /f "tokens=2*" %%A in ('reg query "HKLM\SOFTWARE\CherryComputer" /v "CustomerNumber" ^| findstr /i "CustomerNumber"') do (
+	            set "REGCustomerNumber=%%B"
+	        )
+	        for /f "tokens=2*" %%A in ('reg query "HKLM\SOFTWARE\CherryComputer" /v "CustomerName" ^| findstr /i "CustomerName"') do (
+	            set "REGCustomerName=%%B"
+        	)
+	)
 	echo.
 	echo This computer has already been set up on !REGCherryOKDate!, with Cherry OK Version !REGCherryOKVersion!
 	if !REGCustomerType!==Business echo Customer: !REGCustomerNumber! - !REGCustomerName!
