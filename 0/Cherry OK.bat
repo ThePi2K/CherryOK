@@ -176,8 +176,8 @@ if %errorlevel% equ 0 (
         	)
 	)
 	echo.
-	echo This computer has already been set up on !REGCherryOKDate!, with Cherry OK Version !REGCherryOKVersion!
-	if !REGCustomerType!==Business echo Customer: !REGCustomerNumber! - !REGCustomerName!
+	echo    This computer has already been set up on !REGCherryOKDate!, with Cherry OK Version !REGCherryOKVersion!
+	if !REGCustomerType!==Business echo    !REGCustomerNumber! - !REGCustomerName!
 )
 timeout 5 > nul
 
