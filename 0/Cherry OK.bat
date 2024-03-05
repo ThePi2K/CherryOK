@@ -86,9 +86,9 @@ if not exist "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\start_Upda
 	exit
 )
 
-:: SKIP UPDATES ::
+:: SKIP UPDATES AND UNKNOWN DRIVERS ::
 if exist C:\Windows\Cherry\SkipUpdates.txt (
-	echo SKIPPING UPDATES
+	echo SKIPPING UNKNOWN DRIVERS CHECK AND WINDOWS UPDATES
 	goto skipwinupd
 )
 
@@ -105,10 +105,8 @@ IF %ERRORLEVEL% EQU 0 (
 	exit
 )
 del tmp
-ECHO UPDATES OK
-:skipwinupd
+echo UPDATES OK :)
 timeout 2 > nul
-cls
 
 :: CHECKING UNKNOWN DRIVERS ::
 : DRIVER_CHECK
@@ -127,6 +125,9 @@ IF %ERRORLEVEL% EQU 0 (
 )
 del tmp
 ECHO DEVICE MANAGER OK
+cls
+
+:skipwinupd
 timeout 2 > nul
 cls
 
