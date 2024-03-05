@@ -423,7 +423,7 @@ cls
 
 :skipcherryhelp
 
-:: INSTALL QUICK SHARE BY GOOGLE ::
+:: INSTALLING QUICK SHARE BY GOOGLE ::
 if not exist "C:\Program Files\Google\NearbyShare\nearby_share.exe" (
 	echo INSTALLING QUICK SHARE BY GOOGLE
 	winget install --id Google.NearbyShare --accept-package-agreements --accept-source-agreements --force
@@ -431,20 +431,22 @@ if not exist "C:\Program Files\Google\NearbyShare\nearby_share.exe" (
 	echo Quick Share by Google is installed!
 )
 if not exist "C:\Program Files\Google\NearbyShare\nearby_share.exe" (
+	echo INSTALLING QUICK SHARE BY GOOGLE
 	Programme\QuickShareByGoogle.exe
 )
 timeout 1 > nul
 taskkill /F /IM nearby_share.exe >nul 2>&1
 cls
 
-:: INSTALL GOOGLE CHROME ::
+:: INSTALLING GOOGLE CHROME ::
 if not exist "C:\Program Files\Google\Chrome\Application\chrome.exe" (
-	echo INSTALL GOOGLE CHROME
+	echo INSTALLING GOOGLE CHROME
 	winget install --id Google.Chrome --accept-source-agreements --force --scope machine
 )	else (
 	echo Google Chrome is installed!
 )
 if not exist "C:\Program Files\Google\Chrome\Application\chrome.exe" (
+	echo INSTALLING GOOGLE CHROME
 	if "%OSLanguage%"=="de-DE" (
 		Programme\ChromeSetup_DE.exe
 	) else if "%OSLanguage%"=="it-IT" (
@@ -457,9 +459,9 @@ taskkill /F /IM chrome.exe >nul 2>&1
 timeout 1 > nul
 cls
 
-:: INSTALL ACROBAT DC ::
+:: INSTALLING ACROBAT DC ::
 if not exist "C:\Program Files\Adobe\Acrobat DC\Acrobat\Acrobat.exe" (
-	echo INSTALL ACROBAT DC
+	echo INSTALLING ACROBAT DC
 	winget install --id Adobe.Acrobat.Reader.64-bit --accept-package-agreements --accept-source-agreements --force --scope machine
 )	else (
 	echo Adobe Reader is installed!
@@ -546,8 +548,9 @@ if "%winversion%"=="11" (
 )
 cls
 
-:: INSTALL ADOBE READER IF FAILED ::
+:: INSTALLING ACROBAT DC IF FAILED ::
 if not exist "C:\Program Files\Adobe\Acrobat DC\Acrobat\Acrobat.exe" (
+	echo INSTALLING ACROBAT DC
 	if "%OSLanguage%"=="de-DE" copy \Programme\Reader_Install_Setup_DE.exe reader.exe
 	if "%OSLanguage%"=="it-IT" copy \Programme\Reader_Install_Setup_IT.exe reader.exe
 	reader.exe
