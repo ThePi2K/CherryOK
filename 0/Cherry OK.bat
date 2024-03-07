@@ -554,8 +554,8 @@ cls
 :: INSTALLING ACROBAT DC IF FAILED ::
 if not exist "C:\Program Files\Adobe\Acrobat DC\Acrobat\Acrobat.exe" (
 	echo INSTALLING ACROBAT DC
-	if "%OSLanguage%"=="de-DE" copy Programme\Reader_Install_Setup_DE.exe reader.exe
-	if "%OSLanguage%"=="it-IT" copy Programme\Reader_Install_Setup_IT.exe reader.exe
+	if "%OSLanguage%"=="de-DE" copy Programme\Reader_de_install.exe reader.exe
+	if "%OSLanguage%"=="it-IT" copy Programme\Reader_it_install.exe reader.exe
 	reader.exe
 )
 cls
