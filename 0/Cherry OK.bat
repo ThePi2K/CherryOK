@@ -558,6 +558,7 @@ if not exist "C:\Program Files\Adobe\Acrobat DC\Acrobat\Acrobat.exe" (
 	if "%OSLanguage%"=="it-IT" copy \Programme\Reader_Install_Setup_IT.exe Programme\reader.exe
 	Programme\reader.exe
 )
+cls
 
 :: STARTING STORE UPDATES ::
 echo STARTING STORE UPDATES...
