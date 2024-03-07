@@ -570,6 +570,9 @@ echo STARTING STORE UPDATES...
 powershell -command "Get-CimInstance -Namespace "Root\cimv2\mdm\dmmap" -ClassName "MDM_EnterpriseModernAppManagement_AppManagement01" | Invoke-CimMethod -MethodName UpdateScanMethod | Out-Null"
 cls
 
+:: CLOSING CHROME IF OPENED AFTER ACROBAT DC INSTALLATION ::
+taskkill /F /IM chrome.exe >nul 2>&1
+
 :: UPGRADING ALL PROGRAMS ::
 echo UPGRADING ALL PROGRAMS
 winget upgrade --all --accept-source-agreements --force
