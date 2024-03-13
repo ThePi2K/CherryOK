@@ -31,7 +31,7 @@ rmdir %isAdminDir% >nul 2>&1
 del "%USERPROFILE%\Desktop\Abort Shutdown.cmd" >nul 2>&1
 
 :: CONNECT TO WIFI
-netsh wlan add profile filename=_media\WLAN-Cherry-Net.xml >nul 2>&1s
+netsh wlan add profile filename=_media\WLAN-Cherry-Net.xml >nul 2>&1
 
 :: RESTARTING EXPLORER FOR BETTER EXPERIENCE ::
 timeout 2 > nul
